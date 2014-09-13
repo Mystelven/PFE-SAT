@@ -69,8 +69,11 @@ class Variable {
 
 	private:
 
-		bool value;				// a variable is either true or false.
-		unsigned int num;		// a variable has a number to identify itself
+		/** a variable is either true or false. */
+		bool value;				
+
+		/** a variable has a number to identify itself */
+		unsigned int num;		
 
 };
 	
