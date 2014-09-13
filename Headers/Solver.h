@@ -34,27 +34,64 @@ class Solver {
 
 public:
 
+	/** 
+ 	 * This is the constructor of a Solver adapted to a problem.
+ 	 * @param p the Problem we need to solve.
+	 */
 	Solver(Problem p);
 
+	/**
+	 * This method allows us to get the i-th value of the current solution.
+	 * @param i the index of the value we need.
+	 * @return the value[i] of the current solution.
+	 */
 	inline int getTheSolution(unsigned int i);
 
+	/**
+ 	 * Check if one clause is open with our current solution
+ 	 * @param c the Clause we need to check
+ 	 * @return true if the clause is open, false otherwise.
+	 */
 	inline bool isOpen(Clause c);
 	
+	/**
+	 * This method allows us to get the number of variable in the Problem.
+	 */
 	inline size_t getSize();
 
+	/**
+	 * Check if our current solution is one solution of the Problem
+	 * @param p the problem we are currently solving.
+	 * @return true if the problem is solved, false otherwise.
+	 */
 	bool isSolution(Problem p);
 	
+
+	/**
+	 * This method is use to solve a Problem
+	 * @param p the problem we try to solve.
+	 */
 	void solve(Problem p);
 	
+	/**
+	 * This method is use to inverse the i-th value in our solution.
+	 * @param i the index of the solution we want to inverse.
+	 */
 	inline void inverse(unsigned int i);
 
-	/** to display a Strategie */
+	/** 
+	 * To display a Strategie 
+	 * @param out the out-stream where the text will be written (stdout by default)
+	 */
 	void display(ostream &out) const;
 
 
 private:
 
+	/** Our array of solutions. */
 	int* arrayOfSolutions;
+
+	/** The number of variable in the Problem. */
 	size_t size;
 
 
