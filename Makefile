@@ -68,6 +68,7 @@ $(OBJECT)solver.o: $(OBJECT)problem.o
 doc:
 	doxygen
 
+## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
 check:
 	cppcheck --enable=all --inconclusive --xml --xml-version=2 $(SOURCES)*.cpp 2> cppcheck.xml;
 
