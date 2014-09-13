@@ -68,6 +68,9 @@ $(OBJECT)solver.o: $(OBJECT)problem.o
 doc:
 	doxygen
 
+check:
+	cppcheck --enable=all --inconclusive --xml --xml-version=2 $(SOURCES)*.cpp 2> cppcheck.xml;
+
 clean:
 	rm -rf $(OBJECT)*.o
 	rm -rf Documentation
