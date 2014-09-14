@@ -43,13 +43,6 @@ class Variable {
 
 		/** Constructor which can create a variable from a int and value always true */
 		Variable(unsigned int i);	
-
-		/** 
-		* We create Getter and Setter in order to access and to modify the fields 
-		* that are private and therefore inaccessible from the outside.
-		*/
-		inline void 		  setValue(bool v);
-		inline void 		  setNum(unsigned int i);
 		
 		unsigned int  getNum() const;
 		bool 		  getValue() const;
