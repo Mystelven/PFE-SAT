@@ -84,8 +84,8 @@ Variable* Clause::getVariables(unsigned int ident) {
 void Clause::addVariable(Variable v) {
 
 	nbVariables++;
-	if(arrayOfVariables == NULL) arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
-	else						 arrayOfVariables = (Variable*)realloc(arrayOfVariables,sizeof(Clause)*nbVariables);
+	if(arrayOfVariables == NULL)      arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
+	else if(arrayOfVariables != NULL) arrayOfVariables = (Variable*)realloc(arrayOfVariables,sizeof(Variable)*nbVariables);
 	arrayOfVariables[nbVariables-1] = v;
 }
 
