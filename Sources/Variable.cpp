@@ -68,14 +68,6 @@ Variable::Variable(bool v,unsigned int i) {
 	value = v;
 }
 
-/**
-* to set the value of the variable.
-*/
-void Variable::setValue(bool v) {
-
-	value = v;
-}
-
 /** 
  * It gives the possibility to reverse a variable.
  * a true variable become a false variable.
@@ -85,22 +77,7 @@ void Variable::reverse() {
 	value = !value;
 }
 
-/** 
-* To set the num of a variable.
-*/
-void Variable::setNum(unsigned int i) {
 
-	/** 
-	* There is a complicated case when positive integers are defined.
-	* Is that 0 is a positive integer, but a variable can not be the number 0.
-	*/
-	if(i == 0) {
-		cerr << "There's a problem, we can have a 0th Variable\n";
-		exit(-1);
-	}
-
-	num = i;
-}
 
 /**
 * to get the num of the variable.

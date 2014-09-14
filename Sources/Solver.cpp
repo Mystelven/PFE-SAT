@@ -75,12 +75,11 @@ void Solver::inverse(unsigned int i) {
 */
 void Solver::solve(Problem p) {
 
-  unsigned int var;
   size_t v_size = getSize();
 
 	while(!isSolution(p)) {
 
-     	   var = ((unsigned int)(rand())%v_size + 1);
+     	   unsigned int var = ((unsigned int)(rand())%v_size + 1);
     	   inverse(var);
 	}	
 }
@@ -121,7 +120,7 @@ bool Solver::isOpen(Clause c) const {
 /** 
  * to check if the Problem is solved with the Current Solver
  */
-bool Solver::isSolution(Problem problem) {
+bool Solver::isSolution(Problem problem) const {
 
 	for(unsigned int i= 0; i < problem.getNbClauses(); i++)
 		if(!isOpen(*(problem.getClause(i)))) 

@@ -64,7 +64,7 @@ public:
 	 * @param p the problem we are currently solving.
 	 * @return true if the problem is solved, false otherwise.
 	 */
-	bool isSolution(Problem p);
+	bool isSolution(Problem p) const;
 	
 
 	/**
