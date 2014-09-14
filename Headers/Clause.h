@@ -51,7 +51,7 @@ class Clause {
 		void addVariable(Variable v);
 
 		/** We can get the size of the array in the clause. */
-		size_t size();
+		size_t size() const;
 
 		/** to display a clause */
 		void display(ostream &out) const;

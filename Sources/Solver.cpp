@@ -51,7 +51,7 @@ void Solver::display(ostream &out) const {
 /**
  * to get the number of Variable ( in the Solver class )
  */
-size_t Solver::getSize() {
+size_t Solver::getSize() const {
 
 	return size;
 }
@@ -88,7 +88,7 @@ void Solver::solve(Problem p) {
 /** 
  * to get the value of the variable 'i' in the Solver
  */
-int Solver::getTheSolution(unsigned int i) {
+int Solver::getTheSolution(unsigned int i) const {
 
 	if(i < size)
 		return arrayOfSolutions[i];
@@ -103,7 +103,7 @@ int Solver::getTheSolution(unsigned int i) {
 /**
  * to check if the Clause c is open with the Current Solver
  */
-bool Solver::isOpen(Clause c) {
+bool Solver::isOpen(Clause c) const {
 
 	for(unsigned int i = 0; i < size; i++) {
 		Variable* v = c.getVariables(i+1);

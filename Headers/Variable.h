@@ -51,8 +51,8 @@ class Variable {
 		inline void 		  setValue(bool v);
 		inline void 		  setNum(unsigned int i);
 		
-		unsigned int  getNum();
-		bool 		  getValue();
+		unsigned int  getNum() const;
+		bool 		  getValue() const;
 
 		/** 
 		* It gives the possibility to reverse a variable.

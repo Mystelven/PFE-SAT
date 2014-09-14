@@ -45,19 +45,19 @@ public:
 	 * @param i the index of the value we need.
 	 * @return the value[i] of the current solution.
 	 */
-	inline int getTheSolution(unsigned int i);
+	inline int getTheSolution(unsigned int i) const;
 
 	/**
  	 * Check if one clause is open with our current solution
  	 * @param c the Clause we need to check
  	 * @return true if the clause is open, false otherwise.
 	 */
-	inline bool isOpen(Clause c);
+	inline bool isOpen(Clause c) const;
 	
 	/**
 	 * This method allows us to get the number of variable in the Problem.
 	 */
-	inline size_t getSize();
+	inline size_t getSize() const;
 
 	/**
 	 * Check if our current solution is one solution of the Problem
