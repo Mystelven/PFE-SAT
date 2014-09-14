@@ -1,10 +1,11 @@
 PFE - SATyr, version 0.1
 
 [INFO]: main -- IN
+[INFO]: Fichier: instances/13.cnf
 [INFO]: displayInfo -- IN
 [INFO]: displayInfo -- OUT
 [INFO]: displaySolveTime -- IN
-[INFO]: Time to solve the problem: 0.086124s
+[INFO]: Time to solve the problem: 0.262873s
 [INFO]: displaySolveTime -- OUT
 [INFO]: displaySolution -- IN
 [INFO]: The problem is SATISFIABLE. 
@@ -14,4 +15,4 @@ PFE - SATyr, version 0.1
 
 0 warnings
 0 errors
-10 infos
+11 infos

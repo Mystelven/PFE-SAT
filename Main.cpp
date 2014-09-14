@@ -26,7 +26,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #define VERSION "0.1"
 
-#include "FileLogger.hpp"
+#include "Headers/FileLogger.h"
+
+typedef FileLogger::e_logType LogType;
 
 using namespace std;
 
@@ -40,14 +42,14 @@ FileLogger myLog (VERSION, "logs/main.log");
  */
 void displayInfo(ostream& out,Problem p) {
 
-  myLog << FileLogger::e_logType::LOG_INFO << "displayInfo -- IN";
+  myLog << LogType::LOG_INFO << "displayInfo -- IN";
 
 	out << "c This is SATyr " << VERSION << endl;
 	out << "c Created by Valentin Montmirail, a student in computer engineering at Polytech Tours" << endl;
 	out << "c" << endl;
 	out << p;
 
-  myLog << FileLogger::e_logType::LOG_INFO << "displayInfo -- OUT";
+  myLog << LogType::LOG_INFO << "displayInfo -- OUT";
 }
 
 /**
@@ -56,7 +58,7 @@ void displayInfo(ostream& out,Problem p) {
  */
 void displayErrorArgument(ostream& out) {
 
-    myLog << FileLogger::e_logType::LOG_INFO << "displayErrorArgument -- IN";
+    myLog << LogType::LOG_INFO << "displayErrorArgument -- IN";
 
   	out << endl << endl;
   	out << "You should give the path to the CNF file formated as follow :  " << endl;
@@ -65,7 +67,7 @@ void displayErrorArgument(ostream& out) {
   	out << "xi xl ... " << endl;
   	out << endl << "so your call looks like : ./Solver path_to_file" << endl << endl ;
 
-    myLog << FileLogger::e_logType::LOG_INFO << "displayErrorArgument -- OUT";
+    myLog << LogType::LOG_INFO << "displayErrorArgument -- OUT";
 }
 
 /**
@@ -76,22 +78,22 @@ void displayErrorArgument(ostream& out) {
  */
 void displaySolution(ostream& out,Solver s,Problem p) {
 
-    myLog << FileLogger::e_logType::LOG_INFO << "displaySolution -- IN";
+    myLog << LogType::LOG_INFO << "displaySolution -- IN";
 
     if(s.isSolution(p)) {
       
-      myLog << FileLogger::e_logType::LOG_INFO << "The problem is SATISFIABLE. ";
+      myLog << LogType::LOG_INFO << "The problem is SATISFIABLE. ";
 
       out << endl << "s SATISFIABLE" << endl;
       out << "v " << s << " 0" << endl << endl;
 
     } else {
-      myLog << FileLogger::e_logType::LOG_INFO << "The problem is INSATISFIABLE. ";
+      myLog << LogType::LOG_INFO << "The problem is INSATISFIABLE. ";
       out << endl << "s INSATISFIABLE" << endl;
 
     }
 
-    myLog << FileLogger::e_logType::LOG_INFO << "displaySolution -- OUT";
+    myLog << LogType::LOG_INFO << "displaySolution -- OUT";
 }
 
 /**
@@ -101,7 +103,7 @@ void displaySolution(ostream& out,Solver s,Problem p) {
  */
 void displaySolveTime(ostream& out,double solveTime) {
 
-  myLog << FileLogger::e_logType::LOG_INFO << "displaySolveTime -- IN";
+  myLog << LogType::LOG_INFO << "displaySolveTime -- IN";
 
   out << "c [=======================================================================================================]" << endl;
 
@@ -111,13 +113,13 @@ void displaySolveTime(ostream& out,double solveTime) {
 
   std::ostringstream oss;
   oss << "Time to solve the problem: " << fixed << setprecision(6) << solveTime << "s";
-  myLog << FileLogger::e_logType::LOG_INFO << oss.str();
+  myLog << LogType::LOG_INFO << oss.str();
 
   out << endl;
   out << "c CPU Time              :    " << fixed << setprecision(6) << solveTime << "s";
   out << endl;
 
-  myLog << FileLogger::e_logType::LOG_INFO << "displaySolveTime -- OUT";
+  myLog << LogType::LOG_INFO << "displaySolveTime -- OUT";
 
 }
 
@@ -130,7 +132,8 @@ void displaySolveTime(ostream& out,double solveTime) {
 int main(int argc,char** argv)
 {
   
-  myLog << FileLogger::e_logType::LOG_INFO << "main -- IN";
+  myLog << LogType::LOG_INFO << "main -- IN";
+
 
   clock_t start,end;
   srand(time(NULL)); // initialisation of rand
@@ -142,6 +145,10 @@ int main(int argc,char** argv)
 
   }
 
+  std::ostringstream oss;
+  oss << "Fichier: " << argv[1];
+  myLog << LogType::LOG_INFO << oss.str();
+  
   Problem p(argv[1]);
   Solver s(p);
 
@@ -175,7 +182,7 @@ int main(int argc,char** argv)
 
   }
 
-  myLog << FileLogger::e_logType::LOG_INFO << "main -- OUT";
+  myLog << LogType::LOG_INFO << "main -- OUT";
 
   return 0;
 }
