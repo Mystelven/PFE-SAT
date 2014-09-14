@@ -26,8 +26,5 @@
         <error id="noCopyConstructor" severity="style" msg="&apos;class Solver&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory." verbose="&apos;class Solver&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory.">
             <location file="Headers/Solver.h" line="33"/>
         </error>
-        <error id="unusedFunction" severity="style" msg="The function &apos;getTheSolution&apos; is never used." verbose="The function &apos;getTheSolution&apos; is never used.">
-            <location file="Sources/Solver.cpp" line="90"/>
-        </error>
     </errors>
 </results>

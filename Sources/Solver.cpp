@@ -84,21 +84,6 @@ void Solver::solve(Problem p) {
 	}	
 }
 
-/** 
- * to get the value of the variable 'i' in the Solver
- */
-int Solver::getTheSolution(unsigned int i) const {
-
-	if(i < size)
-		return arrayOfSolutions[i];
-	else {
-		cerr << "There's a problem, you want the ith value of the Solver which doesn't exist";
-		cerr << endl << endl;
-		exit(-1);
-	}
-	return 0;
-}
-
 /**
  * to check if the Clause c is open with the Current Solver
  */
