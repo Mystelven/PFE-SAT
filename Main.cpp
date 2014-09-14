@@ -24,9 +24,14 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include "Headers/Solver.h"
 
-#define VERSION 0.1
+#define VERSION "0.1"
+
+#include "FileLogger.hpp"
 
 using namespace std;
+
+/** We declare a global logger for the file. */
+FileLogger myLog (VERSION, "logs/main.log");
 
 /**
  * Useful to display some informations about the inspiration (Glucose) and about the solver itself.
@@ -35,11 +40,14 @@ using namespace std;
  */
 void displayInfo(ostream& out,Problem p) {
 
+  myLog << FileLogger::e_logType::LOG_INFO << "displayInfo -- IN";
+
 	out << "c This is SATyr " << VERSION << endl;
 	out << "c Created by Valentin Montmirail, a student in computer engineering at Polytech Tours" << endl;
 	out << "c" << endl;
 	out << p;
 
+  myLog << FileLogger::e_logType::LOG_INFO << "displayInfo -- OUT";
 }
 
 /**
@@ -48,6 +56,8 @@ void displayInfo(ostream& out,Problem p) {
  */
 void displayErrorArgument(ostream& out) {
 
+    myLog << FileLogger::e_logType::LOG_INFO << "displayErrorArgument -- IN";
+
   	out << endl << endl;
   	out << "You should give the path to the CNF file formated as follow :  " << endl;
   	out << "p cnf nbVariables nbClauses" << endl;
@@ -55,6 +65,7 @@ void displayErrorArgument(ostream& out) {
   	out << "xi xl ... " << endl;
   	out << endl << "so your call looks like : ./Solver path_to_file" << endl << endl ;
 
+    myLog << FileLogger::e_logType::LOG_INFO << "displayErrorArgument -- OUT";
 }
 
 /**
@@ -65,18 +76,22 @@ void displayErrorArgument(ostream& out) {
  */
 void displaySolution(ostream& out,Solver s,Problem p) {
 
+    myLog << FileLogger::e_logType::LOG_INFO << "displaySolution -- IN";
+
     if(s.isSolution(p)) {
       
+      myLog << FileLogger::e_logType::LOG_INFO << "The problem is SATISFIABLE. ";
+
       out << endl << "s SATISFIABLE" << endl;
       out << "v " << s << " 0" << endl << endl;
 
     } else {
-
+      myLog << FileLogger::e_logType::LOG_INFO << "The problem is INSATISFIABLE. ";
       out << endl << "s INSATISFIABLE" << endl;
 
     }
 
-  
+    myLog << FileLogger::e_logType::LOG_INFO << "displaySolution -- OUT";
 }
 
 /**
@@ -86,15 +101,23 @@ void displaySolution(ostream& out,Solver s,Problem p) {
  */
 void displaySolveTime(ostream& out,double solveTime) {
 
+  myLog << FileLogger::e_logType::LOG_INFO << "displaySolveTime -- IN";
+
   out << "c [=======================================================================================================]" << endl;
 
   solveTime *= 10000000;
   solveTime = ceil(solveTime);
   solveTime /= 10000000;
 
+  std::ostringstream oss;
+  oss << "Time to solve the problem: " << fixed << setprecision(6) << solveTime << "s";
+  myLog << FileLogger::e_logType::LOG_INFO << oss.str();
+
   out << endl;
   out << "c CPU Time              :    " << fixed << setprecision(6) << solveTime << "s";
   out << endl;
+
+  myLog << FileLogger::e_logType::LOG_INFO << "displaySolveTime -- OUT";
 
 }
 
@@ -106,6 +129,9 @@ void displaySolveTime(ostream& out,double solveTime) {
  */
 int main(int argc,char** argv)
 {
+  
+  myLog << FileLogger::e_logType::LOG_INFO << "main -- IN";
+
   clock_t start,end;
   srand(time(NULL)); // initialisation of rand
 
@@ -148,6 +174,8 @@ int main(int argc,char** argv)
     }
 
   }
+
+  myLog << FileLogger::e_logType::LOG_INFO << "main -- OUT";
 
   return 0;
 }
