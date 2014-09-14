@@ -45,6 +45,7 @@ class Variable {
 		Variable(unsigned int i);	
 		
 		unsigned int  getNum() const;
+		
 		bool 		  getValue() const;
 
 		/** 

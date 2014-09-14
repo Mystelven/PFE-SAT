@@ -26,6 +26,7 @@ FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
 FLAGS3   = -Wshadow -Weffc++ -Wredundant-decls -Winit-self -Wswitch-default 
 FLAGS4   = -Wswitch-enum -Wundef -Winline $(CPP11)
+
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 MAIN	 = satyr
@@ -42,12 +43,14 @@ CLAUSE   = $(SOURCES)Clause.cpp
 
 PROBLEM  = $(SOURCES)Problem.cpp
 
+LOGGER   = $(SOURCES)FileLogger.cpp
+
 SOLVER   = $(SOURCES)Solver.cpp
 
 ##############################################################################
 
-all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o
-	$(COMPILER) $(CPP11) -o $(MAIN) $(OBJECT)variable.o $(OBJECT)clause.o $(OBJECT)problem.o $(OBJECT)solver.o Main.cpp
+all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o $(OBJECT)fileLogger.o
+	$(COMPILER) $(CPP11) -o $(MAIN) $(OBJECT)variable.o $(OBJECT)clause.o $(OBJECT)problem.o $(OBJECT)solver.o $(OBJECT)fileLogger.o Main.cpp
 
 $(OBJECT)variable.o:
 	$(COMPILER) -c $(FLAGS) $(VARIABLE)
@@ -65,6 +68,10 @@ $(OBJECT)solver.o: $(OBJECT)problem.o
 	$(COMPILER) -c $(FLAGS) $(SOLVER)
 	mv solver.o $(OBJECT)
 
+$(OBJECT)fileLogger.o:
+	$(COMPILER) -c $(FLAGS) $(LOGGER)
+	mv fileLogger.o $(OBJECT)
+
 ##############################################################################
 
 doc:
@@ -72,7 +79,7 @@ doc:
 
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
 check:
-	cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp 2> cppcheck.xml;
+	cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
 
 clean:
 	rm -rf $(OBJECT)*.o
