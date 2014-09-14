@@ -6,23 +6,20 @@
             <location file="Sources/Clause.cpp" line="39"/>
         </error>
         <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
-            <location file="Sources/Clause.cpp" line="80"/>
+            <location file="Sources/Clause.cpp" line="87"/>
         </error>
         <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
-            <location file="Sources/Clause.cpp" line="81"/>
-        </error>
-        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Clause::nbVariables&apos; is not initialized in the constructor." verbose="Member variable &apos;Clause::nbVariables&apos; is not initialized in the constructor.">
-            <location file="Sources/Clause.cpp" line="51"/>
+            <location file="Sources/Clause.cpp" line="88"/>
         </error>
         <error id="functionConst" severity="style" msg="Technically the member function &apos;Clause::size&apos; can be const." verbose="The member function &apos;Clause::size&apos; can be made a const function. Making this function &apos;const&apos; should not cause compiler errors. Even though the function can be made const function technically it may not make sense conceptually. Think about your design and the task of the function first - is it a function that must not change object internal state?" inconclusive="true">
             <location file="Headers/Clause.h" line="54"/>
-            <location file="Sources/Clause.cpp" line="86"/>
+            <location file="Sources/Clause.cpp" line="93"/>
         </error>
         <error id="noCopyConstructor" severity="style" msg="&apos;class Clause&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory." verbose="&apos;class Clause&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory.">
             <location file="Headers/Clause.h" line="35"/>
         </error>
         <error id="memleakOnRealloc" severity="error" msg="Common realloc mistake: &apos;arrayOfVariables&apos; nulled but not freed upon failure" verbose="Common realloc mistake: &apos;arrayOfVariables&apos; nulled but not freed upon failure">
-            <location file="Sources/Clause.cpp" line="81"/>
+            <location file="Sources/Clause.cpp" line="88"/>
         </error>
         <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
             <location file="Sources/Problem.cpp" line="80"/>

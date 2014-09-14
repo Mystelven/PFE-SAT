@@ -50,6 +50,13 @@ Clause::Clause(unsigned int n) {
 */
 Clause::Clause(Variable* p) {
 
+	unsigned int i = 0;
+	if(p != NULL) {
+		while((p+i) != NULL) {
+			i++;
+		}	
+	}
+	nbVariables = i;
 	arrayOfVariables = p;
 }
 
