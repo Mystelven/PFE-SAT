@@ -90,7 +90,7 @@ void Clause::addVariable(Variable v) {
 }
 
 /** To get the size of a clause. */
-size_t Clause::size() {
+size_t Clause::size() const {
 
 	return nbVariables;
 }

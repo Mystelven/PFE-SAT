@@ -112,7 +112,7 @@ Problem::Problem(string filename) {
  * To get the number of Clauses in the Problem.
  * @return the number of Clauses.
  */
-unsigned int Problem::getNbClauses() {
+unsigned int Problem::getNbClauses() const {
 
 	return nbClauses;
 }
@@ -132,7 +132,7 @@ Clause* Problem::getClause(unsigned int i) {
  * To get the number of Variables in the Problem.
  * @return the number of variables.
  */
-unsigned int Problem::getNbVariables() {
+unsigned int Problem::getNbVariables() const {
 
 	return nbVariables;
 }

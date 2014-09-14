@@ -47,10 +47,10 @@ public:
 		Problem(string filename);
 
 		/** We can get the number of Variables in the Problem.*/
-		unsigned int getNbVariables();
+		unsigned int getNbVariables() const;
 
 		/** We can get the number of Clauses in the Problem. */
-		unsigned int getNbClauses();
+		unsigned int getNbClauses() const;
 
 		/** We can get a reference to the i-th Clause of the Problem. */
 		Clause* getClause(unsigned int i);

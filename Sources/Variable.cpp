@@ -105,7 +105,7 @@ void Variable::setNum(unsigned int i) {
 /**
 * to get the num of the variable.
 */
-unsigned int Variable::getNum() {
+unsigned int Variable::getNum() const {
 
 	return num;
 }
@@ -113,7 +113,7 @@ unsigned int Variable::getNum() {
 /**
 * to get the value of the variable.
 */
-bool Variable::getValue() {
+bool Variable::getValue() const {
 
 	return value;
 }
