@@ -41,13 +41,6 @@ public:
 	Solver(Problem p);
 
 	/**
-	 * This method allows us to get the i-th value of the current solution.
-	 * @param i the index of the value we need.
-	 * @return the value[i] of the current solution.
-	 */
-	inline int getTheSolution(unsigned int i) const;
-
-	/**
  	 * Check if one clause is open with our current solution
  	 * @param c the Clause we need to check
  	 * @return true if the clause is open, false otherwise.
