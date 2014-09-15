@@ -105,6 +105,13 @@ void Clause::addVariable(Variable v) {
 	nbVariables++;
 	if(arrayOfVariables == NULL)      arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
 	else if(arrayOfVariables != NULL) arrayOfVariables = (Variable*)realloc(arrayOfVariables,sizeof(Variable)*nbVariables);
+	
+	if(arrayOfVariables == NULL) {
+
+		log_clause << LogType::LOG_ERROR << "The allocation of the arrayOfVariables has failed";
+		exit(-1);
+	}
+
 	arrayOfVariables[nbVariables-1] = v;
 }
 
