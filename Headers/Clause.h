@@ -41,6 +41,13 @@ class Clause {
 		/** We can create a clause with an array of variables. */
 		Clause(Variable* p);
 
+		/**
+	 	* This is the copy-constructor of a Clause.
+	 	* It's needed because there's a pointer in the attribute of the class.
+	 	* @param c the Original Clause that we will copy.
+	 	*/
+		Clause(Clause& c);
+
 		/** We can create a clause without any variable. */
 		Clause();
 

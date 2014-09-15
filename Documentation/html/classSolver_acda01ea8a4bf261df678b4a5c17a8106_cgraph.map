@@ -1,4 +1,0 @@
-<map id="isSolution" name="isSolution">
-<area shape="rect" id="node2" href="$classProblem.html#af18b83d5f9e0cb7c35f100346f62aa8d" title="We can get the number of Clauses in the Problem. " alt="" coords="139,5,311,32"/>
-<area shape="rect" id="node3" href="$classProblem.html#a67b23140b2e80145a0671a87183e753d" title="We can get a reference to the i&#45;th Clause of the Problem. " alt="" coords="152,56,299,83"/>
-</map>

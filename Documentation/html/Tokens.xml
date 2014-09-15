@@ -341,6 +341,18 @@
       <Scope>Clause</Scope>
     </TokenIdentifier>
     <Path>classClause.html</Path>
+    <Anchor>ab57d574be1dd927e451d9c16ffa376f3</Anchor>
+    <Abstract>This is the copy-constructor of a Clause. </Abstract>
+    <DeclaredIn>Clause.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>Clause</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>instm</Type>
+      <Scope>Clause</Scope>
+    </TokenIdentifier>
+    <Path>classClause.html</Path>
     <Anchor>aac0f1f0b919c4588c23037f39f04bb85</Anchor>
     <Abstract>We can create a clause without any variable. </Abstract>
     <DeclaredIn>Clause.h</DeclaredIn>
@@ -609,6 +621,18 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>Problem</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>instm</Type>
+      <Scope>Problem</Scope>
+    </TokenIdentifier>
+    <Path>classProblem.html</Path>
+    <Anchor>a556e0e20c95a7b5b272b8d3a79fa9caf</Anchor>
+    <Abstract>This is the copy-constructor of a Problem. </Abstract>
+    <DeclaredIn>Problem.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>display</Name>
       <APILanguage>cpp</APILanguage>
       <Type>instm</Type>
@@ -708,6 +732,18 @@
     <Path>classSolver.html</Path>
     <Anchor>a4701e9bd4cdbac621cce4472fd25e141</Anchor>
     <Abstract>This is the constructor of a Solver adapted to a problem. </Abstract>
+    <DeclaredIn>Solver.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>Solver</Name>
+      <APILanguage>cpp</APILanguage>
+      <Type>instm</Type>
+      <Scope>Solver</Scope>
+    </TokenIdentifier>
+    <Path>classSolver.html</Path>
+    <Anchor>a352d24ceaa425443d4afb751a4d7560b</Anchor>
+    <Abstract>This is the copy-constructor of a Solver. </Abstract>
     <DeclaredIn>Solver.h</DeclaredIn>
   </Token>
   <Token>

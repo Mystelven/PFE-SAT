@@ -46,6 +46,13 @@ public:
 		/** We can create a Problem directly from a CNF file. */
 		Problem(string filename);
 
+		/**
+	 	* This is the copy-constructor of a Problem.
+	 	* It's needed because there's a pointer in the attribute of the class.
+	 	* @param p the Original Problem that we will copy.
+	 	*/
+		Problem(Problem& p);
+
 		/** We can get the number of Variables in the Problem.*/
 		unsigned int getNbVariables() const;
 

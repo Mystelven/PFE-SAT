@@ -41,6 +41,13 @@ public:
 	Solver(Problem p);
 
 	/**
+	 * This is the copy-constructor of a Solver.
+	 * It's needed because there's a pointer in the attribute of the class.
+	 * @param s the Original Solver that we will copy.
+	 */
+	Solver(Solver& s);
+
+	/**
  	 * Check if one clause is open with our current solution
  	 * @param c the Clause we need to check
  	 * @return true if the clause is open, false otherwise.

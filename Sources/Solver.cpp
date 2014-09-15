@@ -38,6 +38,22 @@ Solver::Solver(Problem p) {
 }
 
 /**
+* This is the copy-constructor of a Solver.
+* It's needed because there's a pointer in the attribute of the class.
+* @param s the Original Solver that we will copy.
+*/
+Solver::Solver(Solver& s) {
+
+	size = s.size;
+
+	arrayOfSolutions = (int*)malloc(sizeof(int)*size);
+
+	for(size_t i = 0; i < size; i++) {
+		arrayOfSolutions[i] = s.arrayOfSolutions[i];
+	}
+}
+
+/**
 * To display a Solver.
 */
 void Solver::display(ostream &out) const {
