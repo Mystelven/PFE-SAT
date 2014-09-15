@@ -103,8 +103,23 @@ Variable* Clause::getVariables(unsigned int ident) {
 void Clause::addVariable(Variable v) {
 
 	nbVariables++;
-	if(arrayOfVariables == NULL)      arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
-	else if(arrayOfVariables != NULL) arrayOfVariables = (Variable*)realloc(arrayOfVariables,sizeof(Variable)*nbVariables);
+	if(arrayOfVariables == NULL) {
+		arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
+	}
+	else {
+
+		Variable* new_data = (Variable *)(realloc (arrayOfVariables, (nbVariables+10)*sizeof(Variable)));
+ 		if (new_data == NULL)
+ 		{
+   			log_clause << LogType::LOG_ERROR << "The allocation of the arrayOfVariables has failed";
+   			exit(-1);
+ 		}
+ 		else
+ 		{
+     		arrayOfVariables = new_data;
+ 		}
+
+	}
 	
 	if(arrayOfVariables == NULL) {
 
