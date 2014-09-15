@@ -24,6 +24,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef FILELOGGER_H
 #define FILELOGGER_H
 
+#define VERSION "0.1"
+
 #include <iostream>
 #include <fstream>
 
@@ -60,5 +62,7 @@ class FileLogger {
         unsigned int            numInfos;
 
 };
+
+typedef FileLogger::e_logType LogType;
 
 #endif

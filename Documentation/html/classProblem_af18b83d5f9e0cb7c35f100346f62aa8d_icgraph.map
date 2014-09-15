@@ -1,0 +1,5 @@
+<map id="getNbClauses" name="getNbClauses">
+<area shape="rect" id="node2" href="$classSolver.html#acda01ea8a4bf261df678b4a5c17a8106" title="Check if our current solution is one solution of the Problem. " alt="" coords="166,5,298,32"/>
+<area shape="rect" id="node3" href="$Main_8cpp.html#a1271dea8a50555527b7bedabbb73d03d" title="Useful to display s SATISFIABLE and the solution or s INSATISFIABLE otherwise. " alt="" coords="347,5,466,32"/>
+<area shape="rect" id="node4" href="$Main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It&#39;s the beginning of this program. " alt="" coords="515,5,570,32"/>
+</map>

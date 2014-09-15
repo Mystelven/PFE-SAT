@@ -1,0 +1,206 @@
+<toc label="SATyr - SAT&apos;s Solver" topic="index.html">
+  <topic label="Data Structures">
+    <topic label="Data Structures" href="annotated.html">
+      <topic label="Clause" href="classClause.html">
+        <topic label="Clause" href="classClause.html#a27d94680c3fd113add623fdb56763d71"/>
+        <topic label="Clause" href="classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6"/>
+        <topic label="Clause" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85"/>
+        <topic label="addVariable" href="classClause.html#ae28edef701491dfdc219320692a885cc"/>
+        <topic label="display" href="classClause.html#a9b9518cbde39454337001bab693d347a"/>
+        <topic label="getVariables" href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa"/>
+        <topic label="size" href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac"/>
+        <topic label="arrayOfVariables" href="classClause.html#a5b07ad8a6420b4794d5c9d147809e6a2"/>
+        <topic label="nbVariables" href="classClause.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+      </topic>
+      <topic label="FileLogger" href="classFileLogger.html">
+        <topic label="e_logType" href="classFileLogger.html#af46c257df9593b75071374b9188f21aa">
+          <topic label="LOG_ERROR" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa4490aa3d29644e716440fada68f54032"/>
+          <topic label="LOG_WARNING" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaad0cb3df3102ca9270c5785af9a8c137f"/>
+          <topic label="LOG_INFO" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa41abf3cca8cee8cdae01749df7a991c6"/>
+        </topic>
+        <topic label="FileLogger" href="classFileLogger.html#a06d8b5476d655d3255d7e0db3cf27d78"/>
+        <topic label="~FileLogger" href="classFileLogger.html#a04a441b5ab4cbe897ebeb0cd040657a4"/>
+        <topic label="FileLogger" href="classFileLogger.html#aa1614d8786723e27c5585a1392d56057"/>
+        <topic label="operator=" href="classFileLogger.html#acc8f800c39c93bc87f79507ef565fb40"/>
+        <topic label="operator&lt;&lt;" href="classFileLogger.html#a7e61ff7789620dd939e3d74a21864165"/>
+        <topic label="operator&lt;&lt;" href="classFileLogger.html#aa20cb36fa642da049aca81b2a274fca6"/>
+        <topic label="operator&lt;&lt;" href="classFileLogger.html#a04cbb232057dc92645ff01c3398c8834"/>
+        <topic label="myFile" href="classFileLogger.html#a0dbb2b6eec83c0c3e4663da8ba9242f2"/>
+        <topic label="numErrors" href="classFileLogger.html#ac12b71010307e608314b1341213685dd"/>
+        <topic label="numInfos" href="classFileLogger.html#acbd70623c7feb8c1c1c14f0be43dab43"/>
+        <topic label="numWarnings" href="classFileLogger.html#ad3d283ac6bd6ff57f27bf9e816c15493"/>
+      </topic>
+      <topic label="Problem" href="classProblem.html">
+        <topic label="Problem" href="classProblem.html#a0df44f20096ddb5201b82120da82af8e"/>
+        <topic label="Problem" href="classProblem.html#ad2bb42abc6430714ae4576ff89b4eb33"/>
+        <topic label="display" href="classProblem.html#a9b9518cbde39454337001bab693d347a"/>
+        <topic label="getClause" href="classProblem.html#a67b23140b2e80145a0671a87183e753d"/>
+        <topic label="getNbClauses" href="classProblem.html#af18b83d5f9e0cb7c35f100346f62aa8d"/>
+        <topic label="getNbVariables" href="classProblem.html#a74fa4f7d3102d003af79208a9001f29c"/>
+        <topic label="arrayOfClauses" href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc"/>
+        <topic label="nbClauses" href="classProblem.html#a78552348f2be74fce83839fdc026068c"/>
+        <topic label="nbVariables" href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+      </topic>
+      <topic label="Solver" href="classSolver.html">
+        <topic label="Solver" href="classSolver.html#a4701e9bd4cdbac621cce4472fd25e141"/>
+        <topic label="display" href="classSolver.html#a9b9518cbde39454337001bab693d347a"/>
+        <topic label="getSize" href="classSolver.html#af55b3790622878d65ed5ff2bb2b3fcc4"/>
+        <topic label="inverse" href="classSolver.html#a5b099bdec45c7eb60b0962bd2b06b9f0"/>
+        <topic label="isOpen" href="classSolver.html#a4eee9b4117ef8e512d8cf90c18311c59"/>
+        <topic label="isSolution" href="classSolver.html#acda01ea8a4bf261df678b4a5c17a8106"/>
+        <topic label="solve" href="classSolver.html#a2e9de364ab96aafabb2942850cb74c81"/>
+        <topic label="arrayOfSolutions" href="classSolver.html#a2d4f03d40744e392cf7ec14d9cbc2465"/>
+        <topic label="size" href="classSolver.html#a854352f53b148adc24983a58a1866d66"/>
+      </topic>
+      <topic label="Variable" href="classVariable.html">
+        <topic label="Variable" href="classVariable.html#a2c1cfefa7e483aa584ffc072f52dc705"/>
+        <topic label="Variable" href="classVariable.html#ae0775ee5ef358fa5baf411710ab8303d"/>
+        <topic label="Variable" href="classVariable.html#abe74367303db535be9f64d5710d3808b"/>
+        <topic label="beEqual" href="classVariable.html#a82e4d4652cce5e73f3e52d2ffcb673a2"/>
+        <topic label="display" href="classVariable.html#a9b9518cbde39454337001bab693d347a"/>
+        <topic label="getNum" href="classVariable.html#a2126e92c07534e97f3730dc21d00b3d1"/>
+        <topic label="getValue" href="classVariable.html#aeee842363db67294da0babed545b9dcd"/>
+        <topic label="reverse" href="classVariable.html#a310c0bebc002158f5646a91d60e4dc89"/>
+        <topic label="num" href="classVariable.html#a41ddefd3473727cad32a9767c10faed8"/>
+        <topic label="value" href="classVariable.html#a0376be5904d0dd864b7d97c9ce1295ab"/>
+      </topic>
+    </topic>
+    <topic label="Data Structure Index" href="classes.html"/>
+    <topic label="Data Fields" href="functions.html">
+      <topic label="All" href="functions.html"/>
+      <topic label="Functions" href="functions_func.html"/>
+      <topic label="Variables" href="functions_vars.html"/>
+      <topic label="Enumerations" href="functions_enum.html"/>
+      <topic label="Enumerator" href="functions_eval.html"/>
+      <topic label="Related Functions" href="functions_rela.html"/>
+    </topic>
+  </topic>
+  <topic label="Files">
+    <topic label="File List" href="files.html">
+      <topic label="Headers" href="dir_692516b589a32b3bfce781ca9f6d1534.html">
+        <topic label="Clause.h" href="Clause_8h.html">
+          <topic label="Clause" href="classClause.html">
+            <topic label="Clause" href="classClause.html#a27d94680c3fd113add623fdb56763d71"/>
+            <topic label="Clause" href="classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6"/>
+            <topic label="Clause" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85"/>
+            <topic label="addVariable" href="classClause.html#ae28edef701491dfdc219320692a885cc"/>
+            <topic label="display" href="classClause.html#a9b9518cbde39454337001bab693d347a"/>
+            <topic label="getVariables" href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa"/>
+            <topic label="size" href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac"/>
+            <topic label="arrayOfVariables" href="classClause.html#a5b07ad8a6420b4794d5c9d147809e6a2"/>
+            <topic label="nbVariables" href="classClause.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+          </topic>
+          <topic label="operator&lt;&lt;" href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f"/>
+        </topic>
+        <topic label="FileLogger.h" href="FileLogger_8h.html">
+          <topic label="FileLogger" href="classFileLogger.html">
+            <topic label="e_logType" href="classFileLogger.html#af46c257df9593b75071374b9188f21aa">
+              <topic label="LOG_ERROR" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa4490aa3d29644e716440fada68f54032"/>
+              <topic label="LOG_WARNING" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaad0cb3df3102ca9270c5785af9a8c137f"/>
+              <topic label="LOG_INFO" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa41abf3cca8cee8cdae01749df7a991c6"/>
+            </topic>
+            <topic label="FileLogger" href="classFileLogger.html#a06d8b5476d655d3255d7e0db3cf27d78"/>
+            <topic label="~FileLogger" href="classFileLogger.html#a04a441b5ab4cbe897ebeb0cd040657a4"/>
+            <topic label="FileLogger" href="classFileLogger.html#aa1614d8786723e27c5585a1392d56057"/>
+            <topic label="operator=" href="classFileLogger.html#acc8f800c39c93bc87f79507ef565fb40"/>
+            <topic label="operator&lt;&lt;" href="classFileLogger.html#a7e61ff7789620dd939e3d74a21864165"/>
+            <topic label="operator&lt;&lt;" href="classFileLogger.html#aa20cb36fa642da049aca81b2a274fca6"/>
+            <topic label="operator&lt;&lt;" href="classFileLogger.html#a04cbb232057dc92645ff01c3398c8834"/>
+            <topic label="myFile" href="classFileLogger.html#a0dbb2b6eec83c0c3e4663da8ba9242f2"/>
+            <topic label="numErrors" href="classFileLogger.html#ac12b71010307e608314b1341213685dd"/>
+            <topic label="numInfos" href="classFileLogger.html#acbd70623c7feb8c1c1c14f0be43dab43"/>
+            <topic label="numWarnings" href="classFileLogger.html#ad3d283ac6bd6ff57f27bf9e816c15493"/>
+          </topic>
+          <topic label="VERSION" href="FileLogger_8h.html#a1c6d5de492ac61ad29aec7aa9a436bbf"/>
+          <topic label="LogType" href="FileLogger_8h.html#ab0e33ddaef480c9f682036f78611c4ce"/>
+        </topic>
+        <topic label="Problem.h" href="Problem_8h.html">
+          <topic label="Problem" href="classProblem.html">
+            <topic label="Problem" href="classProblem.html#a0df44f20096ddb5201b82120da82af8e"/>
+            <topic label="Problem" href="classProblem.html#ad2bb42abc6430714ae4576ff89b4eb33"/>
+            <topic label="display" href="classProblem.html#a9b9518cbde39454337001bab693d347a"/>
+            <topic label="getClause" href="classProblem.html#a67b23140b2e80145a0671a87183e753d"/>
+            <topic label="getNbClauses" href="classProblem.html#af18b83d5f9e0cb7c35f100346f62aa8d"/>
+            <topic label="getNbVariables" href="classProblem.html#a74fa4f7d3102d003af79208a9001f29c"/>
+            <topic label="arrayOfClauses" href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc"/>
+            <topic label="nbClauses" href="classProblem.html#a78552348f2be74fce83839fdc026068c"/>
+            <topic label="nbVariables" href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+          </topic>
+          <topic label="operator&lt;&lt;" href="Problem_8h.html#af06fff9017e111cb0e8df2accf612d28"/>
+        </topic>
+        <topic label="Solver.h" href="Solver_8h.html">
+          <topic label="Solver" href="classSolver.html">
+            <topic label="Solver" href="classSolver.html#a4701e9bd4cdbac621cce4472fd25e141"/>
+            <topic label="display" href="classSolver.html#a9b9518cbde39454337001bab693d347a"/>
+            <topic label="getSize" href="classSolver.html#af55b3790622878d65ed5ff2bb2b3fcc4"/>
+            <topic label="inverse" href="classSolver.html#a5b099bdec45c7eb60b0962bd2b06b9f0"/>
+            <topic label="isOpen" href="classSolver.html#a4eee9b4117ef8e512d8cf90c18311c59"/>
+            <topic label="isSolution" href="classSolver.html#acda01ea8a4bf261df678b4a5c17a8106"/>
+            <topic label="solve" href="classSolver.html#a2e9de364ab96aafabb2942850cb74c81"/>
+            <topic label="arrayOfSolutions" href="classSolver.html#a2d4f03d40744e392cf7ec14d9cbc2465"/>
+            <topic label="size" href="classSolver.html#a854352f53b148adc24983a58a1866d66"/>
+          </topic>
+          <topic label="operator&lt;&lt;" href="Solver_8h.html#a6dfdf2e6ac597069d142b9bfba85f197"/>
+        </topic>
+        <topic label="Variable.h" href="Variable_8h.html">
+          <topic label="Variable" href="classVariable.html">
+            <topic label="Variable" href="classVariable.html#a2c1cfefa7e483aa584ffc072f52dc705"/>
+            <topic label="Variable" href="classVariable.html#ae0775ee5ef358fa5baf411710ab8303d"/>
+            <topic label="Variable" href="classVariable.html#abe74367303db535be9f64d5710d3808b"/>
+            <topic label="beEqual" href="classVariable.html#a82e4d4652cce5e73f3e52d2ffcb673a2"/>
+            <topic label="display" href="classVariable.html#a9b9518cbde39454337001bab693d347a"/>
+            <topic label="getNum" href="classVariable.html#a2126e92c07534e97f3730dc21d00b3d1"/>
+            <topic label="getValue" href="classVariable.html#aeee842363db67294da0babed545b9dcd"/>
+            <topic label="reverse" href="classVariable.html#a310c0bebc002158f5646a91d60e4dc89"/>
+            <topic label="num" href="classVariable.html#a41ddefd3473727cad32a9767c10faed8"/>
+            <topic label="value" href="classVariable.html#a0376be5904d0dd864b7d97c9ce1295ab"/>
+          </topic>
+          <topic label="operator!=" href="Variable_8h.html#a008acd2dbf74415e571517748addafba"/>
+          <topic label="operator&lt;&lt;" href="Variable_8h.html#a27c461069027453a18dde916ed344a96"/>
+          <topic label="operator==" href="Variable_8h.html#a7830e2cc5da52851b4d1d6639baa048a"/>
+        </topic>
+      </topic>
+      <topic label="Sources" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">
+        <topic label="Clause.cpp" href="Clause_8cpp.html">
+          <topic label="operator&lt;&lt;" href="Clause_8cpp.html#a2f86da01c9566011ec3eee6e14bad7e4"/>
+          <topic label="log_clause" href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb"/>
+        </topic>
+        <topic label="FileLogger.cpp" href="FileLogger_8cpp.html">
+          <topic label="operator&lt;&lt;" href="FileLogger_8cpp.html#ad6c5217f2c214f926480a16a3bb437e8"/>
+          <topic label="operator&lt;&lt;" href="FileLogger_8cpp.html#a04cbb232057dc92645ff01c3398c8834"/>
+          <topic label="operator&lt;&lt;" href="FileLogger_8cpp.html#aa20cb36fa642da049aca81b2a274fca6"/>
+        </topic>
+        <topic label="Problem.cpp" href="Problem_8cpp.html">
+          <topic label="operator&lt;&lt;" href="Problem_8cpp.html#a47dbd2e758fc768466ac32ccdc1994c1"/>
+          <topic label="log_problem" href="Problem_8cpp.html#a76ce8a622d6f8aa465da803ad1dbb4c1"/>
+          <topic label="parse_time" href="Problem_8cpp.html#a21731a117bb3081cbce7f40cb8bebc39"/>
+        </topic>
+        <topic label="Solver.cpp" href="Solver_8cpp.html">
+          <topic label="operator&lt;&lt;" href="Solver_8cpp.html#adef930e5c403340835db4a58883730b3"/>
+          <topic label="log_solver" href="Solver_8cpp.html#a7a5dbfd5d2921b5e7ff7daf6bc54c68a"/>
+        </topic>
+        <topic label="Variable.cpp" href="Variable_8cpp.html">
+          <topic label="operator!=" href="Variable_8cpp.html#a008acd2dbf74415e571517748addafba"/>
+          <topic label="operator&lt;&lt;" href="Variable_8cpp.html#ac294bc715f0ec679fcc93d26dc766d9c"/>
+          <topic label="operator==" href="Variable_8cpp.html#a7830e2cc5da52851b4d1d6639baa048a"/>
+          <topic label="log_variable" href="Variable_8cpp.html#a9e85630213e1a03668b4050ac1b8ffdd"/>
+        </topic>
+      </topic>
+      <topic label="Main.cpp" href="Main_8cpp.html">
+        <topic label="displayErrorArgument" href="Main_8cpp.html#a07339f4c4172514dead121b7bc44a3b9"/>
+        <topic label="displayInfo" href="Main_8cpp.html#aefec3b27a776fbaf41bef3ae83def5be"/>
+        <topic label="displaySolution" href="Main_8cpp.html#a1271dea8a50555527b7bedabbb73d03d"/>
+        <topic label="displaySolveTime" href="Main_8cpp.html#aa50308fe611d2c527e0b3ec79a5f1ac4"/>
+        <topic label="main" href="Main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627"/>
+        <topic label="myLog" href="Main_8cpp.html#aac56faeb676c2372690e81cf040a1451"/>
+      </topic>
+    </topic>
+    <topic label="Globals" href="globals.html">
+      <topic label="All" href="globals.html"/>
+      <topic label="Functions" href="globals_func.html"/>
+      <topic label="Variables" href="globals_vars.html"/>
+      <topic label="Typedefs" href="globals_type.html"/>
+      <topic label="Macros" href="globals_defs.html"/>
+    </topic>
+  </topic>
+</toc>
