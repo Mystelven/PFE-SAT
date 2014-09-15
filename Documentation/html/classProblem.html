@@ -114,12 +114,6 @@ $(document).ready(function(){initNavTree('classProblem.html','');});
  <a href="classProblem.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Problem_8h_source.html">Problem.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for Problem:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProblem__coll__graph.svg" width="199" height="664"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -129,6 +123,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2bb42abc6430714ae4576ff89b4eb33"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProblem.html#ad2bb42abc6430714ae4576ff89b4eb33">Problem</a> (string filename)</td></tr>
 <tr class="memdesc:ad2bb42abc6430714ae4576ff89b4eb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">We can create a <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a> directly from a CNF file.  <a href="#ad2bb42abc6430714ae4576ff89b4eb33">More...</a><br/></td></tr>
 <tr class="separator:ad2bb42abc6430714ae4576ff89b4eb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556e0e20c95a7b5b272b8d3a79fa9caf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProblem.html#a556e0e20c95a7b5b272b8d3a79fa9caf">Problem</a> (<a class="el" href="classProblem.html">Problem</a> &amp;p)</td></tr>
+<tr class="memdesc:a556e0e20c95a7b5b272b8d3a79fa9caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the copy-constructor of a <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>.  <a href="#a556e0e20c95a7b5b272b8d3a79fa9caf">More...</a><br/></td></tr>
+<tr class="separator:a556e0e20c95a7b5b272b8d3a79fa9caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b9518cbde39454337001bab693d347a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProblem.html#a9b9518cbde39454337001bab693d347a">display</a> (ostream &amp;out) const </td></tr>
 <tr class="memdesc:a9b9518cbde39454337001bab693d347a"><td class="mdescLeft">&#160;</td><td class="mdescRight">To display a <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>.  <a href="#a9b9518cbde39454337001bab693d347a">More...</a><br/></td></tr>
 <tr class="separator:a9b9518cbde39454337001bab693d347a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,15 +230,34 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00048">48</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00066">66</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
 
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProblem_ad2bb42abc6430714ae4576ff89b4eb33_cgraph.svg" width="283" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
-</p>
+<a class="anchor" id="a556e0e20c95a7b5b272b8d3a79fa9caf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classProblem.html">Problem</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classProblem.html">Problem</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is the copy-constructor of a <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>. </p>
+<p>It's needed because there's a pointer in the attribute of the class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>the Original <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a> that we will copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00049">49</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
 
 </div>
 </div>
@@ -268,15 +284,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00150">150</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProblem_a9b9518cbde39454337001bab693d347a_icgraph.svg" width="224" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00168">168</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
 
 </div>
 </div>
@@ -304,15 +312,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the <a class="el" href="classClause.html" title="Xij are what we call Variable and one &quot;line&quot; is a Clause. ">Clause</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00130">130</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProblem_a67b23140b2e80145a0671a87183e753d_icgraph.svg" width="552" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00148">148</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
 
 </div>
 </div>
@@ -333,15 +333,7 @@ Here is the caller graph for this function:</div>
 <p>To get the number of Clauses in the <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>the number of Clauses. </dd></dl>
 
-<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00120">120</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProblem_af18b83d5f9e0cb7c35f100346f62aa8d_icgraph.svg" width="576" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00138">138</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
 
 </div>
 </div>
@@ -362,15 +354,7 @@ Here is the caller graph for this function:</div>
 <p>To get the number of Variables in the <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>the number of variables. </dd></dl>
 
-<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00140">140</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classProblem_a74fa4f7d3102d003af79208a9001f29c_icgraph.svg" width="291" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Problem_8cpp_source.html#l00158">158</a> of file <a class="el" href="Problem_8cpp_source.html">Problem.cpp</a>.</p>
 
 </div>
 </div>
@@ -395,7 +379,7 @@ Here is the caller graph for this function:</div>
 
 <p>A <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a> is just an array of Clauses. </p>
 
-<p>Definition at line <a class="el" href="Problem_8h_source.html#l00065">65</a> of file <a class="el" href="Problem_8h_source.html">Problem.h</a>.</p>
+<p>Definition at line <a class="el" href="Problem_8h_source.html#l00072">72</a> of file <a class="el" href="Problem_8h_source.html">Problem.h</a>.</p>
 
 </div>
 </div>
@@ -420,7 +404,7 @@ Here is the caller graph for this function:</div>
 <p>We need to have a look on the number of clauses and the number of variables. </p>
 <p>Because it's the problem itself. </p>
 
-<p>Definition at line <a class="el" href="Problem_8h_source.html#l00071">71</a> of file <a class="el" href="Problem_8h_source.html">Problem.h</a>.</p>
+<p>Definition at line <a class="el" href="Problem_8h_source.html#l00078">78</a> of file <a class="el" href="Problem_8h_source.html">Problem.h</a>.</p>
 
 </div>
 </div>
@@ -442,7 +426,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Problem_8h_source.html#l00072">72</a> of file <a class="el" href="Problem_8h_source.html">Problem.h</a>.</p>
+<p>Definition at line <a class="el" href="Problem_8h_source.html#l00079">79</a> of file <a class="el" href="Problem_8h_source.html">Problem.h</a>.</p>
 
 </div>
 </div>
@@ -452,7 +436,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classProblem.html">Problem</a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 07:34:50 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Mon Sep 15 2014 14:31:52 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

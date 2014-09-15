@@ -114,18 +114,15 @@ $(document).ready(function(){initNavTree('classSolver.html','');});
  <a href="classSolver.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Solver_8h_source.html">Solver.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for Solver:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver__coll__graph.svg" width="147" height="192"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4701e9bd4cdbac621cce4472fd25e141"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSolver.html#a4701e9bd4cdbac621cce4472fd25e141">Solver</a> (<a class="el" href="classProblem.html">Problem</a> p)</td></tr>
 <tr class="memdesc:a4701e9bd4cdbac621cce4472fd25e141"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the constructor of a <a class="el" href="classSolver.html" title="A Solver is just a value for each Variable of every Clause in one Problem. ">Solver</a> adapted to a problem.  <a href="#a4701e9bd4cdbac621cce4472fd25e141">More...</a><br/></td></tr>
 <tr class="separator:a4701e9bd4cdbac621cce4472fd25e141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a352d24ceaa425443d4afb751a4d7560b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSolver.html#a352d24ceaa425443d4afb751a4d7560b">Solver</a> (<a class="el" href="classSolver.html">Solver</a> &amp;s)</td></tr>
+<tr class="memdesc:a352d24ceaa425443d4afb751a4d7560b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the copy-constructor of a <a class="el" href="classSolver.html" title="A Solver is just a value for each Variable of every Clause in one Problem. ">Solver</a>.  <a href="#a352d24ceaa425443d4afb751a4d7560b">More...</a><br/></td></tr>
+<tr class="separator:a352d24ceaa425443d4afb751a4d7560b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b9518cbde39454337001bab693d347a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSolver.html#a9b9518cbde39454337001bab693d347a">display</a> (ostream &amp;out) const </td></tr>
 <tr class="memdesc:a9b9518cbde39454337001bab693d347a"><td class="mdescLeft">&#160;</td><td class="mdescRight">To display a Strategie.  <a href="#a9b9518cbde39454337001bab693d347a">More...</a><br/></td></tr>
 <tr class="separator:a9b9518cbde39454337001bab693d347a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,13 +184,32 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00029">29</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver_a4701e9bd4cdbac621cce4472fd25e141_cgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
-</p>
+<a class="anchor" id="a352d24ceaa425443d4afb751a4d7560b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSolver.html">Solver</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSolver.html">Solver</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is the copy-constructor of a <a class="el" href="classSolver.html" title="A Solver is just a value for each Variable of every Clause in one Problem. ">Solver</a>. </p>
+<p>It's needed because there's a pointer in the attribute of the class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>the Original <a class="el" href="classSolver.html" title="A Solver is just a value for each Variable of every Clause in one Problem. ">Solver</a> that we will copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00045">45</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,15 +237,7 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00043">43</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver_a9b9518cbde39454337001bab693d347a_icgraph.svg" width="224" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00059">59</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -257,7 +265,7 @@ Here is the caller graph for this function:</div>
 <p>This method allows us to get the number of variable in the <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>. </p>
 <p>to get the number of <a class="el" href="classVariable.html" title="each x is a variable or a negation of a variable, and each variable can appear multiple times in the ...">Variable</a> ( in the <a class="el" href="classSolver.html" title="A Solver is just a value for each Variable of every Clause in one Problem. ">Solver</a> class ) </p>
 
-<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00056">56</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00072">72</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +300,7 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00064">64</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00080">80</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,15 +336,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the clause is open, false otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00096">96</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver_a4eee9b4117ef8e512d8cf90c18311c59_cgraph.svg" width="280" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00112">112</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -364,23 +364,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the problem is solved, false otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00114">114</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver_acda01ea8a4bf261df678b4a5c17a8106_cgraph.svg" width="318" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver_acda01ea8a4bf261df678b4a5c17a8106_icgraph.svg" width="368" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00130">130</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,15 +392,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <p>will use a design pattern Strategy to be more efficient on each type of <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>. </p>
 
-<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00082">82</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classSolver_a2e9de364ab96aafabb2942850cb74c81_icgraph.svg" width="171" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-</p>
+<p>Definition at line <a class="el" href="Solver_8cpp_source.html#l00098">98</a> of file <a class="el" href="Solver_8cpp_source.html">Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +417,7 @@ Here is the caller graph for this function:</div>
 
 <p>Our array of solutions. </p>
 
-<p>Definition at line <a class="el" href="Solver_8h_source.html#l00085">85</a> of file <a class="el" href="Solver_8h_source.html">Solver.h</a>.</p>
+<p>Definition at line <a class="el" href="Solver_8h_source.html#l00092">92</a> of file <a class="el" href="Solver_8h_source.html">Solver.h</a>.</p>
 
 </div>
 </div>
@@ -465,7 +441,7 @@ Here is the caller graph for this function:</div>
 
 <p>The number of variable in the <a class="el" href="classProblem.html" title="the complete boolean expression is the Problem. ">Problem</a>. </p>
 
-<p>Definition at line <a class="el" href="Solver_8h_source.html#l00088">88</a> of file <a class="el" href="Solver_8h_source.html">Solver.h</a>.</p>
+<p>Definition at line <a class="el" href="Solver_8h_source.html#l00095">95</a> of file <a class="el" href="Solver_8h_source.html">Solver.h</a>.</p>
 
 </div>
 </div>
@@ -475,7 +451,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classSolver.html">Solver</a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 07:34:50 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Mon Sep 15 2014 14:31:52 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -2,6 +2,7 @@ var classClause =
 [
     [ "Clause", "classClause.html#a27d94680c3fd113add623fdb56763d71", null ],
     [ "Clause", "classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6", null ],
+    [ "Clause", "classClause.html#ab57d574be1dd927e451d9c16ffa376f3", null ],
     [ "Clause", "classClause.html#aac0f1f0b919c4588c23037f39f04bb85", null ],
     [ "addVariable", "classClause.html#ae28edef701491dfdc219320692a885cc", null ],
     [ "display", "classClause.html#a9b9518cbde39454337001bab693d347a", null ],

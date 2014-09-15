@@ -154,96 +154,115 @@ $(document).ready(function(){initNavTree('Clause_8cpp_source.html','');});
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">* It&#39;s the constructor of a clause.</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">* We will use directly an array of Variables.</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6">   53</a></span>&#160;<a class="code" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a>(<a class="code" href="classVariable.html">Variable</a>* p) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span>(p != NULL) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">while</span>((p+i) != NULL) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      i++;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    } </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  nbVariables = i;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  arrayOfVariables = p;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">   65</a></span>&#160;<a class="code" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a>() {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  nbVariables = 0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  arrayOfVariables = NULL;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/** </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> * To get the variable number &#39;ident&#39; in the clause.</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * If this variable doesn&#39;t exist, we return NULL.</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa">   75</a></span>&#160;<a class="code" href="classVariable.html">Variable</a>* <a class="code" href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa">Clause::getVariables</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ident) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; nbVariables; i++)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span>(arrayOfVariables[i].getNum() == ident) </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keywordflow">return</span> &amp;arrayOfVariables[i];</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * This is the copy-constructor of a Clause.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * It&#39;s needed because there&#39;s a pointer in the attribute of the class.</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @param c the Original Clause that we will copy.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classClause.html#ab57d574be1dd927e451d9c16ffa376f3">   54</a></span>&#160;<a class="code" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a>(<a class="code" href="classClause.html">Clause</a>&amp; c) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  nbVariables = c.<a class="code" href="classClause.html#a760aa9fcc9b7aae244fab831d14c11e1">nbVariables</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  arrayOfVariables = (<a class="code" href="classVariable.html">Variable</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code" href="classVariable.html">Variable</a>)*nbVariables);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; nbVariables; i++) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    arrayOfVariables[i] = c.<a class="code" href="classClause.html#a5b07ad8a6420b4794d5c9d147809e6a2">arrayOfVariables</a>[i];</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">* It&#39;s the constructor of a clause.</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">* We will use directly an array of Variables.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6">   70</a></span>&#160;<a class="code" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a>(<a class="code" href="classVariable.html">Variable</a>* p) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">if</span>(p != NULL) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">while</span>((p+i) != NULL) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      i++;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  nbVariables = i;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  arrayOfVariables = p;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">   82</a></span>&#160;<a class="code" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a>() {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classClause.html#ae28edef701491dfdc219320692a885cc">   86</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClause.html#ae28edef701491dfdc219320692a885cc">Clause::addVariable</a>(<a class="code" href="classVariable.html">Variable</a> v) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  nbVariables++;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">if</span>(arrayOfVariables == NULL)      arrayOfVariables = (<a class="code" href="classVariable.html">Variable</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code" href="classVariable.html">Variable</a>)*nbVariables);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(arrayOfVariables != NULL) arrayOfVariables = (<a class="code" href="classVariable.html">Variable</a>*)realloc(arrayOfVariables,<span class="keyword">sizeof</span>(<a class="code" href="classVariable.html">Variable</a>)*nbVariables);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  arrayOfVariables[nbVariables-1] = v;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/** To get the size of a clause. */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac">   95</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac">Clause::size</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb">log_clause</a> &lt;&lt; <a class="code" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa41abf3cca8cee8cdae01749df7a991c6">LogType::LOG_INFO</a> &lt;&lt; <span class="stringliteral">&quot;size() -- IN&quot;</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb">log_clause</a> &lt;&lt; LogType::LOG_INFO &lt;&lt; <span class="stringliteral">&quot;size() -- OUT&quot;</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">return</span> nbVariables;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">* To display a clause.</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classClause.html#a9b9518cbde39454337001bab693d347a">  106</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClause.html#a9b9518cbde39454337001bab693d347a">Clause::display</a>(ostream &amp;out)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; nbVariables; i++)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    out &lt;&lt; arrayOfVariables[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">* To display a clause.</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="Clause_8cpp.html#a2f86da01c9566011ec3eee6e14bad7e4">  116</a></span>&#160;ostream&amp; <a class="code" href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a>(ostream&amp; out, <a class="code" href="classClause.html">Clause</a> <span class="keyword">const</span>&amp; clause)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    clause.<a class="code" href="classClause.html#a9b9518cbde39454337001bab693d347a">display</a>(out);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="ttc" id="Clause_8h_html_a6e6e50e5844ca68cb539fca70f374e8f"><div class="ttname"><a href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, Clause const &amp;Clause)</div><div class="ttdoc">We redefined the output to display a clause during debugging phases. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00116">Clause.cpp:116</a></div></div>
-<div class="ttc" id="classClause_html_ae28edef701491dfdc219320692a885cc"><div class="ttname"><a href="classClause.html#ae28edef701491dfdc219320692a885cc">Clause::addVariable</a></div><div class="ttdeci">void addVariable(Variable v)</div><div class="ttdoc">We can add a Variable directly to our Clause. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00086">Clause.cpp:86</a></div></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  nbVariables = 0;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  arrayOfVariables = NULL;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/** </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * To get the variable number &#39;ident&#39; in the clause.</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * If this variable doesn&#39;t exist, we return NULL.</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa">   92</a></span>&#160;<a class="code" href="classVariable.html">Variable</a>* <a class="code" href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa">Clause::getVariables</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ident) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; nbVariables; i++)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span>(arrayOfVariables[i].getNum() == ident) </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordflow">return</span> &amp;arrayOfVariables[i];</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classClause.html#ae28edef701491dfdc219320692a885cc">  103</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClause.html#ae28edef701491dfdc219320692a885cc">Clause::addVariable</a>(<a class="code" href="classVariable.html">Variable</a> v) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  nbVariables++;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">if</span>(arrayOfVariables == NULL)      arrayOfVariables = (<a class="code" href="classVariable.html">Variable</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code" href="classVariable.html">Variable</a>)*nbVariables);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(arrayOfVariables != NULL) arrayOfVariables = (<a class="code" href="classVariable.html">Variable</a>*)realloc(arrayOfVariables,<span class="keyword">sizeof</span>(<a class="code" href="classVariable.html">Variable</a>)*nbVariables);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  arrayOfVariables[nbVariables-1] = v;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/** To get the size of a clause. */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac">  112</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac">Clause::size</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb">log_clause</a> &lt;&lt; <a class="code" href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa41abf3cca8cee8cdae01749df7a991c6">LogType::LOG_INFO</a> &lt;&lt; <span class="stringliteral">&quot;size() -- IN&quot;</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb">log_clause</a> &lt;&lt; LogType::LOG_INFO &lt;&lt; <span class="stringliteral">&quot;size() -- OUT&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">return</span> nbVariables;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">* To display a clause.</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classClause.html#a9b9518cbde39454337001bab693d347a">  123</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classClause.html#a9b9518cbde39454337001bab693d347a">Clause::display</a>(ostream &amp;out)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; nbVariables; i++)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    out &lt;&lt; arrayOfVariables[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">* To display a clause.</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="Clause_8cpp.html#a2f86da01c9566011ec3eee6e14bad7e4">  133</a></span>&#160;ostream&amp; <a class="code" href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a>(ostream&amp; out, <a class="code" href="classClause.html">Clause</a> <span class="keyword">const</span>&amp; clause)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    clause.<a class="code" href="classClause.html#a9b9518cbde39454337001bab693d347a">display</a>(out);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="ttc" id="Clause_8h_html_a6e6e50e5844ca68cb539fca70f374e8f"><div class="ttname"><a href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, Clause const &amp;Clause)</div><div class="ttdoc">We redefined the output to display a clause during debugging phases. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00133">Clause.cpp:133</a></div></div>
+<div class="ttc" id="classClause_html_ae28edef701491dfdc219320692a885cc"><div class="ttname"><a href="classClause.html#ae28edef701491dfdc219320692a885cc">Clause::addVariable</a></div><div class="ttdeci">void addVariable(Variable v)</div><div class="ttdoc">We can add a Variable directly to our Clause. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00103">Clause.cpp:103</a></div></div>
 <div class="ttc" id="classVariable_html"><div class="ttname"><a href="classVariable.html">Variable</a></div><div class="ttdoc">each x is a variable or a negation of a variable, and each variable can appear multiple times in the ...</div><div class="ttdef"><b>Definition:</b> <a href="Variable_8h_source.html#l00035">Variable.h:35</a></div></div>
-<div class="ttc" id="classClause_html_aac0f1f0b919c4588c23037f39f04bb85"><div class="ttname"><a href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a></div><div class="ttdeci">Clause()</div><div class="ttdoc">We can create a clause without any variable. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00065">Clause.cpp:65</a></div></div>
-<div class="ttc" id="classClause_html_af62d60cb85e53417cfa9412e93bca2fa"><div class="ttname"><a href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa">Clause::getVariables</a></div><div class="ttdeci">Variable * getVariables(unsigned int ident)</div><div class="ttdoc">We can get the ident-th Variable. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00075">Clause.cpp:75</a></div></div>
+<div class="ttc" id="classClause_html_a760aa9fcc9b7aae244fab831d14c11e1"><div class="ttname"><a href="classClause.html#a760aa9fcc9b7aae244fab831d14c11e1">Clause::nbVariables</a></div><div class="ttdeci">unsigned int nbVariables</div><div class="ttdoc">And we are able to get the number of Variable directly. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8h_source.html#l00073">Clause.h:73</a></div></div>
+<div class="ttc" id="classClause_html_aac0f1f0b919c4588c23037f39f04bb85"><div class="ttname"><a href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85">Clause::Clause</a></div><div class="ttdeci">Clause()</div><div class="ttdoc">We can create a clause without any variable. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00082">Clause.cpp:82</a></div></div>
+<div class="ttc" id="classClause_html_af62d60cb85e53417cfa9412e93bca2fa"><div class="ttname"><a href="classClause.html#af62d60cb85e53417cfa9412e93bca2fa">Clause::getVariables</a></div><div class="ttdeci">Variable * getVariables(unsigned int ident)</div><div class="ttdoc">We can get the ident-th Variable. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00092">Clause.cpp:92</a></div></div>
 <div class="ttc" id="classFileLogger_html_af46c257df9593b75071374b9188f21aaa41abf3cca8cee8cdae01749df7a991c6"><div class="ttname"><a href="classFileLogger.html#af46c257df9593b75071374b9188f21aaa41abf3cca8cee8cdae01749df7a991c6">FileLogger::e_logType::LOG_INFO</a></div></div>
 <div class="ttc" id="Clause_8cpp_html_a341f2527a670d3e3950feadc42d917cb"><div class="ttname"><a href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb">log_clause</a></div><div class="ttdeci">FileLogger log_clause(VERSION,&quot;logs/clause.log&quot;)</div></div>
-<div class="ttc" id="classClause_html_a9b9518cbde39454337001bab693d347a"><div class="ttname"><a href="classClause.html#a9b9518cbde39454337001bab693d347a">Clause::display</a></div><div class="ttdeci">void display(ostream &amp;out) const </div><div class="ttdoc">to display a clause </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00106">Clause.cpp:106</a></div></div>
+<div class="ttc" id="classClause_html_a9b9518cbde39454337001bab693d347a"><div class="ttname"><a href="classClause.html#a9b9518cbde39454337001bab693d347a">Clause::display</a></div><div class="ttdeci">void display(ostream &amp;out) const </div><div class="ttdoc">to display a clause </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00123">Clause.cpp:123</a></div></div>
 <div class="ttc" id="classFileLogger_html"><div class="ttname"><a href="classFileLogger.html">FileLogger</a></div><div class="ttdef"><b>Definition:</b> <a href="FileLogger_8h_source.html#l00035">FileLogger.h:35</a></div></div>
 <div class="ttc" id="classClause_html"><div class="ttname"><a href="classClause.html">Clause</a></div><div class="ttdoc">Xij are what we call Variable and one &amp;quot;line&amp;quot; is a Clause. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8h_source.html#l00035">Clause.h:35</a></div></div>
-<div class="ttc" id="classClause_html_aac782da1f912bceb5d8ad00c8dc892ac"><div class="ttname"><a href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac">Clause::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdoc">We can get the size of the array in the clause. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00095">Clause.cpp:95</a></div></div>
+<div class="ttc" id="classClause_html_aac782da1f912bceb5d8ad00c8dc892ac"><div class="ttname"><a href="classClause.html#aac782da1f912bceb5d8ad00c8dc892ac">Clause::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdoc">We can get the size of the array in the clause. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00112">Clause.cpp:112</a></div></div>
 <div class="ttc" id="FileLogger_8h_html_a1c6d5de492ac61ad29aec7aa9a436bbf"><div class="ttname"><a href="FileLogger_8h.html#a1c6d5de492ac61ad29aec7aa9a436bbf">VERSION</a></div><div class="ttdeci">#define VERSION</div><div class="ttdef"><b>Definition:</b> <a href="FileLogger_8h_source.html#l00027">FileLogger.h:27</a></div></div>
+<div class="ttc" id="classClause_html_a5b07ad8a6420b4794d5c9d147809e6a2"><div class="ttname"><a href="classClause.html#a5b07ad8a6420b4794d5c9d147809e6a2">Clause::arrayOfVariables</a></div><div class="ttdeci">Variable * arrayOfVariables</div><div class="ttdoc">a clause is just an array of variables </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8h_source.html#l00070">Clause.h:70</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="Clause_8cpp.html">Clause.cpp</a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 07:34:49 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Mon Sep 15 2014 14:31:52 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

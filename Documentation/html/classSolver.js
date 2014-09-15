@@ -1,6 +1,7 @@
 var classSolver =
 [
     [ "Solver", "classSolver.html#a4701e9bd4cdbac621cce4472fd25e141", null ],
+    [ "Solver", "classSolver.html#a352d24ceaa425443d4afb751a4d7560b", null ],
     [ "display", "classSolver.html#a9b9518cbde39454337001bab693d347a", null ],
     [ "getSize", "classSolver.html#af55b3790622878d65ed5ff2bb2b3fcc4", null ],
     [ "inverse", "classSolver.html#a5b099bdec45c7eb60b0962bd2b06b9f0", null ],

@@ -153,45 +153,52 @@ $(document).ready(function(){initNavTree('Problem_8h_source.html','');});
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">    /** We can create a Problem directly from a CNF file. */</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classProblem.html">Problem</a>(<span class="keywordtype">string</span> filename);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    /** We can get the number of Variables in the Problem.*/</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getNbVariables() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">    /** We can get the number of Clauses in the Problem. */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getNbClauses() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">    /** We can get a reference to the i-th Clause of the Problem. */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classClause.html">Clause</a>* getClause(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">    /** To display a Problem */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> display(ostream &amp;out) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">  /** A Problem is just an array of Clauses. */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc">   65</a></span>&#160;  <a class="code" href="classClause.html">Clause</a>* <a class="code" href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc">arrayOfClauses</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">  /** </span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">   * We need to have a look on the number of clauses and the number of variables.</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">   * Because it&#39;s the problem itself.</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classProblem.html#a78552348f2be74fce83839fdc026068c">   71</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classProblem.html#a78552348f2be74fce83839fdc026068c">nbClauses</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1">   72</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1">nbVariables</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">  /** We redefined the output to display a clause during debugging phases. */</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  std::ostream&amp; <a class="code" href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a>(std::ostream&amp; out, <a class="code" href="classProblem.html">Problem</a> <span class="keyword">const</span>&amp; problem);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    /**</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">    * This is the copy-constructor of a Problem.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">    * It&#39;s needed because there&#39;s a pointer in the attribute of the class.</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">    * @param p the Original Problem that we will copy.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classProblem.html">Problem</a>(<a class="code" href="classProblem.html">Problem</a>&amp; p);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">    /** We can get the number of Variables in the Problem.*/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getNbVariables() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">    /** We can get the number of Clauses in the Problem. */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getNbClauses() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">    /** We can get a reference to the i-th Clause of the Problem. */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classClause.html">Clause</a>* getClause(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">    /** To display a Problem */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> display(ostream &amp;out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  /** A Problem is just an array of Clauses. */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc">   72</a></span>&#160;  <a class="code" href="classClause.html">Clause</a>* <a class="code" href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc">arrayOfClauses</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  /** </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">   * We need to have a look on the number of clauses and the number of variables.</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">   * Because it&#39;s the problem itself.</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classProblem.html#a78552348f2be74fce83839fdc026068c">   78</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classProblem.html#a78552348f2be74fce83839fdc026068c">nbClauses</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1">   79</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1">nbVariables</a>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="Clause_8h_html_a6e6e50e5844ca68cb539fca70f374e8f"><div class="ttname"><a href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, Clause const &amp;Clause)</div><div class="ttdoc">We redefined the output to display a clause during debugging phases. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00116">Clause.cpp:116</a></div></div>
-<div class="ttc" id="classProblem_html_a78552348f2be74fce83839fdc026068c"><div class="ttname"><a href="classProblem.html#a78552348f2be74fce83839fdc026068c">Problem::nbClauses</a></div><div class="ttdeci">unsigned int nbClauses</div><div class="ttdoc">We need to have a look on the number of clauses and the number of variables. </div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00071">Problem.h:71</a></div></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">  /** We redefined the output to display a clause during debugging phases. */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  std::ostream&amp; <a class="code" href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a>(std::ostream&amp; out, <a class="code" href="classProblem.html">Problem</a> <span class="keyword">const</span>&amp; problem);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="Clause_8h_html_a6e6e50e5844ca68cb539fca70f374e8f"><div class="ttname"><a href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, Clause const &amp;Clause)</div><div class="ttdoc">We redefined the output to display a clause during debugging phases. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8cpp_source.html#l00133">Clause.cpp:133</a></div></div>
+<div class="ttc" id="classProblem_html_a78552348f2be74fce83839fdc026068c"><div class="ttname"><a href="classProblem.html#a78552348f2be74fce83839fdc026068c">Problem::nbClauses</a></div><div class="ttdeci">unsigned int nbClauses</div><div class="ttdoc">We need to have a look on the number of clauses and the number of variables. </div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00078">Problem.h:78</a></div></div>
 <div class="ttc" id="classProblem_html"><div class="ttname"><a href="classProblem.html">Problem</a></div><div class="ttdoc">the complete boolean expression is the Problem. </div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00039">Problem.h:39</a></div></div>
-<div class="ttc" id="classProblem_html_a760aa9fcc9b7aae244fab831d14c11e1"><div class="ttname"><a href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1">Problem::nbVariables</a></div><div class="ttdeci">unsigned int nbVariables</div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00072">Problem.h:72</a></div></div>
+<div class="ttc" id="classProblem_html_a760aa9fcc9b7aae244fab831d14c11e1"><div class="ttname"><a href="classProblem.html#a760aa9fcc9b7aae244fab831d14c11e1">Problem::nbVariables</a></div><div class="ttdeci">unsigned int nbVariables</div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00079">Problem.h:79</a></div></div>
 <div class="ttc" id="classClause_html"><div class="ttname"><a href="classClause.html">Clause</a></div><div class="ttdoc">Xij are what we call Variable and one &amp;quot;line&amp;quot; is a Clause. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8h_source.html#l00035">Clause.h:35</a></div></div>
-<div class="ttc" id="classProblem_html_a8b3887325dbf1958fce0a4f30afed8dc"><div class="ttname"><a href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc">Problem::arrayOfClauses</a></div><div class="ttdeci">Clause * arrayOfClauses</div><div class="ttdoc">A Problem is just an array of Clauses. </div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00065">Problem.h:65</a></div></div>
+<div class="ttc" id="classProblem_html_a8b3887325dbf1958fce0a4f30afed8dc"><div class="ttname"><a href="classProblem.html#a8b3887325dbf1958fce0a4f30afed8dc">Problem::arrayOfClauses</a></div><div class="ttdeci">Clause * arrayOfClauses</div><div class="ttdoc">A Problem is just an array of Clauses. </div><div class="ttdef"><b>Definition:</b> <a href="Problem_8h_source.html#l00072">Problem.h:72</a></div></div>
 <div class="ttc" id="Clause_8h_html"><div class="ttname"><a href="Clause_8h.html">Clause.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -199,7 +206,7 @@ $(document).ready(function(){initNavTree('Problem_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_692516b589a32b3bfce781ca9f6d1534.html">Headers</a></li><li class="navelem"><a class="el" href="Problem_8h.html">Problem.h</a></li>
-    <li class="footer">Generated on Mon Sep 15 2014 07:34:49 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Mon Sep 15 2014 14:31:52 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -4,6 +4,7 @@
       <topic label="Clause" href="classClause.html">
         <topic label="Clause" href="classClause.html#a27d94680c3fd113add623fdb56763d71"/>
         <topic label="Clause" href="classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6"/>
+        <topic label="Clause" href="classClause.html#ab57d574be1dd927e451d9c16ffa376f3"/>
         <topic label="Clause" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85"/>
         <topic label="addVariable" href="classClause.html#ae28edef701491dfdc219320692a885cc"/>
         <topic label="display" href="classClause.html#a9b9518cbde39454337001bab693d347a"/>
@@ -33,6 +34,7 @@
       <topic label="Problem" href="classProblem.html">
         <topic label="Problem" href="classProblem.html#a0df44f20096ddb5201b82120da82af8e"/>
         <topic label="Problem" href="classProblem.html#ad2bb42abc6430714ae4576ff89b4eb33"/>
+        <topic label="Problem" href="classProblem.html#a556e0e20c95a7b5b272b8d3a79fa9caf"/>
         <topic label="display" href="classProblem.html#a9b9518cbde39454337001bab693d347a"/>
         <topic label="getClause" href="classProblem.html#a67b23140b2e80145a0671a87183e753d"/>
         <topic label="getNbClauses" href="classProblem.html#af18b83d5f9e0cb7c35f100346f62aa8d"/>
@@ -43,6 +45,7 @@
       </topic>
       <topic label="Solver" href="classSolver.html">
         <topic label="Solver" href="classSolver.html#a4701e9bd4cdbac621cce4472fd25e141"/>
+        <topic label="Solver" href="classSolver.html#a352d24ceaa425443d4afb751a4d7560b"/>
         <topic label="display" href="classSolver.html#a9b9518cbde39454337001bab693d347a"/>
         <topic label="getSize" href="classSolver.html#af55b3790622878d65ed5ff2bb2b3fcc4"/>
         <topic label="inverse" href="classSolver.html#a5b099bdec45c7eb60b0962bd2b06b9f0"/>
@@ -82,6 +85,7 @@
           <topic label="Clause" href="classClause.html">
             <topic label="Clause" href="classClause.html#a27d94680c3fd113add623fdb56763d71"/>
             <topic label="Clause" href="classClause.html#a20a1ad9ab8ad78210d736ab4e71330c6"/>
+            <topic label="Clause" href="classClause.html#ab57d574be1dd927e451d9c16ffa376f3"/>
             <topic label="Clause" href="classClause.html#aac0f1f0b919c4588c23037f39f04bb85"/>
             <topic label="addVariable" href="classClause.html#ae28edef701491dfdc219320692a885cc"/>
             <topic label="display" href="classClause.html#a9b9518cbde39454337001bab693d347a"/>
@@ -118,6 +122,7 @@
           <topic label="Problem" href="classProblem.html">
             <topic label="Problem" href="classProblem.html#a0df44f20096ddb5201b82120da82af8e"/>
             <topic label="Problem" href="classProblem.html#ad2bb42abc6430714ae4576ff89b4eb33"/>
+            <topic label="Problem" href="classProblem.html#a556e0e20c95a7b5b272b8d3a79fa9caf"/>
             <topic label="display" href="classProblem.html#a9b9518cbde39454337001bab693d347a"/>
             <topic label="getClause" href="classProblem.html#a67b23140b2e80145a0671a87183e753d"/>
             <topic label="getNbClauses" href="classProblem.html#af18b83d5f9e0cb7c35f100346f62aa8d"/>
@@ -131,6 +136,7 @@
         <topic label="Solver.h" href="Solver_8h.html">
           <topic label="Solver" href="classSolver.html">
             <topic label="Solver" href="classSolver.html#a4701e9bd4cdbac621cce4472fd25e141"/>
+            <topic label="Solver" href="classSolver.html#a352d24ceaa425443d4afb751a4d7560b"/>
             <topic label="display" href="classSolver.html#a9b9518cbde39454337001bab693d347a"/>
             <topic label="getSize" href="classSolver.html#af55b3790622878d65ed5ff2bb2b3fcc4"/>
             <topic label="inverse" href="classSolver.html#a5b099bdec45c7eb60b0962bd2b06b9f0"/>

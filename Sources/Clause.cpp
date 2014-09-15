@@ -47,6 +47,23 @@ Clause::Clause(unsigned int n) {
 }
 
 /**
+ * This is the copy-constructor of a Clause.
+ * It's needed because there's a pointer in the attribute of the class.
+ * @param c the Original Clause that we will copy.
+ */
+Clause::Clause(Clause& c) {
+
+	nbVariables = c.nbVariables;
+
+	arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
+
+	for(unsigned int i = 0; i < nbVariables; i++) {
+
+		arrayOfVariables[i] = c.arrayOfVariables[i];
+	}
+}
+
+/**
 * It's the constructor of a clause.
 * We will use directly an array of Variables.
 */

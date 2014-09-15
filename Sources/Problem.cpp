@@ -40,6 +40,24 @@ Problem::Problem(Clause* p,unsigned int nClauses,unsigned int nVariables) {
 	nbVariables = nVariables;
 }
 
+
+/**
+* This is the copy-constructor of a Problem.
+* It's needed because there's a pointer in the attribute of the class.
+* @param p the Original Problem that we will copy.
+*/
+Problem::Problem(Problem& p) {
+
+	nbClauses = p.nbClauses;
+	nbVariables = p.nbVariables;
+
+	arrayOfClauses = (Clause*)malloc(sizeof(Clause)*nbClauses);
+
+	for(unsigned int i = 0; i < nbClauses; i++) {
+		arrayOfClauses[i] = p.arrayOfClauses[i];
+	}
+}
+
 /**
  * It's the constructor of a Problem.
  * We will use a CNF file to construct the Problem.

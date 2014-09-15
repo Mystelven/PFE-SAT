@@ -1,7 +1,0 @@
-<map id="Headers/Problem.h" name="Headers/Problem.h">
-<area shape="rect" id="node2" href="$Solver_8h.html" title="Headers/Solver.h" alt="" coords="115,80,247,107"/>
-<area shape="rect" id="node6" href="$Problem_8cpp.html" title="Sources/Problem.cpp" alt="" coords="271,80,429,107"/>
-<area shape="rect" id="node3" href="$Main_8cpp.html" title="Main.cpp" alt="" coords="5,155,83,181"/>
-<area shape="rect" id="node4" href="$Clause_8cpp.html" title="Sources/Clause.cpp" alt="" coords="107,155,255,181"/>
-<area shape="rect" id="node5" href="$Solver_8cpp.html" title="Sources/Solver.cpp" alt="" coords="279,155,424,181"/>
-</map>

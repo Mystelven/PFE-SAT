@@ -6,25 +6,22 @@
             <location file="Sources/Clause.cpp" line="41"/>
         </error>
         <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
-            <location file="Sources/Clause.cpp" line="89"/>
+            <location file="Sources/Clause.cpp" line="58"/>
         </error>
         <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
-            <location file="Sources/Clause.cpp" line="90"/>
+            <location file="Sources/Clause.cpp" line="106"/>
         </error>
-        <error id="noCopyConstructor" severity="style" msg="&apos;class Clause&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory." verbose="&apos;class Clause&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory.">
-            <location file="Headers/Clause.h" line="35"/>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
+            <location file="Sources/Clause.cpp" line="107"/>
         </error>
         <error id="memleakOnRealloc" severity="error" msg="Common realloc mistake: &apos;arrayOfVariables&apos; nulled but not freed upon failure" verbose="Common realloc mistake: &apos;arrayOfVariables&apos; nulled but not freed upon failure">
-            <location file="Sources/Clause.cpp" line="90"/>
+            <location file="Sources/Clause.cpp" line="107"/>
         </error>
         <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
-            <location file="Sources/Problem.cpp" line="83"/>
+            <location file="Sources/Problem.cpp" line="54"/>
         </error>
-        <error id="noCopyConstructor" severity="style" msg="&apos;class Problem&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory." verbose="&apos;class Problem&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory.">
-            <location file="Headers/Problem.h" line="39"/>
-        </error>
-        <error id="noCopyConstructor" severity="style" msg="&apos;class Solver&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory." verbose="&apos;class Solver&apos; does not have a copy constructor which is recommended since the class contains a pointer to allocated memory.">
-            <location file="Headers/Solver.h" line="33"/>
+        <error id="cstyleCast" severity="style" msg="C-style pointer casting" verbose="C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts.">
+            <location file="Sources/Problem.cpp" line="101"/>
         </error>
     </errors>
 </results>
