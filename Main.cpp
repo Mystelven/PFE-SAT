@@ -24,12 +24,6 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include "Headers/Solver.h"
 
-#define VERSION "0.1"
-
-#include "Headers/FileLogger.h"
-
-typedef FileLogger::e_logType LogType;
-
 using namespace std;
 
 /** We declare a global logger for the file. */
@@ -171,7 +165,7 @@ int main(int argc,char** argv)
 
       // if we can't create the file, we will use the standard output.
       cerr << "There is a problem, we can create the file." << endl;
-      cerr << "Try to fix it by yourself, and copy the solution into your new file (or re-execute Solver)" << endl;
+      cerr << "Try to fix it by yourself, and copy the solution into your new file (or re-execute SATyr)" << endl;
 
     } else {
 

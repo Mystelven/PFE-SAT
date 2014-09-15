@@ -21,6 +21,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "../Headers/Solver.h"
 using namespace std;
 
+FileLogger log_clause (VERSION, "logs/clause.log");
+
 /**
 * It's the constructor of a clause.
 * We will create N Variables which all 
@@ -92,6 +94,8 @@ void Clause::addVariable(Variable v) {
 /** To get the size of a clause. */
 size_t Clause::size() const {
 
+	log_clause << LogType::LOG_INFO << "size() -- IN";
+	log_clause << LogType::LOG_INFO << "size() -- OUT";
 	return nbVariables;
 }
 

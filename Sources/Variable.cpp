@@ -20,6 +20,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "../Headers/Variable.h"
 using namespace std;
 
+FileLogger log_variable (VERSION, "logs/variable.log");
+
 /** 
  * It allows the constructor in 2 ways and then,
  * There is no need to worry about the order of the parameters to the constructor.
@@ -73,8 +75,12 @@ Variable::Variable(bool v,unsigned int i) {
  * a true variable become a false variable.
 */
 void Variable::reverse() {
-
+  	
+  	log_variable << LogType::LOG_INFO << "reverse -- IN";
+	
 	value = !value;
+
+	log_variable << LogType::LOG_INFO << "reverse -- OUT";
 }
 
 

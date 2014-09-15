@@ -22,6 +22,7 @@ using namespace std;
 #include <ctime>
 #include <unistd.h>
 
+FileLogger log_problem (VERSION, "logs/problem.log");
 
 clock_t parse_time = 0;
 
@@ -45,6 +46,8 @@ Problem::Problem(Clause* p,unsigned int nClauses,unsigned int nVariables) {
  * @param filename a CNF file to construct the Problem.
  */
 Problem::Problem(string filename) {
+
+	log_problem << LogType::LOG_INFO << "Problem(string filename) -- IN";
 
 	string buffer;  // we will read the file , line per line.
 	string tmp;
@@ -106,6 +109,8 @@ Problem::Problem(string filename) {
  	parse_time = (end_time - start_time);
  	nbClauses = i;							// just in case that the number of clause at the beginning of the file
 	file.close();							// itsn't the same that the number of real clause added in the Problem.
+
+	log_problem << LogType::LOG_INFO << "Problem(string filename) -- OUT";
 }
 
 /**

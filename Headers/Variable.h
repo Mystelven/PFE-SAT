@@ -20,6 +20,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #ifndef Variable_H
 #define Variable_H
 
+#include "FileLogger.h"
+
 #include <iostream>
 using namespace std;
 
