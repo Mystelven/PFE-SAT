@@ -2,8 +2,5 @@
 <results version="2">
     <cppcheck version="1.66"/>
     <errors>
-        <error id="memleakOnRealloc" severity="error" msg="Common realloc mistake: &apos;arrayOfVariables&apos; nulled but not freed upon failure" verbose="Common realloc mistake: &apos;arrayOfVariables&apos; nulled but not freed upon failure">
-            <location file="Sources/Clause.cpp" line="107"/>
-        </error>
     </errors>
 </results>
