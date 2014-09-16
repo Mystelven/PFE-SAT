@@ -39,7 +39,7 @@ class FileLogger {
     	// If you can´t/dont-want-to use C++11, remove the "class" word after enum
     	enum class e_logType { LOG_ERROR, LOG_WARNING, LOG_INFO };
 
-    	explicit FileLogger (const char *engine_version, const char *fname = "default.log");
+    	explicit FileLogger (const char *engine_version = VERSION, const char *fname = "default.log");
 
     	~FileLogger ();
 

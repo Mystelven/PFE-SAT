@@ -38,6 +38,7 @@ class Clause {
 		
 		/** We can create a clause with a number of variables. */
 		Clause(unsigned int nbVariable);
+		
 		/** We can create a clause with an array of variables. */
 		Clause(Variable* p);
 

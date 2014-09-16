@@ -2,10 +2,6 @@
 <results version="2">
     <cppcheck version="1.66"/>
     <errors>
-        <error id="duplicateExpression" severity="style" msg="Same expression on both sides of &apos;==&apos;." verbose="Finding the same expression on both sides of an operator is suspicious and might indicate a cut and paste or logic error. Please examine this code carefully to determine if it is correct.">
-            <location file="Sources/SatTest.cpp" line="34"/>
-            <location file="Sources/SatTest.cpp" line="34"/>
-        </error>
         <error id="unusedFunction" severity="style" msg="The function &apos;runTest&apos; is never used." verbose="The function &apos;runTest&apos; is never used.">
             <location file="Sources/SatTest.cpp" line="32"/>
         </error>

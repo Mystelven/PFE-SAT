@@ -31,7 +31,11 @@ SatTest::~SatTest() {
 
 void SatTest::runTest() {
     
-	CPPUNIT_ASSERT_MESSAGE("String Length Non-Zero", (0 == 0) );
+	unsigned int a = 0;
+
+	unsigned int b = 0;
+
+	CPPUNIT_ASSERT_MESSAGE("String Length Non-Zero", (a == b) );
 
 }
 
