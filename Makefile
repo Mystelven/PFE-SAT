@@ -22,6 +22,10 @@
 
 CPP11    = -std=c++11 -stdlib=libc++
 
+CPPUNIT1 = -I/opt/local/include -L/opt/local/lib 
+CPPUNIT2 = -lcppunit 
+CPPUNIT  = $(CPPUNIT1) $(CPPUNIT2)
+
 FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
 FLAGS3   = -Wshadow -Weffc++ -Wredundant-decls -Winit-self -Wswitch-default 
@@ -47,10 +51,12 @@ LOGGER   = $(SOURCES)FileLogger.cpp
 
 SOLVER   = $(SOURCES)Solver.cpp
 
+TEST 	 = $(SOURCES)SatTest.cpp
+
 ##############################################################################
 
-all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o $(OBJECT)fileLogger.o
-	$(COMPILER) $(CPP11) -o $(MAIN) $(OBJECT)variable.o $(OBJECT)clause.o $(OBJECT)problem.o $(OBJECT)solver.o $(OBJECT)fileLogger.o Main.cpp
+all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o $(OBJECT)fileLogger.o $(OBJECT)SatTest.o
+	$(COMPILER) $(CPP11) $(CPPUNIT) -o $(MAIN) $(OBJECT)variable.o $(OBJECT)clause.o $(OBJECT)problem.o $(OBJECT)solver.o $(OBJECT)fileLogger.o $(OBJECT)SatTest.o Main.cpp
 
 $(OBJECT)variable.o:
 	$(COMPILER) -c $(FLAGS) $(VARIABLE)
@@ -71,6 +77,10 @@ $(OBJECT)solver.o: $(OBJECT)problem.o
 $(OBJECT)fileLogger.o:
 	$(COMPILER) -c $(FLAGS) $(LOGGER)
 	mv fileLogger.o $(OBJECT)
+
+$(OBJECT)SatTest.o:
+	$(COMPILER) -c $(CPPUNIT1) $(FLAGS) $(TEST)
+	mv SatTest.o $(OBJECT)	
 
 ##############################################################################
 

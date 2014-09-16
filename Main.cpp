@@ -27,7 +27,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 using namespace std;
 
 /** We declare a global logger for the file. */
-FileLogger myLog (VERSION, "logs/main.log");
+FileLogger log_main (VERSION, "logs/main.log");
 
 /**
  * Useful to display some informations about the inspiration (Glucose) and about the solver itself.
@@ -36,14 +36,14 @@ FileLogger myLog (VERSION, "logs/main.log");
  */
 void displayInfo(ostream& out,Problem p) {
 
-  myLog << LogType::LOG_INFO << "displayInfo -- IN";
+  log_main << LogType::LOG_INFO << "displayInfo -- IN";
 
 	out << "c This is SATyr " << VERSION << endl;
 	out << "c Created by Valentin Montmirail, a student in computer engineering at Polytech Tours" << endl;
 	out << "c" << endl;
 	out << p;
 
-  myLog << LogType::LOG_INFO << "displayInfo -- OUT";
+  log_main << LogType::LOG_INFO << "displayInfo -- OUT";
 }
 
 /**
@@ -52,7 +52,7 @@ void displayInfo(ostream& out,Problem p) {
  */
 void displayErrorArgument(ostream& out) {
 
-    myLog << LogType::LOG_INFO << "displayErrorArgument -- IN";
+    log_main << LogType::LOG_INFO << "displayErrorArgument -- IN";
 
   	out << endl << endl;
   	out << "You should give the path to the CNF file formated as follow :  " << endl;
@@ -61,7 +61,7 @@ void displayErrorArgument(ostream& out) {
   	out << "xi xl ... " << endl;
   	out << endl << "so your call looks like : ./Solver path_to_file" << endl << endl ;
 
-    myLog << LogType::LOG_INFO << "displayErrorArgument -- OUT";
+    log_main << LogType::LOG_INFO << "displayErrorArgument -- OUT";
 }
 
 /**
@@ -72,22 +72,22 @@ void displayErrorArgument(ostream& out) {
  */
 void displaySolution(ostream& out,Solver s,Problem p) {
 
-    myLog << LogType::LOG_INFO << "displaySolution -- IN";
+    log_main << LogType::LOG_INFO << "displaySolution -- IN";
 
     if(s.isSolution(p)) {
       
-      myLog << LogType::LOG_INFO << "The problem is SATISFIABLE. ";
+      log_main << LogType::LOG_INFO << "The problem is SATISFIABLE. ";
 
       out << endl << "s SATISFIABLE" << endl;
       out << "v " << s << " 0" << endl << endl;
 
     } else {
-      myLog << LogType::LOG_INFO << "The problem is INSATISFIABLE. ";
+      log_main << LogType::LOG_INFO << "The problem is INSATISFIABLE. ";
       out << endl << "s INSATISFIABLE" << endl;
 
     }
 
-    myLog << LogType::LOG_INFO << "displaySolution -- OUT";
+    log_main << LogType::LOG_INFO << "displaySolution -- OUT";
 }
 
 /**
@@ -97,7 +97,7 @@ void displaySolution(ostream& out,Solver s,Problem p) {
  */
 void displaySolveTime(ostream& out,double solveTime) {
 
-  myLog << LogType::LOG_INFO << "displaySolveTime -- IN";
+  log_main << LogType::LOG_INFO << "displaySolveTime -- IN";
 
   out << "c [=======================================================================================================]" << endl;
 
@@ -107,13 +107,13 @@ void displaySolveTime(ostream& out,double solveTime) {
 
   std::ostringstream oss;
   oss << "Time to solve the problem: " << fixed << setprecision(6) << solveTime << "s";
-  myLog << LogType::LOG_INFO << oss.str();
+  log_main << LogType::LOG_INFO << oss.str();
 
   out << endl;
   out << "c CPU Time              :    " << fixed << setprecision(6) << solveTime << "s";
   out << endl;
 
-  myLog << LogType::LOG_INFO << "displaySolveTime -- OUT";
+  log_main << LogType::LOG_INFO << "displaySolveTime -- OUT";
 
 }
 
@@ -126,7 +126,7 @@ void displaySolveTime(ostream& out,double solveTime) {
 int main(int argc,char** argv)
 {
   
-  myLog << LogType::LOG_INFO << "main -- IN";
+  log_main << LogType::LOG_INFO << "main -- IN";
 
 
   clock_t start,end;
@@ -141,7 +141,7 @@ int main(int argc,char** argv)
 
   std::ostringstream oss;
   oss << "Fichier: " << argv[1];
-  myLog << LogType::LOG_INFO << oss.str();
+  log_main << LogType::LOG_INFO << oss.str();
   
   Problem p(argv[1]);
   Solver s(p);
@@ -176,7 +176,7 @@ int main(int argc,char** argv)
 
   }
 
-  myLog << LogType::LOG_INFO << "main -- OUT";
+  log_main << LogType::LOG_INFO << "main -- OUT";
 
   return 0;
 }
