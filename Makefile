@@ -36,7 +36,7 @@ FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 MAIN	 = satyr
 
-COMPILER = clang++ -fcolor-diagnostics
+COMPILER = g++ -fcolor-diagnostics
 
 SOURCES  = ./Sources/
 
