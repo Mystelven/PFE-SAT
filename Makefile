@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-CPP11    = -std=c++11 -stdlib=libc++
+CPP11    = -std=c++11 
 
 CPPUNIT1 = -I/opt/local/include -L/opt/local/lib 
 CPPUNIT2 = -lcppunit
@@ -36,7 +36,7 @@ FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 MAIN	 = satyr
 
-COMPILER = g++ -fcolor-diagnostics
+COMPILER = g++ 
 
 SOURCES  = ./Sources/
 
