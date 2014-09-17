@@ -24,7 +24,7 @@ CPP11    = -std=c++11 -stdlib=libc++
 
 CPPUNIT1 = -I/opt/local/include -L/opt/local/lib 
 CPPUNIT2 = -lcppunit
- 
+
 CPPUNIT  = $(CPPUNIT1) $(CPPUNIT2)
 
 FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-equal 
@@ -36,7 +36,7 @@ FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 MAIN	 = satyr
 
-COMPILER = g++
+COMPILER = clang++ -fcolor-diagnostics
 
 SOURCES  = ./Sources/
 
@@ -88,9 +88,12 @@ $(OBJECT)satTest.o:
 doc:
 	doxygen
 
+documentation:
+	doxygen
+
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
 check:
-	cppcheck --suppress=missingIncludeSystem --suppress=cstyleCast --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
+	cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
 
 clean:
 	rm -rf $(OBJECT)*.o
