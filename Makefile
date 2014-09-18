@@ -22,9 +22,6 @@
 
 CPP11    = 
 
-CPPUNIT1 = -I/opt/local/include -L/opt/local/lib 
-CPPUNIT2 = -lcppunit
-
 CPPUNIT  = $(CPPUNIT1) $(CPPUNIT2)
 
 FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-equal 
@@ -57,7 +54,7 @@ TEST 	 = $(SOURCES)SatTest.cpp
 ##############################################################################
 
 all: $(OBJECT)Solver.o $(OBJECT)Problem.o $(OBJECT)Clause.o $(OBJECT)Variable.o $(OBJECT)FileLogger.o
-	$(COMPILER) $(CPP11) $(CPPUNIT) -o $(MAIN) $(OBJECT)Variable.o $(OBJECT)Clause.o $(OBJECT)Problem.o $(OBJECT)Solver.o $(OBJECT)FileLogger.o  Main.cpp
+	$(COMPILER) $(CPP11) -o $(MAIN) $(OBJECT)Variable.o $(OBJECT)Clause.o $(OBJECT)Problem.o $(OBJECT)Solver.o $(OBJECT)FileLogger.o  Main.cpp
 
 $(OBJECT)Variable.o:
 	$(COMPILER) -c $(FLAGS) $(VARIABLE)
