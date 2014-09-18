@@ -23,6 +23,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "FileLogger.h"
 
 #include <iostream>
+#include <cstdlib>
+
 using namespace std;
 
 
