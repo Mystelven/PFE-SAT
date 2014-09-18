@@ -59,23 +59,23 @@ TEST 	 = $(SOURCES)SatTest.cpp
 all: $(OBJECT)Solver.o $(OBJECT)Problem.o $(OBJECT)Clause.o $(OBJECT)Variable.o $(OBJECT)FileLogger.o
 	$(COMPILER) $(CPP11) $(CPPUNIT) -o $(MAIN) $(OBJECT)Variable.o $(OBJECT)Clause.o $(OBJECT)Problem.o $(OBJECT)Solver.o $(OBJECT)FileLogger.o  Main.cpp
 
-$(OBJECT)variable.o:
+$(OBJECT)Variable.o:
 	$(COMPILER) -c $(FLAGS) $(VARIABLE)
 	mv Variable.o $(OBJECT)
 
-$(OBJECT)clause.o: $(OBJECT)variable.o
+$(OBJECT)Clause.o: $(OBJECT)Variable.o
 	$(COMPILER) -c $(FLAGS) $(CLAUSE)
 	mv Clause.o $(OBJECT)
 
-$(OBJECT)problem.o: $(OBJECT)clause.o
+$(OBJECT)Problem.o: $(OBJECT)Clause.o
 	$(COMPILER) -c $(FLAGS) $(PROBLEM)
 	mv Problem.o $(OBJECT)
 
-$(OBJECT)solver.o: $(OBJECT)problem.o
+$(OBJECT)Solver.o: $(OBJECT)Problem.o
 	$(COMPILER) -c $(FLAGS) $(SOLVER)
 	mv Solver.o $(OBJECT)
 
-$(OBJECT)fileLogger.o:
+$(OBJECT)FileLogger.o:
 	$(COMPILER) -c $(FLAGS) $(LOGGER)
 	mv FileLogger.o $(OBJECT)
 
