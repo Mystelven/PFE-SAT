@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-CPP11    = -std=c++11 
+CPP11    = 
 
 CPPUNIT1 = -I/opt/local/include -L/opt/local/lib 
 CPPUNIT2 = -lcppunit

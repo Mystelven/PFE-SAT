@@ -79,14 +79,14 @@ size_t Solver::getSize() const {
  */
 void Solver::inverse(unsigned int i) {
 
-	log_solver << LogType::LOG_INFO << "inverse -- IN";
+	log_solver << FileLogger::e_logType(FileLogger::LOG_INFO) << "inverse -- IN";
 
 	if(arrayOfSolutions[i-1] == 0) 
 		arrayOfSolutions[i-1] = 1;
 
 	arrayOfSolutions[i-1] *= -1;
 
-	log_solver << LogType::LOG_INFO << "inverse -- OUT";
+	log_solver << FileLogger::e_logType(FileLogger::LOG_INFO) << "inverse -- OUT";
 }
 
 
