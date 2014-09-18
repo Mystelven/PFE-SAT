@@ -21,6 +21,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <cppunit/ui/text/TextTestRunner.h>
 
 #include <iostream>
+#include <cstdlib>
 
 class SatTest : public CppUnit::TestCase {
 
