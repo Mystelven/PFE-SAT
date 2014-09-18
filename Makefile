@@ -61,27 +61,27 @@ all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o 
 
 $(OBJECT)variable.o:
 	$(COMPILER) -c $(FLAGS) $(VARIABLE)
-	mv variable.o $(OBJECT)
+	mv Variable.o $(OBJECT)
 
 $(OBJECT)clause.o: $(OBJECT)variable.o
 	$(COMPILER) -c $(FLAGS) $(CLAUSE)
-	mv clause.o $(OBJECT)
+	mv Clause.o $(OBJECT)
 
 $(OBJECT)problem.o: $(OBJECT)clause.o
 	$(COMPILER) -c $(FLAGS) $(PROBLEM)
-	mv problem.o $(OBJECT)
+	mv Problem.o $(OBJECT)
 
 $(OBJECT)solver.o: $(OBJECT)problem.o
 	$(COMPILER) -c $(FLAGS) $(SOLVER)
-	mv solver.o $(OBJECT)
+	mv Solver.o $(OBJECT)
 
 $(OBJECT)fileLogger.o:
 	$(COMPILER) -c $(FLAGS) $(LOGGER)
-	mv fileLogger.o $(OBJECT)
+	mv FileLogger.o $(OBJECT)
 
 $(OBJECT)satTest.o:
 	$(COMPILER) -c $(CPPUNIT1) $(FLAGS) $(TEST)
-	mv satTest.o $(OBJECT)	
+	mv SatTest.o $(OBJECT)	
 
 ##############################################################################
 
