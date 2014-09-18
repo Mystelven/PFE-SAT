@@ -109,7 +109,7 @@ void Clause::addVariable(Variable v) {
 		new_data = (Variable*)malloc(sizeof(Variable)*nbVariables);
 		if (new_data == NULL)
  		{
-   			log_clause << LogType::LOG_ERROR << "The allocation of the arrayOfVariables has failed";
+   			log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR) << "The allocation of the arrayOfVariables has failed";
    			delete arrayOfVariables;
    			exit(-1);
  		}
@@ -123,7 +123,7 @@ void Clause::addVariable(Variable v) {
 		new_data = (Variable *)(realloc (arrayOfVariables, (nbVariables+10)*sizeof(Variable)));
  		if (new_data == NULL)
  		{
-   			log_clause << LogType::LOG_ERROR << "The allocation of the arrayOfVariables has failed";
+   			log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfVariables has failed";
    			delete arrayOfVariables;
    			exit(-1);
  		}
@@ -140,8 +140,8 @@ void Clause::addVariable(Variable v) {
 /** To get the size of a clause. */
 size_t Clause::size() const {
 
-	log_clause << LogType::LOG_INFO << "size() -- IN";
-	log_clause << LogType::LOG_INFO << "size() -- OUT";
+	log_clause << FileLogger::e_logType(FileLogger::LOG_INFO) << "size() -- IN";
+	log_clause << FileLogger::e_logType(FileLogger::LOG_INFO) << "size() -- OUT";
 	return nbVariables;
 }
 

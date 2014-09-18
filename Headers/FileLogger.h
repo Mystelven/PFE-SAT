@@ -37,7 +37,7 @@ class FileLogger {
 	public:
 
     	// If you can´t/dont-want-to use C++11, remove the "class" word after enum
-    	enum class e_logType { LOG_ERROR, LOG_WARNING, LOG_INFO };
+    	enum  e_logType { LOG_ERROR, LOG_WARNING, LOG_INFO };
 
     	explicit FileLogger (const char *engine_version = VERSION, const char *fname = "default.log");
 
@@ -48,10 +48,6 @@ class FileLogger {
     	friend FileLogger &operator << (FileLogger &logger, string text);
 
     	friend FileLogger &operator << (FileLogger &logger, const char *text);
-
-    	FileLogger (const FileLogger &) = delete;
-
-    	FileLogger &operator= (const FileLogger &) = delete;
 
     private:
 

@@ -65,7 +65,7 @@ Problem::Problem(Problem& p) {
  */
 Problem::Problem(string filename) {
 
-	log_problem << LogType::LOG_INFO << "Problem(string filename) -- IN";
+	log_problem << FileLogger::e_logType(FileLogger::LOG_INFO) << "Problem(string filename) -- IN";
 
 	string buffer;  // we will read the file , line per line.
 	string tmp;
@@ -128,7 +128,7 @@ Problem::Problem(string filename) {
  	nbClauses = i;							// just in case that the number of clause at the beginning of the file
 	file.close();							// itsn't the same that the number of real clause added in the Problem.
 
-	log_problem << LogType::LOG_INFO << "Problem(string filename) -- OUT";
+	log_problem << FileLogger::e_logType(FileLogger::LOG_INFO) << "Problem(string filename) -- OUT";
 }
 
 /**

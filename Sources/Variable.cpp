@@ -76,11 +76,11 @@ Variable::Variable(bool v,unsigned int i) {
 */
 void Variable::reverse() {
   	
-  	log_variable << LogType::LOG_INFO << "reverse -- IN";
+  	log_variable << FileLogger::e_logType(FileLogger::LOG_INFO) << "reverse -- IN";
 	
 	value = !value;
 
-	log_variable << LogType::LOG_INFO << "reverse -- OUT";
+	log_variable << FileLogger::e_logType(FileLogger::LOG_INFO) << "reverse -- OUT";
 }
 
 

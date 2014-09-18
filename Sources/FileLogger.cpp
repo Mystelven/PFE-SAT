@@ -63,17 +63,17 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
         switch (l_type) {
 
-            case FileLogger::e_logType::LOG_ERROR:
+            case FileLogger::e_logType(FileLogger::LOG_ERROR):
                 logger.myFile << "[ERROR]: ";
                 ++logger.numErrors;
                 break;
 
-            case FileLogger::e_logType::LOG_WARNING:
+            case FileLogger::e_logType(FileLogger::LOG_WARNING):
                 logger.myFile << "[WARNING]: ";
                 ++logger.numWarnings;
                 break;
 
-            case FileLogger::e_logType::LOG_INFO:
+            case FileLogger::e_logType(FileLogger::LOG_INFO):
                 logger.myFile << "[INFO]: ";
                 ++logger.numInfos;
                 break;
