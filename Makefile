@@ -56,8 +56,8 @@ TEST 	 = $(SOURCES)SatTest.cpp
 
 ##############################################################################
 
-all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o $(OBJECT)fileLogger.o $(OBJECT)satTest.o
-	$(COMPILER) $(CPP11) $(CPPUNIT) -o $(MAIN) $(OBJECT)variable.o $(OBJECT)clause.o $(OBJECT)problem.o $(OBJECT)solver.o $(OBJECT)fileLogger.o $(OBJECT)SatTest.o Main.cpp
+all: $(OBJECT)solver.o $(OBJECT)problem.o $(OBJECT)clause.o $(OBJECT)variable.o $(OBJECT)fileLogger.o
+	$(COMPILER) $(CPP11) $(CPPUNIT) -o $(MAIN) $(OBJECT)variable.o $(OBJECT)clause.o $(OBJECT)problem.o $(OBJECT)solver.o $(OBJECT)fileLogger.o  Main.cpp
 
 $(OBJECT)variable.o:
 	$(COMPILER) -c $(FLAGS) $(VARIABLE)
@@ -78,10 +78,6 @@ $(OBJECT)solver.o: $(OBJECT)problem.o
 $(OBJECT)fileLogger.o:
 	$(COMPILER) -c $(FLAGS) $(LOGGER)
 	mv FileLogger.o $(OBJECT)
-
-$(OBJECT)satTest.o:
-	$(COMPILER) -c $(CPPUNIT1) $(FLAGS) $(TEST)
-	mv SatTest.o $(OBJECT)	
 
 ##############################################################################
 
