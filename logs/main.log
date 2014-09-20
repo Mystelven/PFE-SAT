@@ -5,7 +5,7 @@ PFE - SATyr, version 0.1
 [INFO]: displayInfo -- IN
 [INFO]: displayInfo -- OUT
 [INFO]: displaySolveTime -- IN
-[INFO]: Time to solve the problem: 0.205769s
+[INFO]: Time to solve the problem: 2.338942s
 [INFO]: displaySolveTime -- OUT
 [INFO]: displaySolution -- IN
 [INFO]: The problem is SATISFIABLE. 
