@@ -85,9 +85,9 @@ documentation:
 	doxygen
 
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
-check:
-	#cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
-	 cppcheck --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
+#cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
+check:	
+	 cppcheck *.cpp */*.cpp */*.h cppcheck.xml
 
 clean:
 	rm -rf $(OBJECT)*.o
