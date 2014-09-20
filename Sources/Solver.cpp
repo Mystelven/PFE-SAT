@@ -129,9 +129,13 @@ bool Solver::isOpen(Clause c) const {
  */
 bool Solver::isSolution(Problem problem) const {
 
-	for(unsigned int i= 0; i < problem.getNbClauses(); i++)
-		if(!isOpen(*(problem.getClause(i)))) 
+	unsigned int size = problem.getNbClauses();
+
+	for(unsigned int i= 0; i < size ; i++) {
+		if(!isOpen(*(problem.getClause(i)))) {
 			return false;
+		}
+	}
 
 	return true;
 }
