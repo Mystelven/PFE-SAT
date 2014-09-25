@@ -28,7 +28,11 @@ FileLogger log_solver (VERSION, "logs/solver.log");
  */
 Solver::Solver(Problem p) {
 
-	arrayOfSolutions = (int*)malloc(sizeof(int)*p.getNbVariables());
+	arrayOfSolutions = static_cast<int*>(malloc(sizeof(int)*p.getNbVariables()));
+	if (arrayOfSolutions == NULL) {
+   		log_solver << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfSolutions has failed";
+   		exit(-1);
+ 	}
 	
 	size = p.getNbVariables();
 
@@ -46,7 +50,12 @@ Solver::Solver(Solver& s) {
 
 	size = s.size;
 
-	arrayOfSolutions = (int*)malloc(sizeof(int)*size);
+	arrayOfSolutions = static_cast<int*>(malloc(sizeof(int)*size));
+	if (arrayOfSolutions == NULL) {
+   		log_solver << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfSolutions has failed";
+   		delete arrayOfSolutions;
+   		exit(-1);
+ 	}
 
 	for(size_t i = 0; i < size; i++) {
 		arrayOfSolutions[i] = s.arrayOfSolutions[i];
@@ -101,7 +110,7 @@ void Solver::solve(Problem p) {
 
 	while(!isSolution(p)) {
 
-     	   unsigned int var = ((unsigned int)(rand())%v_size + 1);
+     	   unsigned int var = static_cast<unsigned int>( static_cast<unsigned long>(rand()) % v_size + 1);
     	   inverse(var);
 	}	
 }
@@ -129,9 +138,9 @@ bool Solver::isOpen(Clause c) const {
  */
 bool Solver::isSolution(Problem problem) const {
 
-	unsigned int size = problem.getNbClauses();
+	unsigned int nbClauses = problem.getNbClauses();
 
-	for(unsigned int i= 0; i < size ; i++) {
+	for(unsigned int i= 0; i < nbClauses ; i++) {
 		if(!isOpen(*(problem.getClause(i)))) {
 			return false;
 		}
