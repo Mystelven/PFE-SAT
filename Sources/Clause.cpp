@@ -38,7 +38,14 @@ Clause::Clause(unsigned int n) {
 		exit(-1);
 	}
 
-	arrayOfVariables = (Variable*)malloc(sizeof(Variable)*n);
+	arrayOfVariables = static_cast<Variable*>(malloc(sizeof(Variable)*n));
+ 	if (arrayOfVariables == NULL)
+ 	{
+   		log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfVariables has failed";
+   		delete arrayOfVariables;
+   		exit(-1);
+ 	}
+
 
 	for(unsigned int i = 0; i < n; i++)
 		arrayOfVariables[i] = Variable(i+1,false);
@@ -55,7 +62,13 @@ Clause::Clause(Clause& c) {
 
 	nbVariables = c.nbVariables;
 
-	arrayOfVariables = (Variable*)malloc(sizeof(Variable)*nbVariables);
+	arrayOfVariables = static_cast<Variable*>(malloc(sizeof(Variable)*nbVariables));
+ 	if (arrayOfVariables == NULL)
+ 	{
+   		log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfVariables has failed";
+   		delete arrayOfVariables;
+   		exit(-1);
+ 	}
 
 	for(unsigned int i = 0; i < nbVariables; i++) {
 
@@ -106,7 +119,7 @@ void Clause::addVariable(Variable v) {
 	Variable* new_data;
 
 	if(arrayOfVariables == NULL) {
-		new_data = (Variable*)malloc(sizeof(Variable)*nbVariables);
+		new_data = static_cast<Variable*>(malloc(sizeof(Variable)*nbVariables));
 		if (new_data == NULL)
  		{
    			log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR) << "The allocation of the arrayOfVariables has failed";
@@ -120,7 +133,7 @@ void Clause::addVariable(Variable v) {
 	}
 	else {
 
-		new_data = (Variable *)(realloc (arrayOfVariables, (nbVariables+10)*sizeof(Variable)));
+		new_data = static_cast<Variable*>((realloc (arrayOfVariables, (nbVariables+10)*sizeof(Variable))));
  		if (new_data == NULL)
  		{
    			log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfVariables has failed";

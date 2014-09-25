@@ -23,82 +23,112 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include "../Headers/FileLogger.h"
 
-	// ctor (remove parameters if you don´t need them)
-    FileLogger::FileLogger (const char *engine_version, const char *fname) {
-    	
-    	numWarnings = 0;
-        numInfos = 0;
-        numErrors = 0;
-           
-        myFile.open (fname);
+        /** 
+         * It represent the constructor of a FileLogger
+         * to create a FileLogger we need a version and the name of the file where everything will be written.
+         * @param engine_version the number of version of the Logger (the application's version)
+         * @param fname the name of the file where the log will be write.
+         */
+        FileLogger::FileLogger (const char *engine_version, const char *fname) {
+        	
+        	numWarnings = 0;
+            numInfos = 0;
+            numErrors = 0;
+               
+            myFile.open (fname);
 
-        // Write the first lines
-        if (myFile.is_open()) {
-            myFile << "PFE - SATyr, version " << engine_version << std::endl;
-            myFile << std::endl;
-        } // if
-    }
-
-
-	// dtor
-    FileLogger::~FileLogger () {
-
-        if (myFile.is_open()) {
-
-            myFile << std::endl << std::endl;
-
-            // Report number of errors, warnings, infos.
-            myFile << numWarnings << " warnings" << std::endl;
-            myFile << numErrors   << " errors"   << std::endl;
-            myFile << numInfos    << " infos"    << std::endl;
-
-            myFile.close();
-
-        } // if
-    }
+            // Write the first lines
+            if (myFile.is_open()) {
+                myFile << "PFE - SATyr, version " << engine_version << std::endl;
+                myFile << std::endl;
+            } // if
+        }
 
 
-    // Overload << operator using log type
-    FileLogger &operator << (FileLogger &logger, const FileLogger::e_logType l_type) {
+        /**
+         * Represents the destructor of the logger, we close properly the file
+         * and we free the memory used.
+         * It will also write down the number of error, warning and info at the end of the file,
+         * just before closing the file descriptor.
+         */
+        FileLogger::~FileLogger () {
 
-        switch (l_type) {
+            if (myFile.is_open()) {
 
-            case FileLogger::e_logType(FileLogger::LOG_ERROR):
-                logger.myFile << "[ERROR]: ";
-                ++logger.numErrors;
-                break;
+                myFile << std::endl << std::endl;
 
-            case FileLogger::e_logType(FileLogger::LOG_WARNING):
-                logger.myFile << "[WARNING]: ";
-                ++logger.numWarnings;
-                break;
+                // Report number of errors, warnings, infos.
+                myFile << numWarnings << " warnings" << std::endl;
+                myFile << numErrors   << " errors"   << std::endl;
+                myFile << numInfos    << " infos"    << std::endl;
 
-            case FileLogger::e_logType(FileLogger::LOG_INFO):
-                logger.myFile << "[INFO]: ";
-                ++logger.numInfos;
-                break;
+                myFile.close();
 
-            default:
-                logger.myFile << "[UNKNOWN]: ";
-                break;
-
-        } // sw
-
-		return logger;
-    }
+            } // if
+        }
 
 
-    // Overload << operator using C style strings
-    // No need for std::string objects here
-    FileLogger &operator << (FileLogger &logger, const char *text) {
+        /**
+         * This is the overwrite of the operator<< for the Level of the Logger.
+         * It will basically just write [Level_of_the_Logger] in the file, just before the log itself.
+         * @param logger the Logger itself, with his file descriptor.
+         * @param l_type the Level of the logger, because we need to write it in the file.
+         * @return FileLogger& the reference of the Logger we use, in order to be able to do things like
+         *         logger << "1" << "2" << "3" ... 
+         */
+        FileLogger &operator << (FileLogger &logger, const FileLogger::e_logType l_type) {
 
-        logger.myFile << text << std::endl;
-        return logger;
-    }
+            switch (l_type) {
 
-    // Overload << operator using real string
-    FileLogger &operator << (FileLogger &logger, string text) {
+                case FileLogger::e_logType(FileLogger::LOG_ERROR):
+                    logger.myFile << "[ERROR]: ";
+                    ++logger.numErrors;
+                    break;
 
-        logger.myFile << text << std::endl;
-        return logger;
-    }
+                case FileLogger::e_logType(FileLogger::LOG_WARNING):
+                    logger.myFile << "[WARNING]: ";
+                    ++logger.numWarnings;
+                    break;
+
+                case FileLogger::e_logType(FileLogger::LOG_INFO):
+                    logger.myFile << "[INFO]: ";
+                    ++logger.numInfos;
+                    break;
+
+                default:
+                    logger.myFile << "[UNKNOWN]: ";
+                    break;
+
+            } // sw
+
+    		return logger;
+        }
+
+
+        /**
+         * This is the overwrite of the operator<< for a string.
+         * It will basically just write the char* itself in the file.
+         * @param logger the Logger itself, with his file descriptor.
+         * @param text the log itself that we need to write in the file.
+         * @return FileLogger& the reference of the Logger we use, in order to be able to do things like
+         *         logger << "1" << "2" << "3" ... 
+         */
+        FileLogger &operator << (FileLogger &logger, const char *text) {
+
+            logger.myFile << text << std::endl;
+            return logger;
+        }
+
+        /**
+         * This is the overwrite of the operator<< for a string.
+         * It will basically just write the string itself in the file.
+         * @param logger the Logger itself, with his file descriptor.
+         * @param text the log itself that we need to write in the file.
+         * @return FileLogger& the reference of the Logger we use, in order to be able to do things like
+         *         logger << "1" << "2" << "3" ... 
+         */    
+        FileLogger &operator << (FileLogger &logger, string text) {
+
+            logger.myFile << text << std::endl;
+            return logger;
+        }

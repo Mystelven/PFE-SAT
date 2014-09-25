@@ -49,8 +49,6 @@ LOGGER   = $(SOURCES)FileLogger.cpp
 
 SOLVER   = $(SOURCES)Solver.cpp
 
-TEST 	 = $(SOURCES)SatTest.cpp
-
 ##############################################################################
 
 all: $(OBJECT)Solver.o $(OBJECT)Problem.o $(OBJECT)Clause.o $(OBJECT)Variable.o $(OBJECT)FileLogger.o
@@ -92,5 +90,6 @@ check:
 clean:
 	rm -rf $(OBJECT)*.o
 	rm -rf Documentation
+	rm -rf logs/*
 
 ##############################################################################

@@ -51,7 +51,12 @@ Problem::Problem(Problem& p) {
 	nbClauses = p.nbClauses;
 	nbVariables = p.nbVariables;
 
-	arrayOfClauses = (Clause*)malloc(sizeof(Clause)*nbClauses);
+	arrayOfClauses = static_cast<Clause*>(malloc(sizeof(Clause)*nbClauses));
+  	if (arrayOfClauses == NULL) {
+   		log_problem << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfClauses has failed";
+   		delete arrayOfClauses;
+   		exit(-1);
+ 	}
 
 	for(unsigned int i = 0; i < nbClauses; i++) {
 		arrayOfClauses[i] = p.arrayOfClauses[i];
@@ -98,7 +103,12 @@ Problem::Problem(string filename) {
   			iss >> nbVariables;			// [       nbVariables           ]
   			iss >> nbClauses;			// [  		  		   nbClauses ]
 
-  			arrayOfClauses = (Clause*)malloc(sizeof(Clause)*nbClauses);
+  			arrayOfClauses = static_cast<Clause*>(malloc(sizeof(Clause)*nbClauses));
+  			if (arrayOfClauses == NULL) {
+   				log_problem << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfClauses has failed";
+   				delete arrayOfClauses;
+   				exit(-1);
+ 			}
 
  	   } else {								// when it's not the definition of the Problem, it's the problem itself.
 
@@ -204,7 +214,7 @@ out << "                                                                     |" 
 out << "c |  Parse time          : ";
 
 out << "  ";
-if(parse_time/1000.0 < 1) out << " ";
+if(parse_time/1000.0 < 10) out << " ";
 out << fixed << setprecision(3) << (parse_time/1000.0);
 
 out << "ms                                                                     |" << endl;
