@@ -132,8 +132,10 @@ void Clause::addVariable(Variable v) {
  		}
 	}
 	else {
-
-		new_data = static_cast<Variable*>((realloc (arrayOfVariables, (nbVariables+10)*sizeof(Variable))));
+		
+		log_clause << FileLogger::e_logType(FileLogger::LOG_INFO) << "We will try to realloc the array for all the variables. ";
+		
+		new_data = static_cast<Variable*>((realloc (arrayOfVariables, (nbVariables+500)*sizeof(Variable))));
  		if (new_data == NULL)
  		{
    			log_clause << FileLogger::e_logType(FileLogger::LOG_ERROR)<< "The allocation of the arrayOfVariables has failed";
@@ -153,8 +155,6 @@ void Clause::addVariable(Variable v) {
 /** To get the size of a clause. */
 size_t Clause::size() const {
 
-	log_clause << FileLogger::e_logType(FileLogger::LOG_INFO) << "size() -- IN";
-	log_clause << FileLogger::e_logType(FileLogger::LOG_INFO) << "size() -- OUT";
 	return nbVariables;
 }
 

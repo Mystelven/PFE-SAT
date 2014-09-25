@@ -1,0 +1,16 @@
+PFE - SATyr, version 0.1
+
+[INFO]: main -- IN
+[INFO]: Fichier: instances/100.cnf
+[INFO]: displayInfo -- IN
+[INFO]: displayInfo -- OUT
+[WARNING]: signalHandler() -- IN
+[WARNING]: We catch a SIGINT
+[INFO]: displaySolveTime -- IN
+[INFO]: displaySolveTime -- OUT
+[WARNING]: signalHandler() -- OUT
+
+
+3 warnings
+0 errors
+6 infos

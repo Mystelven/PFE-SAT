@@ -26,6 +26,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 using namespace std;
 
+Problem* p;
+
 /** We declare a global logger for the file. */
 FileLogger log_main (VERSION, "logs/main.log");
 
@@ -78,14 +80,16 @@ void displaySolution(ostream& out,Solver s,Problem p) {
       
       log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << "The problem is SATISFIABLE. ";
 
-      out << endl << "s SATISFIABLE" << endl;
-      out << "v " << s << " 0" << endl << endl;
+      out << endl << "   s SATISFIABLE" << endl;
+      out << "   v " << s << " 0" << endl;
 
     } else {
       log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << "The problem is INSATISFIABLE. ";
-      out << endl << "s INSATISFIABLE" << endl;
+      out << endl << "   s INSATISFIABLE" << endl;
 
     }
+
+    out << "c [=======================================================================================================]" << endl;
 
     log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << "displaySolution -- OUT";
 }
@@ -99,23 +103,51 @@ void displaySolveTime(ostream& out,double solveTime) {
 
   log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << "displaySolveTime -- IN";
 
-  out << "c [=======================================================================================================]" << endl;
-
   solveTime *= 10000000;
   solveTime = ceil(solveTime);
   solveTime /= 10000000;
 
   std::ostringstream oss;
-  oss << "Time to solve the problem: " << fixed << setprecision(6) << solveTime << "s";
-  log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << oss.str();
 
-  out << endl;
-  out << "c CPU Time              :    " << fixed << setprecision(6) << solveTime << "s";
-  out << endl;
+
+  if(solveTime != -1) {
+    
+    oss << "Time to solve the problem: ";
+    oss << fixed << setprecision(6) << solveTime << "s";
+    out << "c | CPU Time              :    " << solveTime << "s";
+
+    log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << oss.str();
+
+
+  } else {
+    out << endl;
+    out << "c | CPU Time              :    " << "INFINITY";
+    out << endl;
+    out << "   s UNKNOWN";
+    out << endl;
+    out << "c [=======================================================================================================]" << endl;
+  }
 
   log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << "displaySolveTime -- OUT";
 
 }
+
+
+void signalHandler( int signum )
+{
+     log_main << FileLogger::e_logType(FileLogger::LOG_WARNING) << "signalHandler() -- IN";
+
+     log_main << FileLogger::e_logType(FileLogger::LOG_WARNING) << "We catch a SIGINT";
+
+     displaySolveTime(cout,-1);
+
+      // cleanup and close up stuff here  
+      // terminate program  
+     log_main << FileLogger::e_logType(FileLogger::LOG_WARNING) << "signalHandler() -- OUT";
+
+      exit(signum);  
+}
+
 
 /**
  * It's the beginning of this program.
@@ -128,7 +160,7 @@ int main(int argc,char** argv)
   
   log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << "main -- IN";
 
-
+  signal(SIGINT, signalHandler);  
   clock_t start,end;
   srand(time(NULL)); // initialisation of rand
 
@@ -143,19 +175,19 @@ int main(int argc,char** argv)
   oss << "Fichier: " << argv[1];
   log_main << FileLogger::e_logType(FileLogger::LOG_INFO) << oss.str();
   
-  Problem p(argv[1]);
-  Solver s(p);
+  p = new Problem(argv[1]);
+  Solver s(*p);
 
-  displayInfo(cout,p);
+  displayInfo(cout,*p);
 
   start = clock();
-  s.solve(p);
+  s.solve(*p);
   end = clock();    // if we don't catch an Exception, 
                     // then the problem is SATISFIABLE or INSATISFIABLE
 
   double solveTime = (end-start)/1000000.0;
   displaySolveTime(cout,solveTime);
-  displaySolution(cout,s,p);
+  displaySolution(cout,s,*p);
 
   if(argc > 2) {
     
@@ -169,7 +201,7 @@ int main(int argc,char** argv)
 
     } else {
 
-      displaySolution(outfile,s,p);       
+      displaySolution(outfile,s,*p);       
       outfile.close();                      // At the end, we close the file (if we used it).
 
     }
