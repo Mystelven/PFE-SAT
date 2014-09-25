@@ -20,6 +20,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <signal.h>
 #include <math.h>
 
 #include "Headers/Solver.h"
