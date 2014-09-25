@@ -85,7 +85,7 @@ documentation:
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
 #cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
 check:	
-	 cppcheck --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.h 2> cppcheck.xml
+	 cppcheck --enable=all --xml --xml-version=2 *.cpp */*.cpp */*.h 2> cppcheck.xml
 
 clean:
 	rm -rf $(OBJECT)*.o
