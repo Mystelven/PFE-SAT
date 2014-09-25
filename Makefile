@@ -92,4 +92,10 @@ clean:
 	rm -rf Documentation
 	rm -rf logs/*
 
+recompile:
+	make clean
+	make 
+	make doc
+	make check
+
 ##############################################################################
