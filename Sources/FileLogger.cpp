@@ -32,8 +32,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
         FileLogger::FileLogger (const char *engine_version, const char *fname) {
         	
         	numWarnings = 0;
-            numInfos = 0;
-            numErrors = 0;
+            numInfos    = 0;
+            numErrors   = 0;
                
             myFile.open (fname);
 
