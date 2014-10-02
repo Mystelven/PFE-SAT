@@ -142,11 +142,9 @@ void signalHandler( int signum )
 
      displaySolveTime(cout,-1);
 
-      // cleanup and close up stuff here  
-      // terminate program  
      log_main << FileLogger::e_logType(FileLogger::LOG_WARNING) << "signalHandler() -- OUT";
 
-      exit(signum);  
+    exit(signum);  
 }
 
 
