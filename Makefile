@@ -20,10 +20,6 @@
 #
 ##############################################################################
 
-CPP11    = 
-
-CPPUNIT  = $(CPPUNIT1) $(CPPUNIT2)
-
 FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
 FLAGS3   = -Wshadow -Wredundant-decls -Winit-self -Wswitch-default 
@@ -33,46 +29,16 @@ FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 MAIN	 = satyr
 
-COMPILER = g++ 
+COMPILER = gcc
 
 SOURCES  = ./Sources/
 
 OBJECT   = ./obj/
 
-VARIABLE = $(SOURCES)Variable.cpp
-
-CLAUSE   = $(SOURCES)Clause.cpp
-
-PROBLEM  = $(SOURCES)Problem.cpp
-
-LOGGER   = $(SOURCES)FileLogger.cpp
-
-SOLVER   = $(SOURCES)Solver.cpp
-
 ##############################################################################
 
-all: $(OBJECT)Solver.o $(OBJECT)Problem.o $(OBJECT)Clause.o $(OBJECT)Variable.o $(OBJECT)FileLogger.o
-	$(COMPILER) $(CPP11) -o $(MAIN) $(OBJECT)Variable.o $(OBJECT)Clause.o $(OBJECT)Problem.o $(OBJECT)Solver.o $(OBJECT)FileLogger.o  Main.cpp
-
-$(OBJECT)Variable.o:
-	$(COMPILER) -c $(FLAGS) $(VARIABLE)
-	mv Variable.o $(OBJECT)
-
-$(OBJECT)Clause.o: $(OBJECT)Variable.o
-	$(COMPILER) -c $(FLAGS) $(CLAUSE)
-	mv Clause.o $(OBJECT)
-
-$(OBJECT)Problem.o: $(OBJECT)Clause.o
-	$(COMPILER) -c $(FLAGS) $(PROBLEM)
-	mv Problem.o $(OBJECT)
-
-$(OBJECT)Solver.o: $(OBJECT)Problem.o
-	$(COMPILER) -c $(FLAGS) $(SOLVER)
-	mv Solver.o $(OBJECT)
-
-$(OBJECT)FileLogger.o:
-	$(COMPILER) -c $(FLAGS) $(LOGGER)
-	mv FileLogger.o $(OBJECT)
+all: 
+	$(COMPILER) $(CPP11) -o $(MAIN) Main.c
 
 ##############################################################################
 
@@ -83,14 +49,12 @@ documentation:
 	doxygen
 
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
-#cppcheck --suppress=missingIncludeSystem --enable=all --inconclusive --xml --xml-version=2 *.cpp */*.cpp */*.hpp 2> cppcheck.xml;
 check:	
-	 cppcheck --enable=all --xml *.cpp */*.cpp */*.h 2> cppcheck.xml
+	 cppcheck --enable=all --xml *.c */*.c */*.h 2> cppcheck.xml
 
 clean:
 	rm -rf $(OBJECT)*.o
 	rm -rf Documentation
-	rm -rf logs/*
 
 recompile:
 	make clean
