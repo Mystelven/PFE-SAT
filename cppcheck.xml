@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results>
+    <error file="Main.c" line="106" id="unusedVariable" severity="style" msg="Unused variable: start"/>
+    <error file="Main.c" line="107" id="unusedVariable" severity="style" msg="Unused variable: end"/>
+    <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files (use --check-config for details)"/>
+</results>
