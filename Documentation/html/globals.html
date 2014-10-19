@@ -45,7 +45,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -75,9 +74,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="globals.html"><span>All</span></a></li>
       <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_type.html"><span>Typedefs</span></a></li>
-      <li><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -100,7 +96,7 @@ $(document).ready(function(){initNavTree('globals.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,68 +108,16 @@ $(document).ready(function(){initNavTree('globals.html','');});
 <div class="contents">
 <div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div><ul>
 <li>displayErrorArgument()
-: <a class="el" href="Main_8cpp.html#a07339f4c4172514dead121b7bc44a3b9">Main.cpp</a>
+: <a class="el" href="Main_8c.html#a63810e2fa7c572785360b09ad831d139">Main.c</a>
 </li>
 <li>displayInfo()
-: <a class="el" href="Main_8cpp.html#aefec3b27a776fbaf41bef3ae83def5be">Main.cpp</a>
-</li>
-<li>displaySolution()
-: <a class="el" href="Main_8cpp.html#a1271dea8a50555527b7bedabbb73d03d">Main.cpp</a>
-</li>
-<li>displaySolveTime()
-: <a class="el" href="Main_8cpp.html#aa50308fe611d2c527e0b3ec79a5f1ac4">Main.cpp</a>
-</li>
-<li>log_clause
-: <a class="el" href="Clause_8cpp.html#a341f2527a670d3e3950feadc42d917cb">Clause.cpp</a>
-</li>
-<li>log_main
-: <a class="el" href="Main_8cpp.html#af12df73a10f979b5a131efd6ccae78e5">Main.cpp</a>
-</li>
-<li>log_problem
-: <a class="el" href="Problem_8cpp.html#a76ce8a622d6f8aa465da803ad1dbb4c1">Problem.cpp</a>
-</li>
-<li>log_solver
-: <a class="el" href="Solver_8cpp.html#a7a5dbfd5d2921b5e7ff7daf6bc54c68a">Solver.cpp</a>
-</li>
-<li>log_variable
-: <a class="el" href="Variable_8cpp.html#a9e85630213e1a03668b4050ac1b8ffdd">Variable.cpp</a>
-</li>
-<li>LogType
-: <a class="el" href="FileLogger_8h.html#ab0e33ddaef480c9f682036f78611c4ce">FileLogger.h</a>
+: <a class="el" href="Main_8c.html#af1e933a510d62636fcec95bc7c6c50da">Main.c</a>
 </li>
 <li>main()
-: <a class="el" href="Main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">Main.cpp</a>
-</li>
-<li>operator!=()
-: <a class="el" href="Variable_8h.html#a008acd2dbf74415e571517748addafba">Variable.h</a>
-, <a class="el" href="Variable_8cpp.html#a008acd2dbf74415e571517748addafba">Variable.cpp</a>
-</li>
-<li>operator&lt;&lt;()
-: <a class="el" href="Problem_8h.html#af06fff9017e111cb0e8df2accf612d28">Problem.h</a>
-, <a class="el" href="Variable_8cpp.html#ac294bc715f0ec679fcc93d26dc766d9c">Variable.cpp</a>
-, <a class="el" href="Solver_8cpp.html#adef930e5c403340835db4a58883730b3">Solver.cpp</a>
-, <a class="el" href="Problem_8cpp.html#a47dbd2e758fc768466ac32ccdc1994c1">Problem.cpp</a>
-, <a class="el" href="FileLogger_8cpp.html#aa20cb36fa642da049aca81b2a274fca6">FileLogger.cpp</a>
-, <a class="el" href="Clause_8cpp.html#a2f86da01c9566011ec3eee6e14bad7e4">Clause.cpp</a>
-, <a class="el" href="Variable_8h.html#a27c461069027453a18dde916ed344a96">Variable.h</a>
-, <a class="el" href="Solver_8h.html#a6dfdf2e6ac597069d142b9bfba85f197">Solver.h</a>
-, <a class="el" href="Clause_8h.html#a6e6e50e5844ca68cb539fca70f374e8f">Clause.h</a>
-</li>
-<li>operator==()
-: <a class="el" href="Variable_8h.html#a7830e2cc5da52851b4d1d6639baa048a">Variable.h</a>
-, <a class="el" href="Variable_8cpp.html#a7830e2cc5da52851b4d1d6639baa048a">Variable.cpp</a>
-</li>
-<li>p
-: <a class="el" href="Main_8cpp.html#a0f27d608a7d5782871fd5cc873d3f682">Main.cpp</a>
-</li>
-<li>parse_time
-: <a class="el" href="Problem_8cpp.html#a21731a117bb3081cbce7f40cb8bebc39">Problem.cpp</a>
+: <a class="el" href="Main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">Main.c</a>
 </li>
 <li>signalHandler()
-: <a class="el" href="Main_8cpp.html#a8ee3282bc313e547dbbb8d4f4010db61">Main.cpp</a>
-</li>
-<li>VERSION
-: <a class="el" href="FileLogger_8h.html#a1c6d5de492ac61ad29aec7aa9a436bbf">FileLogger.h</a>
+: <a class="el" href="Main_8c.html#a8ee3282bc313e547dbbb8d4f4010db61">Main.c</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -181,7 +125,7 @@ $(document).ready(function(){initNavTree('globals.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 16 2014 17:43:57 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Sun Oct 19 2014 16:39:10 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
