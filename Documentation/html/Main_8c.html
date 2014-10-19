@@ -126,7 +126,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">It's the beginning of this program.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br/></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ee3282bc313e547dbbb8d4f4010db61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Main_8c.html#a8ee3282bc313e547dbbb8d4f4010db61">signalHandler</a> (int signum)</td></tr>
-<tr class="memdesc:a8ee3282bc313e547dbbb8d4f4010db61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Useful to display the time to solve this instance.  <a href="#a8ee3282bc313e547dbbb8d4f4010db61">More...</a><br/></td></tr>
+<tr class="memdesc:a8ee3282bc313e547dbbb8d4f4010db61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Useful to catch the SIGINT signal in that way, we can shut down the solver and display that we don't know if the problem is SATISFIABLE or UNSATISFIABLE...  <a href="#a8ee3282bc313e547dbbb8d4f4010db61">More...</a><br/></td></tr>
 <tr class="separator:a8ee3282bc313e547dbbb8d4f4010db61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -204,7 +204,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a value between [-127 ; 128] to explain the exit of the program. </dd></dl>
 
-<p>Definition at line <a class="el" href="Main_8c_source.html#l00101">101</a> of file <a class="el" href="Main_8c_source.html">Main.c</a>.</p>
+<p>Definition at line <a class="el" href="Main_8c_source.html#l00073">73</a> of file <a class="el" href="Main_8c_source.html">Main.c</a>.</p>
 
 </div>
 </div>
@@ -222,16 +222,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Useful to display the time to solve this instance. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">out</td><td>the display-stream </td></tr>
-    <tr><td class="paramname">solveTime</td><td>the time to solve the current instance. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Useful to catch the SIGINT signal in that way, we can shut down the solver and display that we don't know if the problem is SATISFIABLE or UNSATISFIABLE... </p>
+<p>The solver will so, display UNKNOWN for the state of the result. </p>
 
-<p>Definition at line <a class="el" href="Main_8c_source.html#l00086">86</a> of file <a class="el" href="Main_8c_source.html">Main.c</a>.</p>
+<p>Definition at line <a class="el" href="Main_8c_source.html#l00058">58</a> of file <a class="el" href="Main_8c_source.html">Main.c</a>.</p>
 
 </div>
 </div>
@@ -241,7 +235,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="Main_8c.html">Main.c</a></li>
-    <li class="footer">Generated on Sun Oct 19 2014 16:39:10 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Sun Oct 19 2014 16:41:53 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
