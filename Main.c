@@ -50,39 +50,11 @@ void displayErrorArgument(FILE* std) {
 
 
 /**
- * Useful to display the time to solve this instance.
- * @param out the display-stream
- * @param solveTime the time to solve the current instance.
+ * Useful to catch the SIGINT signal
+ * in that way, we can shut down the solver and display that we don't know if the problem
+ * is SATISFIABLE or UNSATISFIABLE...
+ * The solver will so, display UNKNOWN for the state of the result.
  */
- /*
-void displaySolveTime(ostream& out,double solveTime) {
-
-  solveTime *= 10000000;
-  solveTime = ceil(solveTime);
-  solveTime /= 10000000;
-
-  std::ostringstream oss;
-
-
-  if(solveTime != -1) {
-    
-    oss << "Time to solve the problem: ";
-    oss << fixed << setprecision(6) << solveTime << "s";
-    out << "c | CPU Time              :    " << solveTime << "s";
-
-  } else {
-    out << endl;
-    out << "c | CPU Time              :    " << "INFINITY";
-    out << endl;
-    out << "   s UNKNOWN";
-    out << endl;
-    out << "c [=======================================================================================================]" << endl;
-  }
-
-}
-*/
-
-
 void signalHandler( int signum )
 {
 
