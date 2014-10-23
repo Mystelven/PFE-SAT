@@ -17,11 +17,11 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **************************************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <signal.h>
 #include <math.h>
+
+#include "Headers/Variable.h"
 
 
 /**
@@ -29,7 +29,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
  */
 void displayInfo(FILE* std) {
 
-  fprintf(std,"c This is SATyr ");
+  fprintf(std,"c This is SATyr \n");
 	fprintf(std,"c Created by Valentin Montmirail, a student in computer engineering at Polytech Tours\n");
 	fprintf(std,"c \n");
 
