@@ -32,7 +32,7 @@ typedef struct _Variable Variable;
  * @param id the next id for our variable.
  * @param value the next value of our variable: {false, true}
  */
-void initVariable(Variable * variable, unsigned int id, unsigned int value);
+Variable* initVariable(unsigned int id, unsigned int value);
 
 
 /**

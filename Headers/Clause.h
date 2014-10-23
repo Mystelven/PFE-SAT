@@ -20,14 +20,16 @@ typedef struct _Clause Clause;
 
 /**
  * This is the constructor of the "pseudo-class" 
- * @param clauseSize it will allocate the size for every variable.
  */
-void initClause(Clause* clause, unsigned int clauseSize);
+void initClause(Clause* clause);
 
 /**
  * To display a clause basically means: to display every variables inside.
  * @param clause the clause that we will display.
  */
 void displayClause(Clause* clause);
+
+
+void addVariable(Clause* clause, Variable* p);
 
 #endif 

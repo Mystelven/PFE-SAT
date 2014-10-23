@@ -31,4 +31,9 @@ void initProblem(Problem* problem, const char* filename);
 
 void allocateProblem(Problem* problem, char* chaine);
 
+
+void allocationOfClause(Problem* problem,char* chaine, unsigned int i);
+
+void displayProblem(Problem* problem);
+
 #endif
