@@ -23,8 +23,12 @@ typedef struct _Problem Problem;
 
 /**
  * This is the constructor of the "pseudo-class" 
+ * @param problem the Problem we will initialize.
  * @param filename is the path to find the CNF who formalize our SAT problem.
  */
-void initProblem(const char* filename);
+void initProblem(Problem* problem, const char* filename);
+
+
+void allocateProblem(Problem* problem, char* chaine);
 
 #endif
