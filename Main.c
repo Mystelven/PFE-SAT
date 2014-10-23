@@ -88,7 +88,16 @@ void displaySolveTime(FILE* std) {
 void signalHandler( int signum )
 {
 
-  //  displaySolveTime(cout,-1);
+    printf("\ns   UNKNOWN\n");
+    printf("v   ");
+
+    for(unsigned int i = 0; i < solver->nbVariables; ++i) {
+      solver->arrayOfSolutions[i] = -1;
+    }
+
+    displaySolution(solver);
+    printf("c |-------------------------------------------------------------------------------------|\n");
+    printf("c   Solving Time         :   infinity \n");
 
     exit(signum);  
 }

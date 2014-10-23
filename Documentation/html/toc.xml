@@ -1,0 +1,117 @@
+<toc label="SATyr - SAT&apos;s Solver" topic="index.html">
+  <topic label="Data Structures">
+    <topic label="Data Structures" href="annotated.html">
+      <topic label="Clause" href="struct__Clause.html">
+        <topic label="arrayOfVariables" href="struct__Clause.html#a5b07ad8a6420b4794d5c9d147809e6a2"/>
+        <topic label="nbVariables" href="struct__Clause.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+      </topic>
+      <topic label="Problem" href="struct__Problem.html">
+        <topic label="arrayOfClauses" href="struct__Problem.html#a8b3887325dbf1958fce0a4f30afed8dc"/>
+        <topic label="nbClauses" href="struct__Problem.html#a78552348f2be74fce83839fdc026068c"/>
+        <topic label="nbVariables" href="struct__Problem.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+      </topic>
+      <topic label="Solver" href="struct__Solver.html">
+        <topic label="arrayOfSolutions" href="struct__Solver.html#a2d4f03d40744e392cf7ec14d9cbc2465"/>
+        <topic label="nbVariables" href="struct__Solver.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+      </topic>
+      <topic label="Variable" href="struct__Variable.html">
+        <topic label="id" href="struct__Variable.html#ab7ce6f462afaf105224b0ca772a33c43"/>
+        <topic label="value" href="struct__Variable.html#a2a5a27690c40c531d0a8385dc4f66a95"/>
+      </topic>
+    </topic>
+    <topic label="Data Structure Index" href="classes.html"/>
+    <topic label="Data Fields" href="functions.html">
+      <topic label="All" href="functions.html"/>
+      <topic label="Variables" href="functions_vars.html"/>
+    </topic>
+  </topic>
+  <topic label="Files">
+    <topic label="File List" href="files.html">
+      <topic label="Headers" href="dir_692516b589a32b3bfce781ca9f6d1534.html">
+        <topic label="Clause.h" href="Clause_8h.html">
+          <topic label="Clause" href="struct__Clause.html">
+            <topic label="arrayOfVariables" href="struct__Clause.html#a5b07ad8a6420b4794d5c9d147809e6a2"/>
+            <topic label="nbVariables" href="struct__Clause.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+          </topic>
+          <topic label="addVariable" href="Clause_8h.html#a2884772e29db78b468456b3c8487a060"/>
+          <topic label="displayClause" href="Clause_8h.html#a6e3fb8370401cd7f75084396dfb29036"/>
+          <topic label="initClause" href="Clause_8h.html#ae585dbd66a1033a363ba8e49d9b21194"/>
+        </topic>
+        <topic label="Problem.h" href="Problem_8h.html">
+          <topic label="Problem" href="struct__Problem.html">
+            <topic label="arrayOfClauses" href="struct__Problem.html#a8b3887325dbf1958fce0a4f30afed8dc"/>
+            <topic label="nbClauses" href="struct__Problem.html#a78552348f2be74fce83839fdc026068c"/>
+            <topic label="nbVariables" href="struct__Problem.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+          </topic>
+          <topic label="allocateProblem" href="Problem_8h.html#a0b6bf6bf63932f58e131c8b0aabcd3c3"/>
+          <topic label="allocationOfClause" href="Problem_8h.html#a50849e9935847ba4b22a08355d670211"/>
+          <topic label="displayProblem" href="Problem_8h.html#a37a7887168d1540e26ed7cc29aa4c75b"/>
+          <topic label="initProblem" href="Problem_8h.html#ac2325e8d4f63221a9add04b3e5e678cf"/>
+        </topic>
+        <topic label="Solver.h" href="Solver_8h.html">
+          <topic label="Solver" href="struct__Solver.html">
+            <topic label="arrayOfSolutions" href="struct__Solver.html#a2d4f03d40744e392cf7ec14d9cbc2465"/>
+            <topic label="nbVariables" href="struct__Solver.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
+          </topic>
+          <topic label="displaySolution" href="Solver_8h.html#a46501a8ba676c9dc64639aec4db6e008"/>
+          <topic label="initSolver" href="Solver_8h.html#a69b0cd7fce93366c228d2cfb1abbc74b"/>
+          <topic label="isOpen" href="Solver_8h.html#a0152864759747fb4cee9f8702b0a1fe6"/>
+          <topic label="isSolution" href="Solver_8h.html#af0a6ab4158c16f272c874eead590fe1a"/>
+          <topic label="solveProblem" href="Solver_8h.html#a84b3a2a1b97b81f7f623da255119049d"/>
+        </topic>
+        <topic label="Variable.h" href="Variable_8h.html">
+          <topic label="Variable" href="struct__Variable.html">
+            <topic label="id" href="struct__Variable.html#ab7ce6f462afaf105224b0ca772a33c43"/>
+            <topic label="value" href="struct__Variable.html#a2a5a27690c40c531d0a8385dc4f66a95"/>
+          </topic>
+          <topic label="false" href="Variable_8h.html#a65e9886d74aaee76545e83dd09011727"/>
+          <topic label="true" href="Variable_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7"/>
+          <topic label="displayVariable" href="Variable_8h.html#a83986ef7b901683b169f7a5ff3e398c0"/>
+          <topic label="initVariable" href="Variable_8h.html#abf61952b92a2cd332d4e1b1e96155cb0"/>
+        </topic>
+      </topic>
+      <topic label="Sources" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">
+        <topic label="Clause.c" href="Clause_8c.html">
+          <topic label="addVariable" href="Clause_8c.html#aa65726dbcf593914b2531963e8599f3f"/>
+          <topic label="displayClause" href="Clause_8c.html#a6e3fb8370401cd7f75084396dfb29036"/>
+          <topic label="initClause" href="Clause_8c.html#ae585dbd66a1033a363ba8e49d9b21194"/>
+        </topic>
+        <topic label="Problem.c" href="Problem_8c.html">
+          <topic label="MAX_SIZE" href="Problem_8c.html#a0592dba56693fad79136250c11e5a7fe"/>
+          <topic label="allocateProblem" href="Problem_8c.html#a0b6bf6bf63932f58e131c8b0aabcd3c3"/>
+          <topic label="allocationOfClause" href="Problem_8c.html#a50849e9935847ba4b22a08355d670211"/>
+          <topic label="displayProblem" href="Problem_8c.html#a37a7887168d1540e26ed7cc29aa4c75b"/>
+          <topic label="initProblem" href="Problem_8c.html#ac2325e8d4f63221a9add04b3e5e678cf"/>
+        </topic>
+        <topic label="Solver.c" href="Solver_8c.html">
+          <topic label="displaySolution" href="Solver_8c.html#a46501a8ba676c9dc64639aec4db6e008"/>
+          <topic label="initSolver" href="Solver_8c.html#a69b0cd7fce93366c228d2cfb1abbc74b"/>
+          <topic label="isOpen" href="Solver_8c.html#a0152864759747fb4cee9f8702b0a1fe6"/>
+          <topic label="isSolution" href="Solver_8c.html#af0a6ab4158c16f272c874eead590fe1a"/>
+          <topic label="solveProblem" href="Solver_8c.html#a84b3a2a1b97b81f7f623da255119049d"/>
+        </topic>
+        <topic label="Variable.c" href="Variable_8c.html">
+          <topic label="displayVariable" href="Variable_8c.html#a83986ef7b901683b169f7a5ff3e398c0"/>
+          <topic label="initVariable" href="Variable_8c.html#abf61952b92a2cd332d4e1b1e96155cb0"/>
+        </topic>
+      </topic>
+      <topic label="Main.c" href="Main_8c.html">
+        <topic label="displayErrorArgument" href="Main_8c.html#a63810e2fa7c572785360b09ad831d139"/>
+        <topic label="displayInfo" href="Main_8c.html#a3f935cb0a57eaa2aece44562eb559446"/>
+        <topic label="displaySolveTime" href="Main_8c.html#a4b225ea6e36f21f72ce627aa013962b2"/>
+        <topic label="main" href="Main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627"/>
+        <topic label="signalHandler" href="Main_8c.html#a8ee3282bc313e547dbbb8d4f4010db61"/>
+        <topic label="parsingTime" href="Main_8c.html#a4a4342137ef042ae64bb4970e51bec09"/>
+        <topic label="problem" href="Main_8c.html#ac505fe7cb75371fcb39e0d4dec60f4dc"/>
+        <topic label="solver" href="Main_8c.html#ae1ad25a4dd6b076c27672dc94d11dad0"/>
+        <topic label="solvingTime" href="Main_8c.html#abd8c20b4e88a455863b76738d6a281f3"/>
+      </topic>
+    </topic>
+    <topic label="Globals" href="globals.html">
+      <topic label="All" href="globals.html"/>
+      <topic label="Functions" href="globals_func.html"/>
+      <topic label="Variables" href="globals_vars.html"/>
+      <topic label="Macros" href="globals_defs.html"/>
+    </topic>
+  </topic>
+</toc>
