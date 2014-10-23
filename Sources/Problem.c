@@ -20,5 +20,5 @@ void initProblem(const char* filename) {
 	 	exit(-3);
 	 }
 
-
+	 fclose(file);
 }
