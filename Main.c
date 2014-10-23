@@ -19,20 +19,27 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include <time.h>
 #include <signal.h>
-#include <math.h>
 
 #include "Headers/Problem.h"
 
+double parsingTime;
 
 /**
  * Useful to display some informations.
  */
-void displayInfo(FILE* std) {
+void displayInfo(FILE* std,Problem * problem) {
 
+  fprintf(std,"\n\n");
   fprintf(std,"c This is SATyr \n");
 	fprintf(std,"c Created by Valentin Montmirail, a student in computer engineering at Polytech Tours\n");
 	fprintf(std,"c \n");
-
+  fprintf(std,"c /====================================================================================\\\n");
+  fprintf(std,"c | Number of Variables  :    %5d                                                     |\n",problem->nbVariables);
+  fprintf(std,"c | Number of Clauses    :    %5d                                                     |\n",problem->nbClauses);
+  fprintf(std,"c |-------------------------------------------------------------------------------------|\n");
+  fprintf(std,"c | Parsing time         : %10.5fms                                                 |\n",parsingTime);
+  fprintf(std,"c \\====================================================================================/\n");
+  fprintf(std,"\n\n\n");
 }
 
 /**
@@ -78,8 +85,6 @@ int main(int argc,char** argv)
   clock_t start;
   clock_t end;
 
-  displayInfo(stdout);
-
   if(argc < 2) {
     /* If we go there, that's mean that there is no argument during the call of the solver...*/
     displayErrorArgument(stderr);
@@ -88,7 +93,15 @@ int main(int argc,char** argv)
 
   Problem problem;
 
-  initProblem(&problem,argv[1]);
+  start = clock();
+    initProblem(&problem,argv[1]);
+  end = clock();
+
+  parsingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
+
+  displayInfo(stdout,&problem);
+
+
 
 
   return 0;

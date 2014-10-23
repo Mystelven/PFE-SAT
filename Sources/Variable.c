@@ -6,11 +6,23 @@
  * @param id the next id for our variable.
  * @param value the next value of our variable: {false, true}
  */
-void initVariable(Variable * variable, unsigned int id, unsigned int value) {
+Variable* initVariable(unsigned int id, unsigned int value) {
+
+	Variable* variable = (Variable*)malloc(sizeof(Variable)*1);
+
+	/* We test our malloc result. */
+	if(variable == NULL) {
+
+		/* We want to be sure that the malloc didn't fail. */
+		perror("Problem with the allocation of variables in initVariable(Variable * variable, unsigned int id, unsigned int value)");
+		exit(-2);
+	}
+
 
 	variable->id = id;
 	variable->value = value;
 
+	return variable;
 }
 
 /**
@@ -20,6 +32,11 @@ void initVariable(Variable * variable, unsigned int id, unsigned int value) {
  * @param variable the pointer on the variable that we will display.
  */
 void displayVariable(Variable * variable) {
+
+	if(variable == NULL) {
+		perror("We are not allowed to display a variable if she is NULL");
+		exit(-4);
+	}
 
 	if(variable->value == true) {
 

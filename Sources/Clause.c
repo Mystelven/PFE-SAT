@@ -1,21 +1,10 @@
 #include "../Headers/Clause.h"
 
 
-void initClause(Clause* clause, unsigned int clauseSize) {
+void initClause(Clause* clause) {
 
 	/* We affect the clauseSize to our number of variable in the clauses. */
-	clause->nbVariables = clauseSize;
-	
-	/* We allocate the good space for our array of variables. */
-	clause->arrayOfVariables = (Variable*)malloc(sizeof(Variable)*clause->nbVariables);
-
-	/* We test our malloc result. */
-	if(clause->arrayOfVariables == NULL) {
-
-		/* We want to be sure that the malloc didn't fail. */
-		perror("Problem with the allocation of variables in initClause(Clause* clause, unsigned int clauseSize");
-		exit(-2);
-	}
+	clause->nbVariables = 0;
 
 }
 
@@ -28,4 +17,30 @@ void displayClause(Clause* clause) {
 		/* We display the variable inside. */
 		displayVariable(&clause->arrayOfVariables[i]);
 	}
+}
+
+void addVariable(Clause* clause, Variable* variable) {
+
+	++clause->nbVariables;
+
+	if(clause->nbVariables == 1) {
+
+		/* We allocate the good space for our array of variables. */
+		clause->arrayOfVariables = (Variable*)malloc(sizeof(Variable)*clause->nbVariables);
+
+	} else {
+
+		/* We allocate the good space for our array of variables. */
+		clause->arrayOfVariables = (Variable*)realloc(clause->arrayOfVariables,sizeof(Variable)*clause->nbVariables);
+	}
+
+	/* We test our malloc result. */
+	if(clause->arrayOfVariables == NULL) {
+
+		/* We want to be sure that the malloc didn't fail. */
+		perror("Problem with the allocation of variables in addVariable(Clause* clause, Variable* variable");
+		exit(-2);
+	}
+
+	clause->arrayOfVariables[clause->nbVariables-1] = *variable;
 }

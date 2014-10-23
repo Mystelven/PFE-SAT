@@ -4,6 +4,37 @@
 
 #define MAX_SIZE 1000
 
+void allocationOfClause(Problem* problem,char* chaine, unsigned int i) {
+
+	//printf("Problem : [%d ; %d] ",problem->nbClauses,problem->nbVariables);
+	//printf("Clause numéro %d :",i);
+	//printf("%s\n",chaine);
+
+	char* element = strtok(chaine," ");
+
+	Variable* variable = NULL;
+	
+
+	while(element) {
+
+		int id = atoi(element);
+		if(id < 0) {
+			
+			variable = initVariable((unsigned int)(id*-1),false);
+		
+		}
+		else if(id > 0) {
+			
+			variable = initVariable((unsigned int)id,true);
+		}
+
+		addVariable(&problem->arrayOfClauses[i],variable);
+
+		element = strtok(NULL," ");
+	}
+
+}
+
 void allocateProblem(Problem* problem, char* chaine) {
 
 	/* We don't care about "p cnf" so we shift 5 chars. */
@@ -41,24 +72,26 @@ void allocateProblem(Problem* problem, char* chaine) {
 
 void initProblem(Problem* problem, const char* filename) {
 
-	 /* We will need a file to read the CNF instance and to create our Problem. */
-	 FILE* file = NULL;
+	/* We will need a file to read the CNF instance and to create our Problem. */
+	FILE* file = NULL;
 
-	 /* We need only the right to read the file, nothing more. */
-	 file = fopen(filename, "r");
+	/* We need only the right to read the file, nothing more. */
+	file = fopen(filename, "r");
 
-	 char chaine[MAX_SIZE] = "";
+	char chaine[MAX_SIZE] = "";
 
-	 if(file == NULL) {
+	unsigned int i = 0;
+
+	if(file == NULL) {
 
 	 	/* We didn't success to open the file, so we display an error message to help the user. */
 	 	perror("The path you give to the CNF file is not correct");
 	 	perror("You should verify that you have the right to read this file.");
 	 	perror("Or if the file exists for real...");
 	 	exit(-3);
-	 }
+	}
 
-	 while(fgets(chaine,MAX_SIZE,file) != NULL) {
+	while(fgets(chaine,MAX_SIZE,file) != NULL) {
 
 	 	/* if the first character is a c, we don't care about it. */
 	 	/* Because it's a commentary, and commentary are useful only for humans. */
@@ -77,12 +110,21 @@ void initProblem(Problem* problem, const char* filename) {
 	 		allocateProblem(problem, chaine);
 
 	 	} else {
-
-	 		printf("%s",chaine);
-	 	
+	 		
+	 		allocationOfClause(problem,chaine,i);
+	 		i++;
 	 	}
 
-	 };
+	};
 
-	 fclose(file);
+	fclose(file);
+}
+
+void displayProblem(Problem* problem) {
+
+	for(unsigned int i = 0; i < problem->nbClauses; i++) {
+
+		displayClause(&problem->arrayOfClauses[i]);
+		printf("\n");
+	}
 }
