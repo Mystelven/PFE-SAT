@@ -90,8 +90,8 @@ void signalHandler( int signum )
 
     printf("\ns   UNKNOWN\n");
     printf("v   ");
-
-    for(unsigned int i = 0; i < solver->nbVariables; ++i) {
+    unsigned int i = 0;
+    for(i = 0; i < solver->nbVariables; ++i) {
       printf("? ");
     }
     printf("\n");
