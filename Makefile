@@ -23,7 +23,7 @@
 FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
 FLAGS3   = -Wshadow -Wredundant-decls -Winit-self -Wswitch-default 
-FLAGS4   = -Wswitch-enum -Wundef -Winline $(CPP11)
+FLAGS4   = -Wswitch-enum -Wundef -Winline
 
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
@@ -35,10 +35,25 @@ SOURCES  = ./Sources/
 
 OBJECT   = ./obj/
 
+VARIABLE = $(OBJECT)variable.o
+
+CLAUSE = $(OBJECT)clause.o
+
+PROBLEM = $(OBJECT)problem.o
+
 ##############################################################################
 
-all: 
-	$(COMPILER) $(CPP11) -o $(MAIN) Main.c
+all: $(PROBLEM)
+	$(COMPILER) -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) Main.c
+
+$(VARIABLE):
+	$(COMPILER) $(FLAGS) -o $(VARIABLE) -c Sources/Variable.c
+
+$(CLAUSE): $(VARIABLE)
+	$(COMPILER) $(FLAGS) -o $(CLAUSE) -c Sources/Clause.c	
+
+$(PROBLEM): $(CLAUSE)
+	$(COMPILER) $(FLAGS) -o $(PROBLEM) -c Sources/Problem.c		
 
 ##############################################################################
 
