@@ -1,6 +1,7 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
+#include "Problem.h"
 
 /** 
  * We define our structure for our Solver.
@@ -19,6 +20,15 @@ struct _Solver {
 typedef struct _Solver Solver;
 
 
+Solver* initSolver(Problem* problem);
 
+unsigned int isSolution(Solver* solver, Problem* problem);
+
+void solveProblem(Solver* solver, Problem* problem);
+
+unsigned int isOpen(Solver* solver, Clause* clause);
+
+void displaySolution(Solver* solver);
 
 #endif
+

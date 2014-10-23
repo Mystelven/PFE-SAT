@@ -20,9 +20,15 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <time.h>
 #include <signal.h>
 
-#include "Headers/Problem.h"
+#include "Headers/Solver.h"
 
 double parsingTime;
+
+double solvingTime;
+
+Problem problem;
+
+Solver* solver;
 
 /**
  * Useful to display some informations.
@@ -38,8 +44,7 @@ void displayInfo(FILE* std,Problem * problem) {
   fprintf(std,"c | Number of Clauses    :    %5d                                                     |\n",problem->nbClauses);
   fprintf(std,"c |-------------------------------------------------------------------------------------|\n");
   fprintf(std,"c | Parsing time         :   %10.3fms                                               |\n",parsingTime);
-  fprintf(std,"c \\====================================================================================/\n");
-  fprintf(std,"\n\n\n");
+  fprintf(std,"c |=====================================================================================|\n");
 }
 
 /**
@@ -55,6 +60,24 @@ void displayErrorArgument(FILE* std) {
   	fprintf(std,"\n\tso your call looks like : ./satyr path_to_file\n\n");
 }
 
+
+void displaySolveTime(FILE* std) {
+
+  if(isSolution(solver,&problem) == 1) {
+    fprintf(std,"\ns   SATISFIABLE\n");
+    fprintf(std,"v   ");
+    displaySolution(solver);
+    fprintf(std,"c |-------------------------------------------------------------------------------------|\n");
+    fprintf(std,"c   Solving Time         : %10.3fms\n",solvingTime);
+
+  } else {
+
+    fprintf(std,"\ns UNSATISFIABLE\n");
+
+  }
+
+  fprintf(std,"c \\====================================================================================/\n\n");
+}
 
 /**
  * Useful to catch the SIGINT signal
@@ -82,6 +105,8 @@ int main(int argc,char** argv)
   /* A SIGINT signal should stop the program and close everything already open. */
   signal(SIGINT, signalHandler);  
 
+  srand(time(NULL));
+
   clock_t start;
   clock_t end;
 
@@ -90,9 +115,6 @@ int main(int argc,char** argv)
     displayErrorArgument(stderr);
     exit(-1);
   }
-
-  Problem problem;
-
   start = clock();
     initProblem(&problem,argv[1]);
   end = clock();
@@ -101,8 +123,15 @@ int main(int argc,char** argv)
 
   displayInfo(stdout,&problem);
 
+  solver = initSolver(&problem);
 
+  start = clock();
+    solveProblem(solver,&problem);
+  end = clock();
 
+  solvingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
+
+  displaySolveTime(stdout);
 
   return 0;
 }
