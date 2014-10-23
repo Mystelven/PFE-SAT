@@ -20,10 +20,10 @@
 #
 ##############################################################################
 
-FLAGS1	 = -pedantic -Wall -Wextra -Wold-style-cast -Woverloaded-virtual -Wfloat-equal 
+FLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
 FLAGS3   = -Wshadow -Wredundant-decls -Winit-self -Wswitch-default 
-FLAGS4   = -Wswitch-enum -Wundef -Winline
+FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99
 
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
