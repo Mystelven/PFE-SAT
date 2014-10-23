@@ -20,4 +20,11 @@ struct _Problem {
 /** We rename our structure to avoid to tape struct _Problem everywhere... */
 typedef struct _Problem Problem;
 
+
+/**
+ * This is the constructor of the "pseudo-class" 
+ * @param filename is the path to find the CNF who formalize our SAT problem.
+ */
+void initProblem(const char* filename);
+
 #endif
