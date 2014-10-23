@@ -37,7 +37,7 @@ void displayInfo(FILE* std,Problem * problem) {
   fprintf(std,"c | Number of Variables  :    %5d                                                     |\n",problem->nbVariables);
   fprintf(std,"c | Number of Clauses    :    %5d                                                     |\n",problem->nbClauses);
   fprintf(std,"c |-------------------------------------------------------------------------------------|\n");
-  fprintf(std,"c | Parsing time         : %10.5fms                                                 |\n",parsingTime);
+  fprintf(std,"c | Parsing time         :   %10.3fms                                               |\n",parsingTime);
   fprintf(std,"c \\====================================================================================/\n");
   fprintf(std,"\n\n\n");
 }

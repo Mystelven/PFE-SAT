@@ -41,10 +41,12 @@ CLAUSE = $(OBJECT)clause.o
 
 PROBLEM = $(OBJECT)problem.o
 
+SOLVER = $(OBJECT)solver.o
+
 ##############################################################################
 
-all: $(PROBLEM)
-	$(COMPILER) -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) Main.c
+all: $(SOLVER)
+	$(COMPILER) -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) $(SOLVER) Main.c
 
 $(VARIABLE):
 	$(COMPILER) $(FLAGS) -o $(VARIABLE) -c Sources/Variable.c
@@ -54,6 +56,9 @@ $(CLAUSE): $(VARIABLE)
 
 $(PROBLEM): $(CLAUSE)
 	$(COMPILER) $(FLAGS) -o $(PROBLEM) -c Sources/Problem.c		
+
+$(SOLVER): $(PROBLEM)
+	$(COMPILER) $(FLAGS) -o $(SOLVER) -c Sources/Solver.c			
 
 ##############################################################################
 
