@@ -21,7 +21,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <signal.h>
 #include <math.h>
 
-#include "Headers/Variable.h"
+#include "Headers/Problem.h"
 
 
 /**
@@ -85,6 +85,11 @@ int main(int argc,char** argv)
     displayErrorArgument(stderr);
     exit(-1);
   }
+
+  Problem problem;
+
+  initProblem(&problem,argv[1]);
+
 
   return 0;
 }

@@ -3,9 +3,13 @@
 
 void initClause(Clause* clause, unsigned int clauseSize) {
 
+	/* We affect the clauseSize to our number of variable in the clauses. */
 	clause->nbVariables = clauseSize;
 	
+	/* We allocate the good space for our array of variables. */
 	clause->arrayOfVariables = (Variable*)malloc(sizeof(Variable)*clause->nbVariables);
+
+	/* We test our malloc result. */
 	if(clause->arrayOfVariables == NULL) {
 
 		/* We want to be sure that the malloc didn't fail. */
