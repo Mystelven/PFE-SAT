@@ -92,13 +92,12 @@ void signalHandler( int signum )
     printf("v   ");
 
     for(unsigned int i = 0; i < solver->nbVariables; ++i) {
-      solver->arrayOfSolutions[i] = -1;
+      printf("? ");
     }
-
-    displaySolution(solver);
+    printf("\n");
     printf("c |-------------------------------------------------------------------------------------|\n");
     printf("c   Solving Time         :   infinity \n");
-
+    printf("c \\====================================================================================/\n\n");
     exit(signum);  
 }
 
