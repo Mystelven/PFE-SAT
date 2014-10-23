@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <results>
+    <error file="Headers/Problem.h" line="12" id="unusedStructMember" severity="style" msg="struct or union member &apos;_Problem::nbVariables&apos; is never used."/>
+    <error file="Headers/Problem.h" line="14" id="unusedStructMember" severity="style" msg="struct or union member &apos;_Problem::nbClauses&apos; is never used."/>
     <error file="Main.c" line="78" id="unusedVariable" severity="style" msg="Unused variable: start"/>
     <error file="Main.c" line="79" id="unusedVariable" severity="style" msg="Unused variable: end"/>
+    <error file="Sources/Problem.c" line="24" id="resourceLeak" severity="error" msg="Resource leak: file"/>
+    <error file="Sources/Variable.c" line="27" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
+    <error file="Sources/Variable.c" line="32" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
+    <error file="Sources/Clause.c" line="19" id="unusedFunction" severity="style" msg="The function &apos;displayClause&apos; is never used."/>
+    <error file="Sources/Clause.c" line="4" id="unusedFunction" severity="style" msg="The function &apos;initClause&apos; is never used."/>
+    <error file="Sources/Problem.c" line="6" id="unusedFunction" severity="style" msg="The function &apos;initProblem&apos; is never used."/>
+    <error file="Sources/Variable.c" line="9" id="unusedFunction" severity="style" msg="The function &apos;initVariable&apos; is never used."/>
     <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files (use --check-config for details)"/>
 </results>
