@@ -4,20 +4,18 @@
 
 #define MAX_SIZE 1000
 
-void allocationOfClause(Problem* problem,char* chaine, unsigned int i) {
+void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 
-	//printf("Problem : [%d ; %d] ",problem->nbClauses,problem->nbVariables);
-	//printf("Clause numéro %d :",i);
-	//printf("%s\n",chaine);
+	char* ligne = strdup(chaine);
 
-	char* element = strtok(chaine," ");
+	char* element = strtok(ligne," ");
 
-	Variable* variable = NULL;
-	
+	Variable* variable = NULL;	
 
 	while(element) {
 
 		int id = atoi(element);
+
 		if(id < 0) {
 			
 			variable = initVariable((unsigned int)(id*-1),false);
@@ -28,17 +26,27 @@ void allocationOfClause(Problem* problem,char* chaine, unsigned int i) {
 			variable = initVariable((unsigned int)id,true);
 		}
 
-		addVariable(&problem->arrayOfClauses[i],variable);
+
+		if(id != 0) {
+
+		//initClause(&problem->arrayOfClauses[i]);
+			addVariable(&problem->arrayOfClauses[i],variable);
+
+		}
 
 		element = strtok(NULL," ");
 	}
 
+	//free(ligne);
+	//free(element);
 }
 
-void allocateProblem(Problem* problem, char* chaine) {
+void allocateProblem(Problem* problem,const char* chaine) {
 
 	/* We don't care about "p cnf" so we shift 5 chars. */
-	char* element = strtok(chaine+5," ");
+	char* ligne = strdup(chaine);
+
+	char* element = strtok(ligne+5," ");
 
 	unsigned int i = 0;
 
@@ -48,7 +56,8 @@ void allocateProblem(Problem* problem, char* chaine) {
 	 		/* The first number is the number of variables. */
 	 		problem->nbVariables = (unsigned int)atoi(element);
 
-	 	} else {
+	 	} else if(i==1){
+
 	 		/* The second number is the number of clauses. */
 	 		problem->nbClauses = (unsigned int)atoi(element);
 	 	}
@@ -67,7 +76,12 @@ void allocateProblem(Problem* problem, char* chaine) {
 		exit(-2);
 	}
 
-	free(element);
+	for(unsigned int boucle =0 ; boucle < problem->nbClauses; boucle++) {
+		initClause(&problem->arrayOfClauses[boucle]);
+	}
+
+	//free(ligne);
+	//free(element);
 }
 
 void initProblem(Problem* problem, const char* filename) {
@@ -110,7 +124,7 @@ void initProblem(Problem* problem, const char* filename) {
 	 		allocateProblem(problem, chaine);
 
 	 	} else {
-	 		
+
 	 		allocationOfClause(problem,chaine,i);
 	 		i++;
 	 	}

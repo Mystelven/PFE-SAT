@@ -113,47 +113,49 @@ $(document).ready(function(){initNavTree('Clause_8c_source.html','');});
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  <span class="comment">/* We affect the clauseSize to our number of variable in the clauses. */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  clause-&gt;nbVariables = 0;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  clause-&gt;arrayOfVariables = NULL;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="Clause_8c.html#a6e3fb8370401cd7f75084396dfb29036">   12</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="Clause_8h.html#a6e3fb8370401cd7f75084396dfb29036">displayClause</a>(Clause* clause) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="comment">/* To display a clause basically means that for every variable inside the clause. */</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; clause-&gt;nbVariables; ++i) {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">/* We display the variable inside. */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="Variable_8h.html#a83986ef7b901683b169f7a5ff3e398c0">displayVariable</a>(&amp;clause-&gt;arrayOfVariables[i]);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="Clause_8c.html#aa65726dbcf593914b2531963e8599f3f">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="Clause_8h.html#a2884772e29db78b468456b3c8487a060">addVariable</a>(Clause* clause, Variable* variable) {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="Clause_8c.html#a6e3fb8370401cd7f75084396dfb29036">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="Clause_8h.html#a6e3fb8370401cd7f75084396dfb29036">displayClause</a>(Clause* clause) {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="comment">/* To display a clause basically means that for every variable inside the clause. */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; clause-&gt;nbVariables; ++i) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">/* We display the variable inside. */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="Variable_8h.html#a83986ef7b901683b169f7a5ff3e398c0">displayVariable</a>(&amp;clause-&gt;arrayOfVariables[i]);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  ++clause-&gt;nbVariables;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="Clause_8c.html#aa65726dbcf593914b2531963e8599f3f">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="Clause_8h.html#a2884772e29db78b468456b3c8487a060">addVariable</a>(Clause* clause, Variable* variable) {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">if</span>(clause-&gt;nbVariables == 1) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  clause-&gt;nbVariables++;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">/* We allocate the good space for our array of variables. */</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    clause-&gt;arrayOfVariables = (Variable*)malloc(<span class="keyword">sizeof</span>(Variable)*clause-&gt;nbVariables);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">if</span>(clause-&gt;arrayOfVariables == NULL) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">/* We allocate the good space for our array of variables. */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    clause-&gt;arrayOfVariables = (Variable*)malloc(<span class="keyword">sizeof</span>(Variable)*clause-&gt;nbVariables);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* We allocate the good space for our array of variables. */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    clause-&gt;arrayOfVariables = (Variable*)realloc(clause-&gt;arrayOfVariables,<span class="keyword">sizeof</span>(Variable)*clause-&gt;nbVariables);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">/* We test our malloc result. */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">if</span>(clause-&gt;arrayOfVariables == NULL) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">/* We want to be sure that the malloc didn&#39;t fail. */</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    perror(<span class="stringliteral">&quot;Problem with the allocation of variables in addVariable(Clause* clause, Variable* variable&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    exit(-2);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  clause-&gt;arrayOfVariables[clause-&gt;nbVariables-1] = *variable;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="ttc" id="Clause_8h_html_a2884772e29db78b468456b3c8487a060"><div class="ttname"><a href="Clause_8h.html#a2884772e29db78b468456b3c8487a060">addVariable</a></div><div class="ttdeci">void addVariable(Clause *clause, Variable *p)</div><div class="ttdef"><b>Definition:</b> <a href="Clause_8c_source.html#l00022">Clause.c:22</a></div></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* We allocate the good space for our array of variables. */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    clause-&gt;arrayOfVariables = (Variable*)realloc(clause-&gt;arrayOfVariables,<span class="keyword">sizeof</span>(Variable)*clause-&gt;nbVariables);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">/* We test our malloc result. */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">if</span>(clause-&gt;arrayOfVariables == NULL) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">/* We want to be sure that the malloc didn&#39;t fail. */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    perror(<span class="stringliteral">&quot;Problem with the allocation of variables in addVariable(Clause* clause, Variable* variable&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    exit(-2);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  clause-&gt;arrayOfVariables[clause-&gt;nbVariables-1] = *variable;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="ttc" id="Clause_8h_html_a2884772e29db78b468456b3c8487a060"><div class="ttname"><a href="Clause_8h.html#a2884772e29db78b468456b3c8487a060">addVariable</a></div><div class="ttdeci">void addVariable(Clause *clause, Variable *p)</div><div class="ttdef"><b>Definition:</b> <a href="Clause_8c_source.html#l00024">Clause.c:24</a></div></div>
 <div class="ttc" id="Clause_8h_html_ae585dbd66a1033a363ba8e49d9b21194"><div class="ttname"><a href="Clause_8h.html#ae585dbd66a1033a363ba8e49d9b21194">initClause</a></div><div class="ttdeci">void initClause(Clause *clause)</div><div class="ttdoc">This is the constructor of the &amp;quot;pseudo-class&amp;quot;. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8c_source.html#l00004">Clause.c:4</a></div></div>
-<div class="ttc" id="Clause_8h_html_a6e3fb8370401cd7f75084396dfb29036"><div class="ttname"><a href="Clause_8h.html#a6e3fb8370401cd7f75084396dfb29036">displayClause</a></div><div class="ttdeci">void displayClause(Clause *clause)</div><div class="ttdoc">To display a clause basically means: to display every variables inside. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8c_source.html#l00012">Clause.c:12</a></div></div>
+<div class="ttc" id="Clause_8h_html_a6e3fb8370401cd7f75084396dfb29036"><div class="ttname"><a href="Clause_8h.html#a6e3fb8370401cd7f75084396dfb29036">displayClause</a></div><div class="ttdeci">void displayClause(Clause *clause)</div><div class="ttdoc">To display a clause basically means: to display every variables inside. </div><div class="ttdef"><b>Definition:</b> <a href="Clause_8c_source.html#l00014">Clause.c:14</a></div></div>
 <div class="ttc" id="Variable_8h_html_a83986ef7b901683b169f7a5ff3e398c0"><div class="ttname"><a href="Variable_8h.html#a83986ef7b901683b169f7a5ff3e398c0">displayVariable</a></div><div class="ttdeci">void displayVariable(Variable *variable)</div><div class="ttdoc">This is the procedure to display our variable according to the CNF format; That means that for the i-...</div><div class="ttdef"><b>Definition:</b> <a href="Variable_8c_source.html#l00034">Variable.c:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -161,7 +163,7 @@ $(document).ready(function(){initNavTree('Clause_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li><li class="navelem"><a class="el" href="Clause_8c.html">Clause.c</a></li>
-    <li class="footer">Generated on Thu Nov 6 2014 09:03:12 for SATyr - SAT&#39;s Solver by
+    <li class="footer">Generated on Thu Nov 6 2014 18:21:31 for SATyr - SAT&#39;s Solver by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

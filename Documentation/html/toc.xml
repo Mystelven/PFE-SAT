@@ -43,8 +43,8 @@
             <topic label="nbClauses" href="struct__Problem.html#a78552348f2be74fce83839fdc026068c"/>
             <topic label="nbVariables" href="struct__Problem.html#a760aa9fcc9b7aae244fab831d14c11e1"/>
           </topic>
-          <topic label="allocateProblem" href="Problem_8h.html#a0b6bf6bf63932f58e131c8b0aabcd3c3"/>
-          <topic label="allocationOfClause" href="Problem_8h.html#a50849e9935847ba4b22a08355d670211"/>
+          <topic label="allocateProblem" href="Problem_8h.html#ae4a4c08baf0946dcb464f01fb9876a16"/>
+          <topic label="allocationOfClause" href="Problem_8h.html#aad057f0de058bba97ab026ac5e7f243d"/>
           <topic label="displayProblem" href="Problem_8h.html#a37a7887168d1540e26ed7cc29aa4c75b"/>
           <topic label="initProblem" href="Problem_8h.html#ac2325e8d4f63221a9add04b3e5e678cf"/>
         </topic>
@@ -78,8 +78,8 @@
         </topic>
         <topic label="Problem.c" href="Problem_8c.html">
           <topic label="MAX_SIZE" href="Problem_8c.html#a0592dba56693fad79136250c11e5a7fe"/>
-          <topic label="allocateProblem" href="Problem_8c.html#a0b6bf6bf63932f58e131c8b0aabcd3c3"/>
-          <topic label="allocationOfClause" href="Problem_8c.html#a50849e9935847ba4b22a08355d670211"/>
+          <topic label="allocateProblem" href="Problem_8c.html#ae4a4c08baf0946dcb464f01fb9876a16"/>
+          <topic label="allocationOfClause" href="Problem_8c.html#aad057f0de058bba97ab026ac5e7f243d"/>
           <topic label="displayProblem" href="Problem_8c.html#a37a7887168d1540e26ed7cc29aa4c75b"/>
           <topic label="initProblem" href="Problem_8c.html#ac2325e8d4f63221a9add04b3e5e678cf"/>
         </topic>
