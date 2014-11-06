@@ -6,6 +6,8 @@ void initClause(Clause* clause) {
 	/* We affect the clauseSize to our number of variable in the clauses. */
 	clause->nbVariables = 0;
 
+	clause->arrayOfVariables = NULL;
+
 }
 
 
@@ -21,9 +23,9 @@ void displayClause(Clause* clause) {
 
 void addVariable(Clause* clause, Variable* variable) {
 
-	++clause->nbVariables;
+	clause->nbVariables++;
 
-	if(clause->nbVariables == 1) {
+	if(clause->arrayOfVariables == NULL) {
 
 		/* We allocate the good space for our array of variables. */
 		clause->arrayOfVariables = (Variable*)malloc(sizeof(Variable)*clause->nbVariables);

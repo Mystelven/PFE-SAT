@@ -29,10 +29,11 @@ typedef struct _Problem Problem;
 void initProblem(Problem* problem, const char* filename);
 
 
-void allocateProblem(Problem* problem, char* chaine);
+void allocateProblem(Problem* problem,const char* chaine);
 
 
-void allocationOfClause(Problem* problem,char* chaine, unsigned int i);
+void allocationOfClause(Problem* problem,const char* chaine, unsigned int i);
+
 
 void displayProblem(Problem* problem);
 
