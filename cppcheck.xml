@@ -2,8 +2,6 @@
 <results>
     <error file="Main.c" line="43" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
     <error file="Main.c" line="44" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
-    <error file="Sources/Problem.c" line="42" id="memleak" severity="error" msg="Memory leak: ligne"/>
-    <error file="Sources/Problem.c" line="85" id="memleak" severity="error" msg="Memory leak: ligne"/>
     <error file="Sources/Solver.c" line="19" id="variableScope" severity="style" msg="The scope of the variable &apos;indiceRandom&apos; can be reduced."/>
     <error file="Sources/Variable.c" line="44" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
     <error file="Sources/Variable.c" line="49" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>

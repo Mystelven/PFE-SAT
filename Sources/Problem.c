@@ -37,8 +37,8 @@ void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 		element = strtok(NULL," ");
 	}
 
-	//free(ligne);
-	//free(element);
+	free(ligne);
+	free(element);
 }
 
 void allocateProblem(Problem* problem,const char* chaine) {
@@ -80,8 +80,8 @@ void allocateProblem(Problem* problem,const char* chaine) {
 		initClause(&problem->arrayOfClauses[boucle]);
 	}
 
-	//free(ligne);
-	//free(element);
+	free(ligne);
+	free(element);
 }
 
 void initProblem(Problem* problem, const char* filename) {
