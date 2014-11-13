@@ -5,7 +5,7 @@ rm -rf results/*
 for fichier in `ls ./instances/uf20-91/` 
 do
 	echo $fichier;
-	./satyr "./instances/uf20-91/"$fichier > "results/"$fichier & 
+	./satyr "./instances/uf20-91/"$fichier > "results/"$fichier&
 	pid=$!;
 	(sleep 2; kill $pid) &
 
