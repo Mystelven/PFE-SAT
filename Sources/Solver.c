@@ -14,17 +14,13 @@ unsigned int isSolution(Solver* solver, Problem* problem) {
 }
 
 
-void solveProblem(Solver* solver, Problem* problem) {
+void randomMove(Solver* solver) {
 
-	unsigned int indiceRandom = 0;
+	unsigned int indiceRandom = (unsigned int)rand() % (solver->nbVariables);
 
-	while(isSolution(solver,problem) != 1) {
+	indiceRandom = (unsigned int)(indiceRandom * (unsigned int)rand() % (solver->nbVariables));
 
-		indiceRandom = (unsigned int) rand() % (solver->nbVariables);
-
-		solver->arrayOfSolutions[indiceRandom] *= -1;
-
-	}
+	solver->arrayOfSolutions[indiceRandom] *= -1;
 	
 }
 

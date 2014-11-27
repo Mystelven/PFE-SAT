@@ -12,25 +12,25 @@ struct _Genetic_Solver {
 
 	unsigned int nbIndividual;
 
-	Solver* population;
+	Solver** population;
 
 };
 
 /** We rename our structure to avoid to tape struct _Genetic_Solver everywhere... */
 typedef struct _Genetic_Solver Genetic_Solver;
 
-Genetic_Solver* initGeneticSolver(Problem* problem);
+Genetic_Solver* initGeneticSolver(Problem* problem,unsigned int nb);
 
 unsigned int isSolutionG(Genetic_Solver* solver, Problem* problem);
 
-unsigned int isOpenG(Genetic_Solver* solver, Clause* clause);
-
-void displaySolutionG(Genetic_Solver* solver);
+void displaySolutionG(Genetic_Solver* solver,Problem* problem);
 
 void solveProblemG(Genetic_Solver* solver, Problem* problem);
 
 void crossing(Genetic_Solver* solver);
 
 void mutation(Genetic_Solver* solver);
+
+double fitness(Genetic_Solver* solver);
 
 #endif
