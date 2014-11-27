@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-#define MAX_SIZE 1000
+#define MAX_SIZE 800
 
 void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 
@@ -29,7 +29,6 @@ void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 
 		if(id != 0) {
 
-		//initClause(&problem->arrayOfClauses[i]);
 			addVariable(&problem->arrayOfClauses[i],variable);
 
 		}

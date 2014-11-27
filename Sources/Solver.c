@@ -4,13 +4,13 @@ unsigned int isSolution(Solver* solver, Problem* problem) {
 
 	for(unsigned int i = 0; i < problem->nbClauses; i++) {
 
-		if(isOpen(solver,&problem->arrayOfClauses[i]) == 0) {
+		if(isOpen(solver,&problem->arrayOfClauses[i]) == false) {
 
-			return 0;
+			return false;
 		}
 	}
 
-	return 1;
+	return true;
 }
 
 
@@ -52,13 +52,13 @@ unsigned int isOpen(Solver* solver,Clause* clause) {
 		unsigned int id = clause->arrayOfVariables[i].id;
 		unsigned int value = clause->arrayOfVariables[i].value;
 
-		if(solver->arrayOfSolutions[id] >= 0 && value == true) return 1;
+		if(solver->arrayOfSolutions[id] >= 0 && value == true) return true;
 
-		else if(solver->arrayOfSolutions[id] < 0 && value == false) return 1;
+		else if(solver->arrayOfSolutions[id] < 0 && value == false) return true;
 
 	}
 
-	return 0;
+	return false;
 }
 
 void displaySolution(Solver* solver) {

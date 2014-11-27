@@ -23,10 +23,10 @@ unsigned int isSolutionG(Genetic_Solver* solver, Problem* problem) {
 	
 	for(i = 0; i < solver->nbIndividual; i++) {
 
-		if(isSolution(solver->population[i],problem) == 1) return 1;
+		if(isSolution(solver->population[i],problem) == true) return true;
 	}
 
-	return 0;
+	return false;
 }
 
 
