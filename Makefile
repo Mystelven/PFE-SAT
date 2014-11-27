@@ -43,10 +43,12 @@ PROBLEM = $(OBJECT)problem.o
 
 SOLVER = $(OBJECT)solver.o
 
+GENETIC_SOLVER = $(OBJECT)genetic_solver.o
+
 ##############################################################################
 
-all: $(SOLVER)
-	$(COMPILER) -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) $(SOLVER) Main.c
+all: $(GENETIC_SOLVER)
+	$(COMPILER) -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) $(SOLVER) $(GENETIC_SOLVER) Main.c
 
 $(VARIABLE):
 	$(COMPILER) $(FLAGS) -o $(VARIABLE) -c Sources/Variable.c
@@ -58,7 +60,10 @@ $(PROBLEM): $(CLAUSE)
 	$(COMPILER) $(FLAGS) -o $(PROBLEM) -c Sources/Problem.c		
 
 $(SOLVER): $(PROBLEM)
-	$(COMPILER) $(FLAGS) -o $(SOLVER) -c Sources/Solver.c			
+	$(COMPILER) $(FLAGS) -o $(SOLVER) -c Sources/Solver.c	
+
+$(GENETIC_SOLVER): $(SOLVER)
+	$(COMPILER) $(FLAGS) -o $(GENETIC_SOLVER) -c Sources/Genetic_Solver.c				
 
 ##############################################################################
 
