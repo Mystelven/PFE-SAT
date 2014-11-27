@@ -81,7 +81,7 @@ clean:
 	rm -rf $(OBJECT)*.o
 	rm -rf Documentation
 
-recompile:
+debug:
 	make clean
 	make 
 	make doc
