@@ -24,7 +24,7 @@ Solver* initSolver(Problem* problem);
 
 unsigned int isSolution(Solver* solver, Problem* problem);
 
-void solveProblem(Solver* solver, Problem* problem);
+void randomMove(Solver* solver);
 
 unsigned int isOpen(Solver* solver, Clause* clause);
 

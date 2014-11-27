@@ -22,13 +22,15 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include "Headers/Genetic_Solver.h"
 
+#define NB_INDIVIUAL 5000
+
 double parsingTime;
 
 double solvingTime;
 
 Problem problem;
 
-Solver* solver;
+Genetic_Solver* genetic_solver;
 
 /**
  * Useful to display some informations.
@@ -63,10 +65,10 @@ void displayErrorArgument(FILE* std) {
 
 void displaySolveTime(FILE* std) {
 
-  if(isSolution(solver,&problem) == 1) {
+  if(isSolutionG(genetic_solver,&problem) == 1) {
     fprintf(std,"\ns   SATISFIABLE\n");
     fprintf(std,"v   ");
-    displaySolution(solver);
+    displaySolutionG(genetic_solver,&problem);
     fprintf(std,"c |-------------------------------------------------------------------------------------|\n");
     fprintf(std,"c   Solving Time         : %10.3fms\n",solvingTime);
 
@@ -91,7 +93,7 @@ void signalHandler( int signum )
     printf("\ns   UNKNOWN\n");
     printf("v   ");
     unsigned int i = 0;
-    for(i = 0; i < solver->nbVariables; ++i) {
+    for(i = 0; i < genetic_solver->population[0]->nbVariables; ++i) {
       printf("? ");
     }
     printf("\n");
@@ -116,7 +118,7 @@ int main(int argc,char** argv)
   srand(time(NULL));
 
   clock_t start;
-  clock_t end;
+  clock_t   end;
 
   if(argc < 2) {
     /* If we go there, that's mean that there is no argument during the call of the solver...*/
@@ -132,10 +134,12 @@ int main(int argc,char** argv)
 
   displayInfo(stdout,&problem);
 
-  solver = initSolver(&problem);
+  genetic_solver = initGeneticSolver(&problem,NB_INDIVIUAL);
 
   start = clock();
-    solveProblem(solver,&problem);
+    while(isSolutionG(genetic_solver,&problem) != 1) {
+      solveProblemG(genetic_solver,&problem);
+    }
   end   = clock();
 
   solvingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
