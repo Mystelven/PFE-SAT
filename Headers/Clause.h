@@ -20,6 +20,7 @@ typedef struct _Clause Clause;
 
 /**
  * This is the constructor of the "pseudo-class" 
+ * @param clause the clause that we will initialize.
  */
 void initClause(Clause* clause);
 
