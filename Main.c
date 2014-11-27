@@ -20,7 +20,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <time.h>
 #include <signal.h>
 
-#include "Headers/Solver.h"
+#include "Headers/Genetic_Solver.h"
 
 double parsingTime;
 
@@ -123,9 +123,10 @@ int main(int argc,char** argv)
     displayErrorArgument(stderr);
     exit(-1);
   }
+
   start = clock();
     initProblem(&problem,argv[1]);
-  end = clock();
+  end   = clock();
 
   parsingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
 
@@ -135,7 +136,7 @@ int main(int argc,char** argv)
 
   start = clock();
     solveProblem(solver,&problem);
-  end = clock();
+  end   = clock();
 
   solvingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
 
