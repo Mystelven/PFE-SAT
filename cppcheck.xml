@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <results>
-    <error file="Main.c" line="43" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
-    <error file="Main.c" line="44" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
-    <error file="Sources/Solver.c" line="19" id="variableScope" severity="style" msg="The scope of the variable &apos;indiceRandom&apos; can be reduced."/>
+    <error file="Main.c" line="45" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
+    <error file="Main.c" line="46" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
     <error file="Sources/Variable.c" line="44" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
     <error file="Sources/Variable.c" line="49" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
-    <error file="Sources/Genetic_Solver.c" line="33" id="unusedFunction" severity="style" msg="The function &apos;crossing&apos; is never used."/>
-    <error file="Sources/Problem.c" line="137" id="unusedFunction" severity="style" msg="The function &apos;displayProblem&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="23" id="unusedFunction" severity="style" msg="The function &apos;displaySolutionG&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="3" id="unusedFunction" severity="style" msg="The function &apos;initGeneticSolver&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="16" id="unusedFunction" severity="style" msg="The function &apos;isOpenG&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="10" id="unusedFunction" severity="style" msg="The function &apos;isSolutionG&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="39" id="unusedFunction" severity="style" msg="The function &apos;mutation&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="28" id="unusedFunction" severity="style" msg="The function &apos;solveProblemG&apos; is never used."/>
+    <error file="Sources/Genetic_Solver.c" line="53" id="unusedFunction" severity="style" msg="The function &apos;crossing&apos; is never used."/>
+    <error file="Sources/Problem.c" line="136" id="unusedFunction" severity="style" msg="The function &apos;displayProblem&apos; is never used."/>
+    <error file="Sources/Genetic_Solver.c" line="59" id="unusedFunction" severity="style" msg="The function &apos;fitness&apos; is never used."/>
     <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files (use --check-config for details)"/>
 </results>
