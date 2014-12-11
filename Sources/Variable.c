@@ -6,7 +6,7 @@
  * @param id the next id for our variable.
  * @param value the next value of our variable: {false, true}
  */
-Variable* initVariable(unsigned int id, unsigned int value) {
+inline Variable* initVariable(unsigned int id, unsigned int value) {
 
 	Variable* variable = (Variable*)malloc(sizeof(Variable)*1);
 
@@ -31,7 +31,7 @@ Variable* initVariable(unsigned int id, unsigned int value) {
  * and -i if value equals false.
  * @param variable the pointer on the variable that we will display.
  */
-void displayVariable(Variable * variable) {
+inline void displayVariable(Variable * variable) {
 
 	if(variable == NULL) {
 		perror("We are not allowed to display a variable if she is NULL");

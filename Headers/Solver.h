@@ -14,11 +14,13 @@ struct _Solver {
 
 	int* arrayOfSolutions;
 
+	double fitness;
 };
 
 /** We rename our structure to avoid to tape struct _Solver everywhere... */
 typedef struct _Solver Solver;
 
+void computeFitness(Solver* solver,Problem* problem);
 
 Solver* initSolver(Problem* problem);
 
