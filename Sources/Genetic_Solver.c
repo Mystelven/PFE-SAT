@@ -1,8 +1,11 @@
 #include "../Headers/Genetic_Solver.h"
+#include "./Utils.c"
 
 #define MUTATION_PERCENT 100
 
 #define CROSSING_PERCENT 100
+
+#define SEUIL 0.7
 
 Genetic_Solver* initGeneticSolver(Problem* problem,unsigned int nb) {
 
@@ -49,11 +52,43 @@ void displaySolutionG(Genetic_Solver* solver,Problem* problem) {
 
 }
 
+Solver* creation(Solver* parent) {
+
+	Solver* res = recopy(parent);
+
+	randomMove(res);
+	randomMove(res);	
+
+	return res;
+}
+
+inline void reproduction(Genetic_Solver* solver) {
+
+	unsigned int i = 0;
+
+	for(i = 0; i < solver->nbIndividual; ++i) {
+
+		if(solver->population[i]->fitness >= SEUIL) {
+			break;
+		}
+	}
+	
+	unsigned int j = solver->nbIndividual-1;
+
+	for( ; i < solver->nbIndividual; ++i) {
+		destroy(solver->population[i]);
+		solver->population[i] = creation(solver->population[j]);
+		j--;
+	}
+}
+
 void solveProblemG(Genetic_Solver* solver, Problem* problem) {
 
 	unsigned int i;
 
-	// fitness(solver,problem);
+	fitness(solver,problem);
+
+	reproduction(solver);
 
 	i = (unsigned int)rand() % 100;
 
@@ -79,7 +114,6 @@ inline void crossing(Genetic_Solver* solver,Problem* problem) {
 		solver->population[p1]->arrayOfSolutions[i] = solver->population[p2]->arrayOfSolutions[i];
 		solver->population[p2]->arrayOfSolutions[i] = temp;
 	}
-
 }
 
 inline void fitness(Genetic_Solver* solver,Problem* problem) {
@@ -89,6 +123,9 @@ inline void fitness(Genetic_Solver* solver,Problem* problem) {
 	for(i = 0 ; i < solver->nbIndividual; ++i) {
 		computeFitness(solver->population[i],problem);
 	}
+
+	 sort(solver,problem);
+	// quickSort(solver,problem,0,problem->nbVariables-1);
 }
 
 inline void mutation(Genetic_Solver* solver,Problem* problem) {
