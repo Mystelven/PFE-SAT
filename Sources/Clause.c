@@ -1,7 +1,7 @@
 #include "../Headers/Clause.h"
 
 
-void initClause(Clause* clause) {
+inline void initClause(Clause* clause) {
 
 	/* We affect the clauseSize to our number of variable in the clauses. */
 	clause->nbVariables = 0;
@@ -11,7 +11,7 @@ void initClause(Clause* clause) {
 }
 
 
-void displayClause(Clause* clause) {
+inline void displayClause(Clause* clause) {
 
 	/* To display a clause basically means that for every variable inside the clause. */
 	for(unsigned int i = 0; i < clause->nbVariables; ++i) {
@@ -21,7 +21,7 @@ void displayClause(Clause* clause) {
 	}
 }
 
-void addVariable(Clause* clause, Variable* variable) {
+inline void addVariable(Clause* clause, Variable* variable) {
 
 	clause->nbVariables++;
 

@@ -4,7 +4,7 @@
 
 #define MAX_SIZE 800
 
-void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
+inline void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 
 	char* ligne = strdup(chaine);
 
@@ -40,7 +40,7 @@ void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 	free(element);
 }
 
-void allocateProblem(Problem* problem,const char* chaine) {
+inline void allocateProblem(Problem* problem,const char* chaine) {
 
 	/* We don't care about "p cnf" so we shift 5 chars. */
 	char* ligne = strdup(chaine);
@@ -83,7 +83,7 @@ void allocateProblem(Problem* problem,const char* chaine) {
 	free(element);
 }
 
-void initProblem(Problem* problem, const char* filename) {
+inline void initProblem(Problem* problem, const char* filename) {
 
 	/* We will need a file to read the CNF instance and to create our Problem. */
 	FILE* file = NULL;
@@ -133,7 +133,7 @@ void initProblem(Problem* problem, const char* filename) {
 	fclose(file);
 }
 
-void displayProblem(Problem* problem) {
+inline void displayProblem(Problem* problem) {
 
 	for(unsigned int i = 0; i < problem->nbClauses; i++) {
 

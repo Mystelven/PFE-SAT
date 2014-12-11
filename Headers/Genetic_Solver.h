@@ -59,22 +59,25 @@ void solveProblemG(Genetic_Solver* solver, Problem* problem);
 /**
  * This function will perform crossing inside the population with the most adapted individual.
  * @param solver the global population of the solver.
+ * @param problem the definition of the problem.
  */
-void crossing(Genetic_Solver* solver);
+void crossing(Genetic_Solver* solver,Problem* problem);
 
 
 /**
  * This function will perform a mutation on one random individual inside the population.
  * @param solver the global population of the solver.
+ * @param problem the definition of the problem.
  */
-void mutation(Genetic_Solver* solver);
+void mutation(Genetic_Solver* solver,Problem* problem);
 
 
 /**
  * This function will compute the fitness of individual to know who is the most adapted.
  * @param solver the global population of the solver.
+ * @param problem the definition of the problem.
  * @return the fitness of the population.
  */
-double fitness(Genetic_Solver* solver);
+void fitness(Genetic_Solver* solver,Problem* problem);
 
 #endif

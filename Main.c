@@ -22,7 +22,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include "Headers/Genetic_Solver.h"
 
-#define NB_INDIVIUAL 5000
+#define NB_INDIVIUAL 20
 
 double parsingTime;
 
