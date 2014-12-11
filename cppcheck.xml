@@ -4,8 +4,6 @@
     <error file="Main.c" line="46" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
     <error file="Sources/Variable.c" line="44" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
     <error file="Sources/Variable.c" line="49" id="invalidPrintfArgType_sint" severity="style" msg="%d in format string (no. 1) requires &apos;int&apos; but the argument type is &apos;unsigned int&apos;."/>
-    <error file="Sources/Genetic_Solver.c" line="53" id="unusedFunction" severity="style" msg="The function &apos;crossing&apos; is never used."/>
     <error file="Sources/Problem.c" line="136" id="unusedFunction" severity="style" msg="The function &apos;displayProblem&apos; is never used."/>
-    <error file="Sources/Genetic_Solver.c" line="59" id="unusedFunction" severity="style" msg="The function &apos;fitness&apos; is never used."/>
     <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files (use --check-config for details)"/>
 </results>
