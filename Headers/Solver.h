@@ -24,6 +24,10 @@ void computeFitness(Solver* solver,Problem* problem);
 
 Solver* initSolver(Problem* problem);
 
+void destroy(Solver* solver);
+
+Solver* recopy(Solver* parent);
+
 unsigned int isSolution(Solver* solver, Problem* problem);
 
 void randomMove(Solver* solver);
