@@ -22,7 +22,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include "Headers/Genetic_Solver.h"
 
-#define NB_INDIVIUAL 20
+unsigned int nbIndividual = -1;
 
 double parsingTime;
 
@@ -31,6 +31,8 @@ double solvingTime;
 Problem problem;
 
 Genetic_Solver* genetic_solver;
+
+unsigned int nbGeneration = -1;
 
 /**
  * Useful to display some informations.
@@ -70,14 +72,15 @@ void displaySolveTime(FILE* std) {
     fprintf(std,"v   ");
     displaySolutionG(genetic_solver,&problem);
     fprintf(std,"c |-------------------------------------------------------------------------------------|\n");
-    fprintf(std,"c   Solving Time         : %10.3fms\n",solvingTime);
+    fprintf(std,"c |  Solving Time         : %10.3fms\n",solvingTime);
 
   } else {
 
     fprintf(std,"\ns UNSATISFIABLE\n");
 
   }
-
+  fprintf(std,"c |  After                :      % 7d generations\n",nbGeneration);
+  fprintf(std,"c |  With                 :      % 7d individuals\n",nbIndividual);
   fprintf(std,"c \\====================================================================================/\n\n");
 }
 
@@ -98,7 +101,9 @@ void signalHandler( int signum )
     }
     printf("\n");
     printf("c |-------------------------------------------------------------------------------------|\n");
-    printf("c   Solving Time         :   infinity \n");
+    printf("c |  Solving Time        :              infinity\n");
+    printf("c |  After               :      % 7d generations\n",nbGeneration);
+    printf("c |  With                :      % 7d individuals\n",nbIndividual);
     printf("c \\====================================================================================/\n\n");
     exit(signum);  
 }
@@ -114,6 +119,8 @@ int main(int argc,char** argv)
 {
   /* A SIGINT signal should stop the program and close everything already open. */
   signal(SIGINT, signalHandler);  
+  signal(SIGTERM, signalHandler);  
+  signal(SIGQUIT, signalHandler);  
 
   srand(time(NULL));
 
@@ -130,15 +137,19 @@ int main(int argc,char** argv)
     initProblem(&problem,argv[1]);
   end   = clock();
 
+  nbIndividual = (3*(problem.nbVariables)/2);
+
   parsingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
 
   displayInfo(stdout,&problem);
 
-  genetic_solver = initGeneticSolver(&problem,NB_INDIVIUAL);
+  genetic_solver = initGeneticSolver(&problem,nbIndividual);
+  nbGeneration = 1;
 
   start = clock();
     while(isSolutionG(genetic_solver,&problem) != 1) {
       solveProblemG(genetic_solver,&problem);
+      ++nbGeneration;
     }
   end   = clock();
 

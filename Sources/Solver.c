@@ -2,7 +2,7 @@
 
 inline unsigned int isSolution(Solver* solver, Problem* problem) {
 
-	for(unsigned int i = 0; i < problem->nbClauses; i++) {
+	for(unsigned int i = 0; i < problem->nbClauses; ++i) {
 
 		if(isOpen(solver,&problem->arrayOfClauses[i]) == false) {
 
@@ -13,6 +13,12 @@ inline unsigned int isSolution(Solver* solver, Problem* problem) {
 	return true;
 }
 
+inline void destroy(Solver* solver) {
+
+	free(solver->arrayOfSolutions);
+
+	free(solver);
+}
 
 inline void randomMove(Solver* solver) {
 
@@ -43,10 +49,28 @@ inline Solver* initSolver(Problem* problem) {
 	return solver;
 }
 
+inline Solver* recopy(Solver* parent) {
+
+	Solver* solver = (Solver*)malloc(sizeof(Solver)*1);
+	solver->nbVariables = parent->nbVariables;
+
+	solver->arrayOfSolutions = (int*)malloc(sizeof(int)*solver->nbVariables);
+	if(solver->arrayOfSolutions == NULL) {
+
+		perror("Allocation problem in Solver* recopy(Solver* parent)");
+		exit(-2);
+	}
+
+	for(unsigned int i = 1; i <= solver->nbVariables; i++) {
+		solver->arrayOfSolutions[i-1] = parent->arrayOfSolutions[i-1];
+	}
+
+	return solver;
+}
 
 inline unsigned int isOpen(Solver* solver,Clause* clause) {
 
-	for(unsigned int i = 0; i < clause->nbVariables; i++) {
+	for(unsigned int i = 0; i < clause->nbVariables; ++i) {
 
 
 		unsigned int id = clause->arrayOfVariables[i].id;
@@ -63,7 +87,7 @@ inline unsigned int isOpen(Solver* solver,Clause* clause) {
 
 inline void displaySolution(Solver* solver) {
 
-	for(unsigned int i = 0 ; i < solver->nbVariables; i++) {
+	for(unsigned int i = 0 ; i < solver->nbVariables; ++i) {
 
 		printf("%d ",solver->arrayOfSolutions[i]);
 	}
@@ -74,7 +98,7 @@ inline void computeFitness(Solver* solver,Problem* problem) {
 
 	double _fitness = 0;
 
-	for(unsigned int i = 0; i < problem->nbClauses; i++) {
+	for(unsigned int i = 0; i < problem->nbClauses; ++i) {
 
 		if(isOpen(solver,&problem->arrayOfClauses[i]) == true) {
 

@@ -80,4 +80,7 @@ void mutation(Genetic_Solver* solver,Problem* problem);
  */
 void fitness(Genetic_Solver* solver,Problem* problem);
 
+
+void reproduction(Genetic_Solver* solver);
+
 #endif
