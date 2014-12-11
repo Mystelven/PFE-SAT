@@ -37,11 +37,11 @@ c nb removed Clauses    : 0
 c nb learnts DL2        : 1
 c nb learnts size 2     : 0
 c nb learnts size 1     : 0
-c conflicts             : 3              (1328 /sec)
-c decisions             : 6              (0.00 % random) (2656 /sec)
-c propagations          : 35             (15494 /sec)
+c conflicts             : 3              (1123 /sec)
+c decisions             : 6              (0.00 % random) (2246 /sec)
+c propagations          : 35             (13099 /sec)
 c conflict literals     : 9              (0.00 % deleted)
 c nb reduced Clauses    : 0
-c CPU time              : 0.002259 s
+c CPU time              : 0.002672 s
 
 s SATISFIABLE
