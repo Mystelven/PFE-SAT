@@ -19,6 +19,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 #include <time.h>
 #include <signal.h>
+#include <unistd.h>
 
 #include "Headers/Genetic_Solver.h"
 
@@ -51,6 +52,8 @@ void displayInfo(FILE* std,Problem * problem) {
   fprintf(std,"c |=====================================================================================|\n");
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
+
 /**
  * Useful to display some error during the parsing of the CNF file.
  */
@@ -64,6 +67,7 @@ void displayErrorArgument(FILE* std) {
   	fprintf(std,"\n\tso your call looks like : ./satyr path_to_file\n\n");
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
 
 void displaySolveTime(FILE* std) {
 
@@ -84,6 +88,8 @@ void displaySolveTime(FILE* std) {
   fprintf(std,"c \\====================================================================================/\n\n");
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
+
 /**
  * Useful to catch the SIGINT signal
  * in that way, we can shut down the solver and display that we don't know if the problem
@@ -93,7 +99,7 @@ void displaySolveTime(FILE* std) {
 void signalHandler( int signum )
 {
 
-    printf("\ns   UNKNOWN\n");
+    printf("\ns   INDETERMINATE\n");
     printf("v   ");
     unsigned int i = 0;
     for(i = 0; i < genetic_solver->population[0]->nbVariables; ++i) {
@@ -108,6 +114,7 @@ void signalHandler( int signum )
     exit(signum);  
 }
 
+/* ------------------------------------------------------------------------------------------------------------ */
 
 /**
  * It's the beginning of this program.
@@ -118,9 +125,10 @@ void signalHandler( int signum )
 int main(int argc,char** argv)
 {
   /* A SIGINT signal should stop the program and close everything already open. */
-  signal(SIGINT, signalHandler);  
+  signal(SIGINT,  signalHandler);  
   signal(SIGTERM, signalHandler);  
   signal(SIGQUIT, signalHandler);  
+  signal(SIGALRM, signalHandler);
 
   srand(time(NULL));
 
@@ -137,7 +145,7 @@ int main(int argc,char** argv)
     initProblem(&problem,argv[1]);
   end   = clock();
 
-  nbIndividual = (3*(problem.nbVariables)/2);
+  nbIndividual = 4*(problem.nbVariables)/5;
 
   parsingTime = (double)(end-start)/(CLOCKS_PER_SEC/1000);
 
@@ -145,6 +153,8 @@ int main(int argc,char** argv)
 
   genetic_solver = initGeneticSolver(&problem,nbIndividual);
   nbGeneration = 1;
+
+  alarm(3);
 
   start = clock();
     while(isSolutionG(genetic_solver,&problem) != 1) {
@@ -159,3 +169,5 @@ int main(int argc,char** argv)
 
   return 0;
 }
+
+/* ------------------------------------------------------------------------------------------------------------ */

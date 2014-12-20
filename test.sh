@@ -1,85 +1,121 @@
 #!/bin/bash
 
 ###############################################################################
-rm -rf results/*
+
 touch error.log
+echo "================================================"
 
-solver="satyr"
+echo ""
+echo ""
 
+rm    "Resultat.txt"
+
+touch "Resultat.txt"
+
+###############################################################################
+
+function result()
+{
+	
+	f=$(cat $1_temps.txt)
+	temps=$(( ${f//$'\n'/+} ))
+
+	f=$(cat $1_results.txt)
+	nbInst=$(( ${f//$'\n'/+} ))
+
+	echo "    $1 a résolu $nbInst instances en $temps ms"
+	echo "$1 a résolu $nbInst instances en $temps ms" >> "Resultat.txt"
+}
+
+function test()
+{	
+	touch "$1_temps.txt"
+	touch "$1_results.txt"
+
+	testUf $1 "uf20/"
+	#testUf $1 "uf50/"
+	#testUf $1 "uf75/"
+	#testUf $1 "uf100/"
+	#testUf $1 "uf125/"
+	#testUf $1 "uf150/"
+	#testUf $1 "uf175/"
+	#testUf $1 "uf200/"
+	#testUf $1 "uf225/"
+	#testUf $1 "uf250/"
+
+	echo ""
+	result $1 
+	echo ""
+
+	rm 	  "$1_temps.txt"
+	rm    "$1_results.txt"
+}
+
+function testUf() 
+{
+rm -rf results/*
+solver=$1;
+path='./instances/'$2;
 start=`date +%s%N`
-for fichier in `ls ./instances/uf20/` 
+
+for fichier in `ls $path` 
 do
-	file="./instances/uf20/$fichier";	
+	#echo $fichier;
+	file="$path$fichier";
 	(exec "./$solver" "$file" > "./results/$fichier")
+	resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
+	if [ $resultat -eq 0 ]
+	then
+		(exec "./$solver" "$file" > "./results/$fichier")
+		resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
+		if [ $resultat -eq 0 ]
+		then
+			(exec "./$solver" "$file" > "./results/$fichier")&
+		fi
+	fi
 done
 end=`date +%s%N`
-echo "================================================"
 
 (exec "killall $solver") 2> "error.log" > "error.log"
 
-total=$(ls ./instances/uf20/ | wc -l | tr -cd '[[:digit:]]')
+total=$(ls $path | wc -l | tr -cd '[[:digit:]]')
+total=$(printf "%04d" $total)
+
 resultat=$(cat results/* | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
 resultat=$(printf "%04d" $resultat)
 
 heure=$((end-start))
 heure=$((heure/1000000));
+heureF=$heure;
 heure=$(printf "% 5d" $heure)
 
-echo "    satyr   : $resultat/$total instances en $heure ms";
+echo "        $solver : $resultat/$total instances en $heure ms";
 
-##############################################################################
-rm -rf results/*
-solver="walkSAT"
+echo $(cat results/* | grep "SATI" | wc -l | tr -cd '[[:digit:]]') >> "$1_results.txt"
+echo $heureF >> "$1_temps.txt"
+}
 
-start=`date +%s%N`
-for fichier in `ls ./instances/uf20/` 
-do
-	file="./instances/uf20/$fichier";
-	(exec "./$solver" "$file" > "./results/$fichier")& 
-done
-end=`date +%s%N`
+###############################################################################
 
-(exec "killall $solver") 2> "error.log" > "error.log"
-
-total=$(ls ./instances/uf20/ | wc -l | tr -cd '[[:digit:]]')
-resultat=$(cat results/* | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
-resultat=$(printf "%04d" $resultat)
-
-heure=$((end-start))
-heure=$((heure/1000000));
-heure=$(printf "% 5d" $heure)
-
-echo "    $solver : $resultat/$total instances en $heure ms";
+#test "walkSAT"
 
 ##############################################################################
 
-rm -rf results/*
+#test "zchaff"
 
-solver="glucose"
+##############################################################################
 
-start=`date +%s%N`
-for fichier in `ls ./instances/uf20/` 
-do
-	file="./instances/uf20/$fichier";
-	(exec "./$solver" "$file" > "./results/$fichier")& 
-done
-end=`date +%s%N`
+#test "glucose"
 
-(exec "killall $solver") 2> "error.log" > "error.log"
+##############################################################################
 
-total=$(ls ./instances/uf20/ | wc -l | tr -cd '[[:digit:]]')
-resultat=$(cat results/* | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
+#test "satyr"
 
-heure=$((end-start))
-heure=$((heure/1000000));
-heure=$(printf "% 5d" $heure)
+test $1
 
-echo "    $solver : $resultat/$total instances en $heure ms";
-echo "================================================"
+##############################################################################
 
 rm error.log
-##############################################################################
+echo "================================================"
 
-# killall satyr 2> /dev/null; time (./test.sh > /dev/null 2> /dev/null);  cat results/* | grep "SATI" | wc -l; killall satyr;
-
-# ./test.sh 2> /dev/null ; cat results/* | grep "SATI" | wc -l ;
+###############################################################################
