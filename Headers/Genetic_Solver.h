@@ -69,7 +69,7 @@ void crossing(Genetic_Solver* solver,Problem* problem);
  * @param solver the global population of the solver.
  * @param problem the definition of the problem.
  */
-void mutation(Genetic_Solver* solver,Problem* problem);
+void mutation(Genetic_Solver* solver);
 
 
 /**
@@ -78,9 +78,12 @@ void mutation(Genetic_Solver* solver,Problem* problem);
  * @param problem the definition of the problem.
  * @return the fitness of the population.
  */
-void fitness(Genetic_Solver* solver,Problem* problem);
+int fitness(Genetic_Solver* solver,Problem* problem);
 
 
-void reproduction(Genetic_Solver* solver);
+void reproduction(Genetic_Solver* solver,Problem * problem);
+
+
+void _crossing(Genetic_Solver* solver,Problem* problem,unsigned int p1, unsigned int p2);
 
 #endif

@@ -23,7 +23,7 @@
 FLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
 FLAGS3   = -Wshadow -Wredundant-decls -Winit-self -Wswitch-default 
-FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99
+FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 -openmp
 
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
@@ -48,7 +48,7 @@ GENETIC_SOLVER = $(OBJECT)genetic_solver.o
 ##############################################################################
 
 all: $(GENETIC_SOLVER)
-	$(COMPILER) -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) $(SOLVER) $(GENETIC_SOLVER) Main.c
+	$(COMPILER) -O3 -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) $(SOLVER) $(GENETIC_SOLVER) Main.c
 
 $(VARIABLE):
 	$(COMPILER) $(FLAGS) -o $(VARIABLE) -c Sources/Variable.c

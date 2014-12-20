@@ -1,25 +1,21 @@
-void exchange(Genetic_Solver* solver,Problem * problem, unsigned int a, unsigned int b) {
+void sort(Genetic_Solver* solver) {
+	
+	Solver* temp;
 
-	int temp;
+	for(unsigned int i =0 ; i < solver->nbIndividual -1; ++i) {
 
-	for(unsigned int i = 0; i < problem->nbVariables; ++i) {
-		
-		temp 									   = solver->population[a]->arrayOfSolutions[i];
-		solver->population[a]->arrayOfSolutions[i] = solver->population[b]->arrayOfSolutions[i];
-		solver->population[b]->arrayOfSolutions[i] = temp;
-	}
+		for(unsigned int j = 0 ; j < solver->nbIndividual - i -1; ++j) {
 
-}
-
-void sort(Genetic_Solver* solver,Problem* problem) {
-
-	for(unsigned int i =0 ; i < problem->nbVariables -1; i++) {
-		for(unsigned int j = 0 ; j < problem->nbVariables - i -1; j++) {
-			if(solver->population[j]->fitness <= solver->population[j+1]->fitness) {
-				exchange(solver,problem,j,j+1);
+			if(solver->population[j]->fitness >= solver->population[j+1]->fitness) {
+					temp 				  = solver->population[j];
+					solver->population[j] = solver->population[j+1];
+					solver->population[j+1] = temp;
 			}
+
 		}
+
 	}
+	
 }
 
 /*
