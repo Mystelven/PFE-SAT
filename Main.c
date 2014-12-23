@@ -154,7 +154,7 @@ int main(int argc,char** argv)
   genetic_solver = initGeneticSolver(&problem,nbIndividual);
   nbGeneration = 1;
 
-  alarm(3);
+  alarm(1);
 
   start = clock();
     while(isSolutionG(genetic_solver,&problem) != 1) {

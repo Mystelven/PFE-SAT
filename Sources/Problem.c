@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-#define MAX_SIZE 800
+#define MAX_SIZE 500
 
 inline void allocationOfClause(Problem* problem,const char* chaine, unsigned int i) {
 
