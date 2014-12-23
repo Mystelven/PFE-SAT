@@ -1,0 +1,3 @@
+walkSAT a résolu 100 instances en 1308 ms
+zchaff a résolu 100 instances en 6321 ms
+glucose a résolu 2100 instances en 9167 ms

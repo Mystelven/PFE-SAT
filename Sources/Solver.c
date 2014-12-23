@@ -42,8 +42,13 @@ inline Solver* initSolver(Problem* problem) {
 		exit(-2);
 	}
 
-	for(unsigned int i = 1; i <= solver->nbVariables; i++) {
-		solver->arrayOfSolutions[i-1] = (int)i;
+	for(int i = 1; (unsigned int)i <= solver->nbVariables; i++) {
+
+		if(rand()%100 < 50)
+			solver->arrayOfSolutions[i-1] = (int)i;
+		else
+			solver->arrayOfSolutions[i-1] = (int)(-1)*i;
+
 	}
 
 	return solver;
@@ -61,8 +66,8 @@ inline Solver* recopy(Solver* parent) {
 		exit(-2);
 	}
 
-	for(unsigned int i = 1; i <= solver->nbVariables; i++) {
-		solver->arrayOfSolutions[i-1] = parent->arrayOfSolutions[i-1];
+	for(unsigned int i = 0; i < solver->nbVariables; ++i) {
+		solver->arrayOfSolutions[i] = parent->arrayOfSolutions[i];
 	}
 
 	return solver;
