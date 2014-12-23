@@ -32,9 +32,9 @@ function test()
 	touch "$1_temps.txt"
 	touch "$1_results.txt"
 
-	testUf $1 "uf20/"
+	#testUf $1 "uf20/"
 	#testUf $1 "uf50/"
-	#testUf $1 "uf75/"
+	testUf $1 "uf75/"
 	#testUf $1 "uf100/"
 	#testUf $1 "uf125/"
 	#testUf $1 "uf150/"
@@ -60,19 +60,19 @@ start=`date +%s%N`
 
 for fichier in `ls $path` 
 do
-	#echo $fichier;
+	
 	file="$path$fichier";
 	(exec "./$solver" "$file" > "./results/$fichier")
-	resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
-	if [ $resultat -eq 0 ]
-	then
-		(exec "./$solver" "$file" > "./results/$fichier")
-		resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
-		if [ $resultat -eq 0 ]
-		then
-			(exec "./$solver" "$file" > "./results/$fichier")&
-		fi
-	fi
+	#resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
+	#if [ $resultat -eq 0 ]
+	##then
+	#	(exec "./$solver" "$file" > "./results/$fichier")
+#		resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
+#		if [ $resultat -eq 0 ]#
+#		then
+#			(exec "./$solver" "$file" > "./results/$fichier")&
+#		fi
+#	fi
 done
 end=`date +%s%N`
 
@@ -95,23 +95,28 @@ echo $(cat results/* | grep "SATI" | wc -l | tr -cd '[[:digit:]]') >> "$1_result
 echo $heureF >> "$1_temps.txt"
 }
 
+if [ $# -eq 1 ]
+then
+	test $1
+else
+
 ###############################################################################
 
-#test "walkSAT"
+test "walkSAT"
 
 ##############################################################################
 
-#test "zchaff"
+test "zchaff"
 
 ##############################################################################
 
-#test "glucose"
+test "glucose"
 
 ##############################################################################
 
 #test "satyr"
 
-test $1
+fi
 
 ##############################################################################
 

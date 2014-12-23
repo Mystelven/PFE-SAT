@@ -118,8 +118,10 @@ void solveProblemG(Genetic_Solver* solver, Problem* problem) {
 	crossing(solver,problem);
 
 	if((rand() % 100) < MUTATION_PERCENT) mutation(solver);	
+
 	
 }
+
 
 inline void crossing(Genetic_Solver* solver,Problem* problem) {
 

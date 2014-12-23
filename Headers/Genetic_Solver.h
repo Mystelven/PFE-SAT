@@ -86,4 +86,5 @@ void reproduction(Genetic_Solver* solver,Problem * problem);
 
 void _crossing(Genetic_Solver* solver,Problem* problem,unsigned int p1, unsigned int p2);
 
+
 #endif
