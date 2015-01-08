@@ -1,7 +1,7 @@
 #include "../Headers/Genetic_Solver.h"
 #include "./Utils.c"
 
-#define MUTATION_PERCENT 80
+#define MUTATION_PERCENT 100
 
 double SEUIL = 0.80;
 
@@ -147,6 +147,7 @@ inline int fitness(Genetic_Solver* solver,Problem* problem) {
 
 		sum += solver->population[i]->fitness;
 
+//		printf("Fitness: %2.5f\n",solver->population[i]->fitness);
 		if(solver->population[i]->fitness  == 1.0) {
 
 			res = 1;
@@ -157,7 +158,7 @@ inline int fitness(Genetic_Solver* solver,Problem* problem) {
 
 	sort(solver);
 
-	SEUIL = (sum/solver->nbIndividual)-0.001;
+	SEUIL = (sum/solver->nbIndividual)-0.005;
 
 	return res;
 }
