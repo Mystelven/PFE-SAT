@@ -32,9 +32,9 @@ function test()
 	touch "$1_temps.txt"
 	touch "$1_results.txt"
 
-	#testUf $1 "uf20/"
+	testUf $1 "uf20/"
 	#testUf $1 "uf50/"
-	testUf $1 "uf75/"
+	#testUf $1 "uf75/"
 	#testUf $1 "uf100/"
 	#testUf $1 "uf125/"
 	#testUf $1 "uf150/"
@@ -58,11 +58,17 @@ solver=$1;
 path='./instances/'$2;
 start=`date +%s%N`
 
-for fichier in `ls $path` 
+sleepValue=0.3;
+directory=$2;
+directory=`echo $directory | rev | cut -c 2- | rev`;
+
+for fichier in `ls $path | cut -f 2 -d '-' | sort -n` 
 do
 	
-	file="$path$fichier";
-	(exec "./$solver" "$file" > "./results/$fichier")
+	file="$path$directory-$fichier";
+	echo $file;
+	(exec "./$solver" "$file" > "./results/$fichier")&
+	sleep $sleepValue;
 	#resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
 	#if [ $resultat -eq 0 ]
 	##then
