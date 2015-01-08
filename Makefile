@@ -29,7 +29,7 @@ FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 MAIN	 = satyr
 
-COMPILER = gcc
+COMPILER = clang
 
 SOURCES  = ./Sources/
 

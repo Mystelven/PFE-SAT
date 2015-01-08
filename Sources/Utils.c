@@ -15,7 +15,6 @@ void sort(Genetic_Solver* solver) {
 		}
 
 	}
-	
 }
 
 /*
