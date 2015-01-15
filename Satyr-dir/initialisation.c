@@ -89,6 +89,7 @@ inline void initprob() {
 	int nextc;
 	
 	int *storeptr;
+	int *unsatStoreptr;
 	int freestore;
 	
 	int lit;
@@ -146,6 +147,7 @@ inline void initprob() {
 	numoccurence = (int * ) malloc( sizeof(int  ) * (unsigned long)(2*numatom+1   ));
 	occurence    = (int **) malloc( sizeof(int *) * (unsigned long)(2*numatom+1   ));
 	clause       = (int **) malloc( sizeof(int *) * (unsigned long)(numclause     ));
+	unsatClause  = (int **) malloc( sizeof(int *) * (unsigned long)(numclause     ));
 	size         = (int * ) malloc( sizeof(int  ) * (unsigned long)(numclause     ));
 	
 	barycentre   = (char**) malloc( sizeof(char*) * (unsigned long)(BESTINDIVIDUAL));
@@ -170,12 +172,15 @@ inline void initprob() {
 
 		if (freestore < MAXLENGTH) {
 
-			storeptr = (int *) malloc( sizeof(int) * STOREBLOCK );
+			storeptr      = (int *) malloc( sizeof(int) * STOREBLOCK );
+			unsatStoreptr = (int *) malloc( sizeof(int) * STOREBLOCK );
 			freestore = STOREBLOCK;
 
 		}
 
-		clause[i] = storeptr;
+		clause[i]      = storeptr;
+		unsatClause[i] = unsatStoreptr;
+
 		
 		/* For every clauses, we will store all the variables */
 		do {
@@ -199,6 +204,8 @@ inline void initprob() {
 
 				/* clause[i][size[i]] = j; */
 				*(storeptr++) = lit; 
+
+				*(unsatStoreptr++) = lit;
 
 				freestore--;
 				

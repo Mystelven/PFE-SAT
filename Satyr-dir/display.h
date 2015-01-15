@@ -50,7 +50,7 @@ void signalHandler(int signum);
 /* displayStat : We will display every generation to see the progression.						*/
 /*																								*/
 /************************************************************************************************/
-void displayStat();
+extern void displayStat();
 
 /************************************************************************************************/
 /*																								*/

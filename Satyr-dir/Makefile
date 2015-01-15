@@ -39,6 +39,7 @@ FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 # ----------------[ The object created to link inside exec ]------------------
 
 WORK = obj/work.o
+UNSAT = obj/unsat.o 
 DISPLAY = obj/display.o
 DISTANCE = obj/distance.o 
 STRUCTURE = obj/structure.o 
@@ -46,7 +47,7 @@ INITIALISATION = obj/initialisation.o
 
 # -----------------------------------------------------------------------------
 
-ALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(DISTANCE) $(WORK) $(DISPLAY)
+ALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(DISTANCE) $(WORK) $(UNSAT) $(DISPLAY)
 
 ##############################################################################
 
@@ -90,7 +91,11 @@ $(INITIALISATION): $(STRUCTURE) initialisation.c
 
 $(WORK): $(STRUCTURE) work.c
 	$(COMPILER) -c $(FLAGS) work.c
-	mv work.o obj/		
+	mv work.o obj/	
+
+$(UNSAT): $(STRUCTURE) unsat.c
+	$(COMPILER) -c $(FLAGS) unsat.c
+	mv unsat.o obj/			
 
 $(DISPLAY): $(STRUCTURE) $(WORK) display.c			
 	$(COMPILER) -c $(FLAGS) display.c

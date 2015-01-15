@@ -138,6 +138,9 @@ int numclause;
 /* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
 int** clause;  
 
+/* a copy of "clause" but will be used for the UNSAT proof */
+int** unsatClause;  
+
 /* length of each clause */
 int* size;  
 
