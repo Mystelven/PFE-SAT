@@ -22,6 +22,7 @@
 ##############################################################################*/
 
 #include "display.h"
+#include "unsat.h"
 
 /************************************************************************************************/
 /*																								*/
@@ -118,6 +119,8 @@ int main(int argc,char *argv[]) {
 		/* We didn't success, we go on the next try. */
 		maxtry--;
 	}
+
+	//resolution(1,4);
 		
 	/* We display all the statistics. */
 	displayStat();
