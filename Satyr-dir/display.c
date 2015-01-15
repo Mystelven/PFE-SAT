@@ -85,7 +85,7 @@ void signalHandler(int signum) {
 /* displayStat : We will display every generation to see the progression.						*/
 /*																								*/
 /************************************************************************************************/
-void displayStat() {
+inline void displayStat() {
 
 	printf("c | generation: %6d   | ",(MAXTRY-maxtry)+1);
 	printf("best : %5d false clauses | ",bestnumfalse);
