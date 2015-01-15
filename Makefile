@@ -1,7 +1,7 @@
 ##############################################################################
 # 
 # Makefile for SATyr - Valentin Montmirail - Polytech Tours, France
-# Copyright (c) 2014.
+# Copyright (c) 2015.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 # associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -20,72 +20,16 @@
 #
 ##############################################################################
 
-FLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal 
-FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
-FLAGS3   = -Wshadow -Wredundant-decls -Winit-self -Wswitch-default 
-FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 -openmp
-
-FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
-
-MAIN	 = satyr
-
-COMPILER = clang
-
-SOURCES  = ./Sources/
-
-OBJECT   = ./obj/
-
-VARIABLE = $(OBJECT)variable.o
-
-CLAUSE = $(OBJECT)clause.o
-
-PROBLEM = $(OBJECT)problem.o
-
-SOLVER = $(OBJECT)solver.o
-
-GENETIC_SOLVER = $(OBJECT)genetic_solver.o
-
-##############################################################################
-
-all: $(GENETIC_SOLVER)
-	$(COMPILER) -O3 -o $(MAIN) $(VARIABLE) $(CLAUSE) $(PROBLEM) $(SOLVER) $(GENETIC_SOLVER) Main.c
-
-$(VARIABLE):
-	$(COMPILER) $(FLAGS) -o $(VARIABLE) -c Sources/Variable.c
-
-$(CLAUSE): $(VARIABLE)
-	$(COMPILER) $(FLAGS) -o $(CLAUSE) -c Sources/Clause.c	
-
-$(PROBLEM): $(CLAUSE)
-	$(COMPILER) $(FLAGS) -o $(PROBLEM) -c Sources/Problem.c		
-
-$(SOLVER): $(PROBLEM)
-	$(COMPILER) $(FLAGS) -o $(SOLVER) -c Sources/Solver.c	
-
-$(GENETIC_SOLVER): $(SOLVER)
-	$(COMPILER) $(FLAGS) -o $(GENETIC_SOLVER) -c Sources/Genetic_Solver.c				
-
-##############################################################################
-
-doc:
-	doxygen
-
-documentation:
-	doxygen
-
-## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
-check:	
-	 cppcheck --enable=all --xml *.c */*.c */*.h 2> cppcheck.xml
+all: 
+	(cd Glucose-dir/simp/ ; make ; mv ./glucose ../../ )
+	(cd Satyr-dir/        ; make ; mv ./satyr      ../ )
+	(cd Walksat-dir/      ; make ; mv ./walksat    ../ )
+	(cd Zchaff-dir/       ; make ; mv ./zchaff     ../ )
+	(cd GASAT-dir/        ; make ; mv ./gaSAT      ../ )
 
 clean:
-	rm -rf $(OBJECT)*.o
-	rm -rf Documentation
-
-debug:
-	make clean
-	make 
-	make doc
-	rm cppcheck.xml
-	make check
-
-##############################################################################
+	rm satyr
+	rm walksat
+	rm zchaff
+	rm glucose
+	rm gaSAT
