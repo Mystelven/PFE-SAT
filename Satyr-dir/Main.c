@@ -87,16 +87,10 @@ int main(int argc,char *argv[]) {
 	bestnumfalse      = numclause;
 	allflip           = 0;
 	NUMINDIVIDUAL     = 100;
-
-	maxtry = 1999;
-  	MAXTRY = 1999;
 	
-	#ifdef DEBUG
-		double p = rand() % 1000;
-		maxtry = numatom + (int)(numatom*p)/150;
-  		MAXTRY = numatom + (int)(numatom*p)/150;
-  		
-  	#endif
+	double p = rand() % 1000;
+	maxtry = (int)(numatom*p)/150;
+  	MAXTRY = (int)(numatom*p)/150;  		
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	

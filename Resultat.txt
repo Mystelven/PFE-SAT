@@ -1,1 +1,0 @@
-walksat a résolu 1000 instances en 4260 ms

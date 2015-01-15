@@ -33,7 +33,7 @@ function test()
 	touch "$1_results.txt"
 
 	#testUf $1 "uf20/"
-	testUf $1 "uf50/"
+	#testUf $1 "uf50/"
 	#testUf $1 "uf75/"
 	#testUf $1 "uf100/"
 	#testUf $1 "uf125/"
@@ -41,7 +41,7 @@ function test()
 	#testUf $1 "uf175/"
 	#testUf $1 "uf200/"
 	#testUf $1 "uf225/"
-	#testUf $1 "uf250/"
+	testUf $1 "uf250/"
 
 	#testUf $1 "uuf50/"
 
@@ -69,21 +69,15 @@ for fichier in `ls $path | cut -f 2 -d '-' | sort -n`
 do
 	
 	file="$path$directory-$fichier";
-	echo $file;
-	(exec "./$solver" "$file" >> "sortie.txt")&
-	#resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
-	#if [ $resultat -eq 0 ]
-	#then
-	#	(exec "./$solver" "$file" > "./results/$fichier")
-	#	resultat=$(cat results/$fichier | grep "SATI" | wc -l | tr -cd '[[:digit:]]')
-	#	if [ $resultat -eq 0 ]
-	#	then
-	#		(exec "./$solver" "$file" > "./results/$fichier")&
-	#	fi
-	#fi
+	
+	echo $solver." : ".$file;
+	
+	(exec "./$solver" "$file" >> "sortie.txt")
+
 done
+
 end=`date +%s%N`
-sleep 2
+sleep 1
 (exec "killall $solver") 2> "error.log" > "error.log"
 
 total=$(ls $path | wc -l | tr -cd '[[:digit:]]')
@@ -108,10 +102,6 @@ then
 	test $1
 else
 
-###############################################################################
-
-test "satyr"
-
 ##############################################################################
 
 test "zchaff"
@@ -123,6 +113,10 @@ test "walksat"
 ##############################################################################
 
 test "glucose"
+
+##############################################################################
+
+test "satyr"
 
 ##############################################################################
 
