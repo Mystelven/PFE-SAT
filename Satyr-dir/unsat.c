@@ -5,17 +5,18 @@
 /* resoution : This function will perform the resolution rule on 2 clauses 'c1' and 'c2'		*/
 /* @param c1 the left member of the resolution rule 											*/
 /* @param c2 the right member of the resolution rule 											*/
+/* @param whichVariable on which variable we will perform the resolution 						*/
 /* @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 						*/
 /* At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		*/
 /*																								*/
 /************************************************************************************************/
-int resolution(int c1, int c2) {
+int resolution(int c1, int c2,int whichVariable) {
 
 	/* In the worst case, the resolution will be just an OR between c1 and c2 */
 	long max = (long)(size[c1] + size[c2]);		
 
 	/* We allocate the good size for this futur resolution's result. */
-	char* result = (char*)( calloc( sizeof(char)*(unsigned long)max,0));
+	char* result = (char*)( malloc( sizeof(char)*(unsigned long)max));
 
 	int i, j, k, l;
 
@@ -25,6 +26,23 @@ int resolution(int c1, int c2) {
 	/* we will insert the first element in the 0th place of result */
 	k = 0;
 
+
+	for(i = 0; i < max; ++i) {
+		result[i] = 0;
+	}
+
+	printf("C1 :");
+	for(i = 0; i < size[c1] ; ++i)
+		printf(" %d" ,unsatClause[c1][i]);
+
+	printf("\nC2 :");
+	for(i = 0; i < size[c2] ; ++i)
+		printf(" %d" ,unsatClause[c2][i]);
+
+	printf("\n");
+
+	printf("Resolution on : %d\n\n",whichVariable);
+
 	/* -------------------------------------------------- */
 
 	/* We will, for every atom inside the C1 claude */
@@ -33,10 +51,11 @@ int resolution(int c1, int c2) {
 		/* compare this value with every atom inside the C2 clause */
 		for( j = 0 ; j < size[c2] ; ++j) {
 			
+			printf("On va tester : %d == %d\n",unsatClause[c1][i],-1*unsatClause[c2][j]);
 			/* A v -A is equals to 1, so we don't need it for the resolution. */
-			if(unsatClause[c1][i] == -1*unsatClause[c2][j] || unsatClause[c1][i] == 0 || unsatClause[c2][i] == 0) {
+			if( ( (unsatClause[c1][i] == -1*unsatClause[c2][j]) && (ABS(unsatClause[c1][i]) == whichVariable) )) {
 
-				toAdd = 0;
+					toAdd = 0;
 			}
 
 		}
@@ -62,9 +81,10 @@ int resolution(int c1, int c2) {
 		for( j = 0 ; j < size[c1] ; ++j) {
 			
 			/* A v -A is equals to 1, so we don't need it for the resolution. */
-			if(unsatClause[c2][i] == -1*unsatClause[c1][j] || unsatClause[c1][i] == 0 || unsatClause[c2][i] == 0) {
+			if( ( (unsatClause[c2][i] == -1*unsatClause[c1][j]) && (ABS(unsatClause[c2][i]) == ABS(whichVariable)) ) ) {
 
-				toAdd = 0;
+					toAdd = 0;
+				
 			}
 		}
 
@@ -99,6 +119,7 @@ int resolution(int c1, int c2) {
 	}
 
 	printf("\n\n");
+	
 
 	j =  0;
 
@@ -125,11 +146,14 @@ int resolution(int c1, int c2) {
 		printf("%i ",result[i]);
 	}
 
-	int* tmp = unsatClause[c1];
+	exit(0);
 
-	(*unsatClause)[c1] = (int*)realloc(tmp,sizeof(int)*(max-j) );	
+	// int* tmp = unsatClause[c1];
+
+	// (*unsatClause)[c1] = (int*)realloc(tmp,sizeof(int)*(max-j) );	
 	
-	free(tmp);
+	// free(tmp);
+
 	size[c1] = (max-j);
 
 	/* We desactive the clause C2, it doesn't exist anymore. */

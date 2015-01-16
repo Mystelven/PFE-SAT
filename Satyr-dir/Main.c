@@ -120,7 +120,7 @@ int main(int argc,char *argv[]) {
 		maxtry--;
 	}
 
-	//resolution(1,4);
+	resolution(0,2,2);
 		
 	/* We display all the statistics. */
 	displayStat();
