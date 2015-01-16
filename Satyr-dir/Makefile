@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-COMPILER   = clang
+COMPILER   = gcc
 
 EXECUTABLE = satyr
 
@@ -68,7 +68,6 @@ satyr: $(ALL_THE_OBJECT)
 clean: 
 	rm debug
 	rm release
-	rm satyr
 	rm obj/*.o	
 
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
