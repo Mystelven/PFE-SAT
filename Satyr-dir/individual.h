@@ -41,7 +41,7 @@ int seed;
 #define FALSE 0
 
 /* maximum number of literals which can be in any clause */
-#define MAXLENGTH 50         
+#define MAXLENGTH 5000         
 
 /************************************************************************************************/
 

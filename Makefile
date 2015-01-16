@@ -21,13 +21,13 @@
 ##############################################################################
 
 all: 
-	(cd Glucose-dir/simp/ 	  ; make 		; mv ./glucose 		 ../../ )
-	(cd Glucose-dir/parallel/ ; make    	; mv ./glucose-syrup ../../ )
-	(cd Satyr-dir/        	  ; make 		; mv ./satyr      		../ )
-	(cd Walksat-dir/     	  ; make 		; mv ./walksat    		../ )
-	(cd Zchaff-dir/       	  ; make 		; mv ./zchaff     		../	)
-	(cd GASAT-dir/        	  ; make 		; mv ./gaSAT      		../ )
-	(cd Cdls-dir/ 		  	  ; make compet ; mv ./cdls       		../ )
+	(cd Glucose-dir/simp/ 	  ; make 		; 		 mv ./glucose 		 ../../ )
+	(cd Glucose-dir/parallel/ ; make    	; 		 mv ./glucose-syrup  ../../ )
+	(cd Satyr-dir/        	  ; make clean  ; make ; mv ./satyr      		../ )
+	(cd Walksat-dir/     	  ; make 		; 		 mv ./walksat    		../ )
+	(cd Zchaff-dir/       	  ; make 		; 		 mv ./zchaff     		../	)
+	(cd GASAT-dir/        	  ; make 		; 		 mv ./gaSAT      		../ )
+	(cd Cdls-dir/ 		  	  ; make compet ; 		 mv ./cdls       		../ )
 
 clean:
 	rm satyr
