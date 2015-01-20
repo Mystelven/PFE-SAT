@@ -40,7 +40,10 @@ int seed;
 #define TRUE  1
 #define FALSE 0
 
-/* maximum number of literals which can be in any clause */
+#define   SAT 1
+#define UNSAT 2
+
+/* maximum number of literals which can be in any clause (we can force the 3-SAT here) */
 #define MAXLENGTH 5000         
 
 /************************************************************************************************/
@@ -135,11 +138,11 @@ int numatom;
 /* number of clauses in the set of CNF clauses */
 int numclause; 
 
-/* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
-int** clause;  
+/* The number of resolutions that we performed ( < numclause ) */
+int numresolution;
 
-/* a copy of "clause" but will be used for the UNSAT proof */
-int** unsatClause;  
+/* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
+int** clause;   
 
 /* length of each clause */
 int* size;  

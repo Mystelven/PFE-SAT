@@ -90,8 +90,8 @@ int main(int argc,char *argv[]) {
 	NUMINDIVIDUAL     = 100;
 	
 	double p = rand() % 1000;
-	maxtry = (int)(numatom*p)/150;
-  	MAXTRY = (int)(numatom*p)/150;  		
+	maxtry = (int)(numatom*p)/100;
+  	MAXTRY = (int)(numatom*p)/100;  		
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	
@@ -107,8 +107,14 @@ int main(int argc,char *argv[]) {
 	/* We perform an initial sort */
 	population = initial_sort (population); 
 
+	resolution(0,1,2);
+
+	resolution(4,2,1);
+
+	resolution(5,3,3);
+
 	/* We will search after a solution. */
-	while ( (maxtry != 0) && (FOUND != TRUE) )  {
+	while ( (maxtry != 0) && (FOUND != SAT) && (FOUND != UNSAT))  {
 			
 		/* At every step, we display statistic informations. */
 		displayStat();
@@ -119,8 +125,6 @@ int main(int argc,char *argv[]) {
 		/* We didn't success, we go on the next try. */
 		maxtry--;
 	}
-
-	resolution(0,2,2);
 		
 	/* We display all the statistics. */
 	displayStat();

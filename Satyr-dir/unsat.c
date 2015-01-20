@@ -16,7 +16,7 @@ int resolution(int c1, int c2,int whichVariable) {
 	long max = (long)(size[c1] + size[c2]);		
 
 	/* We allocate the good size for this futur resolution's result. */
-	char* result = (char*)( malloc( sizeof(char)*(unsigned long)max));
+	int* result = (int*)( malloc( sizeof(int)*(unsigned long)max));
 
 	int i, j, k, l;
 
@@ -31,18 +31,6 @@ int resolution(int c1, int c2,int whichVariable) {
 		result[i] = 0;
 	}
 
-	printf("C1 :");
-	for(i = 0; i < size[c1] ; ++i)
-		printf(" %d" ,unsatClause[c1][i]);
-
-	printf("\nC2 :");
-	for(i = 0; i < size[c2] ; ++i)
-		printf(" %d" ,unsatClause[c2][i]);
-
-	printf("\n");
-
-	printf("Resolution on : %d\n\n",whichVariable);
-
 	/* -------------------------------------------------- */
 
 	/* We will, for every atom inside the C1 claude */
@@ -51,9 +39,8 @@ int resolution(int c1, int c2,int whichVariable) {
 		/* compare this value with every atom inside the C2 clause */
 		for( j = 0 ; j < size[c2] ; ++j) {
 			
-			printf("On va tester : %d == %d\n",unsatClause[c1][i],-1*unsatClause[c2][j]);
 			/* A v -A is equals to 1, so we don't need it for the resolution. */
-			if( ( (unsatClause[c1][i] == -1*unsatClause[c2][j]) && (ABS(unsatClause[c1][i]) == whichVariable) )) {
+			if( ( (clause[c1][i] == -1*clause[c2][j]) && (ABS(clause[c1][i]) == whichVariable) )) {
 
 					toAdd = 0;
 			}
@@ -64,7 +51,7 @@ int resolution(int c1, int c2,int whichVariable) {
 		if(toAdd == 1) {
 
 			/* We will so, insert it and go for the next element */
-			result[k++] = (char)unsatClause[c1][i];
+			result[k++] = (char)clause[c1][i];
 
 		}
 
@@ -81,7 +68,7 @@ int resolution(int c1, int c2,int whichVariable) {
 		for( j = 0 ; j < size[c1] ; ++j) {
 			
 			/* A v -A is equals to 1, so we don't need it for the resolution. */
-			if( ( (unsatClause[c2][i] == -1*unsatClause[c1][j]) && (ABS(unsatClause[c2][i]) == ABS(whichVariable)) ) ) {
+			if( ( (clause[c2][i] == -1*clause[c1][j]) && (ABS(clause[c2][i]) == ABS(whichVariable)) ) ) {
 
 					toAdd = 0;
 				
@@ -94,7 +81,7 @@ int resolution(int c1, int c2,int whichVariable) {
 			for(l = 0; l < (int)max ; ++l) {
 
 				/* This value is already inside the result, so don't need to insert it. */
-				if(result[l] == unsatClause[c2][i]) toAdd = 0;
+				if(result[l] == clause[c2][i]) toAdd = 0;
 			}
 
 		}
@@ -103,7 +90,7 @@ int resolution(int c1, int c2,int whichVariable) {
 		if(toAdd == 1) {
 
 			/* We insert it and we k++ for the next value. */
-			result[k++] = (char)unsatClause[c2][i];
+			result[k++] = (char)clause[c2][i];
 
 		}
 
@@ -112,14 +99,6 @@ int resolution(int c1, int c2,int whichVariable) {
 	}
 
 	/* -------------------------------------------------- */
-
-	for(i = 0 ; i < (int)max ; ++i) {
-
-		printf("%i ",result[i]);
-	}
-
-	printf("\n\n");
-	
 
 	j =  0;
 
@@ -130,53 +109,35 @@ int resolution(int c1, int c2,int whichVariable) {
 	}	
 
 	/* We will recreate the value result */
-	result = (char*)realloc(result,(unsigned long)(max-j));
+	result = (int*)realloc(result,(unsigned long)(max-j));
+
+	clause[numclause+numresolution] = result;
+
+	size[numclause+numresolution] = (int)(max-j);
+
+	numresolution++;
 
 	/* The resolution gives us the empty clause */
 	if( (max-j) == 0) {
 
 		/* The problem is so UNSAT */
-		FOUND = 1;
+		FOUND = UNSAT;
 		return  1;
-	}
-
-	/* i is equals to the new size of result. */
-	
-	for( i = 0; i < (int)(max - j) ; i++) {
-		printf("%i ",result[i]);
-	}
-
-	exit(0);
-
-	// int* tmp = unsatClause[c1];
-
-	// (*unsatClause)[c1] = (int*)realloc(tmp,sizeof(int)*(max-j) );	
-	
-	// free(tmp);
-
-	size[c1] = (max-j);
-
-	/* We desactive the clause C2, it doesn't exist anymore. */
-	for(i = 0; i < size[c2] ; ++i) {
-		unsatClause[c2] = 0;		
-	}
-
-	size[c2] = 0;
-
-	for(i = 0 ; i < size[c1]; ++i) {
-		unsatClause[c1][i] = (int)result[i];
-	}
-
-	for( i = 0 ; i < numclause ; ++i) { 
-		for(j = 0; j < size[i]; ++j) {
-			printf("%d ",unsatClause[i][j]);
-		}
-		printf("\n");
 	}
 
 	/* -------------------------------------------------- */
 
-	exit(0);
-
 	return 0;
+}
+
+
+/************************************************************************************************/
+/*																								*/
+/* restart : We did "too much" resolution and didn't find anything yet, we restart to find...   */
+/*																								*/
+/************************************************************************************************/
+void restart() {
+
+
+
 }
