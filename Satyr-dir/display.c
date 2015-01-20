@@ -103,7 +103,7 @@ inline void displayStat() {
 /************************************************************************************************/
 void displayFinalResult(Individual* population) {
 
-	if (FOUND == 1) {
+	if (FOUND == SAT) {
 
 		printf("c |-------------------------------------------------------------------------------------|\n");
 
@@ -179,7 +179,7 @@ void displaySolution(Individual* pop) {
   for(int i = 1; i < numatom+1 ; ++i) {
 
     /* We display the number i  when the value is true. */
-    if(s->atom[i] == 0) printf("%d ",   i);
+    if(s->atom[i] != 0) printf("%d ",   i);
 
     /* We display the number -i when the value is false. */
     else                printf("%d ",-1*i);
