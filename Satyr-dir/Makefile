@@ -24,7 +24,7 @@ COMPILER   = gcc
 
 EXECUTABLE = satyr
 
-OPTI       = -O3
+OPTI       = -O2
 
 # ----------------[ Flags for compilation of the executable ]------------------
 

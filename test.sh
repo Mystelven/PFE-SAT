@@ -41,9 +41,9 @@ function test()
 	#testUf $1 "uf175/"
 	#testUf $1 "uf200/"
 	#testUf $1 "uf225/"
-	testUf $1 "uf250/"
+	#testUf $1 "uf250/"
 
-	#testUf $1 "uuf50/"
+	testUf $1 "uuf50/"
 
 	echo ""
 	result $1 

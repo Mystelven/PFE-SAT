@@ -555,7 +555,7 @@ Individual * tabu (Individual *ind,int tabu_length, int maxflip){
 
   if (ind->numfalse == 0) {
     
-    FOUND = 1;
+    FOUND = SAT;
   }
   
   free(fausse);
@@ -616,6 +616,7 @@ void flipatom(Individual *ind,int toflip) {
 
       ind->clausesFalse[ind->numfalse] = cli;
       ind->wherefalse[cli] = ind->numfalse;
+      
       ++ind->numfalse;
 
       /* Decrement toflip's breakcount */
@@ -668,6 +669,8 @@ void flipatom(Individual *ind,int toflip) {
 
     /* cli = occurence[numatom+toenforce][i]; */
     cli = *(occptr++);   
+
+    if(cli > numclause) break;  
     
     if (++(ind->numtruelit[cli]) == 1) {
 

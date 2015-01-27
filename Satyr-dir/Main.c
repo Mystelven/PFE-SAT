@@ -90,8 +90,8 @@ int main(int argc,char *argv[]) {
 	NUMINDIVIDUAL     = 100;
 	
 	double p = rand() % 1000;
-	maxtry = (int)(numatom*p)/100;
-  	MAXTRY = (int)(numatom*p)/100;  		
+	maxtry = ((int)(numatom*p)/100);
+  	MAXTRY = ((int)(numatom*p)/100);
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	
@@ -104,23 +104,26 @@ int main(int argc,char *argv[]) {
 
 	youngerindividual = cardpopulation-1;
 
+	positifLiteral  = (int*)(malloc(sizeof(int)*(unsigned long)numatom));
+  	negatifLiteral  = (int*)(malloc(sizeof(int)*(unsigned long)numatom));
+
 	/* We perform an initial sort */
 	population = initial_sort (population); 
 
-	resolution(0,1,2);
-
-	resolution(4,2,1);
-
-	resolution(5,3,3);
+	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
 
 	/* We will search after a solution. */
 	while ( (maxtry != 0) && (FOUND != SAT) && (FOUND != UNSAT))  {
+
 			
 		/* At every step, we display statistic informations. */
 		displayStat();
 
 		/* We perform a crossover on the population. */
 		crossover_operator(&population);
+
+		/* We try to prove in the same time that the problem has no solution */
+		performResolutionProof(population);
 
 		/* We didn't success, we go on the next try. */
 		maxtry--;
