@@ -152,11 +152,17 @@ extern unsigned int ** clauseLearnt;
  */
 void uncheckedEnqueue(unsigned int l, unsigned int *cl)
 {  
+  
   isAssign[ABS(l)] = (SIGN(l)) ? ASS_FALSE : ASS_TRUE;
+  
   bestInterpretation[ABS(l)] =  isAssign[ABS(l)] & 1;
+  
   level[ABS(l)] = decisionLevel;
+  
   reason[ABS(l)] = cl;
+  
   partial_assign[tail++] = l;
+
 }/* uncheckedEnqueue */
 
 

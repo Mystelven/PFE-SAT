@@ -210,4 +210,15 @@ typedef struct struct_individual {
 
 /************************************************************************************************/
 
+  /* We will count how many times every positive variables appear in order to perform a resolution proof. */
+  int * positifLiteral; 
+  
+  /* We will count how many times every negative variables appear in order to perform a resolution proof. */
+  int * negatifLiteral; 
+
+  /* We will store a lot of space to know where are the clauses with the good variables; */
+  int * clausesResolutions;
+
+/************************************************************************************************/
+
 #endif

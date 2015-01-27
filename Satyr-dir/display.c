@@ -87,10 +87,11 @@ void signalHandler(int signum) {
 /************************************************************************************************/
 inline void displayStat() {
 
-	printf("c | generation: %6d   | ",(MAXTRY-maxtry)+1);
-	printf("best : %5d false clauses | ",bestnumfalse);
-	printf("nb flips: %7llu flips       ",allflip);
-	printf("  |\n");
+	printf("c | Gener : %4d | ",(MAXTRY-maxtry)+1);
+	printf("best :  %3d   | ",bestnumfalse);
+	printf("resolutions : %7d  | ",numresolution);
+	printf("flips: %7llu flips       ",allflip);
+	printf(" |\n");
 }
 
 /************************************************************************************************/
@@ -131,7 +132,7 @@ void displayFinalResult(Individual* population) {
 		printf("c \\====================================================================================/\n\n");
 	}
 
-	else {
+	else if(FOUND == UNSAT || 1) {
 
 		printf("c |-------------------------------------------------------------------------------------|\n");
 
@@ -158,6 +159,9 @@ void displayFinalResult(Individual* population) {
 		printf("           				/\n");
 		printf("c \\====================================================================================/\n\n");
 		
+	} else {
+
+		signalHandler(-1);
 	}
 }
 
