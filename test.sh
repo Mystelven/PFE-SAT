@@ -32,18 +32,26 @@ function test()
 	touch "$1_temps.txt"
 	touch "$1_results.txt"
 
-	#testUf $1 "uf20/"
-	#testUf $1 "uf50/"
-	#testUf $1 "uf75/"
-	#testUf $1 "uf100/"
-	#testUf $1 "uf125/"
-	#testUf $1 "uf150/"
-	#testUf $1 "uf175/"
-	#testUf $1 "uf200/"
-	#testUf $1 "uf225/"
-	#testUf $1 "uf250/"
+	#testUf $1 "uf20/" 20
+	#testUf $1 "uf50/" 50
+	#testUf $1 "uf75/" 75 
+	#testUf $1 "uf100/" 100 
+	#testUf $1 "uf125/" 125 
+	#testUf $1 "uf150/" 150
+	testUf $1 "uf175/" 175
+	testUf $1 "uf200/" 200
+	testUf $1 "uf225/" 225
+	testUf $1 "uf250/" 250
 
-	testUf $1 "uuf50/"
+	#testUf $1 "uuf50/" 50
+	#testUf $1 "uuf75/" 75
+	#testUf $1 "uuf100/" 100
+	#testUf $1 "uuf125/" 125
+ 	#testUf $1 "uuf150/" 150
+	#testUf $1 "uuf175/" 175
+	#testUf $1 "uuf200/" 200
+	#testUf $1 "uuf225/" 225
+	#testUf $1 "uuf250/" 250
 
 	echo ""
 	result $1 
@@ -71,14 +79,12 @@ do
 	file="$path$directory-$fichier";
 	
 	echo $solver." : ".$file;
-	
-	(exec "./$solver" "$file" >> "sortie.txt")
+
+	("./"$solver $file >> "sortie.txt")
 
 done
 
 end=`date +%s%N`
-sleep 1
-(exec "killall $solver") 2> "error.log" > "error.log"
 
 total=$(ls $path | wc -l | tr -cd '[[:digit:]]')
 total=$(printf "%04d" $total)
@@ -120,7 +126,7 @@ test "satyr"
 
 ##############################################################################
 
-test "gaSAT"
+#test "gaSAT"
 
 ##############################################################################
 
