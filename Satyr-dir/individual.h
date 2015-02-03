@@ -24,6 +24,9 @@
 #define random()           rand()
 #define srandom(seed) srand(seed)
 
+#define MIN(x,y) (((x) < (y)) ? (x) : (y))
+#define MAX(x,y) (((x) > (y)) ? (x) : (y))
+
 /* seed for the random generator. */
 int seed; 
 
@@ -210,14 +213,15 @@ typedef struct struct_individual {
 
 /************************************************************************************************/
 
-  /* We will count how many times every positive variables appear in order to perform a resolution proof. */
-  int * positifLiteral; 
-  
-  /* We will count how many times every negative variables appear in order to perform a resolution proof. */
-  int * negatifLiteral; 
-
   /* We will store a lot of space to know where are the clauses with the good variables; */
   int * clausesResolutions;
+
+
+  int* tabuVariables;
+
+  int sizeTabuVar;
+
+  int nbTabu;
 
 /************************************************************************************************/
 

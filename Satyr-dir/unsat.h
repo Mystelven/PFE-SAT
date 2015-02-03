@@ -44,7 +44,14 @@ extern int resolution(int c1, int c2, int whichVariable );
 /************************************************************************************************/
 extern void restart();
 
-
+/************************************************************************************************/
+/*																								*/
+/* contains : This function will test if the variable is include inside the clause 				*/
+/* @param cl the clause who maybe contains the variable 										*/
+/* @param variable the variable that we need to check 											*/
+/* @return TRUE if the clause contains the variable, FALSE otherwise. 							*/
+/*																								*/
+/************************************************************************************************/
 extern char contains(int cl, int variable);
 
 /************************************************************************************************/
@@ -64,7 +71,6 @@ extern int getWhichVariableToPerformResolution(Individual* population);
 /************************************************************************************************/
 extern void performResolutionProof(Individual* population);
 
-
 /************************************************************************************************/
 /*																								*/
 /* getWhichClausesToPerformResolution : We get the 2 clauses for the resolution 				*/
@@ -74,5 +80,19 @@ extern void performResolutionProof(Individual* population);
 /*																								*/
 /************************************************************************************************/
 extern int* getWhichClausesToPerformResolution(Individual* population,int whichVariable);
+
+/************************************************************************************************/
+/*																								*/
+/* subsumes : Will check if the clause c1 subsumes the clause C2 								*/
+/* @param c1 the index of the first clause 														*/
+/* @param c2 the index of the second clause 													*/
+/* @return TRUE if c1 subsumes c2, FALSE otherwise 												*/
+/*																								*/
+/************************************************************************************************/
+extern int subsumes(int c1, int c2);
+
+
+
+extern int isTautology();
 
 #endif

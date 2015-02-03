@@ -4,20 +4,28 @@
 		"selected_items":
 		[
 			[
-				"num",
-				"numresolution"
+				"size",
+				"sizeTabuVar"
 			],
 			[
 				"clause",
 				"clausesResolutions"
 			],
 			[
-				"where",
-				"wherefalse"
+				"num",
+				"numatom"
 			],
 			[
 				"nu",
-				"numresolution"
+				"numclause"
+			],
+			[
+				"nega",
+				"negatifLiteral"
+			],
+			[
+				"where",
+				"wherefalse"
 			],
 			[
 				"which",
@@ -71,65 +79,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "unsat.c",
-			"settings":
-			{
-				"buffer_size": 10220,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "unsat.h",
-			"settings":
-			{
-				"buffer_size": 3011,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "work.c",
-			"settings":
-			{
-				"buffer_size": 23499,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "##############################################################################\n# \n# Makefile for SATyr - Valentin Montmirail - Polytech Tours, France\n# Copyright (c) 2015.\n#\n# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and\n# associated documentation files (the \"Software\"), to deal in the Software without restriction,\n# including without limitation the rights to use, copy, modify, merge, publish, distribute,\n# sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is\n# furnished to do so, subject to the following conditions:\n#\n# The above copyright notice and this permission notice shall be included in all copies or\n# substantial portions of the Software.\n#\n# THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT\n# NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\n# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT\n# OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n#\n##############################################################################\n\nCOMPILER   = gcc\n\nEXECUTABLE = satyr\n\nOPTI       = -\n\n# ----------------[ Flags for compilation of the executable ]------------------\n\nFLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal \nFLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion \nFLAGS3   = -Wredundant-decls -Winit-self -Wswitch-default \nFLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 $(OPTI)\nFLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)\n\n# -----------------------------------------------------------------------------\n\n# ----------------[ The object created to link inside exec ]------------------\n\nWORK = obj/work.o\nUNSAT = obj/unsat.o \nDISPLAY = obj/display.o\nDISTANCE = obj/distance.o \nSTRUCTURE = obj/structure.o \nINITIALISATION = obj/initialisation.o \n\n# -----------------------------------------------------------------------------\n\nALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(DISTANCE) $(WORK) $(UNSAT) $(DISPLAY)\n\n##############################################################################\n\nall: \n	#make clean;\n	make debug;\n	make release;\n\ndebug: satyr\n	$(COMPILER) -o debug   $(FLAGS) $(ALL_THE_OBJECT) Main.c \n\nrelease: satyr\n	$(COMPILER) -o release $(ALL_THE_OBJECT) Main.c \n\nsatyr: $(ALL_THE_OBJECT)\n	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) Main.c \n\nclean: \n	rm debug\n	rm release\n	rm obj/*.o	\n\n## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.\ncheck:	\n	 cppcheck --enable=all --xml *.c */*.c */*.h 2> cppcheck.xml\n\n# ----------------[ Every different object to create ]------------------\n\n$(STRUCTURE): structure.c\n	$(COMPILER) -c $(FLAGS) structure.c\n	mv structure.o obj/\n\n$(DISTANCE): $(STRUCTURE) distance.c\n	$(COMPILER) -c $(FLAGS) distance.c\n	mv distance.o obj/	\n\n$(INITIALISATION): $(STRUCTURE) initialisation.c\n	$(COMPILER) -c $(FLAGS) initialisation.c\n	mv initialisation.o obj/	\n\n$(WORK): $(STRUCTURE) work.c\n	$(COMPILER) -c $(FLAGS) work.c\n	mv work.o obj/	\n\n$(UNSAT): $(STRUCTURE) unsat.c\n	$(COMPILER) -c $(FLAGS) unsat.c\n	mv unsat.o obj/			\n\n$(DISPLAY): $(STRUCTURE) $(WORK) display.c			\n	$(COMPILER) -c $(FLAGS) display.c\n	mv display.o obj/		\n\n# -----------------------------------------------------------------------------								\n\n##############################################################################",
-			"file": "Makefile",
-			"file_size": 3607,
-			"file_write_time": 130663179680000000,
-			"settings":
-			{
-				"buffer_size": 3605,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Main.c",
-			"settings":
-			{
-				"buffer_size": 5158,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "initialisation.c",
-			"settings":
-			{
-				"buffer_size": 8831,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "individual.h",
-			"settings":
-			{
-				"buffer_size": 7114,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -158,125 +107,137 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir"
 	],
 	"file_history":
 	[
-		"/Users/mystelven/Desktop/PFE-SAT/test.sh",
+		"/Users/mystelven/Desktop/Floffy/index.html",
+		"/Users/mystelven/Desktop/AOMUS/AOMUS.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/initialisation.c",
 		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/Main.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Glucose-dir/core/Solver.cc",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat.h",
 		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/individual.h",
+		"/Users/mystelven/Desktop/PFE-SAT/test.sh",
+		"/Users/mystelven/Desktop/PFE-SAT/sortie.txt",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-100.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-01.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-010.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-011.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-012.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-013.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-014.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-015.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-016.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-017.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-018.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-019.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-02.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-020.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-021.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-022.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-023.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-024.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-025.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-026.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-027.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-028.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-029.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-03.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-030.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-031.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-032.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-033.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-034.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-035.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-036.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-037.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-038.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-039.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-04.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-040.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-041.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-042.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-043.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-044.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-045.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-046.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-047.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-048.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-049.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-05.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-050.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-051.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-052.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-053.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-054.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-055.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-056.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-057.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-058.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-059.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-06.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-060.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-061.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-062.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-063.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-064.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-065.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-066.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-067.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-068.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-069.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-07.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-070.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-071.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-072.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-073.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-074.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-075.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-076.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-077.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-078.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-079.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-08.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-080.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-081.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-082.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-083.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-084.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-085.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-086.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-087.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-088.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-089.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-09.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-090.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-091.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-092.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-093.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-094.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-095.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-096.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-097.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-098.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-099.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/display.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Walksat-dir/walksat.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/aim-50-1_6-no-1.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/Glucose-dir/core/SolverTypes.h",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/Makefile",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat2.cnf",
+		"/Users/mystelven/Desktop/resultat2.txt",
+		"/Users/mystelven/Desktop/resultat.txt",
+		"/Users/mystelven/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
 		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/utils.h",
 		"/Users/mystelven/Desktop/PFE-SAT/Reductions/NQueens.c",
-		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat.h",
-		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/display.c",
 		"/Users/mystelven/Pictures/POL_Łódź_flag.svg",
 		"/Users/mystelven/Desktop/Flo/methodeFlo.flo",
 		"/Users/mystelven/Desktop/abiword-2.8.6/configure",
 		"/Applications/XAMPP/xamppfiles/htdocs/ImmoJeune/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Changelog.md",
 		"/Users/mystelven/Dropbox/_BruGi/SerialCom.h",
 		"/Users/mystelven/Desktop/Scaloni/images/organigramme.svg",
-		"/Users/mystelven/Desktop/Scaloni/images/gantt.svg",
-		"/Users/mystelven/Gantt.pod",
-		"/Users/mystelven/Downloads/localhost.sql",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/Symfony/web/config.php",
-		"/Users/mystelven/Downloads/sources/AddRoot.c",
-		"/Users/mystelven/Downloads/SGS3.pit",
-		"/Users/mystelven/Desktop/SAT/instances/81.cnf",
-		"/Users/mystelven/Desktop/SE/td1.c",
-		"/Users/mystelven/Desktop/SE/printf.c",
-		"/Users/mystelven/main.cpp",
-		"/Users/mystelven/controle.c",
-		"/Users/mystelven/Desktop/CEtudiant.cpp",
-		"/Users/mystelven/Downloads/drbunsen-beamer-master/README.md",
-		"/Users/mystelven/Downloads/drbunsen-bunsen_beamer_template-865734058054/README.md",
-		"/Users/mystelven/Desktop/glucose2.2/utils/Options.h",
-		"/Users/mystelven/Desktop/monitorat.c",
-		"/Users/mystelven/SAT/Sources/Clause.cpp",
-		"/Users/mystelven/SAT/Headers/Solver.h",
-		"/Users/mystelven/SAT/Sources/Solver.cpp",
-		"/Users/mystelven/SAT/Main.cpp",
-		"/Users/mystelven/SAT/Makefile",
-		"/Users/mystelven/SAT/Sources/Strategie.cpp",
-		"/Users/mystelven/SAT/Headers/Strategie.h",
-		"/Users/mystelven/SAT/Sources/Solution.cpp",
-		"/Users/mystelven/SAT/Sources/Problem.cpp",
-		"/Users/mystelven/SAT/Headers/Variable.h",
-		"/Users/mystelven/SAT/Headers/Solution.h",
-		"/Users/mystelven/SAT/Headers/Problem.h",
-		"/Users/mystelven/SAT/Headers/Clause.h",
-		"/Users/mystelven/SAT/Sources/Variable.cpp",
-		"/Users/mystelven/Downloads/glucose2.2/core/Main.cc",
-		"/Users/mystelven/Downloads/55220-1385049-le-probleme-du-voyageur-de-commerce-en-langage-c-ant-system/Fonction.c",
-		"/Users/mystelven/Downloads/55220-1385049-le-probleme-du-voyageur-de-commerce-en-langage-c-ant-system/AntSystem.c",
-		"/Users/mystelven/Downloads/projet.sql",
-		"/Applications/XAMPP/xamppfiles/htdocs/tpPhP/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/fr/cv.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/it/cv.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/en/cv.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/style.css",
-		"/Users/mystelven/Downloads/Rapport_Stage/compile.sh",
-		"/Users/mystelven/Projet/Facturation/execution.sh",
-		"/Users/mystelven/Desktop/Rapport_Stage/images/paymentech/Paymentech.php",
-		"/Users/mystelven/Desktop/Paymentech.php",
-		"/Users/mystelven/Desktop/test.html",
-		"/Users/mystelven/Desktop/Rapport_Stage/compile.sh",
-		"/Users/mystelven/Downloads/Google App Jelly Beans/install-optional.sh",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/BD/connexion.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/musiqueAccueil.php",
-		"/Users/mystelven/Desktop/Les_confitures.txt",
-		"/Users/mystelven/Projet/JeuDeLaVie/core/Monde.java",
-		"/Users/mystelven/Desktop/Factures_Stage/compile.sh",
-		"/Users/mystelven/Desktop/JeuDeLaVie/core/MainPrg.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/core/Ciseau.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/core/Papier.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/core/Pierre.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/core/Cellule.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/ui/Launcher.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/ui/MainFrame.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/ui/MondeRenderer.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/ui/MondeComponent.java",
-		"/Users/mystelven/Desktop/JeuDeLaVie/core/Monde.java",
-		"/Users/mystelven/Desktop/ali/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/ali/coordonnees.sql",
-		"/Users/mystelven/Desktop/JeuDeLaVie/ui/AdjustementListener.java",
-		"/Users/mystelven/Desktop/MondeRenderer.java",
-		"/Users/mystelven/Desktop/MondeComponent.java",
-		"/Users/mystelven/Desktop/MainFrame.java",
-		"/Users/mystelven/Desktop/Launcher.java",
-		"/Users/mystelven/Desktop/Cellule.java",
-		"/Users/mystelven/Desktop/MainPrg.java",
-		"/Users/mystelven/Desktop/Monde.java",
-		"/Users/mystelven/Desktop/Final/README.txt",
-		"/Users/mystelven/Desktop/Final/clean.sh",
-		"/Users/mystelven/Desktop/Final/compile.sh",
-		"/Users/mystelven/Desktop/rapport_stage/make.sh",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/contact.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/includes.inc.php",
-		"/Users/mystelven/Desktop/contact.txt",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/menu.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/photos.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/header-wrapper.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/discographie.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/discographie-wrapper.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/plusSurNous-wrapper.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/header-wrapper_without_logo.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/news.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/features-wrapper.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/contact.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/footer-wrapper.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/copyright.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/css/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/errors/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/images/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/js/index.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/lesbinoclards/includes/logo.inc.php",
-		"/Applications/XAMPP/xamppfiles/htdocs/site/test.html",
-		"/Users/mystelven/Desktop/BlindGame/script.sh",
-		"/Users/mystelven/Desktop/BlindGame.txt",
-		"/Users/mystelven/Desktop/script.sh"
+		"/Users/mystelven/Desktop/Scaloni/images/gantt.svg"
 	],
 	"find":
 	{
@@ -284,9 +245,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/Users/mystelven/Desktop/PFE-SAT/Glucose-dir",
+			"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200",
+			"/Users/mystelven/Desktop/PFE-SAT/Cdls-dir"
 		]
 	},
 	"find_state":
@@ -294,6 +258,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"MUS",
+			"core",
+			"UNSAT",
+			"MUS",
+			"core",
+			"/***************************************************************************************[",
+			"ltrech",
+			"tabu",
+			"tab",
+			"tabu",
+			"UN",
+			"\n0\n\n",
+			"maxtry =",
+			"maxtry=",
+			"unsa",
+			"unsat",
+			"flipatom",
+			"main",
+			"unsat",
+			"subsume",
 			"jpeh.h",
 			"jpg",
 			"Strategie",
@@ -317,6 +301,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"Solver",
 			"arrayOfSolutions",
 			"isSolution",
@@ -334,218 +319,14 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "/Users/mystelven/Desktop/PFE-SAT/Satyr-dir"
+			"path": "/Users/mystelven/Desktop/PFE-SAT"
 		}
 	],
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "unsat.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10220,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4506,
-								4506
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4187.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "unsat.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3011,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2919,
-								2919
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 67.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "work.c",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 23499,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19326,
-								19326
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 9788.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Makefile",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3605,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1357,
-								1357
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Makefile/Makefile.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Main.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4251,
-								4251
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1267.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "initialisation.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8831,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1901,
-								1901
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1587.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "individual.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7114,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6986,
-								7004
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2632.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],

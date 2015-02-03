@@ -24,7 +24,7 @@ COMPILER   = gcc
 
 EXECUTABLE = satyr
 
-OPTI       = -O2
+OPTI       = -O3
 
 # ----------------[ Flags for compilation of the executable ]------------------
 
@@ -52,7 +52,6 @@ ALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(DISTANCE) $(WORK) $(UNSAT) $(D
 ##############################################################################
 
 all: 
-	#make clean;
 	make debug;
 	make release;
 
@@ -64,6 +63,9 @@ release: satyr
 
 satyr: $(ALL_THE_OBJECT)
 	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) Main.c 
+
+compet: $(ALL_THE_OBJECT)
+	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) -D BENCHMARK Main.c 
 
 clean: 
 	rm debug

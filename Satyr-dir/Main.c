@@ -82,16 +82,25 @@ int main(int argc,char *argv[]) {
 	displayInfo(stdout);
 
 	/* We, for now, didn't find a solution (or the absence of solution) yet. */
-	FOUND = FALSE; 
+	FOUND = -1; 
 	
 	cardpopulation    = 0;   
 	bestnumfalse      = numclause;
 	allflip           = 0;
-	NUMINDIVIDUAL     = 100;
+	NUMINDIVIDUAL     = MIN( (numatom/10)+10 , 100);
 	
-	double p = rand() % 1000;
-	maxtry = ((int)(numatom*p)/100);
-  	MAXTRY = ((int)(numatom*p)/100);
+	double p = (rand() % 1000)+500;
+	maxtry = ((int)(numatom*p));
+  	MAXTRY = ((int)(numatom*p));
+
+  	tabuVariables = (int*)malloc(sizeof(int)*(unsigned long)(0.3 * numatom));
+  	sizeTabuVar = (int)(0.3 * numatom);
+
+  	for(i = 0;  i < sizeTabuVar ; ++i) {
+  		tabuVariables[i] = -1;
+  	}
+
+  	nbTabu = 0;
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	
@@ -104,9 +113,6 @@ int main(int argc,char *argv[]) {
 
 	youngerindividual = cardpopulation-1;
 
-	positifLiteral  = (int*)(malloc(sizeof(int)*(unsigned long)numatom));
-  	negatifLiteral  = (int*)(malloc(sizeof(int)*(unsigned long)numatom));
-
 	/* We perform an initial sort */
 	population = initial_sort (population); 
 
@@ -114,10 +120,11 @@ int main(int argc,char *argv[]) {
 
 	/* We will search after a solution. */
 	while ( (maxtry != 0) && (FOUND != SAT) && (FOUND != UNSAT))  {
-
 			
 		/* At every step, we display statistic informations. */
-		displayStat();
+		#ifndef BENCHMARK
+			displayStat();
+		#endif
 
 		/* We perform a crossover on the population. */
 		crossover_operator(&population);
