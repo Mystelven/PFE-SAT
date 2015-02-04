@@ -70,12 +70,6 @@ inline int getWhichVariableToPerformResolution(Individual* population) {
 		tmp = tmp->next;
 	}
 
-	/*
-	if(random() % 100 < 80) {
-		whichVariable = (random() % numatom)+1;
-	}
-	*/
-
 	/* ------------------------------------------------------------------------ */
 
 
@@ -404,15 +398,6 @@ inline int resolution(int c1, int c2,int whichVariable) {
 		/* The problem is so UNSAT */
 		FOUND = UNSAT;
 		return  1;
-	}
-
-	if (subsumes(c1,(int)numclause+numresolution-1) == TRUE) {
-			
-		numresolution--;
-
-	} else if (subsumes(c2,(int)numclause+numresolution-1) == TRUE) {
-		
-		numresolution--;
 	}
 
 	/* -------------------------------------------------- */

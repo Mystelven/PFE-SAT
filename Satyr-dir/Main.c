@@ -82,7 +82,7 @@ int main(int argc,char *argv[]) {
 	displayInfo(stdout);
 
 	/* We, for now, didn't find a solution (or the absence of solution) yet. */
-	FOUND = -1; 
+	FOUND = FALSE; 
 	
 	cardpopulation    = 0;   
 	bestnumfalse      = numclause;
@@ -119,8 +119,15 @@ int main(int argc,char *argv[]) {
 	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
 
 	/* We will search after a solution. */
-	while ( (maxtry != 0) && (FOUND != SAT) && (FOUND != UNSAT))  {
-			
+	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
+		
+		#ifndef BENCHMARK
+			/* When we are on training-mode, no need to stay forever... */
+			if(maxtry == 0) {
+				break;
+			}
+		#endif
+
 		/* At every step, we display statistic informations. */
 		#ifndef BENCHMARK
 			displayStat();
