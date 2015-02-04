@@ -47,7 +47,7 @@ INITIALISATION = obj/initialisation.o
 
 # -----------------------------------------------------------------------------
 
-ALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(DISTANCE) $(WORK) $(UNSAT) $(DISPLAY)
+ALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(WORK) $(UNSAT) $(DISPLAY)
 
 ##############################################################################
 

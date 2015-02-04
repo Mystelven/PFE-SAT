@@ -96,10 +96,18 @@ extern void insert_individual(Individual* y, Individual** z);
 /************************************************************************************************/
 extern Individual* add_individual(Individual* ind, Individual* x); 
 
+
+/************************************************************************************************/
+/*                                                                                              */
+/* select_individual : able to take from a list an individual 									*/
+/* @param ind the linked list where we will look 		                                        */
+/*                                                                                              */
+/************************************************************************************************/
+extern Individual* select_individual(Individual* list);
+
 /************************************************************************************************/
 
 #include "work.h"
-#include "distance.h"
 #include "initialisation.h"
 
 #endif

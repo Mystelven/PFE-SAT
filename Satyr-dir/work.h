@@ -34,16 +34,6 @@
 /*                                                                                              */
 /************************************************************************************************/
 Individual * initial_sort (Individual *ind); 
-
-/************************************************************************************************/
-/*                                                                                              */
-/* select_best_individual_function : selects the BESTINDIVIDUAL individuals of the population   */
-/* and return this sub-population                                                               */
-/* @param ind the linked list of the population                                                 */
-/* @return the sub-population of only "best individuals"                                        */
-/*                                                                                              */
-/************************************************************************************************/
-Individual * select_best_individual_function(Individual *ind); 
  
 /************************************************************************************************/
 /*                                                                                              */

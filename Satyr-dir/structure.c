@@ -134,16 +134,13 @@ inline Individual* createPopulation() {
 
     	/* We put the good values for theses attributes. */
     	x->numindividual = cardpopulation;
-    	x->numhamming    = cardpopulation;
+    	// x->numhamming    = cardpopulation;
 
     	/* We incremente this number. */
-    	cardpopulation++;
+    	++cardpopulation;
 
     	/* TRUE because it is the first initialization */
     	init(x, TRUE); 
-
-		/* improvement of all the individuals */
-    	x = tabu(x,ltinit,1000);
 
 		/* Insertion of the new individual in the population */
     	if (i == 0) population = x;    		
@@ -339,3 +336,9 @@ inline Individual* add_individual(Individual* ind, Individual* x) {
 }
 
 /************************************************************************************************/
+
+
+inline Individual* select_individual(Individual* list) {
+
+	return add_individual(NULL,list);
+}
