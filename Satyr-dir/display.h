@@ -29,12 +29,11 @@
 
 #define CLOCK_TICK 100
 
-/************************************************************************************************
- *																								*
- * displayInfo : useful to display some informations 			   								*
- * @param std the output where we will write informations 		   								*
- *																								*
- ************************************************************************************************/
+/** 
+ *																								
+ * displayInfo : useful to display some informations 			   								
+ * @param std the output where we will write informations 		   																																
+ */
 void displayInfo(FILE* std);
 
 /************************************************************************************************/
