@@ -21,7 +21,6 @@
 ##############################################################################*/
 
 #include "unsat.h"
-#include "utils.h"
 #include <stdlib.h>
 
 
@@ -72,7 +71,7 @@ inline char contains(int cl, int variable) {
 
 
 inline void tryToProveUNSAT() {
-	
+
 	if(random() % 100 < 1) restart();
 
 	/* If have gone to far, we restart everything, we will not find anything in this branch... */

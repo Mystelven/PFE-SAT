@@ -27,7 +27,7 @@
 #define MIN(x,y) (((x) < (y)) ? (x) : (y))
 #define MAX(x,y) (((x) > (y)) ? (x) : (y))
 
-/* seed for the random generator. */
+/** seed for the random generator. */
 int seed; 
 
 
@@ -37,16 +37,20 @@ int seed;
 /*                                                                                              */
 /************************************************************************************************/
 
-/* size of block to malloc each time */
+/** size of block to malloc each time */
 #define STOREBLOCK 20000
 
 #define TRUE  1
-#define FALSE 0
 
+#define FALSE 0
+  
+/** This define represents the fact that the solver finds a solution for the problem */
 #define   SAT 1
+
+/** This define represents the fact that the solver proved that the problem has no solution */
 #define UNSAT 2
 
-/* maximum number of literals which can be in any clause (we can force the 3-SAT here) */
+/** maximum number of literals which can be in any clause (we can force the 3-SAT here) */
 #define MAXLENGTH 5000         
 
 /************************************************************************************************/
@@ -78,36 +82,36 @@ long  temptime;
 
 struct tms* a_tms;
 
-/* We will need a variable to know how many times it takes to read the benchmark. */
+/** We will need a variable to know how many times it takes to read the benchmark. */
 double parsingTime;
 
 /************************************************************************************************/
 
-/* benchmark's name */
+/** benchmark's name */
 char* benchmark_name;  
 
-/* number of individuals where the two parents are selected */
+/** number of individuals where the two parents are selected */
 int BESTINDIVIDUAL; 
 
-/* number of individuals in the population */
+/** number of individuals in the population */
 int NUMINDIVIDUAL; 
 
-/* max number of crosses */
+/** max number of crosses */
 int MAXTRY; 
 
 /************************************************************************************************/
 /* Tabou search variables */
 
-/* length of tabou list for the preliminary search */
+/** length of tabou list for the preliminary search */
 int ltinit; 
 
-/* length of tabou list for the real search */
+/** length of tabou list for the real search */
 int ltrech; 
 
-/* length of tabou list for the preliminary search (percent of numatom) */
+/** length of tabou list for the preliminary search (percent of numatom) */
 int ltinitpc; 
 
-/* length of tabou list for the real search (percent of numatom) */
+/** length of tabou list for the real search (percent of numatom) */
 int ltrechpc; 
 
 /************************************************************************************************/
@@ -115,19 +119,19 @@ int ltrechpc;
 /************************************************************************************************/
 /* Variables for the population counter */
 
-/* number of individual at each moment */
+/** number of individual at each moment */
 int cardpopulation; 
 
-/* identification of the younger individual */
+/** identification of the younger individual */
 int youngerindividual; 
 
-/* number of false clauses for the best individual */
+/** number of false clauses for the best individual */
 int bestnumfalse; 
 
-/* number of false clauses for the worse individual in the population */
+/** number of false clauses for the worse individual in the population */
 int worsetemporarynumfalse; 
 
-/* identification of the older individual */
+/** identification of the older individual */
 int olderindividual; 
 
 /************************************************************************************************/
@@ -135,42 +139,43 @@ int olderindividual;
 /************************************************************************************************/
 /* Variables for the benchmarks counter */
 
-/* number of atoms in the set of CNF clauses */
+/** number of atoms in the set of CNF clauses */
 int numatom; 
 
-/* number of clauses in the set of CNF clauses */
+/** number of clauses in the set of CNF clauses */
 int numclause; 
 
-/* The number of resolutions that we performed ( < numclause ) */
+/** The number of resolutions that we performed ( < numclause ) */
 int numresolution;
 
-/* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
+/** clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
 int** clause;   
-
+  
+/** the matrix that we use to choose which clause will be used for the next resolution */
 int** resolutionTable;
 
-/* length of each clause */
+/** length of each clause */
 int* size;  
 
-/* where each literal occurs, indexed as occurence[literal+numatom][occurence_num] */
+/** where each literal occurs, indexed as occurence[literal+numatom][occurence_num] */
 int** occurence;  
 
-/* number of times each literal occurs */
+/** number of times each literal occurs */
 int* numoccurence;
 
-/* number of flips */
+/** number of flips */
 unsigned long long allflip;  
 
 /************************************************************************************************/
 /* Variables for the algorithm counter */
 
-/* 0 if no solution found else 1 */
+/** UNSAT if no solution found else SAT */
 int FOUND; 
 
-/* it used to select the BESTINDIVIDUAL individual but whit a minimal diversity */
+/** it used to select the BESTINDIVIDUAL individual but whit a minimal diversity */
 char ** barycentre; 
 
-/* number of tries between the start (for MAXTRY downto 0) */
+/** number of tries between the start (for MAXTRY downto 0) */
 int maxtry; 
 
 /************************************************************************************************/
@@ -179,51 +184,47 @@ int maxtry;
 /************************************************************************************************/
 /* Structure for an Individual */
 
+/**
+ * This structure represents one individual inside the population.
+ */
 typedef struct struct_individual {
 
-  /* value of each atom */ 
+  /** value of each atom */ 
   char *atom;                       
 
-  /* clauses which are false */
+  /** clauses which are false */
   int *clausesFalse;           
 
-  /* number of true literals in each clause */     
+  /** number of true literals in each clause */     
   int *numtruelit;                  
 
-  /* where each clause is listed in false */
+  /** where each clause is listed in false */
   int *wherefalse;  
 
-  /* number of clauses that become unsat if var is flipped */                
+  /** number of clauses that become unsat if var is flipped */                
   int *breakcount;
 
-  /* number of clauses that become sat if var is flipped */  
+  /** number of clauses that become sat if var is flipped */  
   int *makecount; 
 
-  /* number of false clauses */
+  /** number of false clauses */
   int numfalse;       
 
-  /*indentification of the individual*/ 
+  /** indentification of the individual */ 
   int numindividual;    
 
-  /*number between 0 to 99*/
+  /** number between 0 to 99 */
   int numhamming;  
 
-  /* pointer on the next element of the linked list */     
+  /** pointer on the next element of the linked list */     
   struct struct_individual *next;
 
 } Individual;
 
 /************************************************************************************************/
 
-  /* We will store a lot of space to know where are the clauses with the good variables; */
+  /** We will store a lot of space to know where are the clauses with the good variables; */
   int * clausesResolutions;
-
-
-  int* tabuVariables;
-
-  int sizeTabuVar;
-
-  int nbTabu;
 
 /************************************************************************************************/
 
