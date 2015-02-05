@@ -347,3 +347,78 @@ inline Individual* select_individual(Individual* list) {
 
 	return add_individual(NULL,list);
 }
+
+/**
+ *																								
+ * init : initializes the benchmark structures 													
+ * @param ind the individual that we need to initialize 										
+ * @param first is it the first initialisation ? 												
+ *
+ */
+inline void init(Individual *ind,int first) {
+
+	int i;
+	int j;
+	int thetruelit = 0;
+	
+	for( i = 0 ; i < numclause ; ++i) {
+
+		ind->numtruelit[i]   = 0;
+		ind->clausesFalse[i] = 0;
+	}
+	
+	ind->numfalse      = 0;
+	ind->makecount[0]  = 0;
+	ind->breakcount[0] = 0;
+
+	for( i = 1 ; i < numatom+1 ; ++i) {
+
+		ind->breakcount[i] = 0;
+		ind-> makecount[i] = 0;
+
+	}
+	
+	/* Only on the first initialisation. */
+	if (first == TRUE) {
+
+		for( i = 1 ; i < numatom+1 ; ++i) {
+ 			
+ 			ind->atom[i] = (char)(random() % 2);			 
+		}
+
+	}
+
+	/* Initialize breakcount and makecount in the following: */
+	for( i = 0 ; i < numclause ; ++i) {
+		
+		for( j = 0 ; j < size[i] ; ++j) {
+
+			if((clause[i][j] > 0) == ind->atom[ABS(clause[i][j])]) {
+
+				++ind->numtruelit[i];
+
+				thetruelit = clause[i][j];
+
+		  	}
+
+		}
+
+	  	if(ind->numtruelit[i] == 0) {
+			
+			ind->wherefalse[i]               = ind->numfalse;
+
+			ind->clausesFalse[ind->numfalse] = i;
+			
+			++ind->numfalse;
+
+			for( j = 0 ; j < size[i] ; ++j) ++ind->makecount[ABS(clause[i][j])];			
+
+		} else {
+
+	    	if (ind->numtruelit[i] == 1) ++ind->breakcount[ABS(thetruelit)];	      
+
+	    	ind->wherefalse[i] = -1;
+	  	}		
+	}
+}
+

@@ -21,7 +21,6 @@
 ##############################################################################*/
 
 #include "unsat.h"
-#include <stdlib.h>
 
 /**
  *
@@ -338,4 +337,45 @@ inline void restart() {
 	numresolution = 0;
 
 	initResolutionTable();
+}
+
+
+/**
+ * 
+ * initResolutionTable: This function will initialize our big array that will be used to know
+ * which clauses we will use for the next resolution.
+ *
+ */
+void initResolutionTable() {
+
+	int i,j,k;
+
+	int var = BIG;
+
+ 	for(i = 0; i < numclause; ++i) {
+
+ 		for(j = i+1; j < numclause; ++j) {
+
+ 			for(k = 0; k < size[i] ; ++k) {
+ 				if( contains(j,-1*clause[i][k]) == TRUE) {
+ 					var = ABS(clause[i][k]);
+ 					break;
+ 				}
+ 			}
+
+ 			if(var == -1) {
+ 				
+ 				resolutionTable[i][j] = BIG;
+ 				
+ 			} else {
+
+ 				resolution(i,j,var,FALSE);
+ 			}
+
+ 			resolutionTable[j][i] = resolutionTable[i][j];
+ 			var = -1;
+ 		}
+
+ 	}
+
 }

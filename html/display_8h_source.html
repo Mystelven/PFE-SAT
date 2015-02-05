@@ -8,11 +8,21 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
 </script>
+<link rel="search" href="search-opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="SATyr"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -41,18 +51,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
-          </span>
+          <div class="left">
+            <form id="FSearchBox" action="search.php" method="get">
+              <img id="MSearchSelect" src="search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
         </div>
       </li>
     </ul>
@@ -63,25 +69,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_7ed49d86cc762c97c4620aef87984c5b.html">Satyr-dir</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('display_8h_source.html','');});
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">display.h</div>  </div>
@@ -114,67 +116,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define DISPLAY_H</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="work_8h.html">work.h</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="display_8h.html#a14a63f4542ca9d2f69a3dab366a12e1a">   30</a></span>&#160;<span class="preprocessor">#define CLOCK_TICK 100</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* displayInfo : useful to display some informations                                            */</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* @param std the output where we will write informations                                       */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display_8h.html#af1e933a510d62636fcec95bc7c6c50da">displayInfo</a>(FILE* std);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* signalHandler: Useful to catch the SIGINT signal in that way,                                */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* we can shut down the solver and display that we don&#39;t know if the problem                    */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* is SATISFIABLE or UNSATISFIABLE...                                                           */</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* The solver will so, display UNKNOWN for the state of the result.                             */</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/* @param signum the identification number of the signal                                        */</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display_8h.html#a8ee3282bc313e547dbbb8d4f4010db61">signalHandler</a>(<span class="keywordtype">int</span> signum);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* displayStat : We will display every generation to see the progression.                       */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="display_8h.html#a7c3a05acaf1762fe93fd61ca3f2d12e2">displayStat</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/* displayInfo : useful to display the final result after solving this problem                  */</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/* @param population the population we used to solve this problem                               */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display_8h.html#a1c0e8f65717666f7901d65d7c773039b">displayFinalResult</a>(<a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8c.html#a8ed6d66027be08947e4577d31111ecd8">population</a>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/* displaySolution: this function allows us to display the solution of the problem.             */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/* @param pop    Represents the population where one of individual is solution                  */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> <a class="code" href="display_8h.html#ac8762a05712d0137e66199ca76a3948c">displaySolution</a>(<a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8c.html#a8ed6d66027be08947e4577d31111ecd8">population</a>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="display_8h_html_a7c3a05acaf1762fe93fd61ca3f2d12e2"><div class="ttname"><a href="display_8h.html#a7c3a05acaf1762fe93fd61ca3f2d12e2">displayStat</a></div><div class="ttdeci">void displayStat()</div><div class="ttdef"><b>Definition:</b> display.c:88</div></div>
-<div class="ttc" id="display_8h_html_ac8762a05712d0137e66199ca76a3948c"><div class="ttname"><a href="display_8h.html#ac8762a05712d0137e66199ca76a3948c">displaySolution</a></div><div class="ttdeci">void displaySolution(Individual *population)</div><div class="ttdef"><b>Definition:</b> display.c:174</div></div>
-<div class="ttc" id="display_8h_html_a8ee3282bc313e547dbbb8d4f4010db61"><div class="ttname"><a href="display_8h.html#a8ee3282bc313e547dbbb8d4f4010db61">signalHandler</a></div><div class="ttdeci">void signalHandler(int signum)</div><div class="ttdef"><b>Definition:</b> display.c:59</div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="display_8h.html#a14a63f4542ca9d2f69a3dab366a12e1a">   29</a></span>&#160;<span class="preprocessor">#define CLOCK_TICK 100</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="display_8h.html#af1e933a510d62636fcec95bc7c6c50da">displayInfo</a>(FILE* std);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="display_8h.html#a8ee3282bc313e547dbbb8d4f4010db61">signalHandler</a>(<span class="keywordtype">int</span> signum);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="display_8h.html#a7c3a05acaf1762fe93fd61ca3f2d12e2">displayStat</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="display_8h.html#a1c0e8f65717666f7901d65d7c773039b">displayFinalResult</a>(<a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8c.html#a8ed6d66027be08947e4577d31111ecd8">population</a>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="display_8h.html#ac8762a05712d0137e66199ca76a3948c">displaySolution</a>(<a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8c.html#a8ed6d66027be08947e4577d31111ecd8">population</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="display_8h_html_a7c3a05acaf1762fe93fd61ca3f2d12e2"><div class="ttname"><a href="display_8h.html#a7c3a05acaf1762fe93fd61ca3f2d12e2">displayStat</a></div><div class="ttdeci">void displayStat()</div><div class="ttdef"><b>Definition:</b> <a href="display_8c_source.html#l00087">display.c:87</a></div></div>
+<div class="ttc" id="display_8h_html_ac8762a05712d0137e66199ca76a3948c"><div class="ttname"><a href="display_8h.html#ac8762a05712d0137e66199ca76a3948c">displaySolution</a></div><div class="ttdeci">void displaySolution(Individual *population)</div><div class="ttdef"><b>Definition:</b> <a href="display_8c_source.html#l00174">display.c:174</a></div></div>
+<div class="ttc" id="display_8h_html_a8ee3282bc313e547dbbb8d4f4010db61"><div class="ttname"><a href="display_8h.html#a8ee3282bc313e547dbbb8d4f4010db61">signalHandler</a></div><div class="ttdeci">void signalHandler(int signum)</div><div class="ttdef"><b>Definition:</b> <a href="display_8c_source.html#l00058">display.c:58</a></div></div>
 <div class="ttc" id="work_8h_html"><div class="ttname"><a href="work_8h.html">work.h</a></div></div>
-<div class="ttc" id="display_8h_html_a1c0e8f65717666f7901d65d7c773039b"><div class="ttname"><a href="display_8h.html#a1c0e8f65717666f7901d65d7c773039b">displayFinalResult</a></div><div class="ttdeci">void displayFinalResult(Individual *population)</div><div class="ttdef"><b>Definition:</b> display.c:105</div></div>
-<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> individual.h:182</div></div>
-<div class="ttc" id="structure_8c_html_a8ed6d66027be08947e4577d31111ecd8"><div class="ttname"><a href="structure_8c.html#a8ed6d66027be08947e4577d31111ecd8">population</a></div><div class="ttdeci">Individual * population</div><div class="ttdef"><b>Definition:</b> structure.c:26</div></div>
-<div class="ttc" id="display_8h_html_af1e933a510d62636fcec95bc7c6c50da"><div class="ttname"><a href="display_8h.html#af1e933a510d62636fcec95bc7c6c50da">displayInfo</a></div><div class="ttdeci">void displayInfo(FILE *std)</div><div class="ttdef"><b>Definition:</b> display.c:32</div></div>
+<div class="ttc" id="display_8h_html_a1c0e8f65717666f7901d65d7c773039b"><div class="ttname"><a href="display_8h.html#a1c0e8f65717666f7901d65d7c773039b">displayFinalResult</a></div><div class="ttdeci">void displayFinalResult(Individual *population)</div><div class="ttdef"><b>Definition:</b> <a href="display_8c_source.html#l00105">display.c:105</a></div></div>
+<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00186">individual.h:186</a></div></div>
+<div class="ttc" id="structure_8c_html_a8ed6d66027be08947e4577d31111ecd8"><div class="ttname"><a href="structure_8c.html#a8ed6d66027be08947e4577d31111ecd8">population</a></div><div class="ttdeci">Individual * population</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00026">structure.c:26</a></div></div>
+<div class="ttc" id="display_8h_html_af1e933a510d62636fcec95bc7c6c50da"><div class="ttname"><a href="display_8h.html#af1e933a510d62636fcec95bc7c6c50da">displayInfo</a></div><div class="ttdeci">void displayInfo(FILE *std)</div><div class="ttdef"><b>Definition:</b> <a href="display_8c_source.html#l00031">display.c:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 5 2015 10:08:38 for SATyr by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_7ed49d86cc762c97c4620aef87984c5b.html">Satyr-dir</a></li><li class="navelem"><a class="el" href="display_8h.html">display.h</a></li>
+    <li class="footer">Generated on Thu Feb 5 2015 15:19:41 for SATyr by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+  </ul>
+</div>
 </body>
 </html>

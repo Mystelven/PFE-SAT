@@ -24,8 +24,6 @@
 #ifndef INITIALISATION_H
 #define INITIALISATION_H
 
-#include "structure.h"
-
 #include "unsat.h"
 
 /**
@@ -44,22 +42,5 @@ extern int parameters(char *argv[]);
  */
 extern void initprob();
 
-/**
- *																								
- * init : initializes the benchmark structures 													
- * @param ind the individual that we need to initialize 										
- * @param first is it the first initialisation ? 												
- *
- */
-extern void init(Individual *ind,int first);
-
-
-/**
- * 
- * initResolutionTable: This function will initialize our big array that will be used to know
- * which clauses we will use for the next resolution.
- *
- */
-extern void initResolutionTable();
 
 #endif
