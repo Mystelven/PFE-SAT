@@ -27,6 +27,8 @@
 #include "work.h"
 #include <time.h>
 
+#define CLOCK_TICK 100
+
 /************************************************************************************************/
 /*																								*/
 /* displayInfo : useful to display some informations 			   								*/
