@@ -89,7 +89,6 @@ inline void initprob() {
 	int nextc;
 	
 	int *storeptr;
-	int *unsatStoreptr;
 	int freestore;
 	
 	int lit;
@@ -146,9 +145,10 @@ inline void initprob() {
 
 	numoccurence = (int * ) malloc( sizeof(int  ) * (unsigned long)(2*numatom+1   ));
 	occurence    = (int **) malloc( sizeof(int *) * (unsigned long)(2*numatom+1   ));
-	clause       = (int **) malloc( sizeof(int *) * (unsigned long)(numclause     ));
-	unsatClause  = (int **) malloc( sizeof(int *) * (unsigned long)(numclause     ));
-	size         = (int * ) malloc( sizeof(int  ) * (unsigned long)(numclause     ));
+
+	/* We allocate twice the size needed in order to perform easily resolution proof for UNSAT. */
+	clause       = (int **) malloc( sizeof(int *) * (unsigned long)(2*numclause   ));
+	size         = (int * ) malloc( sizeof(int  ) * (unsigned long)(2*numclause   ));
 	
 	barycentre   = (char**) malloc( sizeof(char*) * (unsigned long)(BESTINDIVIDUAL));
 
@@ -173,13 +173,11 @@ inline void initprob() {
 		if (freestore < MAXLENGTH) {
 
 			storeptr      = (int *) malloc( sizeof(int) * STOREBLOCK );
-			unsatStoreptr = (int *) malloc( sizeof(int) * STOREBLOCK );
 			freestore = STOREBLOCK;
 
 		}
 
 		clause[i]      = storeptr;
-		unsatClause[i] = unsatStoreptr;
 
 		
 		/* For every clauses, we will store all the variables */
@@ -204,8 +202,6 @@ inline void initprob() {
 
 				/* clause[i][size[i]] = j; */
 				*(storeptr++) = lit; 
-
-				*(unsatStoreptr++) = lit;
 
 				freestore--;
 				
@@ -261,7 +257,7 @@ inline void initprob() {
 /************************************************************************************************/
 /*																								*/
 /* init : initializes the benchmark structures 													*/
-/* @param ind the linked list of every individuals												*/
+/* @param ind the individual that we need to initialize 										*/
 /* @param first is it the first initialisation ? 												*/
 /*																								*/
 /************************************************************************************************/
@@ -330,5 +326,40 @@ inline void init(Individual *ind,int first) {
 	    	ind->wherefalse[i] = -1;
 	  	}		
 	}
+}
+
+
+void initResolutionTable() {
+
+	int i,j,k;
+
+	int var = BIG;
+
+ 	for(i = 0; i < numclause; ++i) {
+
+ 		for(j = i+1; j < numclause; ++j) {
+
+ 			for(k = 0; k < size[i] ; ++k) {
+ 				if( contains(j,-1*clause[i][k]) == TRUE) {
+ 					var = ABS(clause[i][k]);
+ 					break;
+ 				}
+ 			}
+
+ 			if(var == -1) {
+ 				
+ 				resolutionTable[i][j] = BIG;
+ 				
+ 			} else {
+
+ 				resolution(i,j,var,FALSE);
+ 			}
+
+ 			resolutionTable[j][i] = resolutionTable[i][j];
+ 			var = -1;
+ 		}
+
+ 	}
+
 }
 

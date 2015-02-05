@@ -87,10 +87,11 @@ void signalHandler(int signum) {
 /************************************************************************************************/
 inline void displayStat() {
 
-	printf("c | generation: %6d   | ",(MAXTRY-maxtry)+1);
-	printf("best : %5d false clauses | ",bestnumfalse);
-	printf("nb flips: %7llu flips       ",allflip);
-	printf("  |\n");
+	printf("c | Gener : %4d | ",(MAXTRY-maxtry)+1);
+	printf("best :  %3d    | ",bestnumfalse);
+	printf("resolutions : %7d | ",numresolution);
+	printf("flips: %7llu flips       ",allflip);
+	printf(" |\n");
 }
 
 /************************************************************************************************/
@@ -103,7 +104,7 @@ inline void displayStat() {
 /************************************************************************************************/
 void displayFinalResult(Individual* population) {
 
-	if (FOUND == 1) {
+	if (FOUND == SAT) {
 
 		printf("c |-------------------------------------------------------------------------------------|\n");
 
@@ -131,7 +132,7 @@ void displayFinalResult(Individual* population) {
 		printf("c \\====================================================================================/\n\n");
 	}
 
-	else {
+	else if(FOUND == UNSAT) {
 
 		printf("c |-------------------------------------------------------------------------------------|\n");
 
@@ -158,6 +159,9 @@ void displayFinalResult(Individual* population) {
 		printf("           				/\n");
 		printf("c \\====================================================================================/\n\n");
 		
+	} else {
+
+		signalHandler(-1);
 	}
 }
 
@@ -179,7 +183,7 @@ void displaySolution(Individual* pop) {
   for(int i = 1; i < numatom+1 ; ++i) {
 
     /* We display the number i  when the value is true. */
-    if(s->atom[i] == 0) printf("%d ",   i);
+    if(s->atom[i] != 0) printf("%d ",   i);
 
     /* We display the number -i when the value is false. */
     else                printf("%d ",-1*i);

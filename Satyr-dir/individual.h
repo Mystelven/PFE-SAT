@@ -24,6 +24,9 @@
 #define random()           rand()
 #define srandom(seed) srand(seed)
 
+#define MIN(x,y) (((x) < (y)) ? (x) : (y))
+#define MAX(x,y) (((x) > (y)) ? (x) : (y))
+
 /* seed for the random generator. */
 int seed; 
 
@@ -40,7 +43,10 @@ int seed;
 #define TRUE  1
 #define FALSE 0
 
-/* maximum number of literals which can be in any clause */
+#define   SAT 1
+#define UNSAT 2
+
+/* maximum number of literals which can be in any clause (we can force the 3-SAT here) */
 #define MAXLENGTH 5000         
 
 /************************************************************************************************/
@@ -135,11 +141,13 @@ int numatom;
 /* number of clauses in the set of CNF clauses */
 int numclause; 
 
-/* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
-int** clause;  
+/* The number of resolutions that we performed ( < numclause ) */
+int numresolution;
 
-/* a copy of "clause" but will be used for the UNSAT proof */
-int** unsatClause;  
+/* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
+int** clause;   
+
+int** resolutionTable;
 
 /* length of each clause */
 int* size;  
@@ -204,6 +212,18 @@ typedef struct struct_individual {
   struct struct_individual *next;
 
 } Individual;
+
+/************************************************************************************************/
+
+  /* We will store a lot of space to know where are the clauses with the good variables; */
+  int * clausesResolutions;
+
+
+  int* tabuVariables;
+
+  int sizeTabuVar;
+
+  int nbTabu;
 
 /************************************************************************************************/
 

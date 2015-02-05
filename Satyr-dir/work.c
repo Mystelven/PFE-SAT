@@ -22,8 +22,6 @@
 
 #include "work.h"
 
-#define DIVERSIFICATION 10
-
 /************************************************************************************************/
 /*                                                                                              */
 /* initial_sort : after the creation of the population,                                         */
@@ -141,103 +139,6 @@ Individual * initial_sort (Individual *individual) {
 
 /************************************************************************************************/
 /*                                                                                              */
-/* select_best_individual_function : selects the BESTINDIVIDUAL individuals of the population   */
-/* and return this sub-population                                                               */
-/* @param ind the linked list of the population                                                 */
-/* @return the sub-population of only "best individuals"                                        */
-/*                                                                                              */
-/************************************************************************************************/
-Individual* select_best_individual_function(Individual* ind) { 
-
-  int i , j , num;
-
-  float d; 
-
-  Individual* tmp;
-	
-	/* We will need a temporary array */
-  char* tab = (char *) malloc( sizeof(char) * (unsigned long) numclause);
-
-  /* We know how many individuals we have inside this population. */
-  num = cardpopulation;
-	
-  /* We initialize all the barycentre */
-  for( j = 0 ; j < numclause ; ++j) barycentre[0][j] = 1;
-	
-  i = 0;
-  
-  /* While we didn't reach the number that we want */
-  while( (i < BESTINDIVIDUAL) && (BESTINDIVIDUAL-i < num) ) {
-
-		if (i == 0) {
-      
-      for( j = 0 ; j < ind->numfalse ; ++j) barycentre[i][ind->clausesFalse[j]] = 0;
-
-			tmp = add_individual(NULL,ind);
-
-      ++i;
-
-    } else {
-
-      for( j = 0 ; j < numclause     ; ++j) tab[j] = 1;
-
-      for( j = 0 ; j < ind->numfalse ; ++j) tab[ind->clausesFalse[j]] = 0;
-      
-      for( j = 0 ; j < i             ; ++j) {
-
-				d = distance(tab, barycentre[j]);
-				
-        if (d < 1) break;
-
-      }
-
-      if (d >= 1) {
-
-				for( j = 0 ; j < numclause ; ++j) barycentre[i][j] = tab[j];
-				
-        tmp = add_individual(tmp,ind);
-				
-        i++;
-
-      }
-
-    }
-
-    /* We go to the next individual of the linked list */
-    ind = ind->next;
-
-    /* We have one less element to go through */
-    num--;
-
-  }
-
-  /* While we need to add good elements in this futur sub-population */    
-  while (i < BESTINDIVIDUAL ) {
-
-    /* We add tmp as one of the best individual */
-    tmp = add_individual(tmp,ind);
-
-    /* We go to the next pointer */
-    ind = ind->next;
-
-    /* We need (or not) more "best individual" */
-    i++;
-
-  }
-	
-  /* We will need what is the worst num false */
-  worsetemporarynumfalse = tmp->numfalse;
-
-  /* We free the used memory */
-  free(tab);
-	
-  /* We return tmp which is the head or our new "sub-population" with only good elements. */
-	return tmp;
-}
-
-
-/************************************************************************************************/
-/*                                                                                              */
 /* crossover_operator : selects 2 parents,                                                      */
 /* crosses them and improves the child before insert it in the population                       */
 /* @param r the linked list of the population                                                   */
@@ -246,86 +147,90 @@ Individual* select_best_individual_function(Individual* ind) {
 /************************************************************************************************/
 int crossover_operator(Individual **r) {
 
-  int h,i,j,k,cpt;
+  int i;
+  int j;
+  int k;
 
-  Individual  *y;
-  Individual  *p1;
-  Individual  *p2;
-  Individual  *tmp;
-  Individual  *tmp2;
-  
-  tmp = NULL;
+  Individual * child;
+  Individual * p1;
+  Individual * p2;
+  Individual * tmp;
 
-  i = random() % NUMINDIVIDUAL;
-  j = random() % NUMINDIVIDUAL;
+  /* ----------------------------------------------------------------- */
+  /* ---                SELECTION OF THE 2 PARENTS                 --- */
+  /* ----------------------------------------------------------------- */
 
-  /* Just in case to avoid any problems. */
-  while (j == i) j = random() % NUMINDIVIDUAL;
+      i = random() % NUMINDIVIDUAL;
+      j = random() % NUMINDIVIDUAL;
 
-  tmp  =  *r;
-  tmp2 = tmp;
-  
-  for (cpt = 0; cpt < NUMINDIVIDUAL/3; ++cpt) tmp2 = tmp2->next;
+      /* Just in case to avoid any problems. */
+      while (j == i) j = random() % NUMINDIVIDUAL;
 
-  worsetemporarynumfalse = tmp2->numfalse;
-
-  k   = 0;
-
-  cpt = 0;
-  
-  /* while we didn't increment cpt 2 times */
-  while ((tmp != NULL) && (cpt < 2)) {
-  
-    if (k == i) {
-      p1=add_individual(NULL,tmp);
-      cpt++;
-    }
-
-    if (k == j) {
-      p2=add_individual(NULL,tmp);
-      cpt++;
-    }
-  
-    k++;
-  
-    tmp = tmp->next;
-  }    
-
-  /* We perform a crossing between p1 and p2 */
-  y = cross(p1,p2);
-  
-  /* and then a tabu search with this new individual. */
-  y = tabu(y,ltrech,1000);
-  
-  freeIndividual(p1);
-  freeIndividual(p2);
+      tmp  =  *r;
       
-  if (y->numfalse < worsetemporarynumfalse) { 
+      for (k = 0; k < NUMINDIVIDUAL/3; ++k) tmp = tmp->next;
 
-    h = delete_individual(&(*r)); 
-    
-    cardpopulation--;
-    
-    if (y->numfalse <= bestnumfalse){
+      worsetemporarynumfalse = tmp->numfalse;
 
-      bestnumfalse = y->numfalse;
-    }
+      k    =   0;
+      tmp  =  *r;
 
-    y->numhamming = h;
+      /* We will need the 2 parents. */
+      while ( tmp != NULL || (k < i && k < j) ) {
+      
+        if (k == i) p1 = select_individual(tmp);
 
-    insert_individual(y,&(*r));
-    
-    return h;
+        if (k == j) p2 = select_individual(tmp);
+      
+        k++;
+      
+        tmp = tmp->next;
+      }    
 
-  } else {
+  /* ----------------------------------------------------------------- */
+  /* ---           CREATION AND AMELIORATION OF THE CHILD          --- */
+  /* ----------------------------------------------------------------- */
 
-    freeIndividual(y);
-    cardpopulation--;
-    youngerindividual--;
+      /* We perform a crossing between p1 and p2 */
+      child = cross(p1,p2);
+      
+      /* and then a tabu search with this new individual. */
+      child = tabu(child, ltrech , 1000);
 
-    return -1;
-  }
+      freeIndividual(p1);
+      freeIndividual(p2);
+
+  /* ----------------------------------------------------------------- */  
+  /* ---      LET'S CHECK IF THE CHILD IS WORSE TO BE INSERTED     --- */
+  /* ----------------------------------------------------------------- */      
+      
+      if (child->numfalse < worsetemporarynumfalse) { 
+
+        child->numhamming = delete_individual(r); 
+        
+        /* We update the display of the statistic, the child is the new best. */
+        if (child->numfalse < bestnumfalse) {
+
+          bestnumfalse = child->numfalse;
+        }
+
+        /* The child is worst to be inserted. */
+        insert_individual(child,r);
+        
+      } else {
+
+        freeIndividual(child);
+
+        --youngerindividual;
+
+      }
+
+  /* ----------------------------------------------------------------- */      
   
+  --cardpopulation;
+
+  return 0;
+
 }
 
 /************************************************************************************************/
@@ -353,11 +258,8 @@ Individual * tabu (Individual *ind,int tabu_length, int maxflip){
 
   /* diversification variables */
 
-  int   best = BIG;
-  int   batom,bflip;
-  bflip = 0;
-  int   lastnumfalse;
-  int   cpt,npossible;
+  int   bflip = 0;
+  int   npossible;
   int*  fausse;             // represents how many times a clause was the unique false clause
   int*  interdit;           // represents the variables which can't be flipped same with the aspiration
   int*  possible;           // represents the variables which can be flipped (only one is flipped)
@@ -397,7 +299,6 @@ Individual * tabu (Individual *ind,int tabu_length, int maxflip){
   //tabu search
   //break conditions : numfalse = 0
   //                   max flip is reached
-  //                   limit time is reached
   while ( (ind->numfalse > 0) && (numflip < maxflip) ) {
 
     for( i = 1 ; i < numatom+1 ; ++i) possible[i] = -1;
@@ -487,58 +388,6 @@ Individual * tabu (Individual *ind,int tabu_length, int maxflip){
 
     }
     
-    // diversification mechanism (if a clause is often the last false clause, we force it to be TRUE)
-
-    if (ind->numfalse == 1) {
-
-      ++fausse[ind->clausesFalse[0]]; // incrementation of the counter for the last false clause
-    }
-
-    // if the limit is reached (here maxtimefalse) we force it
-    best = -BIG;
-
-    batom = 0;
-    
-    /* we force recursively DIVERSIFICATION times */  
-    for( cpt = 0 ; cpt < DIVERSIFICATION ; ++cpt) {
-
-      lastnumfalse = ind->numfalse;
-          
-      for( j = 0 ; j < numclause ; ++j) {
-
-        if (ind->numtruelit[j] == 0) { // the variable j is FALSE
-
-          /* we search the variable with the flip who gives the biggest number of false clauses */
-          for( i = 0 ; i < size[j] ; ++i) 
-
-
-            if ((ind->breakcount[Var(j,i)] - ind->makecount[Var(j,i)] > best) 
-            && (numflip - longinterdit >= interdit[Var(j,i)])) {
-
-              best = ind->breakcount[Var(j,i)] - ind->makecount[Var(j,i)];
-              batom = Var(j,i);
-            }
-
-            if (batom != 0) {
-
-              tabu_atom[batom] = numflip; // the variable batom is put in the tabu list
-              interdit[batom]  = numflip; // the variable batom is put in the forbidden list
-              flipatom(ind,batom);
-              numflip++;
-              fausse[j] = 0;
-
-            }
-
-        }
-    
-        lastnumfalse--;
-  
-        if (lastnumfalse == 0) break;
-      }
-    }
-      
-    //end diversification mechanism
-    
     ++numflip; // incrementation of the flip number
   }
 
@@ -555,7 +404,7 @@ Individual * tabu (Individual *ind,int tabu_length, int maxflip){
 
   if (ind->numfalse == 0) {
     
-    FOUND = 1;
+    FOUND = SAT;
   }
   
   free(fausse);
@@ -609,13 +458,13 @@ void flipatom(Individual *ind,int toflip) {
 
   for(i = 0 ; i < numocc ; ++i) {
     
-    /* cli = occurence[numatom-toenforce][i]; */
-    cli = *(occptr++);      
+    cli = occurence[numatom-toenforce][i]; 
 
     if (--(ind->numtruelit[cli]) == 0) {
 
       ind->clausesFalse[ind->numfalse] = cli;
       ind->wherefalse[cli] = ind->numfalse;
+      
       ++ind->numfalse;
 
       /* Decrement toflip's breakcount */
@@ -628,8 +477,7 @@ void flipatom(Individual *ind,int toflip) {
       
       for (j = 0; j < sz ; ++j) {
 
-        /* lit = clause[cli][j]; */
-        lit = *(litptr++);
+        lit = clause[cli][j];
 
         ind->makecount[ABS(lit)]++;
       }
@@ -644,8 +492,7 @@ void flipatom(Individual *ind,int toflip) {
 
       for (j = 0 ; j < sz ; ++j) {
 
-        /* lit = clause[cli][j]; */
-        lit = *(litptr++);
+        lit = clause[cli][j];
         
         if((lit > 0) == ind->atom[ABS(lit)]) {
 
@@ -668,6 +515,8 @@ void flipatom(Individual *ind,int toflip) {
 
     /* cli = occurence[numatom+toenforce][i]; */
     cli = *(occptr++);   
+
+    if(cli > numclause) break;  
     
     if (++(ind->numtruelit[cli]) == 1) {
 
@@ -697,13 +546,12 @@ void flipatom(Individual *ind,int toflip) {
       /* Find the lit in this clause other than toflip that makes it true,
          and decrement its breakcount */
 
-      sz = size[cli];
+      sz     = size[cli];
       litptr = clause[cli];
       
       for( j = 0 ; j < sz ; ++j) {
 
-        /* lit = clause[cli][j]; */
-        lit = *(litptr++);
+        lit = clause[cli][j];
         
         if(((lit > 0) == ind->atom[ABS(lit)]) && (toflip != ABS(lit))) {
 

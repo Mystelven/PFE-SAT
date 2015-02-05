@@ -21,13 +21,14 @@
 ##############################################################################
 
 all: 
-	(cd Glucose-dir/simp/ 	  ; make 		; 		 mv ./glucose 		 ../../ )
-	(cd Glucose-dir/parallel/ ; make    	; 		 mv ./glucose-syrup  ../../ )
-	(cd Satyr-dir/        	  ; make clean  ; make ; mv ./satyr      		../ )
-	(cd Walksat-dir/     	  ; make 		; 		 mv ./walksat    		../ )
-	(cd Zchaff-dir/       	  ; make 		; 		 mv ./zchaff     		../	)
-	(cd GASAT-dir/        	  ; make 		; 		 mv ./gaSAT      		../ )
-	(cd Cdls-dir/ 		  	  ; make compet ; 		 mv ./cdls       		../ )
+	(cd Glucose-dir/simp/ 	  ; make 					 ; 		 mv ./glucose 		 ../../ )
+	(cd Glucose-dir/parallel/ ; make    				 ; 		 mv ./glucose-syrup  ../../ )
+	(cd Satyr-dir/        	  ; make clean  ; make compet; 		 mv ./satyr      		../ )
+	(cd Walksat-dir/     	  ; make 					 ; 		 mv ./walksat    		../ )
+	(cd Zchaff-dir/       	  ; make 					 ; 		 mv ./zchaff     		../	)
+	(cd GASAT-dir/        	  ; make 					 ; 		 mv ./gaSAT      		../ )
+	(cd Cdls-dir/ 		  	  ; make compet 			 ; 		 mv ./cdls       		../ )
+	(cd Reductions/ 	 	  ; gcc -o queens NQueens.c  ; mv ./queens ../)
 
 clean:
 	rm satyr
@@ -36,3 +37,4 @@ clean:
 	rm glucose
 	rm gaSAT
 	rm cdls
+	rm queens
