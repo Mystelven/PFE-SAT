@@ -25,7 +25,7 @@
  *
  * \subsection Illustration
  * 
- * <img src="../images/problemSAT.gif" />
+ * <img src="../ws/images/problemSAT.gif" />
  *
  * <HR>
  * 
@@ -53,11 +53,11 @@
  * The selection is performed by a roulette-wheel, with this method, we are able to give some diversity inside the population.
  * It naturally avoids the "elitist-selection".
  *
- * <img src="../images/wheel.png" />
+ * <img src="../ws/images/wheel.png" />
  *
  * \subsection Cross Cross Operation
  *
- * <img src="../images/cross.png" />
+ * <img src="../ws/images/cross.png" />
  * 
  * The crossing between 2 individuals will be an uniform crossing. It was the best choice after some tests.
  * 	
@@ -68,7 +68,7 @@
  * All the offspring, before being reinserted inside the population, has to do some Tabu Search, it order to be 
  * more adapted and more efficient.
  * 
- * <img src="../images/tabu.png" />
+ * <img src="../ws/images/tabu.png" />
  *
  * <HR>
  *
