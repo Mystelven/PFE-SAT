@@ -63,13 +63,9 @@ int seed;
 
 #define Var(CLAUSE, POSITION) (ABS(clause[CLAUSE][POSITION]))
 
-int scratch;
+#define ABS(x)  ( (x) < 0 ? (-x) : (x) )
 
-#define ABS(x) ((scratch=(x))>0?(scratch):(-scratch))
-
-float fscratch;
-
-#define ABSF(x) ((fscratch=(x))>0?(fscratch):(-fscratch))
+#define ABSF(x) ( (x) < 0 ? (-x) : (x) )
 
 #define BIG 100000000
 

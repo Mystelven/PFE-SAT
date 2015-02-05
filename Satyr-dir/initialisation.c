@@ -87,7 +87,7 @@ inline void initprob() {
 	int lastc;
 	int nextc;
 	
-	int *storeptr;
+	int* storeptr = NULL;
 	int freestore;
 	
 	int lit;
@@ -264,7 +264,7 @@ inline void init(Individual *ind,int first) {
 
 	int i;
 	int j;
-	int thetruelit;
+	int thetruelit = 0;
 	
 	for( i = 0 ; i < numclause ; ++i) {
 
@@ -288,7 +288,7 @@ inline void init(Individual *ind,int first) {
 
 		for( i = 1 ; i < numatom+1 ; ++i) {
  			
- 			ind->atom[i] = random() % 2;			 
+ 			ind->atom[i] = (char)(random() % 2);			 
 		}
 
 	}
