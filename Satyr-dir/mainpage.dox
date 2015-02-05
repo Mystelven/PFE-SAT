@@ -37,6 +37,7 @@
  * For example, a file with the two lines
  *
  *		1 -5 4 0
+ * 
  *		-1 5 3 4 0
  * represents the formula "(x1 ∨ ¬x5 ∨ x4) ∧ (¬x1 ∨ x5 ∨ x3 ∨ x4)".
  * 
