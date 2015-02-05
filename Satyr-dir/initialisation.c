@@ -23,14 +23,14 @@
 
 #include "initialisation.h"
 
-/************************************************************************************************/
-/*																								*/
-/* parameters : read all the user parameters 													*/
-/* @param argc the number of argument passed to the program										*/
-/* @param argv every char* for every argument 													*/
-/* @return 0 if everything was good, something else otherwise 									*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																								
+ * parameters : read all the user parameters 													
+ * @param argc the number of argument passed to the program										
+ * @param argv every char* for every argument 													
+ * @return 0 if everything was good, something else otherwise 									
+ *
+ */
 inline int parameters(char* argv[]) {
 
   /* -------------------------------- */
@@ -75,11 +75,11 @@ inline int parameters(char* argv[]) {
 }
 
 
-/************************************************************************************************/
-/*																								*/
-/* initprob : read the benchmark file 															*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																							
+ * initprob : read the benchmark file 															
+ *
+ */
 inline void initprob() {
 
 	int i;
@@ -254,13 +254,13 @@ inline void initprob() {
 
 
 
-/************************************************************************************************/
-/*																								*/
-/* init : initializes the benchmark structures 													*/
-/* @param ind the individual that we need to initialize 										*/
-/* @param first is it the first initialisation ? 												*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																								
+ * init : initializes the benchmark structures 													
+ * @param ind the individual that we need to initialize 										
+ * @param first is it the first initialisation ? 												
+ *
+ */
 inline void init(Individual *ind,int first) {
 
 	int i;
@@ -328,7 +328,12 @@ inline void init(Individual *ind,int first) {
 	}
 }
 
-
+/**
+ * 
+ * initResolutionTable: This function will initialize our big array that will be used to know
+ * which clauses we will use for the next resolution.
+ *
+ */
 void initResolutionTable() {
 
 	int i,j,k;
