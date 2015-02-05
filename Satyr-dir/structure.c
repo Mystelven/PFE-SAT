@@ -340,7 +340,7 @@ inline Individual* add_individual(Individual* ind, Individual* x) {
 /**
  *                                                                                              
  * select_individual : able to take from a list an individual 									
- * @param ind the linked list where we will look 		                                        
+ * @param list the linked list where we will look 		                                        
  * 
  */
 inline Individual* select_individual(Individual* list) {
