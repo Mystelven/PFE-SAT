@@ -28,7 +28,7 @@
  * displayInfo : useful to display some informations 			   								
  * @param std the output where we will write informations 		   																																
  */
-void displayInfo(FILE* std) {
+inline void displayInfo(FILE* std) {
 
 	fprintf(std,"\n\n");
 	fprintf(std,"c This is SATyr \n");
@@ -55,7 +55,7 @@ void displayInfo(FILE* std) {
  * @param signum the identification number of the signal
  *
  */
-void signalHandler(int signum) {
+inline void signalHandler(int signum) {
 
     printf("\ns   INDETERMINATE\n");
     printf("v   ");
@@ -102,7 +102,7 @@ inline void displayStat() {
  * @param population the population we used to solve this problem
  *
  */
-void displayFinalResult(Individual* population) {
+inline void displayFinalResult(Individual* population) {
 
 	if (FOUND == SAT) {
 
@@ -171,7 +171,7 @@ void displayFinalResult(Individual* population) {
  * @param pop    Represents the population where one of individual is solution       
  * 
  */
-void displaySolution(Individual* pop) {
+inline void displaySolution(Individual* pop) {
 
   /* We get the solution of the problem. */
   Individual* s = getSolution(pop);
