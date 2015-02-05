@@ -30,8 +30,7 @@
 
 /**
  *																								
- * parameters : read all the user parameters 													
- * @param argc the number of argument passed to the program										
+ * parameters : read all the user parameters 																						
  * @param argv every char* for every argument 													
  * @return 0 if everything was good, something else otherwise 									
  *
