@@ -26,82 +26,83 @@
 
 #include "individual.h"
 
-/************************************************************************************************/
-/*                                                                                              */
-/* createIndividual : create and return an individual memory space                              */
-/* @return the individual memory space created and returned                                     */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * createIndividual : create and return an individual memory space                              
+ * @return the individual memory space created and returned                                     
+ * 
+ */
 extern Individual* createIndividual();
 
-/************************************************************************************************/
-/*                                                                                              */
-/* freePopulation : free all the population (all the linked list)                               */
-/* @param pop the population where we want to free the memory space                             */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * freePopulation : free all the population (all the linked list)                               
+ * @param pop the population where we want to free the memory space                             
+ *                                                                                              
+ */
 extern void freePopulation(Individual* pop);
 
-/************************************************************************************************/
-/*                                                                                              */
-/* freeIndividual : release an individual memory space                                          */
-/* @param i the individual that we want to free the memory space                                */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * freeIndividual : release an individual memory space                                          
+ * @param i the individual that we want to free the memory space                                
+ *                                                                                              
+ */
 extern void freeIndividual(Individual* i);
 
-/************************************************************************************************/
-/*                                                                                              */
-/* createPopulation : create a population of NUMINDIVIDUAL individuals                          */
-/* @return we will return the pointer on the first element of the linked list (the population)  */
-/* @see NUMINDIVIDUAL to know how many individual inside the linked list                        */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * createPopulation : create a population of NUMINDIVIDUAL individuals                          
+ * @return we will return the pointer on the first element of the linked list (the population)  
+ * @see NUMINDIVIDUAL to know how many individual inside the linked list                        
+ *                                                                                              
+ */
 extern Individual* createPopulation(); 
 
-/************************************************************************************************/
-/*                                                                                              */
-/* delete_individual : delete the older individual of the population                            */
-/* @param ind the individual that we want to delete.                                            */
-/* @return the value return by the numhamming or the function delete_individual2                */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * delete_individual : delete the older individual of the population                            
+ * @param ind the individual that we want to delete.                                            
+ * @return the value return by the numhamming or the function delete_individual2                
+ * 
+ */
 extern int delete_individual(Individual** ind); 
 
-/************************************************************************************************/
-/*                                                                                              */
-/* delete_individual2 : used by delete_individual                                               */
-/* @param y the individual that we want to delete                                               */
-/* @return We return numhamming if everything okay, -1 otherwise.                               */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * delete_individual2 : used by delete_individual                                               
+ * @param y the individual that we want to delete                                               
+ * @see extern int delete_individual(Individual** ind)
+ * @return We return numhamming if everything okay, -1 otherwise.                              
+ * 
+ */
 extern int delete_individual2(Individual* y); 
 
-/************************************************************************************************/
-/*                                                                                              */
-/* insert_individual : inserts an individual in a sorted population                             */
-/* @param y the individual that we want to insert                                               */
-/* @param z our linkedlist where y will be insert                                               */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                             
+ * insert_individual : inserts an individual in a sorted population                             
+ * @param y the individual that we want to insert                                               
+ * @param z our linkedlist where y will be insert                                               
+ * 
+ */
 extern void insert_individual(Individual* y, Individual** z); 
 
-/************************************************************************************************/
-/*                                                                                              */
-/* add_individual : copy an individual in an other list of individuals                          */
-/* @param x the individual where we will perform a copy                                         */
-/* @param ind the linked list where we will add ind                                             */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * add_individual : copy an individual in an other list of individuals                          
+ * @param x the individual where we will perform a copy                                         
+ * @param ind the linked list where we will add ind                                             
+ * 
+ */
 extern Individual* add_individual(Individual* ind, Individual* x); 
 
 
-/************************************************************************************************/
-/*                                                                                              */
-/* select_individual : able to take from a list an individual 									*/
-/* @param ind the linked list where we will look 		                                        */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                              
+ * select_individual : able to take from a list an individual 									
+ * @param ind the linked list where we will look 		                                        
+ * 
+ */
 extern Individual* select_individual(Individual* list);
 
 /************************************************************************************************/
