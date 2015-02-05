@@ -75,7 +75,7 @@ int main(int argc,char *argv[]) {
 	
 	begintime = (long)a_tms->tms_utime;
 		initprob();
-	parsingTime = (double)(clock()-(unsigned long)begintime)/(CLOCKS_PER_SEC/1000);
+	parsingTime = (double)(clock()-(long unsigned int)begintime)/(CLOCKS_PER_SEC/1000);
 
 	/* We will display all the informations about the benchmark and things. */
 	displayInfo(stdout);
