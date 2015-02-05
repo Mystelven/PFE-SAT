@@ -23,7 +23,15 @@
 #include "unsat.h"
 #include <stdlib.h>
 
-
+/**
+ *
+ *  displayResolution: useful for debug, it will display the 2 clauses choosen
+ *  for the resolution, the variable used and also the result of the operation.
+ *  @param c1 the first clause used for the resolution
+ *  @param c2 the second clause used for the resolution
+ *  @param var the variable to perform the resolution.
+ * 
+ */ 
 inline void displayResolution(int c1,int c2,int var) {
 
 	int i;
@@ -48,14 +56,14 @@ inline void displayResolution(int c1,int c2,int var) {
 	}
 }
 
-/************************************************************************************************/
-/*																								*/
-/* contains : This function will test if the variable is include inside the clause 				*/
-/* @param cl the clause who maybe contains the variable 										*/
-/* @param variable the variable that we need to check 											*/
-/* @return TRUE if the clause contains the variable, FALSE otherwise. 							*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																								
+ * contains : This function will test if the variable is include inside the clause 				
+ * @param cl the clause who maybe contains the variable 										
+ * @param variable the variable that we need to check 											
+ * @return TRUE if the clause contains the variable, FALSE otherwise. 							
+ *																								
+ */
 inline char contains(int cl, int variable) {
 
 	int i = 0;
@@ -69,7 +77,12 @@ inline char contains(int cl, int variable) {
 }
 
 
-
+/**
+ * 
+ * tryToProveUNSAT: 
+ * This procedure will try to prove that the problem has no solution.
+ *
+ */
 inline void tryToProveUNSAT() {
 
 	if(random() % 100 < 1) restart();
@@ -150,6 +163,13 @@ inline void tryToProveUNSAT() {
  	
 }
 
+/**
+ * 
+ * isTautology will check if the last resolution is a tautology or not.
+ * if not, then the clause is not worth it.
+ * @return TRUE if the last resolution is a tautology, FALSE otherwise.
+ *
+ */
 inline int isTautology() {
 
 	int i,j;
@@ -174,17 +194,17 @@ inline int isTautology() {
 	return FALSE;
 }
 
-/************************************************************************************************/
-/*																								*/
-/* resoution : This function will perform the resolution rule on 2 clauses 'c1' and 'c2'		*/
-/* @param c1 the left member of the resolution rule 											*/
-/* @param c2 the right member of the resolution rule 											*/
-/* @param whichVariable on which variable we will perform the resolution 						*/
-/* @param forReal is a boolean to know if we will store the result of not 						*/
-/* @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 						*/
-/* At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																								
+ * resoution : This function will perform the resolution rule on 2 clauses 'c1' and 'c2'		
+ * @param c1 the left member of the resolution rule 											
+ * @param c2 the right member of the resolution rule 											
+ * @param whichVariable on which variable we will perform the resolution 						
+ * @param forReal is a boolean to know if we will store the result of not 						
+ * @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 					
+ * At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		
+ *
+ */
 inline int resolution(int c1, int c2,int whichVariable,int forReal) {
 
 	/* In the worst case, the resolution will be just an OR between c1 and c2 */
@@ -299,40 +319,12 @@ inline int resolution(int c1, int c2,int whichVariable,int forReal) {
 	return 0;
 }
 
-/************************************************************************************************/
-/*																								*/
-/* subsumes : Will check if the clause c1 subsumes the clause C2 								*/
-/* @param c1 the index of the first clause 														*/
-/* @param c2 the index of the second clause 													*/
-/* @return TRUE if c1 subsumes c2, FALSE otherwise 												*/
-/*																								*/
-/************************************************************************************************/
-inline int subsumes(int c1, int c2) {
-
-	int i,j;
-
-	if(size[c1] < size[c2]) {
-		i = c1;
-		c1 = c2;
-		c2 = i;
-	}
-
-    for (i = 0; i < size[c1]; ++i) {
-        
-        for (j = 0; j < size[c2]; ++j) {
-            
-            if(clause[c1][i] != ABS(clause[c2][j])) return FALSE;
-    	}
-    }
-
-    return TRUE;
-}
-
-/************************************************************************************************/
-/*																								*/
-/* restart : We did "too much" resolution and didn't find anything yet, we restart to find...   */
-/*																								*/
-/************************************************************************************************/
+/**
+ *																								
+ * restart : We did "too much" resolution and didn't find anything yet, we restart to find...   
+ *			 We reinitialize also the resolution table
+ *																								
+ */
 inline void restart() {
 
 	int i = 0;

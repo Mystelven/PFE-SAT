@@ -34,7 +34,7 @@
  * displayInfo : useful to display some informations 			   								
  * @param std the output where we will write informations 		   																																
  */
-void displayInfo(FILE* std);
+extern void displayInfo(FILE* std);
 
 /**
  *
@@ -45,7 +45,7 @@ void displayInfo(FILE* std);
  * @param signum the identification number of the signal
  *
  */
-void signalHandler(int signum);
+extern void signalHandler(int signum);
 
 /**
  *																						
@@ -60,7 +60,7 @@ extern void displayStat();
  * @param population the population we used to solve this problem
  *
  */
-void displayFinalResult(Individual* population);
+extern void displayFinalResult(Individual* population);
 
 /**
  *                                                                                   
@@ -68,6 +68,6 @@ void displayFinalResult(Individual* population);
  * @param pop    Represents the population where one of individual is solution       
  * 
  */
-void displaySolution(Individual* population);
+extern void displaySolution(Individual* population);
 
 #endif
