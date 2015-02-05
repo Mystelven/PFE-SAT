@@ -758,15 +758,6 @@ INPUT_FILTER           =
 
 FILTER_PATTERNS        =
 
-
-# The FILTER_SOURCE_PATTERNS tag can be used to specify source filters per file
-# pattern. A pattern will override the setting for FILTER_PATTERN (if any) and
-# it is also possible to disable source filtering for a specific pattern using
-# *.ext= (so without naming a filter).
-# This tag requires that the tag FILTER_SOURCE_FILES is set to YES.
-
-FILTER_SOURCE_PATTERNS =
-
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
 #---------------------------------------------------------------------------
@@ -1275,15 +1266,6 @@ SEARCHENGINE           = YES
 # This tag requires that the tag SEARCHENGINE is set to YES.
 
 SERVER_BASED_SEARCH    = NO
-
-
-# When SERVER_BASED_SEARCH and EXTERNAL_SEARCH are both enabled the unindexed
-# search data is written to a file for indexing by an external tool. With the
-# SEARCHDATA_FILE tag the name of this file can be specified.
-# The default file is: searchdata.xml.
-# This tag requires that the tag SEARCHENGINE is set to YES.
-
-SEARCHDATA_FILE        = searchdata.xml
 
 #---------------------------------------------------------------------------
 # Configuration options related to the LaTeX output
