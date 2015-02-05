@@ -26,6 +26,8 @@
 
 #include "structure.h"
 
+#include "unsat.h"
+
 /************************************************************************************************/
 /*																								*/
 /* parameters : read all the user parameters 													*/
@@ -51,5 +53,8 @@ extern void initprob();
 /*																								*/
 /************************************************************************************************/
 extern void init(Individual *ind,int first);
+
+
+extern void initResolutionTable();
 
 #endif

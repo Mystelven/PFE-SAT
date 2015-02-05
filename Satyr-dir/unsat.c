@@ -24,58 +24,30 @@
 #include "utils.h"
 #include <stdlib.h>
 
-/************************************************************************************************/
-/*																								*/
-/* getWhichVariableToPerformResolution : Get the most probable variable for a resolution 		*/
-/* @param population the population where that we give us the good clauses						*/
-/* @return the value of the litteral where we will perform a resolution 						*/
-/*																								*/
-/************************************************************************************************/
-inline int getWhichVariableToPerformResolution(Individual* population) {
 
-	/* We will go through every individual inside the population */
-	Individual* tmp = population;
+inline void displayResolution(int c1,int c2,int var) {
 
-	int i,j;
+	int i;
 
-	int min = BIG;
+	printf("Resolution entre %d et %d sur %d\n",c1,c2,var);
 
-	int whichVariable = (random() % numatom)+1;
-
-	while(tmp != NULL) {
-
-		/* For every clauses still false for this individual */
-		for(i = 0 ; i < tmp->numfalse; ++i) {
-				
-			int c = tmp->clausesFalse[i];
-
-			if( size[tmp->clausesFalse[i]] < min) {
-				
-				min = size[tmp->clausesFalse[i]];
-				
-				j = (random() % size[tmp->clausesFalse[i]]);
-
-				whichVariable = clause[c][j];
-
-				for(i = 0;  i < sizeTabuVar; ++i) {
-			
-					if(ABS(whichVariable) == tabuVariables[i]) {
-						
-						whichVariable = (random() % numatom)+1;
-					}
-				}
-			}
-		} 
-
-		tmp = tmp->next;
+	printf("C1 : ");
+	for(i = 0; i < size[c1]; i++){
+		printf(" %d",clause[c1][i]);
 	}
 
-	/* ------------------------------------------------------------------------ */
-
-
-	return ABS(whichVariable);
+	printf("\nC2 : ");
+	for(i = 0; i < size[c2]; i++){
+		printf(" %d",clause[c2][i]);
+	}
+	printf("\nRes: ");
+	if(FOUND != UNSAT) {
+		for(i = 0; i < size[numclause+numresolution-1]; i++){
+			printf(" %d",clause[numclause+numresolution-1][i]);
+		}
+		printf("\n\n");
+	}
 }
-
 
 /************************************************************************************************/
 /*																								*/
@@ -97,126 +69,86 @@ inline char contains(int cl, int variable) {
 	return FALSE;
 }
 
-/************************************************************************************************/
-/*																								*/
-/* getWhichClausesToPerformResolution : We get the 2 clauses for the resolution 				*/
-/* @param population the population where that we give us the good clauses						*/
-/* @param whichVariable on which variable we will perform the resolution..						*/
-/* @return a 2-cases array for the clauses where we will perform the resolution 				*/
-/*																								*/
-/************************************************************************************************/
-inline int* getWhichClausesToPerformResolution(Individual* population,int whichVariable) {
 
-	/* We allocate the good size for our 2 clauses. */
-	int* clausesForResolution = (int*)malloc(sizeof(int)*2);
 
-	int i = 0;
-	int j = 0;
-	int l = 0;
+inline void tryToProveUNSAT() {
+	
+	if(random() % 100 < 1) restart();
+
+	/* If have gone to far, we restart everything, we will not find anything in this branch... */
+	if(numresolution >= numclause) { 
+		restart(); 
+	}
 
 	int c1 = -1;
-	int sizeC1;
-
 	int c2 = -1;
-	int sizeC2;
+	int i,j,k;
+	int min = BIG;
 
-	int k = 0;
-	
-	char toAdd = 1;
+	int var = -1;
 
-	for(i = 0; i < numclause+numresolution; ++i) { 
+	for(i = 0; i < numclause+numresolution; ++i) {
+		for(j = i+1; j < numclause+numresolution; ++j) {
 
-		clausesResolutions[i] = 0;
+			if(min > resolutionTable[i][j]) {
+				c1 = i;
+				c2 = j;
+				min = resolutionTable[i][j];
+			} 
+		}
 	}
 
-	Individual * tmp = population;
-
-	/* For every individual inside the population */
-	
-	while(tmp != NULL) {
+	if(c1 == -1 || c2 == -1) {
 		
-		/* For every clauses still false for this individual */
-
-		for(i = 0 ; i < tmp->numfalse; ++i) {
-	
-			for(j = 0; j < size[tmp->clausesFalse[i]] ; ++j) {
-
-				int c = tmp->clausesFalse[i];
-
-				if( ABS(clause[c][j]) == whichVariable) {
-
-					/* We check if the clause is not already inside the array. */
-					for( l = 0; l < k ; ++l) {
-						if(clausesResolutions[l] == c) toAdd = 0;
-					}
-
-					if(toAdd == 1) {
-						clausesResolutions[k] = c;
-						++k;
-					}
-				
-
-					toAdd = 1;
-				}
-			}
-		} 
-
-		/* We go to the next individual of the population */
-		tmp = tmp->next;
-	}	
-
-	toAdd = 1;
-
-	for(i = 0; i < numresolution; ++i) {
-
-		for(j = 0; j < size[numclause+i]; ++j) {
-
-			if( ABS(clause[numclause+i][j]) == whichVariable) {
-
-				/* We check if the clause is not already inside the array. */
-				for( l = 0; l < k ; ++l) {
-					if(clausesResolutions[l] == (numclause+i)) toAdd = 0;
-				}
-
-				if(toAdd == 1) {
-
-					clausesResolutions[k] = (numclause+i);
-					++k;
-				}
-				
-
-				toAdd = 1;
-			}
-		}
-	}
-
-	sizeC1 = BIG;
-	sizeC2 = BIG;
-
-	
-	for(i = 0; i < k ; ++i) {
-
-		if( (contains(clausesResolutions[i],whichVariable) == 1) && size[clausesResolutions[i]] < sizeC1) {
-
-			c1 = clausesResolutions[i];
-			sizeC1 = size[clausesResolutions[i]];
-
-		}
-
-		if( (contains(clausesResolutions[i],-1*whichVariable) == 1) && size[clausesResolutions[i]] < sizeC2 && clausesResolutions[i] != c1) {
-
-			c2 = clausesResolutions[i];
-			sizeC2 = size[clausesResolutions[i]];
-		}
+		restart();
+		return ;
 	}
 	
+	for(i = 0; i < size[c1] ; ++i) {
+ 		
+ 		if( contains(c2,-1*clause[c1][i]) == TRUE) {
+ 			var = ABS(clause[c1][i]);
+ 			break;
+ 		}
 
-	/* We store theses computed values inside the array to return it. */
-	clausesForResolution[0] = c1;
-	clausesForResolution[1] = c2;
+ 	}
 
-	/* We return the result to perform the resolution after. */
-	return clausesForResolution;
+ 	resolution(c1,c2,var,TRUE);
+
+ 	// displayResolution(c1,c2,var);
+
+ 	if(isTautology() == TRUE) {
+ 		numresolution--;
+ 		return ;
+ 	}
+
+ 	resolutionTable[c1][c2] = BIG;
+ 	resolutionTable[c2][c1] = BIG;
+
+ 	i = numclause+numresolution-1;
+ 	
+ 	for(j = 0; j < numclause+numresolution; ++j) {
+
+ 		for(k = 0; k < size[i] ; ++k) {
+ 			if( contains(j,-1*clause[i][k]) == TRUE) {
+ 				var = ABS(clause[i][k]);
+ 				break;
+ 			}
+ 		}
+
+ 		if(var == -1) {
+ 				
+ 			resolutionTable[i][j] = BIG;
+ 				
+ 		} else {
+
+ 			resolution(i,j,var,FALSE);
+ 		}
+
+ 		resolutionTable[j][i] = resolutionTable[i][j];
+ 		var = -1;
+ 	}
+ 	
 }
 
 inline int isTautology() {
@@ -243,71 +175,24 @@ inline int isTautology() {
 	return FALSE;
 }
 
-
-/************************************************************************************************/
-/*																								*/
-/* performResolutionProof : We will try to prove that the problem has no solution 				*/
-/* @param population the population where that we give us the good clauses						*/
-/*																								*/
-/************************************************************************************************/
-inline void performResolutionProof(Individual* population) {
-
-	/* If the previous resolution is a tautology, we will not need this clause... */
-	if( isTautology() == TRUE ) {
-
-		 numresolution--;
-	}
-
-	/* If have gone to far, we restart everything, we will not find anything in this branch... */
-	if(numresolution >= numclause) { 
-		
-		restart(); 
-	}
-
-	/* We will perform the resolution on the most probable variable. */
-	int whichVariable 		  = getWhichVariableToPerformResolution(population);
-	
-
-	/* We get the 2 causes where we will perform the resolution inside an array */
-	int* clausesForResolution = getWhichClausesToPerformResolution(population,whichVariable);
-
-
-	tabuVariables[nbTabu] = ABS(whichVariable);
-
-	nbTabu = nbTabu+1;
-
-	if(nbTabu >= sizeTabuVar-1) {
-
-		nbTabu = 0;
-	}
-
-	/* If we find something interesting, we will perform the resolution on it. */
-	if(clausesForResolution[0] != -1 && clausesForResolution[1] != -1) {
-
-		resolution(clausesForResolution[0],clausesForResolution[1],whichVariable);
-	}	
-
-	/* We clean the memory space for this 2-spaces array. */
-	free(clausesForResolution);
-}
-
 /************************************************************************************************/
 /*																								*/
 /* resoution : This function will perform the resolution rule on 2 clauses 'c1' and 'c2'		*/
 /* @param c1 the left member of the resolution rule 											*/
 /* @param c2 the right member of the resolution rule 											*/
 /* @param whichVariable on which variable we will perform the resolution 						*/
+/* @param forReal is a boolean to know if we will store the result of not 						*/
 /* @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 						*/
 /* At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		*/
 /*																								*/
 /************************************************************************************************/
-inline int resolution(int c1, int c2,int whichVariable) {
+inline int resolution(int c1, int c2,int whichVariable,int forReal) {
 
 	/* In the worst case, the resolution will be just an OR between c1 and c2 */
 	long max = (long)(size[c1] + size[c2]);		
 
 	/* We allocate the good size for this futur resolution's result. */
-	clause[numclause+numresolution] = (int*)( malloc( sizeof(int)*(unsigned long)max));
+	int* tmp = (int*)( malloc( sizeof(int)*(unsigned long)max));
 
 	int i, j, k, l;
 
@@ -336,7 +221,7 @@ inline int resolution(int c1, int c2,int whichVariable) {
 		if(toAdd == 1) {
 
 			/* We will so, insert it and go for the next element */
-			clause[numclause+numresolution][k++] = (char)clause[c1][i];
+			tmp[k++] = (char)clause[c1][i];
 
 		}
 
@@ -366,7 +251,7 @@ inline int resolution(int c1, int c2,int whichVariable) {
 			for(l = 0; l < (int)max ; ++l) {
 
 				/* This value is already inside the result, so don't need to insert it. */
-				if(clause[numclause+numresolution][l] == clause[c2][i]) toAdd = 0;
+				if(tmp[l] == clause[c2][i]) toAdd = 0;
 			}
 		}
 
@@ -374,7 +259,7 @@ inline int resolution(int c1, int c2,int whichVariable) {
 		if(toAdd == 1) {
 
 			/* We insert it and we k++ for the next value. */
-			clause[numclause+numresolution][k++] = (char)clause[c2][i];
+			tmp[k++] = (char)clause[c2][i];
 
 		}
 
@@ -383,14 +268,12 @@ inline int resolution(int c1, int c2,int whichVariable) {
 	}
 
 	for(i = k; i < max; ++i) {
-		clause[numclause+numresolution][i] = 0;
+		tmp[i] = 0;
 	}
 
 	/* -------------------------------------------------- */
 
-	size[numclause+numresolution] = k;
-
-	++numresolution;
+	resolutionTable[c1][c2] = k;
 
 	/* The resolution gives us the empty clause */
 	if( k == 0) {
@@ -398,6 +281,18 @@ inline int resolution(int c1, int c2,int whichVariable) {
 		/* The problem is so UNSAT */
 		FOUND = UNSAT;
 		return  1;
+	}
+
+	if(forReal == TRUE) {
+
+		clause[numclause+numresolution] = tmp;
+		size[numclause+numresolution]   = k;
+
+		++numresolution;
+
+	} else {
+	
+		free(tmp);
 	}
 
 	/* -------------------------------------------------- */
@@ -450,4 +345,6 @@ inline void restart() {
 	}
 	
 	numresolution = 0;
+
+	initResolutionTable();
 }

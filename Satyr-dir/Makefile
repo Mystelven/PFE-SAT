@@ -86,7 +86,7 @@ $(DISTANCE): $(STRUCTURE) distance.c
 	$(COMPILER) -c $(FLAGS) distance.c
 	mv distance.o obj/	
 
-$(INITIALISATION): $(STRUCTURE) initialisation.c
+$(INITIALISATION): $(UNSAT) initialisation.c
 	$(COMPILER) -c $(FLAGS) initialisation.c
 	mv initialisation.o obj/	
 

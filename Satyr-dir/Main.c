@@ -1,5 +1,4 @@
-/*
-##############################################################################
+/*##############################################################################
 # 
 # Makefile for SATyr - Valentin Montmirail - Polytech Tours, France
 # Copyright (c) 2015.
@@ -90,8 +89,8 @@ int main(int argc,char *argv[]) {
 	NUMINDIVIDUAL     = MIN( (numatom/10)+10 , 100);
 	
 	double p = (rand() % 1000)+500;
-	maxtry = ((int)(numatom*p));
-  	MAXTRY = ((int)(numatom*p));
+	maxtry = ((int)(numatom*p)/2);
+  	MAXTRY = ((int)(numatom*p)/2);
 
   	tabuVariables = (int*)malloc(sizeof(int)*(unsigned long)(0.3 * numatom));
   	sizeTabuVar = (int)(0.3 * numatom);
@@ -101,6 +100,19 @@ int main(int argc,char *argv[]) {
   	}
 
   	nbTabu = 0;
+
+  	i = 0;
+  	int j;
+
+	/* Allocation of the big array to know which resolution we should perform. */
+ 	resolutionTable = (int**)malloc(sizeof(int*) * (unsigned long)(2*numclause));
+ 	for(i = 0; i < numclause*2; ++i) resolutionTable[i] = (int*)malloc(sizeof(int) * (unsigned long)(2*numclause));
+ 	
+ 	for(i = 0; i < numclause*2; ++i) {
+ 		for(j = 0; j < numclause*2; ++j) {
+ 			resolutionTable[i][j] = BIG;
+ 		}
+ 	}
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	
@@ -118,30 +130,31 @@ int main(int argc,char *argv[]) {
 
 	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
 
+	initResolutionTable();
+
 	/* We will search after a solution. */
 	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
 		
 		#ifndef BENCHMARK
+			
 			/* When we are on training-mode, no need to stay forever... */
 			if(maxtry == 0) {
 				break;
 			}
-		#endif
 
-		/* At every step, we display statistic informations. */
-		#ifndef BENCHMARK
 			displayStat();
+
 		#endif
 
 		/* We perform a crossover on the population. */
-		crossover_operator(&population);
-
-		/* We try to prove in the same time that the problem has no solution */
-		performResolutionProof(population);
+		if(random() % 100 > 50) crossover_operator(&population);
+		
+		else  			  		tryToProveUNSAT();
 
 		/* We didn't success, we go on the next try. */
 		maxtry--;
 	}
+
 		
 	/* We display all the statistics. */
 	displayStat();

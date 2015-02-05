@@ -197,6 +197,9 @@ int crossover_operator(Individual **r) {
       /* and then a tabu search with this new individual. */
       child = tabu(child, ltrech , 1000);
 
+      freeIndividual(p1);
+      freeIndividual(p2);
+
   /* ----------------------------------------------------------------- */  
   /* ---      LET'S CHECK IF THE CHILD IS WORSE TO BE INSERTED     --- */
   /* ----------------------------------------------------------------- */      

@@ -1,1 +1,1 @@
-satyr a résolu 1000 instances en 9224 ms
+glucose a résolu 100 instances en 1079 ms

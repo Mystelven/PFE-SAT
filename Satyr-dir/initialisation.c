@@ -43,8 +43,6 @@ inline int parameters(char* argv[]) {
   ltrech   = -1;
   ltrechpc =  0;
 
-  numresolution = 0;
-
   /* -------------------------------- */
 
   maxtry = 999;
@@ -259,7 +257,7 @@ inline void initprob() {
 /************************************************************************************************/
 /*																								*/
 /* init : initializes the benchmark structures 													*/
-/* @param ind the linked list of every individuals												*/
+/* @param ind the individual that we need to initialize 										*/
 /* @param first is it the first initialisation ? 												*/
 /*																								*/
 /************************************************************************************************/
@@ -328,5 +326,40 @@ inline void init(Individual *ind,int first) {
 	    	ind->wherefalse[i] = -1;
 	  	}		
 	}
+}
+
+
+void initResolutionTable() {
+
+	int i,j,k;
+
+	int var = BIG;
+
+ 	for(i = 0; i < numclause; ++i) {
+
+ 		for(j = i+1; j < numclause; ++j) {
+
+ 			for(k = 0; k < size[i] ; ++k) {
+ 				if( contains(j,-1*clause[i][k]) == TRUE) {
+ 					var = ABS(clause[i][k]);
+ 					break;
+ 				}
+ 			}
+
+ 			if(var == -1) {
+ 				
+ 				resolutionTable[i][j] = BIG;
+ 				
+ 			} else {
+
+ 				resolution(i,j,var,FALSE);
+ 			}
+
+ 			resolutionTable[j][i] = resolutionTable[i][j];
+ 			var = -1;
+ 		}
+
+ 	}
+
 }
 
