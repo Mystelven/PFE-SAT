@@ -4,15 +4,25 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>SATyr: Main Page</title>
+<title>SATyr: SATyr</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
 </script>
+<link rel="search" href="search-opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="SATyr"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -41,48 +51,101 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
-          </span>
+          <div class="left">
+            <form id="FSearchBox" action="search.php" method="get">
+              <img id="MSearchSelect" src="search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
         </div>
       </li>
     </ul>
   </div>
 </div><!-- top -->
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
 </div>
-
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('index.html','');});
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">SATyr Documentation</div>  </div>
+<div class="title">SATyr </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><h1>The Documentation of SATyr : The genetic solver</h1>
+<hr/>
+<h1><a class="anchor" id="Intro_1"></a>
+1. What is a SAT problem ?</h1>
+<hr/>
+<h2><a class="anchor" id="Definition"></a>
+Definition</h2>
+<ol type="1">
+<li>In computer science, the Boolean Satisfiability Problem (sometimes called Propositional Satisfiability Problem and abbreviated as SATISFIABILITY or SAT) is the problem of determining if there exists an interpretation that satisfies a given Boolean formula.</li>
+<li>In other words, it asks whether the variables of a given Boolean formula can be consistently replaced by the values TRUE or FALSE in such a way that the formula evaluates to TRUE.</li>
+</ol>
+<p>If this is the case, the formula is called satisfiable. On the other hand, if no such assignment exists, the function expressed by the formula is identically FALSE for all possible variable assignments and the formula is unsatisfiable.</p>
+<p>For example, the formula "a AND NOT b" is satisfiable because one can find the values a = TRUE and b = FALSE, which make (a AND NOT b) = TRUE. In contrast, "a AND NOT a" is unsatisfiable.</p>
+<h2><a class="anchor" id="Illustration"></a>
+Illustration</h2>
+<div class="image">
+<img src="../images/problemSAT.gif" />
+</div>
+<hr/>
+<h1><a class="anchor" id="Intro_2"></a>
+2. SATyr is able to read only DIMACS-CNF files</h1>
+<hr/>
+<p>A SAT problem is often described in the DIMACS-CNF format: an input file in which each line represents a single disjunction. For example, a file with the two lines </p><pre class="fragment">1 -5 4 0
+-1 5 3 4 0
+</pre><p> represents the formula "(x1 ∨ ¬x5 ∨ x4) ∧ (¬x1 ∨ x5 ∨ x3 ∨ x4)".</p>
+<p>You will be able to learn how to used it, and how it was coded.</p>
+<hr/>
+<h1><a class="anchor" id="Intro_3"></a>
+3. SATyr uses genetics algorithms to solve both SAT and UNSAT problems</h1>
+<hr/>
+<h2><a class="anchor" id="Selection"></a>
+Selection Operation</h2>
+<p>The selection is performed by a roulette-wheel, with this method, we are able to give some diversity inside the population. It naturally avoids the "elitist-selection".</p>
+<div class="image">
+<img src="../images/wheel.png" />
+</div>
+<h2><a class="anchor" id="Cross"></a>
+Cross Operation</h2>
+<div class="image">
+<img src="../images/cross.png" />
+</div>
+<p>The crossing between 2 individuals will be an uniform crossing. It was the best choice after some tests.</p>
+<hr/>
+ <h1><a class="anchor" id="Intro_4"></a>
+4. Amelioration of offspring by Tabu Search</h1>
+<hr/>
+<p>All the offspring, before being reinserted inside the population, has to do some Tabu Search, it order to be more adapted and more efficient.</p>
+<div class="image">
+<img src="../images/tabu.png" />
+</div>
+<hr/>
+<dl class="section author"><dt>Author</dt><dd>Valentin Montmirail </dd>
+<dd>
+Christophe Lenté </dd></dl>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 5 2015 10:08:38 for SATyr by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Thu Feb 5 2015 15:19:44 for SATyr by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+  </ul>
+</div>
 </body>
 </html>

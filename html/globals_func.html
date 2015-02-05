@@ -8,11 +8,21 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
 </script>
+<link rel="search" href="search-opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="SATyr"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -41,18 +51,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
-          </span>
+          <div class="left">
+            <form id="FSearchBox" action="search.php" method="get">
+              <img id="MSearchSelect" src="search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
         </div>
       </li>
     </ul>
@@ -88,20 +94,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
 </div>
-
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_func.html','');});
+</script>
+<div id="doc-content">
 <div class="contents">
 &#160;
 
@@ -114,28 +120,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
-<li>compare()
-: <a class="el" href="utils_8h.html#ac70138609ef6aa6fabca57aca8681e83">utils.h</a>
-</li>
 <li>contains()
 : <a class="el" href="unsat_8c.html#af8f6533a72e7b78e34f5ffb1b40eb58f">unsat.c</a>
 , <a class="el" href="unsat_8h.html#af8f6533a72e7b78e34f5ffb1b40eb58f">unsat.h</a>
 </li>
 <li>createIndividual()
-: <a class="el" href="structure_8c.html#a7385a9017a4218798abc95740e1909fe">structure.c</a>
-, <a class="el" href="structure_8h.html#a7385a9017a4218798abc95740e1909fe">structure.h</a>
+: <a class="el" href="structure_8h.html#a7385a9017a4218798abc95740e1909fe">structure.h</a>
+, <a class="el" href="structure_8c.html#a7385a9017a4218798abc95740e1909fe">structure.c</a>
 </li>
 <li>createPopulation()
-: <a class="el" href="structure_8h.html#acc75ac5e8f4247b3638482109288e5a0">structure.h</a>
-, <a class="el" href="structure_8c.html#acc75ac5e8f4247b3638482109288e5a0">structure.c</a>
+: <a class="el" href="structure_8c.html#acc75ac5e8f4247b3638482109288e5a0">structure.c</a>
+, <a class="el" href="structure_8h.html#acc75ac5e8f4247b3638482109288e5a0">structure.h</a>
 </li>
 <li>cross()
-: <a class="el" href="work_8h.html#a5213be359aa166ed280d3dcd334e3720">work.h</a>
-, <a class="el" href="work_8c.html#a5213be359aa166ed280d3dcd334e3720">work.c</a>
+: <a class="el" href="work_8c.html#a5213be359aa166ed280d3dcd334e3720">work.c</a>
+, <a class="el" href="work_8h.html#a5213be359aa166ed280d3dcd334e3720">work.h</a>
 </li>
 <li>crossover_operator()
-: <a class="el" href="work_8c.html#ad156b720a8a43ccb0d6336dbd878d3f0">work.c</a>
-, <a class="el" href="work_8h.html#ad156b720a8a43ccb0d6336dbd878d3f0">work.h</a>
+: <a class="el" href="work_8h.html#ad156b720a8a43ccb0d6336dbd878d3f0">work.h</a>
+, <a class="el" href="work_8c.html#ad156b720a8a43ccb0d6336dbd878d3f0">work.c</a>
 </li>
 </ul>
 
@@ -198,8 +201,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>init()
-: <a class="el" href="initialisation_8c.html#a21234eae73c74e50b539fc7dc3d004e4">initialisation.c</a>
-, <a class="el" href="initialisation_8h.html#a21234eae73c74e50b539fc7dc3d004e4">initialisation.h</a>
+: <a class="el" href="structure_8c.html#a21234eae73c74e50b539fc7dc3d004e4">structure.c</a>
+, <a class="el" href="structure_8h.html#a21234eae73c74e50b539fc7dc3d004e4">structure.h</a>
 </li>
 <li>initial_sort()
 : <a class="el" href="work_8h.html#a73c8252a9ce366d79578ca14d5bd57cf">work.h</a>
@@ -210,8 +213,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="initialisation_8h.html#a976909950e8220010989935b5b80cf8a">initialisation.h</a>
 </li>
 <li>initResolutionTable()
-: <a class="el" href="initialisation_8h.html#a59fa1bdf2f0d5db1e3538c778185be62">initialisation.h</a>
-, <a class="el" href="initialisation_8c.html#a59fa1bdf2f0d5db1e3538c778185be62">initialisation.c</a>
+: <a class="el" href="unsat_8h.html#a59fa1bdf2f0d5db1e3538c778185be62">unsat.h</a>
+, <a class="el" href="unsat_8c.html#a59fa1bdf2f0d5db1e3538c778185be62">unsat.c</a>
 </li>
 <li>insert_individual()
 : <a class="el" href="structure_8h.html#a40cceaf9539aefa1dc380304c01df4c1">structure.h</a>
@@ -257,11 +260,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="structure_8h.html#a73bce947da99be3ce514d117ec2941c0">structure.h</a>
 </li>
 <li>signalHandler()
-: <a class="el" href="display_8h.html#a8ee3282bc313e547dbbb8d4f4010db61">display.h</a>
-, <a class="el" href="display_8c.html#a8ee3282bc313e547dbbb8d4f4010db61">display.c</a>
-</li>
-<li>subsumes()
-: <a class="el" href="unsat_8c.html#ad865defdfb9adec9ae50f840037815b2">unsat.c</a>
+: <a class="el" href="display_8c.html#a8ee3282bc313e547dbbb8d4f4010db61">display.c</a>
+, <a class="el" href="display_8h.html#a8ee3282bc313e547dbbb8d4f4010db61">display.h</a>
 </li>
 </ul>
 
@@ -277,11 +277,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 5 2015 10:08:38 for SATyr by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Thu Feb 5 2015 15:19:44 for SATyr by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+  </ul>
+</div>
 </body>
 </html>

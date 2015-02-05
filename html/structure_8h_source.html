@@ -8,11 +8,21 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
 </script>
+<link rel="search" href="search-opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="SATyr"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -41,18 +51,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
-        <span class="left">
-          <img id="MSearchSelect" src="search/mag_sel.png"
-               onmouseover="return searchBox.OnSearchSelectShow()"
-               onmouseout="return searchBox.OnSearchSelectHide()"
-               alt=""/>
-          <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
-               onkeyup="searchBox.OnSearchFieldChange(event)"/>
-          </span><span class="right">
-            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
-          </span>
+          <div class="left">
+            <form id="FSearchBox" action="search.php" method="get">
+              <img id="MSearchSelect" src="search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
         </div>
       </li>
     </ul>
@@ -63,25 +69,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a></div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_7ed49d86cc762c97c4620aef87984c5b.html">Satyr-dir</a></li>  </ul>
-</div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('structure_8h_source.html','');});
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="headertitle">
 <div class="title">structure.h</div>  </div>
@@ -115,109 +117,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="individual_8h.html">individual.h</a>&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* createIndividual : create and return an individual memory space                              */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/* @return the individual memory space created and returned                                     */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">extern</span> <a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8h.html#a7385a9017a4218798abc95740e1909fe">createIndividual</a>();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/* freePopulation : free all the population (all the linked list)                               */</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/* @param pop the population where we want to free the memory space                             */</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="structure_8h.html#ad181786839e375b8984833b5c185f778">freePopulation</a>(<a class="code" href="structstruct__individual.html">Individual</a>* pop);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* freeIndividual : release an individual memory space                                          */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* @param i the individual that we want to free the memory space                                */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="structure_8h.html#a22d84620cfe1b61456566a62553eb6d7">freeIndividual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* i);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/* createPopulation : create a population of NUMINDIVIDUAL individuals                          */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/* @return we will return the pointer on the first element of the linked list (the population)  */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/* @see NUMINDIVIDUAL to know how many individual inside the linked list                        */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">extern</span> <a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8h.html#acc75ac5e8f4247b3638482109288e5a0">createPopulation</a>(); </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* delete_individual : delete the older individual of the population                            */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* @param ind the individual that we want to delete.                                            */</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* @return the value return by the numhamming or the function delete_individual2                */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structure_8h.html#a491f4e196b54c83ff327d82a0ca8ebe2">delete_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>** ind); </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/* delete_individual2 : used by delete_individual                                               */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* @param y the individual that we want to delete                                               */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/* @return We return numhamming if everything okay, -1 otherwise.                               */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structure_8h.html#a674383a1f6cb1d976d89a317ac8153ac">delete_individual2</a>(<a class="code" href="structstruct__individual.html">Individual</a>* y); </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/* insert_individual : inserts an individual in a sorted population                             */</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/* @param y the individual that we want to insert                                               */</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/* @param z our linkedlist where y will be insert                                               */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="structure_8h.html#a40cceaf9539aefa1dc380304c01df4c1">insert_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* y, <a class="code" href="structstruct__individual.html">Individual</a>** z); </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/* add_individual : copy an individual in an other list of individuals                          */</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/* @param x the individual where we will perform a copy                                         */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/* @param ind the linked list where we will add ind                                             */</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">extern</span> <a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8h.html#a1bd1dc20d69c16d59023f722246946e0">add_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* ind, <a class="code" href="structstruct__individual.html">Individual</a>* x); </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="structure_8h.html#a674383a1f6cb1d976d89a317ac8153ac">delete_individual2</a>(<a class="code" href="structstruct__individual.html">Individual</a>* y); </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="structure_8h.html#a40cceaf9539aefa1dc380304c01df4c1">insert_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* y, <a class="code" href="structstruct__individual.html">Individual</a>** z); </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">extern</span> <a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8h.html#a1bd1dc20d69c16d59023f722246946e0">add_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* ind, <a class="code" href="structstruct__individual.html">Individual</a>* x); </div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/* select_individual : able to take from a list an individual                                   */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/* @param ind the linked list where we will look                                                */</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/*                                                                                              */</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">extern</span> <a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8h.html#a73bce947da99be3ce514d117ec2941c0">select_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* list);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="work_8h.html">work.h</a>&quot;</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="initialisation_8h.html">initialisation.h</a>&quot;</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="structure_8h_html_a491f4e196b54c83ff327d82a0ca8ebe2"><div class="ttname"><a href="structure_8h.html#a491f4e196b54c83ff327d82a0ca8ebe2">delete_individual</a></div><div class="ttdeci">int delete_individual(Individual **ind)</div><div class="ttdef"><b>Definition:</b> structure.c:171</div></div>
-<div class="ttc" id="structure_8h_html_a22d84620cfe1b61456566a62553eb6d7"><div class="ttname"><a href="structure_8h.html#a22d84620cfe1b61456566a62553eb6d7">freeIndividual</a></div><div class="ttdeci">void freeIndividual(Individual *i)</div><div class="ttdef"><b>Definition:</b> structure.c:98</div></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">extern</span> <a class="code" href="structstruct__individual.html">Individual</a>* <a class="code" href="structure_8h.html#a73bce947da99be3ce514d117ec2941c0">select_individual</a>(<a class="code" href="structstruct__individual.html">Individual</a>* list);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="structure_8h.html#a21234eae73c74e50b539fc7dc3d004e4">init</a>(<a class="code" href="structstruct__individual.html">Individual</a> *ind,<span class="keywordtype">int</span> first);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/************************************************************************************************/</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structure_8h_html_a491f4e196b54c83ff327d82a0ca8ebe2"><div class="ttname"><a href="structure_8h.html#a491f4e196b54c83ff327d82a0ca8ebe2">delete_individual</a></div><div class="ttdeci">int delete_individual(Individual **ind)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00171">structure.c:171</a></div></div>
+<div class="ttc" id="structure_8h_html_a22d84620cfe1b61456566a62553eb6d7"><div class="ttname"><a href="structure_8h.html#a22d84620cfe1b61456566a62553eb6d7">freeIndividual</a></div><div class="ttdeci">void freeIndividual(Individual *i)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00098">structure.c:98</a></div></div>
 <div class="ttc" id="individual_8h_html"><div class="ttname"><a href="individual_8h.html">individual.h</a></div></div>
-<div class="ttc" id="work_8h_html"><div class="ttname"><a href="work_8h.html">work.h</a></div></div>
-<div class="ttc" id="structure_8h_html_ad181786839e375b8984833b5c185f778"><div class="ttname"><a href="structure_8h.html#ad181786839e375b8984833b5c185f778">freePopulation</a></div><div class="ttdeci">void freePopulation(Individual *pop)</div><div class="ttdef"><b>Definition:</b> structure.c:69</div></div>
-<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> individual.h:182</div></div>
-<div class="ttc" id="structure_8h_html_acc75ac5e8f4247b3638482109288e5a0"><div class="ttname"><a href="structure_8h.html#acc75ac5e8f4247b3638482109288e5a0">createPopulation</a></div><div class="ttdeci">Individual * createPopulation()</div><div class="ttdef"><b>Definition:</b> structure.c:120</div></div>
-<div class="ttc" id="structure_8h_html_a1bd1dc20d69c16d59023f722246946e0"><div class="ttname"><a href="structure_8h.html#a1bd1dc20d69c16d59023f722246946e0">add_individual</a></div><div class="ttdeci">Individual * add_individual(Individual *ind, Individual *x)</div><div class="ttdef"><b>Definition:</b> structure.c:299</div></div>
-<div class="ttc" id="structure_8h_html_a73bce947da99be3ce514d117ec2941c0"><div class="ttname"><a href="structure_8h.html#a73bce947da99be3ce514d117ec2941c0">select_individual</a></div><div class="ttdeci">Individual * select_individual(Individual *list)</div><div class="ttdef"><b>Definition:</b> structure.c:340</div></div>
-<div class="ttc" id="structure_8h_html_a674383a1f6cb1d976d89a317ac8153ac"><div class="ttname"><a href="structure_8h.html#a674383a1f6cb1d976d89a317ac8153ac">delete_individual2</a></div><div class="ttdeci">int delete_individual2(Individual *y)</div><div class="ttdef"><b>Definition:</b> structure.c:213</div></div>
-<div class="ttc" id="structure_8h_html_a40cceaf9539aefa1dc380304c01df4c1"><div class="ttname"><a href="structure_8h.html#a40cceaf9539aefa1dc380304c01df4c1">insert_individual</a></div><div class="ttdeci">void insert_individual(Individual *y, Individual **z)</div><div class="ttdef"><b>Definition:</b> structure.c:255</div></div>
-<div class="ttc" id="initialisation_8h_html"><div class="ttname"><a href="initialisation_8h.html">initialisation.h</a></div></div>
-<div class="ttc" id="structure_8h_html_a7385a9017a4218798abc95740e1909fe"><div class="ttname"><a href="structure_8h.html#a7385a9017a4218798abc95740e1909fe">createIndividual</a></div><div class="ttdeci">Individual * createIndividual()</div><div class="ttdef"><b>Definition:</b> structure.c:34</div></div>
+<div class="ttc" id="structure_8h_html_a21234eae73c74e50b539fc7dc3d004e4"><div class="ttname"><a href="structure_8h.html#a21234eae73c74e50b539fc7dc3d004e4">init</a></div><div class="ttdeci">void init(Individual *ind, int first)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00358">structure.c:358</a></div></div>
+<div class="ttc" id="structure_8h_html_ad181786839e375b8984833b5c185f778"><div class="ttname"><a href="structure_8h.html#ad181786839e375b8984833b5c185f778">freePopulation</a></div><div class="ttdeci">void freePopulation(Individual *pop)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00069">structure.c:69</a></div></div>
+<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00186">individual.h:186</a></div></div>
+<div class="ttc" id="structure_8h_html_acc75ac5e8f4247b3638482109288e5a0"><div class="ttname"><a href="structure_8h.html#acc75ac5e8f4247b3638482109288e5a0">createPopulation</a></div><div class="ttdeci">Individual * createPopulation()</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00120">structure.c:120</a></div></div>
+<div class="ttc" id="structure_8h_html_a1bd1dc20d69c16d59023f722246946e0"><div class="ttname"><a href="structure_8h.html#a1bd1dc20d69c16d59023f722246946e0">add_individual</a></div><div class="ttdeci">Individual * add_individual(Individual *ind, Individual *x)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00300">structure.c:300</a></div></div>
+<div class="ttc" id="structure_8h_html_a73bce947da99be3ce514d117ec2941c0"><div class="ttname"><a href="structure_8h.html#a73bce947da99be3ce514d117ec2941c0">select_individual</a></div><div class="ttdeci">Individual * select_individual(Individual *list)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00346">structure.c:346</a></div></div>
+<div class="ttc" id="structure_8h_html_a674383a1f6cb1d976d89a317ac8153ac"><div class="ttname"><a href="structure_8h.html#a674383a1f6cb1d976d89a317ac8153ac">delete_individual2</a></div><div class="ttdeci">int delete_individual2(Individual *y)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00214">structure.c:214</a></div></div>
+<div class="ttc" id="structure_8h_html_a40cceaf9539aefa1dc380304c01df4c1"><div class="ttname"><a href="structure_8h.html#a40cceaf9539aefa1dc380304c01df4c1">insert_individual</a></div><div class="ttdeci">void insert_individual(Individual *y, Individual **z)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00256">structure.c:256</a></div></div>
+<div class="ttc" id="structure_8h_html_a7385a9017a4218798abc95740e1909fe"><div class="ttname"><a href="structure_8h.html#a7385a9017a4218798abc95740e1909fe">createIndividual</a></div><div class="ttdeci">Individual * createIndividual()</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00034">structure.c:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 5 2015 10:08:38 for SATyr by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_7ed49d86cc762c97c4620aef87984c5b.html">Satyr-dir</a></li><li class="navelem"><a class="el" href="structure_8h.html">structure.h</a></li>
+    <li class="footer">Generated on Thu Feb 5 2015 15:19:41 for SATyr by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+  </ul>
+</div>
 </body>
 </html>

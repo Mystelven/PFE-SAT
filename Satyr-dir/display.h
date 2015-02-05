@@ -25,7 +25,6 @@
 #define DISPLAY_H
 
 #include "work.h"
-#include <time.h>
 
 #define CLOCK_TICK 100
 

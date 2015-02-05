@@ -23,7 +23,7 @@
 #ifndef WORK_H
 #define WORK_H
 
-#include "structure.h"
+#include "initialisation.h"
 
 /**
  *                                                                                             
