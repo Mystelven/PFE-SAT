@@ -1,5 +1,4 @@
-/*
-##############################################################################
+/*##############################################################################
 # 
 # Makefile for SATyr - Valentin Montmirail - Polytech Tours, France
 # Copyright (c) 2015.
@@ -87,11 +86,33 @@ int main(int argc,char *argv[]) {
 	cardpopulation    = 0;   
 	bestnumfalse      = numclause;
 	allflip           = 0;
-	NUMINDIVIDUAL     = 100;
+	NUMINDIVIDUAL     = MIN( (numatom/10)+10 , 100);
 	
-	double p = rand() % 1000;
-	maxtry = (int)(numatom*p)/150;
-  	MAXTRY = (int)(numatom*p)/150;  		
+	double p = (rand() % 1000)+500;
+	maxtry = ((int)(numatom*p)/2);
+  	MAXTRY = ((int)(numatom*p)/2);
+
+  	tabuVariables = (int*)malloc(sizeof(int)*(unsigned long)(0.3 * numatom));
+  	sizeTabuVar = (int)(0.3 * numatom);
+
+  	for(i = 0;  i < sizeTabuVar ; ++i) {
+  		tabuVariables[i] = -1;
+  	}
+
+  	nbTabu = 0;
+
+  	i = 0;
+  	int j;
+
+	/* Allocation of the big array to know which resolution we should perform. */
+ 	resolutionTable = (int**)malloc(sizeof(int*) * (unsigned long)(2*numclause));
+ 	for(i = 0; i < numclause*2; ++i) resolutionTable[i] = (int*)malloc(sizeof(int) * (unsigned long)(2*numclause));
+ 	
+ 	for(i = 0; i < numclause*2; ++i) {
+ 		for(j = 0; j < numclause*2; ++j) {
+ 			resolutionTable[i][j] = BIG;
+ 		}
+ 	}
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	
@@ -107,20 +128,33 @@ int main(int argc,char *argv[]) {
 	/* We perform an initial sort */
 	population = initial_sort (population); 
 
+	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
+
+	initResolutionTable();
+
 	/* We will search after a solution. */
-	while ( (maxtry != 0) && (FOUND != TRUE) )  {
+	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
+		
+		#ifndef BENCHMARK
 			
-		/* At every step, we display statistic informations. */
-		displayStat();
+			/* When we are on training-mode, no need to stay forever... */
+			if(maxtry == 0) {
+				break;
+			}
+
+			displayStat();
+
+		#endif
 
 		/* We perform a crossover on the population. */
-		crossover_operator(&population);
+		if(random() % 100 > 50) crossover_operator(&population);
+		
+		else  			  		tryToProveUNSAT();
 
 		/* We didn't success, we go on the next try. */
 		maxtry--;
 	}
 
-	resolution(0,2,2);
 		
 	/* We display all the statistics. */
 	displayStat();

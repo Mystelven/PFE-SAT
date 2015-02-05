@@ -1,4 +1,179 @@
+/*##############################################################################
+# 
+# Makefile for SATyr - Valentin Montmirail - Polytech Tours, France
+# Copyright (c) 2015.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+# associated documentation files (the "Software"), to deal in the Software without restriction,
+# including without limitation the rights to use, copy, modify, merge, publish, distribute,
+# sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+# NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
+# OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+##############################################################################*/
+
 #include "unsat.h"
+#include "utils.h"
+#include <stdlib.h>
+
+
+inline void displayResolution(int c1,int c2,int var) {
+
+	int i;
+
+	printf("Resolution entre %d et %d sur %d\n",c1,c2,var);
+
+	printf("C1 : ");
+	for(i = 0; i < size[c1]; i++){
+		printf(" %d",clause[c1][i]);
+	}
+
+	printf("\nC2 : ");
+	for(i = 0; i < size[c2]; i++){
+		printf(" %d",clause[c2][i]);
+	}
+	printf("\nRes: ");
+	if(FOUND != UNSAT) {
+		for(i = 0; i < size[numclause+numresolution-1]; i++){
+			printf(" %d",clause[numclause+numresolution-1][i]);
+		}
+		printf("\n\n");
+	}
+}
+
+/************************************************************************************************/
+/*																								*/
+/* contains : This function will test if the variable is include inside the clause 				*/
+/* @param cl the clause who maybe contains the variable 										*/
+/* @param variable the variable that we need to check 											*/
+/* @return TRUE if the clause contains the variable, FALSE otherwise. 							*/
+/*																								*/
+/************************************************************************************************/
+inline char contains(int cl, int variable) {
+
+	int i = 0;
+
+	for(i = 0; i < size[cl]; ++i) {
+
+		if(clause[cl][i] == variable) return TRUE;
+	}
+
+	return FALSE;
+}
+
+
+
+inline void tryToProveUNSAT() {
+	
+	if(random() % 100 < 1) restart();
+
+	/* If have gone to far, we restart everything, we will not find anything in this branch... */
+	if(numresolution >= numclause) { 
+		restart(); 
+	}
+
+	int c1 = -1;
+	int c2 = -1;
+	int i,j,k;
+	int min = BIG;
+
+	int var = -1;
+
+	for(i = 0; i < numclause+numresolution; ++i) {
+		for(j = i+1; j < numclause+numresolution; ++j) {
+
+			if(min > resolutionTable[i][j]) {
+				c1 = i;
+				c2 = j;
+				min = resolutionTable[i][j];
+			} 
+		}
+	}
+
+	if(c1 == -1 || c2 == -1) {
+		
+		restart();
+		return ;
+	}
+	
+	for(i = 0; i < size[c1] ; ++i) {
+ 		
+ 		if( contains(c2,-1*clause[c1][i]) == TRUE) {
+ 			var = ABS(clause[c1][i]);
+ 			break;
+ 		}
+
+ 	}
+
+ 	resolution(c1,c2,var,TRUE);
+
+ 	// displayResolution(c1,c2,var);
+
+ 	if(isTautology() == TRUE) {
+ 		numresolution--;
+ 		return ;
+ 	}
+
+ 	resolutionTable[c1][c2] = BIG;
+ 	resolutionTable[c2][c1] = BIG;
+
+ 	i = numclause+numresolution-1;
+ 	
+ 	for(j = 0; j < numclause+numresolution; ++j) {
+
+ 		for(k = 0; k < size[i] ; ++k) {
+ 			if( contains(j,-1*clause[i][k]) == TRUE) {
+ 				var = ABS(clause[i][k]);
+ 				break;
+ 			}
+ 		}
+
+ 		if(var == -1) {
+ 				
+ 			resolutionTable[i][j] = BIG;
+ 				
+ 		} else {
+
+ 			resolution(i,j,var,FALSE);
+ 		}
+
+ 		resolutionTable[j][i] = resolutionTable[i][j];
+ 		var = -1;
+ 	}
+ 	
+}
+
+inline int isTautology() {
+
+	int i,j;
+	int var;
+
+	/* We will go through all the variable inside the result of our resolution. */
+	for(i = 0; i < size[numclause+numresolution-1]; ++i) {
+
+		/* We take the i-th variable */
+		var = clause[numclause+numresolution-1][i];
+		
+		/* And we will check for every other variable inside the clause, if there is var and ~var */
+		for(j = 0; j < size[numclause+numresolution-1]; ++j) {
+			
+			/* If (... var or ~var ... ), then the clause is a tautology, and we don't need it. */
+			if(-1*var == clause[numclause+numresolution-1][j] ) 
+				return TRUE;
+		}
+	}
+
+	/* None of the variable inside the clause creates a tautology, the clause is useful. */
+	return FALSE;
+}
 
 /************************************************************************************************/
 /*																								*/
@@ -6,17 +181,18 @@
 /* @param c1 the left member of the resolution rule 											*/
 /* @param c2 the right member of the resolution rule 											*/
 /* @param whichVariable on which variable we will perform the resolution 						*/
+/* @param forReal is a boolean to know if we will store the result of not 						*/
 /* @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 						*/
 /* At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		*/
 /*																								*/
 /************************************************************************************************/
-int resolution(int c1, int c2,int whichVariable) {
+inline int resolution(int c1, int c2,int whichVariable,int forReal) {
 
 	/* In the worst case, the resolution will be just an OR between c1 and c2 */
 	long max = (long)(size[c1] + size[c2]);		
 
 	/* We allocate the good size for this futur resolution's result. */
-	char* result = (char*)( malloc( sizeof(char)*(unsigned long)max));
+	int* tmp = (int*)( malloc( sizeof(int)*(unsigned long)max));
 
 	int i, j, k, l;
 
@@ -26,23 +202,6 @@ int resolution(int c1, int c2,int whichVariable) {
 	/* we will insert the first element in the 0th place of result */
 	k = 0;
 
-
-	for(i = 0; i < max; ++i) {
-		result[i] = 0;
-	}
-
-	printf("C1 :");
-	for(i = 0; i < size[c1] ; ++i)
-		printf(" %d" ,unsatClause[c1][i]);
-
-	printf("\nC2 :");
-	for(i = 0; i < size[c2] ; ++i)
-		printf(" %d" ,unsatClause[c2][i]);
-
-	printf("\n");
-
-	printf("Resolution on : %d\n\n",whichVariable);
-
 	/* -------------------------------------------------- */
 
 	/* We will, for every atom inside the C1 claude */
@@ -51,20 +210,18 @@ int resolution(int c1, int c2,int whichVariable) {
 		/* compare this value with every atom inside the C2 clause */
 		for( j = 0 ; j < size[c2] ; ++j) {
 			
-			printf("On va tester : %d == %d\n",unsatClause[c1][i],-1*unsatClause[c2][j]);
 			/* A v -A is equals to 1, so we don't need it for the resolution. */
-			if( ( (unsatClause[c1][i] == -1*unsatClause[c2][j]) && (ABS(unsatClause[c1][i]) == whichVariable) )) {
+			if( ( (clause[c1][i] == -1*clause[c2][j]) && (ABS(clause[c1][i]) == whichVariable) )) {
 
 					toAdd = 0;
-			}
-
+			}	
 		}
 
 		/* We go through every element inside C2, C1 is not present. */
 		if(toAdd == 1) {
 
 			/* We will so, insert it and go for the next element */
-			result[k++] = (char)unsatClause[c1][i];
+			tmp[k++] = (char)clause[c1][i];
 
 		}
 
@@ -74,14 +231,14 @@ int resolution(int c1, int c2,int whichVariable) {
 
 	/* -------------------------------------------------- */
 
-	/* We will, for every atom inside the C2 claude */
+	/* We will, for every atom inside the C2 clause */
 	for( i = 0 ; i < size[c2] ; ++i) {
 
 		/* compare this value with every atom inside the C1 clause */
 		for( j = 0 ; j < size[c1] ; ++j) {
 			
 			/* A v -A is equals to 1, so we don't need it for the resolution. */
-			if( ( (unsatClause[c2][i] == -1*unsatClause[c1][j]) && (ABS(unsatClause[c2][i]) == ABS(whichVariable)) ) ) {
+			if( ( (clause[c2][i] == -1*clause[c1][j]) && (ABS(clause[c2][i]) == ABS(whichVariable)) ) ) {
 
 					toAdd = 0;
 				
@@ -94,16 +251,15 @@ int resolution(int c1, int c2,int whichVariable) {
 			for(l = 0; l < (int)max ; ++l) {
 
 				/* This value is already inside the result, so don't need to insert it. */
-				if(result[l] == unsatClause[c2][i]) toAdd = 0;
+				if(tmp[l] == clause[c2][i]) toAdd = 0;
 			}
-
 		}
 
 		/* Ok this value passes all the tests, we need to insert it in the result. */
 		if(toAdd == 1) {
 
 			/* We insert it and we k++ for the next value. */
-			result[k++] = (char)unsatClause[c2][i];
+			tmp[k++] = (char)clause[c2][i];
 
 		}
 
@@ -111,72 +267,84 @@ int resolution(int c1, int c2,int whichVariable) {
 		toAdd = 1;
 	}
 
-	/* -------------------------------------------------- */
-
-	for(i = 0 ; i < (int)max ; ++i) {
-
-		printf("%i ",result[i]);
+	for(i = k; i < max; ++i) {
+		tmp[i] = 0;
 	}
 
-	printf("\n\n");
-	
+	/* -------------------------------------------------- */
 
-	j =  0;
-
-	/* We count how many spaces are not used */
-	for( i = 0; i < (int)max ; ++i) {
-
-		if(result[i] == 0) ++j;
-	}	
-
-	/* We will recreate the value result */
-	result = (char*)realloc(result,(unsigned long)(max-j));
+	resolutionTable[c1][c2] = k;
 
 	/* The resolution gives us the empty clause */
-	if( (max-j) == 0) {
+	if( k == 0) {
 
 		/* The problem is so UNSAT */
-		FOUND = 1;
+		FOUND = UNSAT;
 		return  1;
 	}
 
-	/* i is equals to the new size of result. */
+	if(forReal == TRUE) {
+
+		clause[numclause+numresolution] = tmp;
+		size[numclause+numresolution]   = k;
+
+		++numresolution;
+
+	} else {
 	
-	for( i = 0; i < (int)(max - j) ; i++) {
-		printf("%i ",result[i]);
-	}
-
-	exit(0);
-
-	// int* tmp = unsatClause[c1];
-
-	// (*unsatClause)[c1] = (int*)realloc(tmp,sizeof(int)*(max-j) );	
-	
-	// free(tmp);
-
-	size[c1] = (max-j);
-
-	/* We desactive the clause C2, it doesn't exist anymore. */
-	for(i = 0; i < size[c2] ; ++i) {
-		unsatClause[c2] = 0;		
-	}
-
-	size[c2] = 0;
-
-	for(i = 0 ; i < size[c1]; ++i) {
-		unsatClause[c1][i] = (int)result[i];
-	}
-
-	for( i = 0 ; i < numclause ; ++i) { 
-		for(j = 0; j < size[i]; ++j) {
-			printf("%d ",unsatClause[i][j]);
-		}
-		printf("\n");
+		free(tmp);
 	}
 
 	/* -------------------------------------------------- */
 
-	exit(0);
-
 	return 0;
+}
+
+/************************************************************************************************/
+/*																								*/
+/* subsumes : Will check if the clause c1 subsumes the clause C2 								*/
+/* @param c1 the index of the first clause 														*/
+/* @param c2 the index of the second clause 													*/
+/* @return TRUE if c1 subsumes c2, FALSE otherwise 												*/
+/*																								*/
+/************************************************************************************************/
+inline int subsumes(int c1, int c2) {
+
+	int i,j;
+
+	if(size[c1] < size[c2]) {
+		i = c1;
+		c1 = c2;
+		c2 = i;
+	}
+
+    for (i = 0; i < size[c1]; ++i) {
+        
+        for (j = 0; j < size[c2]; ++j) {
+            
+            if(clause[c1][i] != ABS(clause[c2][j])) return FALSE;
+    	}
+    }
+
+    return TRUE;
+}
+
+/************************************************************************************************/
+/*																								*/
+/* restart : We did "too much" resolution and didn't find anything yet, we restart to find...   */
+/*																								*/
+/************************************************************************************************/
+inline void restart() {
+
+	int i = 0;
+
+	for(i  = 0 ; i < numresolution; i++) {
+
+		free(clause[numclause+i]);		
+		size[numclause+i] = 0;	
+	}
+	
+	numresolution = 0;
+
+	initResolutionTable();
 }

@@ -389,27 +389,34 @@ int main(int argc,char *argv[])
     initialize_statistics();
     print_statistics_header();
     signal(SIGINT, handle_interrupt);
-    abort_flag = FALSE;
+  	abort_flag = FALSE;
+
     (void) elapsed_seconds();
 
     while (! abort_flag && numsuccesstry < numsol && numtry < numrun) {
-	numtry++;
-	init(initfile, initoptions);
-	update_statistics_start_try();
-	numflip = 0;
-	  
-	if (superlinear) cutoff = base_cutoff * super(numtry);
+		numtry++;
+		init(initfile, initoptions);
+		
+		update_statistics_start_try();
 
-	while((numfalse > target) && (numflip < cutoff)) {
-	    print_statistics_start_flip();
-	    numflip++;
-	    flipatom((pickcode[heuristic])());
-	    update_statistics_end_flip();
-	}
-	update_and_print_statistics_end_try();
+		numflip = 0;
+	  
+		cutoff = base_cutoff * super(numtry);
+
+		while((numfalse > target) && (numflip < cutoff)) {
+	    	print_statistics_start_flip();
+	    	numflip++;
+	    	flipatom((pickcode[heuristic])());
+	    	update_statistics_end_flip();
+		}
+		
+		update_and_print_statistics_end_try();
     }
+
     expertime = elapsed_seconds();
+
     print_statistics_final();
+    
     return status_flag;
 }
 

@@ -1,0 +1,415 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"size",
+				"sizeTabuVar"
+			],
+			[
+				"clause",
+				"clausesResolutions"
+			],
+			[
+				"num",
+				"numatom"
+			],
+			[
+				"nu",
+				"numclause"
+			],
+			[
+				"nega",
+				"negatifLiteral"
+			],
+			[
+				"where",
+				"wherefalse"
+			],
+			[
+				"which",
+				"whichVariable"
+			],
+			[
+				"mos",
+				"mostProbableL"
+			],
+			[
+				"mb_convert",
+				"mb_convert_encoding"
+			],
+			[
+				"y",
+				"y"
+			],
+			[
+				"set",
+				"setEnVie"
+			],
+			[
+				"nb",
+				"nbAmi"
+			],
+			[
+				"valu",
+				"valeurMax"
+			],
+			[
+				"valeur",
+				"valeurMax"
+			],
+			[
+				"vert",
+				"verticalScrollbar"
+			],
+			[
+				"horiz",
+				"horizontalScrollbar"
+			],
+			[
+				"large",
+				"largeur"
+			],
+			[
+				"largeur",
+				"largeurTotale"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/Users/mystelven/Desktop/Floffy/index.html",
+		"/Users/mystelven/Desktop/AOMUS/AOMUS.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/initialisation.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/Main.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Glucose-dir/core/Solver.cc",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat.h",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/individual.h",
+		"/Users/mystelven/Desktop/PFE-SAT/test.sh",
+		"/Users/mystelven/Desktop/PFE-SAT/sortie.txt",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-100.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-01.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-010.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-011.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-012.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-013.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-014.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-015.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-016.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-017.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-018.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-019.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-02.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-020.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-021.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-022.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-023.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-024.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-025.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-026.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-027.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-028.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-029.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-03.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-030.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-031.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-032.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-033.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-034.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-035.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-036.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-037.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-038.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-039.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-04.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-040.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-041.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-042.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-043.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-044.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-045.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-046.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-047.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-048.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-049.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-05.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-050.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-051.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-052.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-053.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-054.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-055.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-056.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-057.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-058.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-059.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-06.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-060.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-061.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-062.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-063.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-064.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-065.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-066.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-067.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-068.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-069.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-07.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-070.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-071.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-072.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-073.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-074.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-075.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-076.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-077.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-078.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-079.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-08.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-080.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-081.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-082.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-083.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-084.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-085.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-086.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-087.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-088.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-089.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-09.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-090.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-091.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-092.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-093.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-094.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-095.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-096.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-097.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-098.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200/uuf200-099.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/display.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Walksat-dir/walksat.c",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/aim-50-1_6-no-1.cnf",
+		"/Users/mystelven/Desktop/PFE-SAT/Glucose-dir/core/SolverTypes.h",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/Makefile",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/unsat2.cnf",
+		"/Users/mystelven/Desktop/resultat2.txt",
+		"/Users/mystelven/Desktop/resultat.txt",
+		"/Users/mystelven/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/Users/mystelven/Desktop/PFE-SAT/Satyr-dir/utils.h",
+		"/Users/mystelven/Desktop/PFE-SAT/Reductions/NQueens.c",
+		"/Users/mystelven/Pictures/POL_Łódź_flag.svg",
+		"/Users/mystelven/Desktop/Flo/methodeFlo.flo",
+		"/Users/mystelven/Desktop/abiword-2.8.6/configure",
+		"/Applications/XAMPP/xamppfiles/htdocs/ImmoJeune/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Changelog.md",
+		"/Users/mystelven/Dropbox/_BruGi/SerialCom.h",
+		"/Users/mystelven/Desktop/Scaloni/images/organigramme.svg",
+		"/Users/mystelven/Desktop/Scaloni/images/gantt.svg"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/mystelven/Desktop/PFE-SAT/Glucose-dir",
+			"/Users/mystelven/Desktop/PFE-SAT/instances/uuf200",
+			"/Users/mystelven/Desktop/PFE-SAT/Cdls-dir"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"MUS",
+			"core",
+			"UNSAT",
+			"MUS",
+			"core",
+			"/***************************************************************************************[",
+			"ltrech",
+			"tabu",
+			"tab",
+			"tabu",
+			"UN",
+			"\n0\n\n",
+			"maxtry =",
+			"maxtry=",
+			"unsa",
+			"unsat",
+			"flipatom",
+			"main",
+			"unsat",
+			"subsume",
+			"jpeh.h",
+			"jpg",
+			"Strategie",
+			"strat",
+			"Strategie",
+			"arrayOfStrategies",
+			"isStrategie",
+			"Solution",
+			"à",
+			"é",
+			"3",
+			"1000",
+			"500",
+			";\n",
+			"COLOR",
+			"	\n1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"Solver",
+			"arrayOfSolutions",
+			"isSolution",
+			"Strategie",
+			"&agrave;",
+			"&eacute;"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/mystelven/Desktop/PFE-SAT"
+		}
+	],
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 213.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
