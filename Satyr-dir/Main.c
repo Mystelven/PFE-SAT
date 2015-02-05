@@ -23,14 +23,14 @@
 #include "display.h"
 #include "unsat.h"
 
-/************************************************************************************************/
-/*																								*/
-/* main : This function represents the main of the program										*/
-/* @param argc the number of argument passed to the program										*/
-/* @param argv every char* for every argument 													*/
-/* @return 0 if everything was good, something else otherwise 									*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																								
+ * main : This function represents the main of the program										
+ * @param argc the number of argument passed to the program										
+ * @param argv every char* for every argument 													
+ * @return 0 if everything was good, something else otherwise 									
+ *
+ */
 int main(int argc,char *argv[]) {
 	
 	int i;
@@ -92,15 +92,6 @@ int main(int argc,char *argv[]) {
 	maxtry = ((int)(numatom*p)/2);
   	MAXTRY = ((int)(numatom*p)/2);
 
-  	tabuVariables = (int*)malloc(sizeof(int)*(unsigned long)(0.3 * numatom));
-  	sizeTabuVar = (int)(0.3 * numatom);
-
-  	for(i = 0;  i < sizeTabuVar ; ++i) {
-  		tabuVariables[i] = -1;
-  	}
-
-  	nbTabu = 0;
-
   	i = 0;
   	int j;
 
@@ -148,7 +139,7 @@ int main(int argc,char *argv[]) {
 
 		/* We perform a crossover on the population. */
 		if(random() % 100 > 50) crossover_operator(&population);
-		
+
 		else  			  		tryToProveUNSAT();
 
 		/* We didn't success, we go on the next try. */
