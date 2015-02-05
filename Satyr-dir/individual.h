@@ -147,6 +147,8 @@ int numresolution;
 /* clauses to be satisfied,  indexed as clause[clause_num][literal_num] */
 int** clause;   
 
+int** resolutionTable;
+
 /* length of each clause */
 int* size;  
 

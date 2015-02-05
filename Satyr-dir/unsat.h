@@ -27,18 +27,6 @@
 
 /************************************************************************************************/
 /*																								*/
-/* resoution : This function will perform the resolution rule on 2 clauses 'c1' and 'c2'		*/
-/* @param c1 the left member of the resolution rule 											*/
-/* @param c2 the right member of the resolution rule 											*/
-/* @param whichVariable on which variable we will perform the resolution 						*/
-/* @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 						*/
-/* At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		*/
-/*																								*/
-/************************************************************************************************/
-extern int resolution(int c1, int c2, int whichVariable );
-
-/************************************************************************************************/
-/*																								*/
 /* restart : We did "too much" resolution and didn't find anything yet, we restart to find...   */
 /*																								*/
 /************************************************************************************************/
@@ -56,43 +44,21 @@ extern char contains(int cl, int variable);
 
 /************************************************************************************************/
 /*																								*/
-/* getWhichVariableToPerformResolution : Get the most probable variable for a resolution 		*/
-/* @param population the population where that we give us the good clauses						*/
-/* @return the value of the litteral where we will perform a resolution 						*/
+/* resoution : This function will perform the resolution rule on 2 clauses 'c1' and 'c2'		*/
+/* @param c1 the left member of the resolution rule 											*/
+/* @param c2 the right member of the resolution rule 											*/
+/* @param whichVariable on which variable we will perform the resolution 						*/
+/* @param forReal is a boolean to know if we will store the result of not 						*/
+/* @return 0 if the problem is still UNKNOWN and 1 if the problem is UNSAT 						*/
+/* At the end, 1 clause will disappear and the 2nd one will be the result of the resolution		*/
 /*																								*/
 /************************************************************************************************/
-extern int getWhichVariableToPerformResolution(Individual* population);
-
-/************************************************************************************************/
-/*																								*/
-/* performResolutionProof : We will try to prove that the problem has no solution 				*/
-/* @param population the population where that we give us the good clauses						*/
-/*																								*/
-/************************************************************************************************/
-extern void performResolutionProof(Individual* population);
-
-/************************************************************************************************/
-/*																								*/
-/* getWhichClausesToPerformResolution : We get the 2 clauses for the resolution 				*/
-/* @param population the population where that we give us the good clauses						*/
-/* @param whichVariable on which variable we will perform the resolution..						*/
-/* @return a 2-cases array for the clauses where we will perform the resolution 				*/
-/*																								*/
-/************************************************************************************************/
-extern int* getWhichClausesToPerformResolution(Individual* population,int whichVariable);
-
-/************************************************************************************************/
-/*																								*/
-/* subsumes : Will check if the clause c1 subsumes the clause C2 								*/
-/* @param c1 the index of the first clause 														*/
-/* @param c2 the index of the second clause 													*/
-/* @return TRUE if c1 subsumes c2, FALSE otherwise 												*/
-/*																								*/
-/************************************************************************************************/
-extern int subsumes(int c1, int c2);
-
-
+extern int resolution(int c1, int c2,int whichVariable,int forReal);
 
 extern int isTautology();
+
+extern void tryToProveUNSAT();
+
+extern void displayResolution(int c1,int c2,int var);
 
 #endif

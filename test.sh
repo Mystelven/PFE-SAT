@@ -36,6 +36,7 @@ function test()
 	#testUf $1 "uf50/" 50
 	#testUf $1 "uf75/" 75 
 	testUf $1 "uf100/" 100 
+	#testUf $1 "sw/" 100 
 	#testUf $1 "uf125/" 125 
 	#testUf $1 "uf150/" 150
 	#testUf $1 "uf175/" 175
@@ -76,7 +77,9 @@ rm "sortie.txt";
 for fichier in `ls $path | cut -f 2 -d '-' | sort -n` 
 do
 	
-	file="$path$directory-$fichier";
+	file="$path$directory";
+	#file=$file"100";
+	file=$file"-$fichier";
 	
 	echo $solver." : ".$file;
 
