@@ -105,9 +105,15 @@ extern Individual* add_individual(Individual* ind, Individual* x);
  */
 extern Individual* select_individual(Individual* list);
 
-/************************************************************************************************/
+/**
+ *																								
+ * init : initializes the benchmark structures 													
+ * @param ind the individual that we need to initialize 										
+ * @param first is it the first initialisation ? 												
+ *
+ */
+extern void init(Individual *ind,int first);
 
-#include "work.h"
-#include "initialisation.h"
+/************************************************************************************************/
 
 #endif

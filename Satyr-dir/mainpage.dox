@@ -1,0 +1,77 @@
+/*! \mainpage SATyr
+ *
+ * <h1>The Documentation of SATyr : The genetic solver</h1>
+ *
+ * <HR>
+ *
+ * \section Intro_1 1. What is a SAT problem ?
+ *
+ * <HR>
+ * 
+ * \subsection Definition
+
+ * -# In computer science, the Boolean Satisfiability Problem (sometimes called Propositional Satisfiability Problem and
+ * abbreviated as SATISFIABILITY or SAT) is the problem of determining if there exists an interpretation that satisfies a given 
+ * Boolean formula. 
+ *
+ * -# In other words, it asks whether the variables of a given Boolean formula can be consistently replaced by the values TRUE 
+ * or FALSE in such a way that the formula evaluates to TRUE. 
+
+ * If this is the case, the formula is called satisfiable. On the other hand, if no such assignment exists, the function 
+ * expressed by the formula is identically FALSE for all possible variable assignments and the formula is unsatisfiable. 
+
+ * For example, the formula "a AND NOT b" is satisfiable because one can find the values a = TRUE and b = FALSE, which make (a 
+ * AND NOT b) = TRUE. In contrast, "a AND NOT a" is unsatisfiable.
+ *
+ * \subsection Illustration
+ * 
+ * <img src="../images/problemSAT.gif" />
+ *
+ * <HR>
+ * 
+ * \section Intro_2 2. SATyr is able to read only DIMACS-CNF files
+ *
+ * <HR>
+ * 
+ * A SAT problem is often described in the DIMACS-CNF format: an input file in which each line represents a single disjunction.
+ * For example, a file with the two lines
+ *
+ *		1 -5 4 0
+ *		-1 5 3 4 0
+ * represents the formula "(x1 ∨ ¬x5 ∨ x4) ∧ (¬x1 ∨ x5 ∨ x3 ∨ x4)".
+ * 
+ * You will be able to learn how to used it, and how it was coded.
+ *
+ * <HR>
+ *
+ * \section Intro_3 3. SATyr uses genetics algorithms to solve both SAT and UNSAT problems
+ * 
+ * <HR>
+ * 
+ * \subsection Selection Selection Operation
+ *
+ * The selection is performed by a roulette-wheel, with this method, we are able to give some diversity inside the population.
+ * It naturally avoids the "elitist-selection".
+ *
+ * <img src="../images/wheel.png" />
+ *
+ * \subsection Cross Cross Operation
+ *
+ * <img src="../images/cross.png" />
+ * 
+ * The crossing between 2 individuals will be an uniform crossing. It was the best choice after some tests.
+ * 	
+ * <HR>
+ * \section Intro_4 4. Amelioration of offspring by Tabu Search
+ * <HR>
+ * 
+ * All the offspring, before being reinserted inside the population, has to do some Tabu Search, it order to be 
+ * more adapted and more efficient.
+ * 
+ * <img src="../images/tabu.png" />
+ *
+ * <HR>
+ *
+ * @author Valentin Montmirail
+ * @author Christophe Lenté
+ */

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['nbtabu',['nbTabu',['../individual_8h.html#a8ebfbce4ed71600e98ecd620c3c4ca2c',1,'individual.h']]],
   ['next',['next',['../structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f',1,'struct_individual']]],
   ['numatom',['numatom',['../individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344',1,'individual.h']]],
   ['numclause',['numclause',['../individual_8h.html#a7d10d938ea6b87d71f218be5a4ea3953',1,'individual.h']]],

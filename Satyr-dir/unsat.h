@@ -86,4 +86,12 @@ extern int resolution(int c1, int c2,int whichVariable,int forReal);
  */
 extern void restart();
 
+/**
+ * 
+ * initResolutionTable: This function will initialize our big array that will be used to know
+ * which clauses we will use for the next resolution.
+ *
+ */
+extern void initResolutionTable();
+
 #endif
