@@ -46,15 +46,15 @@ void displayInfo(FILE* std) {
 
 /************************************************************************************************/
 
-/************************************************************************************************/
-/*																								*/
-/* signalHandler: Useful to catch the SIGINT signal in that way, 								*/
-/* we can shut down the solver and display that we don't know if the problem					*/
-/* is SATISFIABLE or UNSATISFIABLE...															*/
-/* The solver will so, display UNKNOWN for the state of the result.								*/
-/* @param signum the identification number of the signal 										*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *
+ * signalHandler: Useful to catch the SIGINT signal in that way,
+ * we can shut down the solver and display that we don't know if the problem
+ * is SATISFIABLE or UNSATISFIABLE...
+ * The solver will so, display UNKNOWN for the state of the result.
+ * @param signum the identification number of the signal
+ *
+ */
 void signalHandler(int signum) {
 
     printf("\ns   INDETERMINATE\n");
@@ -79,11 +79,11 @@ void signalHandler(int signum) {
 /************************************************************************************************/
 
 
-/************************************************************************************************/
-/*																								*/
-/* displayStat : We will display every generation to see the progression.						*/
-/*																								*/
-/************************************************************************************************/
+/**
+ *																						
+ * displayStat : We will display every generation to see the progression.				
+ *
+ */
 inline void displayStat() {
 
 	printf("c | Gener : %4d | ",(MAXTRY-maxtry)+1);
@@ -95,12 +95,13 @@ inline void displayStat() {
 
 /************************************************************************************************/
 
-/************************************************************************************************/
-/*																								*/
-/* displayInfo : useful to display the final result after solving this problem 					*/
-/* @param population the population we used to solve this problem 								*/
-/*																								*/
-/************************************************************************************************/
+
+/**
+ *																								
+ * displayInfo : useful to display the final result after solving this problem 					
+ * @param population the population we used to solve this problem
+ *
+ */
 void displayFinalResult(Individual* population) {
 
 	if (FOUND == SAT) {
@@ -164,12 +165,12 @@ void displayFinalResult(Individual* population) {
 	}
 }
 
-/************************************************************************************************/
-/*                                                                                              */
-/* displaySolution: this function allows us to display the solution of the problem.             */
-/* @param pop    Represents the population where one of individual is solution                  */
-/*                                                                                              */
-/************************************************************************************************/
+/**
+ *                                                                                   
+ * displaySolution: this function allows us to display the solution of the problem.  
+ * @param pop    Represents the population where one of individual is solution       
+ * 
+ */
 void displaySolution(Individual* pop) {
 
   /* We get the solution of the problem. */
