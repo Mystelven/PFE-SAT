@@ -57,6 +57,9 @@ inline void displayInfo(FILE* std) {
  */
 inline void signalHandler(int signum) {
 
+	pthread_kill(thread,signum);
+	pthread_kill(display,signum);
+
     printf("\ns   INDETERMINATE\n");
     printf("v   ");
     
