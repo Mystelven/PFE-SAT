@@ -25,7 +25,7 @@
  *
  * \subsection Illustration
  * 
- * <img src="../ws/images/problemSAT.gif" />
+ * <img src="../images/problemSAT.gif" />
  *
  * <HR>
  * 
@@ -37,7 +37,6 @@
  * For example, a file with the two lines
  *
  *		1 -5 4 0
- * 
  *		-1 5 3 4 0
  * represents the formula "(x1 ∨ ¬x5 ∨ x4) ∧ (¬x1 ∨ x5 ∨ x3 ∨ x4)".
  * 
@@ -54,11 +53,11 @@
  * The selection is performed by a roulette-wheel, with this method, we are able to give some diversity inside the population.
  * It naturally avoids the "elitist-selection".
  *
- * <img src="../ws/images/wheel.png" />
+ * <img src="../images/wheel.png" />
  *
  * \subsection Cross Cross Operation
  *
- * <img src="../ws/images/cross.png" />
+ * <img src="../images/cross.png" />
  * 
  * The crossing between 2 individuals will be an uniform crossing. It was the best choice after some tests.
  * 	
@@ -69,7 +68,7 @@
  * All the offspring, before being reinserted inside the population, has to do some Tabu Search, it order to be 
  * more adapted and more efficient.
  * 
- * <img src="../ws/images/tabu.png" />
+ * <img src="../images/tabu.png" />
  *
  * <HR>
  *
