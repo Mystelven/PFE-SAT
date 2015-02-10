@@ -30,7 +30,7 @@ OPTI       = -O3
 
 FLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
-FLAGS3   = -Wredundant-decls -Winit-self -Wswitch-default 
+FLAGS3   = -Wredundant-decls -Winit-self -Wswitch-default -lpthread -D_REENTRANT
 FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 $(OPTI)
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
