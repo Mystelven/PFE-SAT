@@ -56,7 +56,7 @@ all:
 	make release;
 
 debug: satyr
-	$(COMPILER) -o debug   $(FLAGS) $(ALL_THE_OBJECT) Main.c 
+	$(COMPILER) -o debug   $(FLAGS) $(ALL_THE_OBJECT) -pthread Main.c 
 
 release: satyr
 	$(COMPILER) -o release $(ALL_THE_OBJECT) Main.c 
@@ -65,7 +65,7 @@ satyr: $(ALL_THE_OBJECT)
 	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) Main.c 
 
 compet: $(ALL_THE_OBJECT)
-	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) -D BENCHMARK Main.c 
+	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) -D BENCHMARK -pthread Main.c 
 
 clean: 
 	rm debug
