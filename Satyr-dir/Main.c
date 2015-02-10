@@ -22,6 +22,29 @@
 
 #include "display.h"
 
+#include <pthread.h>
+
+/**
+ * This function will be called by a thread. 
+ * This thread will try to prove that the problem has no solution.
+ * @return NULL
+ */
+void* threadUNSAT() {
+
+	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
+
+	initResolutionTable();
+
+	/* We will search after a solution. */
+	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
+
+		tryToProveUNSAT();
+
+	}
+
+	return NULL;
+}
+
 /**
  *																								
  * main : This function represents the main of the program										
@@ -33,6 +56,9 @@
 int main(int argc,char *argv[]) {
 	
 	int i;
+
+	/* We will create a thread to perform the UNSAT proof. */
+	pthread_t thread;
 	
 	/* If we don't even have the path for the CNF, something is wrong... */
 	if (argc == 1) {
@@ -118,9 +144,7 @@ int main(int argc,char *argv[]) {
 	/* We perform an initial sort */
 	population = initial_sort (population); 
 
-	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
-
-	initResolutionTable();
+	pthread_create(&thread,NULL,threadUNSAT,NULL);
 
 	/* We will search after a solution. */
 	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
@@ -129,6 +153,7 @@ int main(int argc,char *argv[]) {
 			
 			/* When we are on training-mode, no need to stay forever... */
 			if(maxtry == 0) {
+				pthread_kill(thread,SIGINT);
 				break;
 			}
 
@@ -137,14 +162,13 @@ int main(int argc,char *argv[]) {
 		#endif
 
 		/* We perform a crossover on the population. */
-		if(random() % 100 > 50) crossover_operator(&population);
-
-		else  			  		tryToProveUNSAT();
+		crossover_operator(&population);
 
 		/* We didn't success, we go on the next try. */
 		maxtry--;
 	}
 
+	pthread_join(thread,NULL);
 		
 	/* We display all the statistics. */
 	displayStat();
