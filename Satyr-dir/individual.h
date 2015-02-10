@@ -53,6 +53,8 @@ int seed;
 /** maximum number of literals which can be in any clause (we can force the 3-SAT here) */
 #define MAXLENGTH 5000         
 
+#define COEF_FOR_NBRESOLUTION 2
+
 /************************************************************************************************/
 
 /************************************************************************************************/

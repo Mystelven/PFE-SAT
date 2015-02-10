@@ -31,7 +31,19 @@
  */
 void* threadUNSAT() {
 
-	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*2)));
+	int i,j;
+
+	/* Allocation of the big array to know which resolution we should perform. */
+ 	resolutionTable = (int**)malloc(sizeof(int*) * (unsigned long)(COEF_FOR_NBRESOLUTION*numclause));
+ 	for(i = 0; i < numclause*COEF_FOR_NBRESOLUTION; ++i) resolutionTable[i] = (int*)malloc(sizeof(int) * (unsigned long)(COEF_FOR_NBRESOLUTION*numclause));
+ 	
+ 	for(i = 0; i < numclause*COEF_FOR_NBRESOLUTION; ++i) {
+ 		for(j = 0; j < numclause*COEF_FOR_NBRESOLUTION; ++j) {
+ 			resolutionTable[i][j] = BIG;
+ 		}
+ 	}
+
+	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*COEF_FOR_NBRESOLUTION)));
 
 	initResolutionTable();
 
@@ -118,17 +130,6 @@ int main(int argc,char *argv[]) {
   	MAXTRY = ((int)(numatom*p)/2);
 
   	i = 0;
-  	int j;
-
-	/* Allocation of the big array to know which resolution we should perform. */
- 	resolutionTable = (int**)malloc(sizeof(int*) * (unsigned long)(2*numclause));
- 	for(i = 0; i < numclause*2; ++i) resolutionTable[i] = (int*)malloc(sizeof(int) * (unsigned long)(2*numclause));
- 	
- 	for(i = 0; i < numclause*2; ++i) {
- 		for(j = 0; j < numclause*2; ++j) {
- 			resolutionTable[i][j] = BIG;
- 		}
- 	}
 
 	/* and we get the time of "right now" */
 	times(a_tms); 	
