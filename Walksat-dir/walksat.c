@@ -198,7 +198,7 @@ int wp_denominator = 100;
 BIGINT numflip;		/* number of changes so far */
 BIGINT numnullflip;		/*  number of times a clause was picked, but no  */
 				/*  variable from it was flipped  */
-int numrun = 10;
+int numrun = 1000;
 BIGINT cutoff = 100000;
 BIGINT base_cutoff = 100000;
 int target = 0;
@@ -902,7 +902,7 @@ void print_statistics_final(void)
 	if (outfile[0]) print_sol_file(outfile);
     }
     else
-	printf("UNSATISFIABLE\n");
+	printf("INDETERMINATE\n");
 
 }
 
