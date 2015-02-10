@@ -1751,8 +1751,8 @@ int parameters(int argc,char *argv[]){
 	
 	//standard parameters
 	if( maxtry == -1) {
-		maxtry = 1000; 
-		MAXTRY = 1000;
+		maxtry = 5000; 
+		MAXTRY = 5000;
 	}
 	if( insertion == -1) insertion =2;
 	if( crossover == -1)  crossover =3;
