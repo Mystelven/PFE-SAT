@@ -146,8 +146,8 @@ inline void initprob() {
 	occurence    = (int **) malloc( sizeof(int *) * (unsigned long)(2*numatom+1   ));
 
 	/* We allocate twice the size needed in order to perform easily resolution proof for UNSAT. */
-	clause       = (int **) malloc( sizeof(int *) * (unsigned long)(2*numclause   ));
-	size         = (int * ) malloc( sizeof(int  ) * (unsigned long)(2*numclause   ));
+	clause       = (int **) malloc( sizeof(int *) * (unsigned long)((COEF_FOR_NBRESOLUTION+1)*numclause   ));
+	size         = (int * ) malloc( sizeof(int  ) * (unsigned long)((COEF_FOR_NBRESOLUTION+1)*numclause   ));
 	
 	barycentre   = (char**) malloc( sizeof(char*) * (unsigned long)(BESTINDIVIDUAL));
 
