@@ -87,7 +87,7 @@ inline void tryToProveUNSAT() {
 	if(random() % 100 < 1) restart();
 
 	/* If have gone to far, we restart everything, we will not find anything in this branch... */
-	if(numresolution >= numclause) { 
+	if(numresolution >= (numclause*(COEF_FOR_NBRESOLUTION-1))) { 
 		restart(); 
 	}
 
