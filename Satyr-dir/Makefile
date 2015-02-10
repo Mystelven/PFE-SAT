@@ -79,23 +79,23 @@ check:
 # ----------------[ Every different object to create ]------------------
 
 $(STRUCTURE): structure.c
-	$(COMPILER) -c $(FLAGS) structure.c
+	$(COMPILER) -c $(FLAGS) -pthread structure.c
 	mv structure.o obj/
 
 $(DISTANCE): $(STRUCTURE) distance.c
-	$(COMPILER) -c $(FLAGS) distance.c
+	$(COMPILER) -c $(FLAGS) -pthread distance.c
 	mv distance.o obj/	
 
 $(INITIALISATION): $(UNSAT) initialisation.c
-	$(COMPILER) -c $(FLAGS) initialisation.c
+	$(COMPILER) -c $(FLAGS) -pthread initialisation.c
 	mv initialisation.o obj/	
 
 $(WORK): $(STRUCTURE) work.c
-	$(COMPILER) -c $(FLAGS) work.c
+	$(COMPILER) -c $(FLAGS) -pthread work.c
 	mv work.o obj/	
 
 $(UNSAT): $(STRUCTURE) unsat.c
-	$(COMPILER) -c $(FLAGS) unsat.c
+	$(COMPILER) -c $(FLAGS) -pthread unsat.c
 	mv unsat.o obj/			
 
 $(DISPLAY): $(STRUCTURE) $(WORK) display.c			
