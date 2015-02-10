@@ -104,19 +104,8 @@ $(document).ready(function(){initNavTree('individual_8h.html','');});
 <code>#include &lt;sys/time.h&gt;</code><br />
 <code>#include &lt;sys/types.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;pthread.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for individual.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="individual_8h__incl.png" border="0" usemap="#_satyr-dir_2individual_8h" alt=""/></div>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="individual_8h__dep__incl.png" border="0" usemap="#_satyr-dir_2individual_8hdep" alt=""/></div>
-<map name="_satyr-dir_2individual_8hdep" id="_satyr-dir_2individual_8hdep">
-<area shape="rect" id="node2" href="structure_8h.html" title="Satyr&#45;dir/structure.h" alt="" coords="383,80,521,107"/><area shape="rect" id="node3" href="unsat_8h.html" title="Satyr&#45;dir/unsat.h" alt="" coords="316,155,436,181"/><area shape="rect" id="node12" href="structure_8c.html" title="Satyr&#45;dir/structure.c" alt="" coords="460,155,599,181"/><area shape="rect" id="node4" href="initialisation_8h.html" title="Satyr&#45;dir/initialisation.h" alt="" coords="218,229,374,256"/><area shape="rect" id="node11" href="unsat_8c.html" title="Satyr&#45;dir/unsat.c" alt="" coords="398,229,517,256"/><area shape="rect" id="node5" href="work_8h.html" title="Satyr&#45;dir/work.h" alt="" coords="158,304,274,331"/><area shape="rect" id="node10" href="initialisation_8c.html" title="Satyr&#45;dir/initialisation.c" alt="" coords="298,304,454,331"/><area shape="rect" id="node6" href="display_8h.html" title="Satyr&#45;dir/display.h" alt="" coords="78,379,207,405"/><area shape="rect" id="node9" href="work_8c.html" title="Satyr&#45;dir/work.c" alt="" coords="232,379,347,405"/><area shape="rect" id="node7" href="display_8c.html" title="Satyr&#45;dir/display.c" alt="" coords="5,453,133,480"/><area shape="rect" id="node8" href="_main_8c.html" title="Satyr&#45;dir/Main.c" alt="" coords="158,453,274,480"/></map>
-</div>
 </div>
 <p><a href="individual_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -147,6 +136,8 @@ Macros</h2></td></tr>
 <tr class="separator:a2da1bcdb5a58f3cf23f57e1a30ff002b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dbd686f69551b83691025eaae058539"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#a1dbd686f69551b83691025eaae058539">MAXLENGTH</a>&#160;&#160;&#160;5000</td></tr>
 <tr class="separator:a1dbd686f69551b83691025eaae058539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1038aa25e32d5a8d94ed3eeccafddce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#ae1038aa25e32d5a8d94ed3eeccafddce">COEF_FOR_NBRESOLUTION</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:ae1038aa25e32d5a8d94ed3eeccafddce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae571aa583a09afdc6e7d23090718eaf9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#ae571aa583a09afdc6e7d23090718eaf9">Var</a>(CLAUSE, POSITION)&#160;&#160;&#160;(<a class="el" href="individual_8h.html#a996f7be338ccb40d1a2a5abc1ad61759">ABS</a>(<a class="el" href="individual_8h.html#af203801cc96360986fbe09bda7cc66cd">clause</a>[CLAUSE][POSITION]))</td></tr>
 <tr class="separator:ae571aa583a09afdc6e7d23090718eaf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996f7be338ccb40d1a2a5abc1ad61759"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#a996f7be338ccb40d1a2a5abc1ad61759">ABS</a>(x)&#160;&#160;&#160;( (x) &lt; 0 ? (-x) : (x) )</td></tr>
@@ -227,6 +218,10 @@ Variables</h2></td></tr>
 <tr class="separator:aa6a599f64f5efde32171aada28561ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa58e8abbf66999e9e9e46682120b32af"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#aa58e8abbf66999e9e9e46682120b32af">clausesResolutions</a></td></tr>
 <tr class="separator:aa58e8abbf66999e9e9e46682120b32af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f75a9ad916f63a94e06a27635ba278"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#a01f75a9ad916f63a94e06a27635ba278">thread</a></td></tr>
+<tr class="separator:a01f75a9ad916f63a94e06a27635ba278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb1202681c38410388e9c1cfec6bdab"><td class="memItemLeft" align="right" valign="top">pthread_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="individual_8h.html#a1bb1202681c38410388e9c1cfec6bdab">display</a></td></tr>
+<tr class="separator:a1bb1202681c38410388e9c1cfec6bdab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a996f7be338ccb40d1a2a5abc1ad61759"></a>
@@ -243,7 +238,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00066">66</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00069">69</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
@@ -263,7 +258,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00068">68</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00071">71</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 </div>
 </div>
@@ -277,9 +272,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00070">70</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00073">73</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+<p>Referenced by <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1038aa25e32d5a8d94ed3eeccafddce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COEF_FOR_NBRESOLUTION&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00057">57</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+
+<p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -293,9 +304,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00045">45</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00046">46</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="unsat_8c_source.html#l00066">contains()</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+<p>Referenced by <a class="el" href="unsat_8c_source.html#l00066">contains()</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -323,7 +334,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00028">28</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00029">29</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +349,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>maximum number of literals which can be in any clause (we can force the 3-SAT here) </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00054">54</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00055">55</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>.</p>
 
@@ -368,9 +379,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00027">27</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00028">28</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -387,9 +398,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00024">24</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00025">25</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+<p>Referenced by <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="_main_8c_source.html#l00063">threadDisplay()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -404,9 +415,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>This define represents the fact that the solver finds a solution for the problem </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00048">48</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00049">49</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="_main_8c_source.html#l00063">threadDisplay()</a>, and <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -424,9 +435,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00025">25</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00026">26</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -441,7 +452,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>size of block to malloc each time </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00041">41</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00042">42</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>.</p>
 
@@ -457,7 +468,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00043">43</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00044">44</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="unsat_8c_source.html#l00066">contains()</a>, <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
@@ -474,9 +485,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>This define represents the fact that the solver proved that the problem has no solution </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00051">51</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00052">52</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, and <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="_main_8c_source.html#l00063">threadDisplay()</a>, and <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -504,7 +515,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00064">64</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00067">67</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 </div>
 </div>
@@ -533,9 +544,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00079">79</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00082">82</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -550,9 +561,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of flips </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00163">163</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00166">166</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00087">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00090">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
 
 </div>
 </div>
@@ -567,9 +578,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>it used to select the BESTINDIVIDUAL individual but whit a minimal diversity </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00172">172</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00175">175</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -583,9 +594,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00075">75</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00078">78</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, and <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, and <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -600,7 +611,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>benchmark's name </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00087">87</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00090">90</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
@@ -617,9 +628,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of individuals where the two parents are selected </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00090">90</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00093">93</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
+<p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
 </div>
 </div>
@@ -634,9 +645,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of false clauses for the best individual </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00125">125</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00128">128</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00087">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
+<p>Referenced by <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00090">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
 
 </div>
 </div>
@@ -651,9 +662,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of individual at each moment </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00119">119</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00122">122</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, and <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, and <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -668,7 +679,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>clauses to be satisfied, indexed as clause[clause_num][literal_num] </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00148">148</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00151">151</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="unsat_8c_source.html#l00066">contains()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="unsat_8c_source.html#l00327">restart()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
@@ -685,9 +696,25 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>We will store a lot of space to know where are the clauses with the good variables; </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00223">223</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00226">226</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1bb1202681c38410388e9c1cfec6bdab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_t display</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00233">233</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>, and <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>.</p>
 
 </div>
 </div>
@@ -701,9 +728,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00076">76</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00079">79</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, and <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, and <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -718,9 +745,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>UNSAT if no solution found else SAT </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00169">169</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00172">172</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="_main_8c_source.html#l00063">threadDisplay()</a>, and <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -735,7 +762,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>length of tabou list for the preliminary search </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00102">102</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00105">105</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
@@ -752,7 +779,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>length of tabou list for the preliminary search (percent of numatom) </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00108">108</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00111">111</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
@@ -769,7 +796,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>length of tabou list for the real search </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00105">105</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00108">108</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
@@ -786,7 +813,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>length of tabou list for the real search (percent of numatom) </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00111">111</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00114">114</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
@@ -803,9 +830,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>max number of crosses </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00096">96</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00099">99</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00087">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00090">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
 </div>
 </div>
@@ -820,9 +847,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of tries between the start (for MAXTRY downto 0) </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00175">175</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00178">178</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00087">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="display_8c_source.html#l00090">displayStat()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>, and <a class="el" href="_main_8c_source.html#l00063">threadDisplay()</a>.</p>
 
 </div>
 </div>
@@ -837,9 +864,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of atoms in the set of CNF clauses </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00139">139</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00142">142</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="structure_8c_source.html#l00300">add_individual()</a>, <a class="el" href="structure_8c_source.html#l00034">createIndividual()</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="display_8c_source.html#l00031">displayInfo()</a>, <a class="el" href="display_8c_source.html#l00174">displaySolution()</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
+<p>Referenced by <a class="el" href="structure_8c_source.html#l00300">add_individual()</a>, <a class="el" href="structure_8c_source.html#l00034">createIndividual()</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="display_8c_source.html#l00031">displayInfo()</a>, <a class="el" href="display_8c_source.html#l00177">displaySolution()</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>, and <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
 
 </div>
 </div>
@@ -854,9 +881,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of clauses in the set of CNF clauses </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00142">142</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00145">145</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="structure_8c_source.html#l00300">add_individual()</a>, <a class="el" href="structure_8c_source.html#l00034">createIndividual()</a>, <a class="el" href="display_8c_source.html#l00031">displayInfo()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="unsat_8c_source.html#l00327">restart()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+<p>Referenced by <a class="el" href="structure_8c_source.html#l00300">add_individual()</a>, <a class="el" href="structure_8c_source.html#l00034">createIndividual()</a>, <a class="el" href="display_8c_source.html#l00031">displayInfo()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="unsat_8c_source.html#l00327">restart()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -871,9 +898,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of individuals in the population </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00093">93</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00096">96</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="display_8c_source.html#l00105">displayFinalResult()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
+<p>Referenced by <a class="el" href="structure_8c_source.html#l00120">createPopulation()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, <a class="el" href="display_8c_source.html#l00108">displayFinalResult()</a>, <a class="el" href="_main_8c_source.html#l00082">main()</a>, and <a class="el" href="initialisation_8c_source.html#l00033">parameters()</a>.</p>
 
 </div>
 </div>
@@ -888,7 +915,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of times each literal occurs </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00160">160</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00163">163</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, and <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>.</p>
 
@@ -905,9 +932,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>The number of resolutions that we performed ( &lt; numclause ) </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00145">145</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00148">148</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="display_8c_source.html#l00087">displayStat()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="unsat_8c_source.html#l00327">restart()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+<p>Referenced by <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="display_8c_source.html#l00090">displayStat()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="unsat_8c_source.html#l00327">restart()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -922,7 +949,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>where each literal occurs, indexed as occurence[literal+numatom][occurence_num] </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00157">157</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00160">160</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, and <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>.</p>
 
@@ -939,7 +966,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>identification of the older individual </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00131">131</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00134">134</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="structure_8c_source.html#l00171">delete_individual()</a>, and <a class="el" href="structure_8c_source.html#l00214">delete_individual2()</a>.</p>
 
@@ -956,9 +983,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>We will need a variable to know how many times it takes to read the benchmark. </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00082">82</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00085">85</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00031">displayInfo()</a>, and <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00031">displayInfo()</a>, and <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -973,9 +1000,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>the matrix that we use to choose which clause will be used for the next resolution </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00151">151</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00154">154</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="_main_8c_source.html#l00033">main()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
+<p>Referenced by <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="_main_8c_source.html#l00030">threadUNSAT()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
 </div>
 </div>
@@ -990,9 +1017,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>seed for the random generator. </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00031">31</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00032">32</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +1034,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>length of each clause </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00154">154</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00157">157</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="unsat_8c_source.html#l00066">contains()</a>, <a class="el" href="unsat_8c_source.html#l00034">displayResolution()</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="initialisation_8c_source.html#l00082">initprob()</a>, <a class="el" href="unsat_8c_source.html#l00349">initResolutionTable()</a>, <a class="el" href="unsat_8c_source.html#l00172">isTautology()</a>, <a class="el" href="unsat_8c_source.html#l00207">resolution()</a>, <a class="el" href="unsat_8c_source.html#l00327">restart()</a>, and <a class="el" href="unsat_8c_source.html#l00085">tryToProveUNSAT()</a>.</p>
 
@@ -1023,7 +1050,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00077">77</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00080">80</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01f75a9ad916f63a94e06a27635ba278"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pthread_t thread</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00231">231</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>, and <a class="el" href="display_8c_source.html#l00058">signalHandler()</a>.</p>
 
 </div>
 </div>
@@ -1038,7 +1081,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>number of false clauses for the worse individual in the population </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00128">128</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00131">131</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>.</p>
 
@@ -1055,9 +1098,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>identification of the younger individual </p>
 
-<p>Definition at line <a class="el" href="individual_8h_source.html#l00122">122</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
+<p>Definition at line <a class="el" href="individual_8h_source.html#l00125">125</a> of file <a class="el" href="individual_8h_source.html">individual.h</a>.</p>
 
-<p>Referenced by <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, and <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>, and <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 
 </div>
 </div>
@@ -1067,7 +1110,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7ed49d86cc762c97c4620aef87984c5b.html">Satyr-dir</a></li><li class="navelem"><a class="el" href="individual_8h.html">individual.h</a></li>
-    <li class="footer">Generated on Thu Feb 5 2015 15:31:34 for SATyr by
+    <li class="footer">Generated on Tue Feb 10 2015 16:59:28 for SATyr by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
