@@ -99,7 +99,7 @@ $(UNSAT): $(STRUCTURE) unsat.c
 	mv unsat.o obj/			
 
 $(DISPLAY): $(STRUCTURE) $(WORK) display.c			
-	$(COMPILER) -c $(FLAGS) display.c
+	$(COMPILER) -c $(FLAGS) -pthread display.c
 	mv display.o obj/		
 
 # -----------------------------------------------------------------------------								

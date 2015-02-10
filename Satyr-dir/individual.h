@@ -53,7 +53,7 @@ int seed;
 /** maximum number of literals which can be in any clause (we can force the 3-SAT here) */
 #define MAXLENGTH 5000         
 
-#define COEF_FOR_NBRESOLUTION 2
+#define COEF_FOR_NBRESOLUTION 3
 
 /************************************************************************************************/
 
@@ -225,5 +225,10 @@ typedef struct struct_individual {
   int * clausesResolutions;
 
 /************************************************************************************************/
+
+  /* We will create a thread to perform the UNSAT proof. */
+  pthread_t thread;
+
+  pthread_t display;
 
 #endif

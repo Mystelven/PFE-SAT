@@ -58,6 +58,22 @@ void* threadUNSAT() {
 }
 
 /**
+ * This function will be called by a thread. 
+ * This thread will display some statistic informations.
+ * @return NULL
+ */
+void* threadDisplay() {
+
+	/* We will search after a solution. */
+	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
+
+		if(maxtry % ((random()%10)+1) == 0) displayStat();
+	}
+
+	return NULL;
+}
+
+/**
  *																								
  * main : This function represents the main of the program										
  * @param argc the number of argument passed to the program										
@@ -69,9 +85,6 @@ int main(int argc,char *argv[]) {
 	
 	int i;
 
-	/* We will create a thread to perform the UNSAT proof. */
-	pthread_t thread;
-	
 	/* If we don't even have the path for the CNF, something is wrong... */
 	if (argc == 1) {
 		
@@ -83,12 +96,6 @@ int main(int argc,char *argv[]) {
   		printf("\n\tso your call looks like : ./satyr path_to_file\n\n");
 		exit(0);
 	} 
-	
-	/* a signal should stop the program and close everything already open. */
-  	signal(SIGINT,  signalHandler);  
-  	signal(SIGTERM, signalHandler);  
-  	signal(SIGQUIT, signalHandler);  
-  	signal(SIGALRM, signalHandler);
 		
 	/* for the random seed, we get the pid of the program. */
 	seed = getpid();
@@ -147,20 +154,26 @@ int main(int argc,char *argv[]) {
 
 	pthread_create(&thread,NULL,threadUNSAT,NULL);
 
+	#ifndef BENCHMARK
+		pthread_create(&display,NULL,threadDisplay,NULL);
+	#endif
+
+	/* a signal should stop the program and close everything already open. */
+  	signal(SIGINT,  signalHandler);  
+  	signal(SIGTERM, signalHandler);  
+  	signal(SIGQUIT, signalHandler);  
+  	signal(SIGALRM, signalHandler);
+  	signal(SIGCHLD, signalHandler);
+
 	/* We will search after a solution. */
 	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
 		
-		#ifndef BENCHMARK
 			
-			/* When we are on training-mode, no need to stay forever... */
-			if(maxtry == 0) {
-				pthread_kill(thread,SIGINT);
-				break;
-			}
-
-			displayStat();
-
-		#endif
+		/* When we are on training-mode, no need to stay forever... */
+		if(maxtry == 0) {
+			pthread_kill(thread,SIGINT);
+			break;
+		}
 
 		/* We perform a crossover on the population. */
 		crossover_operator(&population);
@@ -170,6 +183,7 @@ int main(int argc,char *argv[]) {
 	}
 
 	pthread_join(thread,NULL);
+	pthread_join(display,NULL);
 		
 	/* We display all the statistics. */
 	displayStat();
