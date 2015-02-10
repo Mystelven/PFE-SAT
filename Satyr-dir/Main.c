@@ -22,8 +22,6 @@
 
 #include "display.h"
 
-#include <pthread.h>
-
 /**
  * This function will be called by a thread. 
  * This thread will try to prove that the problem has no solution.
