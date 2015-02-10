@@ -33,7 +33,7 @@ function test()
 	touch "$1_results.txt"
 
 	#testUf $1 "uf20/" 20
-	#testUf $1 "uf50/" 50
+	testUf $1 "uf50/" 50
 	#testUf $1 "uf75/" 75 
 	#testUf $1 "uf100/" 100 
 	#testUf $1 "uf125/" 125 
@@ -67,7 +67,9 @@ directory=`echo $directory | rev | cut -c 2- | rev`;
 
 rm "sortie.txt";
 
-for fichier in `ls $path | cut -f 2 -d '-' | sort -n` 
+nbInstances=10;
+
+for fichier in `ls $path | cut -f 2 -d '-' | sort -n | head -$nbInstances` 
 do
 	
 	file="$path$directory";
@@ -93,7 +95,7 @@ heure=$((heure/1000000));
 heureF=$heure;
 heure=$(printf "% 5d" $heure)
 
-echo "        $solver : $resultat/$total instances en $heure ms";
+echo "        $solver : $resultat instances en $heure ms";
 
 echo $(cat sortie.txt | grep "SATISFIABLE" | wc -l | tr -cd '[[:digit:]]') >> "$1_results.txt"
 echo $heureF >> "$1_temps.txt"
