@@ -92,20 +92,6 @@ $(document).ready(function(){initNavTree('work_8h.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="initialisation_8h_source.html">initialisation.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for work.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h__incl.png" border="0" usemap="#_satyr-dir_2work_8h" alt=""/></div>
-<map name="_satyr-dir_2work_8h" id="_satyr-dir_2work_8h">
-<area shape="rect" id="node2" href="initialisation_8h.html" title="initialisation.h" alt="" coords="429,80,531,107"/><area shape="rect" id="node3" href="unsat_8h.html" title="unsat.h" alt="" coords="447,155,513,181"/><area shape="rect" id="node4" href="structure_8h.html" title="structure.h" alt="" coords="437,229,523,256"/><area shape="rect" id="node5" href="individual_8h.html" title="individual.h" alt="" coords="435,304,525,331"/></map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h__dep__incl.png" border="0" usemap="#_satyr-dir_2work_8hdep" alt=""/></div>
-<map name="_satyr-dir_2work_8hdep" id="_satyr-dir_2work_8hdep">
-<area shape="rect" id="node2" href="display_8h.html" title="Satyr&#45;dir/display.h" alt="" coords="78,80,207,107"/><area shape="rect" id="node5" href="work_8c.html" title="Satyr&#45;dir/work.c" alt="" coords="232,80,347,107"/><area shape="rect" id="node3" href="display_8c.html" title="Satyr&#45;dir/display.c" alt="" coords="5,155,133,181"/><area shape="rect" id="node4" href="_main_8c.html" title="Satyr&#45;dir/Main.c" alt="" coords="158,155,274,181"/></map>
-</div>
 </div>
 <p><a href="work_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -167,7 +153,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="work_8c_source.html#l00581">581</a> of file <a class="el" href="work_8c_source.html">work.c</a>.</p>
 
-<p>References <a class="el" href="individual_8h_source.html#l00189">struct_individual::atom</a>, <a class="el" href="individual_8h_source.html#l00119">cardpopulation</a>, <a class="el" href="structure_8c_source.html#l00034">createIndividual()</a>, <a class="el" href="individual_8h_source.html#l00045">FALSE</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="individual_8h_source.html#l00139">numatom</a>, <a class="el" href="individual_8h_source.html#l00210">struct_individual::numindividual</a>, <a class="el" href="individual_8h_source.html#l00024">random</a>, and <a class="el" href="individual_8h_source.html#l00122">youngerindividual</a>.</p>
+<p>References <a class="el" href="individual_8h_source.html#l00192">struct_individual::atom</a>, <a class="el" href="individual_8h_source.html#l00122">cardpopulation</a>, <a class="el" href="structure_8c_source.html#l00034">createIndividual()</a>, <a class="el" href="individual_8h_source.html#l00046">FALSE</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="individual_8h_source.html#l00142">numatom</a>, <a class="el" href="individual_8h_source.html#l00213">struct_individual::numindividual</a>, <a class="el" href="individual_8h_source.html#l00025">random</a>, and <a class="el" href="individual_8h_source.html#l00125">youngerindividual</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                                                          {</div>
@@ -198,35 +184,17 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;  <span class="keywordflow">return</span> child;</div>
 <div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;}</div>
-<div class="ttc" id="structstruct__individual_html_a8d955b954dc21a94aeeee6f9a400b615"><div class="ttname"><a href="structstruct__individual.html#a8d955b954dc21a94aeeee6f9a400b615">struct_individual::atom</a></div><div class="ttdeci">char * atom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
-<div class="ttc" id="individual_8h_html_aa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="individual_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00045">individual.h:45</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a29d7cfb3f0cd6ae2ea8b0805a931592c"><div class="ttname"><a href="structstruct__individual.html#a29d7cfb3f0cd6ae2ea8b0805a931592c">struct_individual::numindividual</a></div><div class="ttdeci">int numindividual</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00210">individual.h:210</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a8d955b954dc21a94aeeee6f9a400b615"><div class="ttname"><a href="structstruct__individual.html#a8d955b954dc21a94aeeee6f9a400b615">struct_individual::atom</a></div><div class="ttdeci">char * atom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00192">individual.h:192</a></div></div>
+<div class="ttc" id="individual_8h_html_aa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="individual_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00046">individual.h:46</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a29d7cfb3f0cd6ae2ea8b0805a931592c"><div class="ttname"><a href="structstruct__individual.html#a29d7cfb3f0cd6ae2ea8b0805a931592c">struct_individual::numindividual</a></div><div class="ttdeci">int numindividual</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00213">individual.h:213</a></div></div>
 <div class="ttc" id="structure_8c_html_a21234eae73c74e50b539fc7dc3d004e4"><div class="ttname"><a href="structure_8c.html#a21234eae73c74e50b539fc7dc3d004e4">init</a></div><div class="ttdeci">void init(Individual *ind, int first)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00358">structure.c:358</a></div></div>
 <div class="ttc" id="structure_8c_html_a7385a9017a4218798abc95740e1909fe"><div class="ttname"><a href="structure_8c.html#a7385a9017a4218798abc95740e1909fe">createIndividual</a></div><div class="ttdeci">Individual * createIndividual()</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00034">structure.c:34</a></div></div>
-<div class="ttc" id="individual_8h_html_ab55ad46b76fa8ea1c1eb75b7e2672344"><div class="ttname"><a href="individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344">numatom</a></div><div class="ttdeci">int numatom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00139">individual.h:139</a></div></div>
-<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00186">individual.h:186</a></div></div>
-<div class="ttc" id="individual_8h_html_a2eaac6ecf135c65ae5233aa6b842958e"><div class="ttname"><a href="individual_8h.html#a2eaac6ecf135c65ae5233aa6b842958e">youngerindividual</a></div><div class="ttdeci">int youngerindividual</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00122">individual.h:122</a></div></div>
-<div class="ttc" id="individual_8h_html_a0902d9138db58e31574316589f0d4bfc"><div class="ttname"><a href="individual_8h.html#a0902d9138db58e31574316589f0d4bfc">random</a></div><div class="ttdeci">#define random()</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00024">individual.h:24</a></div></div>
-<div class="ttc" id="individual_8h_html_affcfb1aa042c8e1935961baf03a140f2"><div class="ttname"><a href="individual_8h.html#affcfb1aa042c8e1935961baf03a140f2">cardpopulation</a></div><div class="ttdeci">int cardpopulation</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00119">individual.h:119</a></div></div>
+<div class="ttc" id="individual_8h_html_ab55ad46b76fa8ea1c1eb75b7e2672344"><div class="ttname"><a href="individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344">numatom</a></div><div class="ttdeci">int numatom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00142">individual.h:142</a></div></div>
+<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
+<div class="ttc" id="individual_8h_html_a2eaac6ecf135c65ae5233aa6b842958e"><div class="ttname"><a href="individual_8h.html#a2eaac6ecf135c65ae5233aa6b842958e">youngerindividual</a></div><div class="ttdeci">int youngerindividual</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00125">individual.h:125</a></div></div>
+<div class="ttc" id="individual_8h_html_a0902d9138db58e31574316589f0d4bfc"><div class="ttname"><a href="individual_8h.html#a0902d9138db58e31574316589f0d4bfc">random</a></div><div class="ttdeci">#define random()</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00025">individual.h:25</a></div></div>
+<div class="ttc" id="individual_8h_html_affcfb1aa042c8e1935961baf03a140f2"><div class="ttname"><a href="individual_8h.html#affcfb1aa042c8e1935961baf03a140f2">cardpopulation</a></div><div class="ttdeci">int cardpopulation</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00122">individual.h:122</a></div></div>
 </div><!-- fragment -->
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_a5213be359aa166ed280d3dcd334e3720_cgraph.png" border="0" usemap="#work_8h_a5213be359aa166ed280d3dcd334e3720_cgraph" alt=""/></div>
-<map name="work_8h_a5213be359aa166ed280d3dcd334e3720_cgraph" id="work_8h_a5213be359aa166ed280d3dcd334e3720_cgraph">
-<area shape="rect" id="node2" href="structure_8c.html#a7385a9017a4218798abc95740e1909fe" title="createIndividual" alt="" coords="107,5,223,32"/><area shape="rect" id="node3" href="structure_8c.html#a21234eae73c74e50b539fc7dc3d004e4" title="init" alt="" coords="145,56,184,83"/></map>
-</div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_a5213be359aa166ed280d3dcd334e3720_icgraph.png" border="0" usemap="#work_8h_a5213be359aa166ed280d3dcd334e3720_icgraph" alt=""/></div>
-<map name="work_8h_a5213be359aa166ed280d3dcd334e3720_icgraph" id="work_8h_a5213be359aa166ed280d3dcd334e3720_icgraph">
-<area shape="rect" id="node2" href="work_8h.html#ad156b720a8a43ccb0d6336dbd878d3f0" title="crossover_operator" alt="" coords="107,5,244,32"/><area shape="rect" id="node3" href="_main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="292,5,343,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="ad156b720a8a43ccb0d6336dbd878d3f0"></a>
@@ -260,9 +228,9 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="work_8c_source.html#l00148">148</a> of file <a class="el" href="work_8c_source.html">work.c</a>.</p>
 
-<p>References <a class="el" href="individual_8h_source.html#l00125">bestnumfalse</a>, <a class="el" href="individual_8h_source.html#l00119">cardpopulation</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="structure_8c_source.html#l00171">delete_individual()</a>, <a class="el" href="structure_8c_source.html#l00098">freeIndividual()</a>, <a class="el" href="structure_8c_source.html#l00256">insert_individual()</a>, <a class="el" href="individual_8h_source.html#l00105">ltrech</a>, <a class="el" href="individual_8h_source.html#l00216">struct_individual::next</a>, <a class="el" href="individual_8h_source.html#l00207">struct_individual::numfalse</a>, <a class="el" href="individual_8h_source.html#l00213">struct_individual::numhamming</a>, <a class="el" href="individual_8h_source.html#l00093">NUMINDIVIDUAL</a>, <a class="el" href="individual_8h_source.html#l00024">random</a>, <a class="el" href="structure_8c_source.html#l00346">select_individual()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="individual_8h_source.html#l00128">worsetemporarynumfalse</a>, and <a class="el" href="individual_8h_source.html#l00122">youngerindividual</a>.</p>
+<p>References <a class="el" href="individual_8h_source.html#l00128">bestnumfalse</a>, <a class="el" href="individual_8h_source.html#l00122">cardpopulation</a>, <a class="el" href="work_8c_source.html#l00581">cross()</a>, <a class="el" href="structure_8c_source.html#l00171">delete_individual()</a>, <a class="el" href="structure_8c_source.html#l00098">freeIndividual()</a>, <a class="el" href="structure_8c_source.html#l00256">insert_individual()</a>, <a class="el" href="individual_8h_source.html#l00108">ltrech</a>, <a class="el" href="individual_8h_source.html#l00219">struct_individual::next</a>, <a class="el" href="individual_8h_source.html#l00210">struct_individual::numfalse</a>, <a class="el" href="individual_8h_source.html#l00216">struct_individual::numhamming</a>, <a class="el" href="individual_8h_source.html#l00096">NUMINDIVIDUAL</a>, <a class="el" href="individual_8h_source.html#l00025">random</a>, <a class="el" href="structure_8c_source.html#l00346">select_individual()</a>, <a class="el" href="work_8c_source.html#l00246">tabu()</a>, <a class="el" href="individual_8h_source.html#l00131">worsetemporarynumfalse</a>, and <a class="el" href="individual_8h_source.html#l00125">youngerindividual</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                               {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">int</span> i;</div>
@@ -353,39 +321,21 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="structure_8c_html_a491f4e196b54c83ff327d82a0ca8ebe2"><div class="ttname"><a href="structure_8c.html#a491f4e196b54c83ff327d82a0ca8ebe2">delete_individual</a></div><div class="ttdeci">int delete_individual(Individual **ind)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00171">structure.c:171</a></div></div>
 <div class="ttc" id="structure_8c_html_a40cceaf9539aefa1dc380304c01df4c1"><div class="ttname"><a href="structure_8c.html#a40cceaf9539aefa1dc380304c01df4c1">insert_individual</a></div><div class="ttdeci">void insert_individual(Individual *y, Individual **z)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00256">structure.c:256</a></div></div>
 <div class="ttc" id="work_8c_html_a5213be359aa166ed280d3dcd334e3720"><div class="ttname"><a href="work_8c.html#a5213be359aa166ed280d3dcd334e3720">cross</a></div><div class="ttdeci">Individual * cross(Individual *p1, Individual *p2)</div><div class="ttdef"><b>Definition:</b> <a href="work_8c_source.html#l00581">work.c:581</a></div></div>
-<div class="ttc" id="individual_8h_html_a3177c080cf52a827d2e7ff03dc67f470"><div class="ttname"><a href="individual_8h.html#a3177c080cf52a827d2e7ff03dc67f470">bestnumfalse</a></div><div class="ttdeci">int bestnumfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00125">individual.h:125</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a0ccaf29862db831678dcb04a09b7bea7"><div class="ttname"><a href="structstruct__individual.html#a0ccaf29862db831678dcb04a09b7bea7">struct_individual::numhamming</a></div><div class="ttdeci">int numhamming</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00213">individual.h:213</a></div></div>
-<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00186">individual.h:186</a></div></div>
+<div class="ttc" id="individual_8h_html_a3177c080cf52a827d2e7ff03dc67f470"><div class="ttname"><a href="individual_8h.html#a3177c080cf52a827d2e7ff03dc67f470">bestnumfalse</a></div><div class="ttdeci">int bestnumfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00128">individual.h:128</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00210">individual.h:210</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a0ccaf29862db831678dcb04a09b7bea7"><div class="ttname"><a href="structstruct__individual.html#a0ccaf29862db831678dcb04a09b7bea7">struct_individual::numhamming</a></div><div class="ttdeci">int numhamming</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00216">individual.h:216</a></div></div>
+<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
 <div class="ttc" id="structure_8c_html_a73bce947da99be3ce514d117ec2941c0"><div class="ttname"><a href="structure_8c.html#a73bce947da99be3ce514d117ec2941c0">select_individual</a></div><div class="ttdeci">Individual * select_individual(Individual *list)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00346">structure.c:346</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a4aff97be2efcfa465c27218e44f47f1f"><div class="ttname"><a href="structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f">struct_individual::next</a></div><div class="ttdeci">struct struct_individual * next</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00216">individual.h:216</a></div></div>
-<div class="ttc" id="individual_8h_html_ab4c35b4c701705545cf6b1c99829af60"><div class="ttname"><a href="individual_8h.html#ab4c35b4c701705545cf6b1c99829af60">NUMINDIVIDUAL</a></div><div class="ttdeci">int NUMINDIVIDUAL</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00093">individual.h:93</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a4aff97be2efcfa465c27218e44f47f1f"><div class="ttname"><a href="structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f">struct_individual::next</a></div><div class="ttdeci">struct struct_individual * next</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00219">individual.h:219</a></div></div>
+<div class="ttc" id="individual_8h_html_ab4c35b4c701705545cf6b1c99829af60"><div class="ttname"><a href="individual_8h.html#ab4c35b4c701705545cf6b1c99829af60">NUMINDIVIDUAL</a></div><div class="ttdeci">int NUMINDIVIDUAL</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00096">individual.h:96</a></div></div>
 <div class="ttc" id="structure_8c_html_a22d84620cfe1b61456566a62553eb6d7"><div class="ttname"><a href="structure_8c.html#a22d84620cfe1b61456566a62553eb6d7">freeIndividual</a></div><div class="ttdeci">void freeIndividual(Individual *i)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00098">structure.c:98</a></div></div>
-<div class="ttc" id="individual_8h_html_a2eaac6ecf135c65ae5233aa6b842958e"><div class="ttname"><a href="individual_8h.html#a2eaac6ecf135c65ae5233aa6b842958e">youngerindividual</a></div><div class="ttdeci">int youngerindividual</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00122">individual.h:122</a></div></div>
-<div class="ttc" id="individual_8h_html_a91bd5e9f3300faa139784dae2bb084fe"><div class="ttname"><a href="individual_8h.html#a91bd5e9f3300faa139784dae2bb084fe">worsetemporarynumfalse</a></div><div class="ttdeci">int worsetemporarynumfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00128">individual.h:128</a></div></div>
-<div class="ttc" id="individual_8h_html_a0902d9138db58e31574316589f0d4bfc"><div class="ttname"><a href="individual_8h.html#a0902d9138db58e31574316589f0d4bfc">random</a></div><div class="ttdeci">#define random()</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00024">individual.h:24</a></div></div>
-<div class="ttc" id="individual_8h_html_affcfb1aa042c8e1935961baf03a140f2"><div class="ttname"><a href="individual_8h.html#affcfb1aa042c8e1935961baf03a140f2">cardpopulation</a></div><div class="ttdeci">int cardpopulation</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00119">individual.h:119</a></div></div>
+<div class="ttc" id="individual_8h_html_a2eaac6ecf135c65ae5233aa6b842958e"><div class="ttname"><a href="individual_8h.html#a2eaac6ecf135c65ae5233aa6b842958e">youngerindividual</a></div><div class="ttdeci">int youngerindividual</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00125">individual.h:125</a></div></div>
+<div class="ttc" id="individual_8h_html_a91bd5e9f3300faa139784dae2bb084fe"><div class="ttname"><a href="individual_8h.html#a91bd5e9f3300faa139784dae2bb084fe">worsetemporarynumfalse</a></div><div class="ttdeci">int worsetemporarynumfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00131">individual.h:131</a></div></div>
+<div class="ttc" id="individual_8h_html_a0902d9138db58e31574316589f0d4bfc"><div class="ttname"><a href="individual_8h.html#a0902d9138db58e31574316589f0d4bfc">random</a></div><div class="ttdeci">#define random()</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00025">individual.h:25</a></div></div>
+<div class="ttc" id="individual_8h_html_affcfb1aa042c8e1935961baf03a140f2"><div class="ttname"><a href="individual_8h.html#affcfb1aa042c8e1935961baf03a140f2">cardpopulation</a></div><div class="ttdeci">int cardpopulation</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00122">individual.h:122</a></div></div>
 <div class="ttc" id="work_8c_html_ace5945c37140bbf26febf0c15bdba66c"><div class="ttname"><a href="work_8c.html#ace5945c37140bbf26febf0c15bdba66c">tabu</a></div><div class="ttdeci">Individual * tabu(Individual *ind, int tabu_length, int maxflip)</div><div class="ttdef"><b>Definition:</b> <a href="work_8c_source.html#l00246">work.c:246</a></div></div>
-<div class="ttc" id="individual_8h_html_a0446a3ebdeb3d975c981b589da5547b8"><div class="ttname"><a href="individual_8h.html#a0446a3ebdeb3d975c981b589da5547b8">ltrech</a></div><div class="ttdeci">int ltrech</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00105">individual.h:105</a></div></div>
+<div class="ttc" id="individual_8h_html_a0446a3ebdeb3d975c981b589da5547b8"><div class="ttname"><a href="individual_8h.html#a0446a3ebdeb3d975c981b589da5547b8">ltrech</a></div><div class="ttdeci">int ltrech</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00108">individual.h:108</a></div></div>
 </div><!-- fragment -->
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_cgraph.png" border="0" usemap="#work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_cgraph" alt=""/></div>
-<map name="work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_cgraph" id="work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_cgraph">
-<area shape="rect" id="node2" href="work_8c.html#a5213be359aa166ed280d3dcd334e3720" title="cross" alt="" coords="225,110,278,137"/><area shape="rect" id="node5" href="structure_8c.html#a491f4e196b54c83ff327d82a0ca8ebe2" title="delete_individual" alt="" coords="191,60,312,86"/><area shape="rect" id="node7" href="structure_8c.html#a22d84620cfe1b61456566a62553eb6d7" title="freeIndividual" alt="" coords="545,9,646,36"/><area shape="rect" id="node8" href="structure_8c.html#a40cceaf9539aefa1dc380304c01df4c1" title="insert_individual" alt="" coords="193,161,310,188"/><area shape="rect" id="node9" href="structure_8c.html#a73bce947da99be3ce514d117ec2941c0" title="select_individual" alt="" coords="191,262,311,289"/><area shape="rect" id="node11" href="work_8c.html#ace5945c37140bbf26febf0c15bdba66c" title="tabu" alt="" coords="227,212,275,238"/><area shape="rect" id="node3" href="structure_8c.html#a7385a9017a4218798abc95740e1909fe" title="createIndividual" alt="" coords="537,186,653,213"/><area shape="rect" id="node4" href="structure_8c.html#a21234eae73c74e50b539fc7dc3d004e4" title="init" alt="" coords="405,161,444,188"/><area shape="rect" id="node6" href="structure_8c.html#a674383a1f6cb1d976d89a317ac8153ac" title="delete_individual2" alt="" coords="360,60,489,86"/><area shape="rect" id="node10" href="structure_8c.html#a1bd1dc20d69c16d59023f722246946e0" title="add_individual" alt="" coords="371,262,478,289"/><area shape="rect" id="node12" href="work_8c.html#a0efe15e8f521500048cc3217781aa30a" title="flipatom" alt="" coords="390,212,459,238"/></map>
-</div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_icgraph.png" border="0" usemap="#work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_icgraph" alt=""/></div>
-<map name="work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_icgraph" id="work_8h_ad156b720a8a43ccb0d6336dbd878d3f0_icgraph">
-<area shape="rect" id="node2" href="_main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="191,5,241,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="a0efe15e8f521500048cc3217781aa30a"></a>
@@ -429,7 +379,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="work_8c_source.html#l00429">429</a> of file <a class="el" href="work_8c_source.html">work.c</a>.</p>
 
-<p>References <a class="el" href="individual_8h_source.html#l00066">ABS</a>, <a class="el" href="individual_8h_source.html#l00189">struct_individual::atom</a>, <a class="el" href="individual_8h_source.html#l00201">struct_individual::breakcount</a>, <a class="el" href="individual_8h_source.html#l00148">clause</a>, <a class="el" href="individual_8h_source.html#l00192">struct_individual::clausesFalse</a>, <a class="el" href="individual_8h_source.html#l00204">struct_individual::makecount</a>, <a class="el" href="individual_8h_source.html#l00139">numatom</a>, <a class="el" href="individual_8h_source.html#l00142">numclause</a>, <a class="el" href="individual_8h_source.html#l00207">struct_individual::numfalse</a>, <a class="el" href="individual_8h_source.html#l00160">numoccurence</a>, <a class="el" href="individual_8h_source.html#l00195">struct_individual::numtruelit</a>, <a class="el" href="individual_8h_source.html#l00157">occurence</a>, <a class="el" href="individual_8h_source.html#l00154">size</a>, and <a class="el" href="individual_8h_source.html#l00198">struct_individual::wherefalse</a>.</p>
+<p>References <a class="el" href="individual_8h_source.html#l00069">ABS</a>, <a class="el" href="individual_8h_source.html#l00192">struct_individual::atom</a>, <a class="el" href="individual_8h_source.html#l00204">struct_individual::breakcount</a>, <a class="el" href="individual_8h_source.html#l00151">clause</a>, <a class="el" href="individual_8h_source.html#l00195">struct_individual::clausesFalse</a>, <a class="el" href="individual_8h_source.html#l00207">struct_individual::makecount</a>, <a class="el" href="individual_8h_source.html#l00142">numatom</a>, <a class="el" href="individual_8h_source.html#l00145">numclause</a>, <a class="el" href="individual_8h_source.html#l00210">struct_individual::numfalse</a>, <a class="el" href="individual_8h_source.html#l00163">numoccurence</a>, <a class="el" href="individual_8h_source.html#l00198">struct_individual::numtruelit</a>, <a class="el" href="individual_8h_source.html#l00160">occurence</a>, <a class="el" href="individual_8h_source.html#l00157">size</a>, and <a class="el" href="individual_8h_source.html#l00201">struct_individual::wherefalse</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00246">tabu()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                                                  {</div>
@@ -571,30 +521,21 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  } <span class="comment">/* end of the for-loop on every occurence */</span></div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;} <span class="comment">/* end of the function flipatom */</span></div>
-<div class="ttc" id="structstruct__individual_html_a8d955b954dc21a94aeeee6f9a400b615"><div class="ttname"><a href="structstruct__individual.html#a8d955b954dc21a94aeeee6f9a400b615">struct_individual::atom</a></div><div class="ttdeci">char * atom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a57e05deb2105dbab478eaf8f11aacabc"><div class="ttname"><a href="structstruct__individual.html#a57e05deb2105dbab478eaf8f11aacabc">struct_individual::wherefalse</a></div><div class="ttdeci">int * wherefalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00198">individual.h:198</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a18542b1ef356b3df38e0c00c5ea36ad5"><div class="ttname"><a href="structstruct__individual.html#a18542b1ef356b3df38e0c00c5ea36ad5">struct_individual::numtruelit</a></div><div class="ttdeci">int * numtruelit</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00195">individual.h:195</a></div></div>
-<div class="ttc" id="individual_8h_html_af203801cc96360986fbe09bda7cc66cd"><div class="ttname"><a href="individual_8h.html#af203801cc96360986fbe09bda7cc66cd">clause</a></div><div class="ttdeci">int ** clause</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00148">individual.h:148</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a8ab46f3e81919e7f36bcc08e1284dbf0"><div class="ttname"><a href="structstruct__individual.html#a8ab46f3e81919e7f36bcc08e1284dbf0">struct_individual::makecount</a></div><div class="ttdeci">int * makecount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00204">individual.h:204</a></div></div>
-<div class="ttc" id="individual_8h_html_ab55ad46b76fa8ea1c1eb75b7e2672344"><div class="ttname"><a href="individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344">numatom</a></div><div class="ttdeci">int numatom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00139">individual.h:139</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a109f2979c523f20c577b298c992d1d4f"><div class="ttname"><a href="structstruct__individual.html#a109f2979c523f20c577b298c992d1d4f">struct_individual::clausesFalse</a></div><div class="ttdeci">int * clausesFalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00192">individual.h:192</a></div></div>
-<div class="ttc" id="individual_8h_html_a996f7be338ccb40d1a2a5abc1ad61759"><div class="ttname"><a href="individual_8h.html#a996f7be338ccb40d1a2a5abc1ad61759">ABS</a></div><div class="ttdeci">#define ABS(x)</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00066">individual.h:66</a></div></div>
-<div class="ttc" id="individual_8h_html_a06d482e5078dbd217838949c6111eac3"><div class="ttname"><a href="individual_8h.html#a06d482e5078dbd217838949c6111eac3">numoccurence</a></div><div class="ttdeci">int * numoccurence</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00160">individual.h:160</a></div></div>
-<div class="ttc" id="structstruct__individual_html_aada505b2198fe1e8cb0ef4edb5bacb3b"><div class="ttname"><a href="structstruct__individual.html#aada505b2198fe1e8cb0ef4edb5bacb3b">struct_individual::breakcount</a></div><div class="ttdeci">int * breakcount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00201">individual.h:201</a></div></div>
-<div class="ttc" id="individual_8h_html_ab3ae57f981dd6244ff7accc3052f0b44"><div class="ttname"><a href="individual_8h.html#ab3ae57f981dd6244ff7accc3052f0b44">occurence</a></div><div class="ttdeci">int ** occurence</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00157">individual.h:157</a></div></div>
-<div class="ttc" id="individual_8h_html_a7d10d938ea6b87d71f218be5a4ea3953"><div class="ttname"><a href="individual_8h.html#a7d10d938ea6b87d71f218be5a4ea3953">numclause</a></div><div class="ttdeci">int numclause</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00142">individual.h:142</a></div></div>
-<div class="ttc" id="individual_8h_html_a9ed2af461c1c0d05294737e467efaa8d"><div class="ttname"><a href="individual_8h.html#a9ed2af461c1c0d05294737e467efaa8d">size</a></div><div class="ttdeci">int * size</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00154">individual.h:154</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a8d955b954dc21a94aeeee6f9a400b615"><div class="ttname"><a href="structstruct__individual.html#a8d955b954dc21a94aeeee6f9a400b615">struct_individual::atom</a></div><div class="ttdeci">char * atom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00192">individual.h:192</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a57e05deb2105dbab478eaf8f11aacabc"><div class="ttname"><a href="structstruct__individual.html#a57e05deb2105dbab478eaf8f11aacabc">struct_individual::wherefalse</a></div><div class="ttdeci">int * wherefalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00201">individual.h:201</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a18542b1ef356b3df38e0c00c5ea36ad5"><div class="ttname"><a href="structstruct__individual.html#a18542b1ef356b3df38e0c00c5ea36ad5">struct_individual::numtruelit</a></div><div class="ttdeci">int * numtruelit</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00198">individual.h:198</a></div></div>
+<div class="ttc" id="individual_8h_html_af203801cc96360986fbe09bda7cc66cd"><div class="ttname"><a href="individual_8h.html#af203801cc96360986fbe09bda7cc66cd">clause</a></div><div class="ttdeci">int ** clause</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00151">individual.h:151</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a8ab46f3e81919e7f36bcc08e1284dbf0"><div class="ttname"><a href="structstruct__individual.html#a8ab46f3e81919e7f36bcc08e1284dbf0">struct_individual::makecount</a></div><div class="ttdeci">int * makecount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
+<div class="ttc" id="individual_8h_html_ab55ad46b76fa8ea1c1eb75b7e2672344"><div class="ttname"><a href="individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344">numatom</a></div><div class="ttdeci">int numatom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00142">individual.h:142</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00210">individual.h:210</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a109f2979c523f20c577b298c992d1d4f"><div class="ttname"><a href="structstruct__individual.html#a109f2979c523f20c577b298c992d1d4f">struct_individual::clausesFalse</a></div><div class="ttdeci">int * clausesFalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00195">individual.h:195</a></div></div>
+<div class="ttc" id="individual_8h_html_a996f7be338ccb40d1a2a5abc1ad61759"><div class="ttname"><a href="individual_8h.html#a996f7be338ccb40d1a2a5abc1ad61759">ABS</a></div><div class="ttdeci">#define ABS(x)</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00069">individual.h:69</a></div></div>
+<div class="ttc" id="individual_8h_html_a06d482e5078dbd217838949c6111eac3"><div class="ttname"><a href="individual_8h.html#a06d482e5078dbd217838949c6111eac3">numoccurence</a></div><div class="ttdeci">int * numoccurence</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00163">individual.h:163</a></div></div>
+<div class="ttc" id="structstruct__individual_html_aada505b2198fe1e8cb0ef4edb5bacb3b"><div class="ttname"><a href="structstruct__individual.html#aada505b2198fe1e8cb0ef4edb5bacb3b">struct_individual::breakcount</a></div><div class="ttdeci">int * breakcount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00204">individual.h:204</a></div></div>
+<div class="ttc" id="individual_8h_html_ab3ae57f981dd6244ff7accc3052f0b44"><div class="ttname"><a href="individual_8h.html#ab3ae57f981dd6244ff7accc3052f0b44">occurence</a></div><div class="ttdeci">int ** occurence</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00160">individual.h:160</a></div></div>
+<div class="ttc" id="individual_8h_html_a7d10d938ea6b87d71f218be5a4ea3953"><div class="ttname"><a href="individual_8h.html#a7d10d938ea6b87d71f218be5a4ea3953">numclause</a></div><div class="ttdeci">int numclause</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00145">individual.h:145</a></div></div>
+<div class="ttc" id="individual_8h_html_a9ed2af461c1c0d05294737e467efaa8d"><div class="ttname"><a href="individual_8h.html#a9ed2af461c1c0d05294737e467efaa8d">size</a></div><div class="ttdeci">int * size</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00157">individual.h:157</a></div></div>
 </div><!-- fragment -->
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_a0efe15e8f521500048cc3217781aa30a_icgraph.png" border="0" usemap="#work_8h_a0efe15e8f521500048cc3217781aa30a_icgraph" alt=""/></div>
-<map name="work_8h_a0efe15e8f521500048cc3217781aa30a_icgraph" id="work_8h_a0efe15e8f521500048cc3217781aa30a_icgraph">
-<area shape="rect" id="node2" href="work_8h.html#ace5945c37140bbf26febf0c15bdba66c" title="tabu" alt="" coords="123,5,171,32"/><area shape="rect" id="node3" href="work_8h.html#ad156b720a8a43ccb0d6336dbd878d3f0" title="crossover_operator" alt="" coords="219,5,356,32"/><area shape="rect" id="node4" href="_main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="404,5,455,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="aaa24433fa868a6b3ddb407ecd9639f18"></a>
@@ -628,9 +569,9 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="work_8c_source.html#l00618">618</a> of file <a class="el" href="work_8c_source.html">work.c</a>.</p>
 
-<p>References <a class="el" href="individual_8h_source.html#l00216">struct_individual::next</a>, and <a class="el" href="individual_8h_source.html#l00207">struct_individual::numfalse</a>.</p>
+<p>References <a class="el" href="individual_8h_source.html#l00219">struct_individual::next</a>, and <a class="el" href="individual_8h_source.html#l00210">struct_individual::numfalse</a>.</p>
 
-<p>Referenced by <a class="el" href="display_8c_source.html#l00174">displaySolution()</a>.</p>
+<p>Referenced by <a class="el" href="display_8c_source.html#l00177">displaySolution()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                                                 {</div>
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;</div>
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  <span class="comment">/* We start with the first element of the linked list. */</span></div>
@@ -649,19 +590,10 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  <span class="comment">/* We go through all linkedlist, no element is a solution. */</span></div>
 <div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;}</div>
-<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
-<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00186">individual.h:186</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a4aff97be2efcfa465c27218e44f47f1f"><div class="ttname"><a href="structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f">struct_individual::next</a></div><div class="ttdeci">struct struct_individual * next</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00216">individual.h:216</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00210">individual.h:210</a></div></div>
+<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a4aff97be2efcfa465c27218e44f47f1f"><div class="ttname"><a href="structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f">struct_individual::next</a></div><div class="ttdeci">struct struct_individual * next</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00219">individual.h:219</a></div></div>
 </div><!-- fragment -->
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_aaa24433fa868a6b3ddb407ecd9639f18_icgraph.png" border="0" usemap="#work_8h_aaa24433fa868a6b3ddb407ecd9639f18_icgraph" alt=""/></div>
-<map name="work_8h_aaa24433fa868a6b3ddb407ecd9639f18_icgraph" id="work_8h_aaa24433fa868a6b3ddb407ecd9639f18_icgraph">
-<area shape="rect" id="node2" href="display_8h.html#ac8762a05712d0137e66199ca76a3948c" title="displaySolution" alt="" coords="143,5,255,32"/><area shape="rect" id="node3" href="display_8h.html#a1c0e8f65717666f7901d65d7c773039b" title="displayFinalResult" alt="" coords="303,5,433,32"/><area shape="rect" id="node4" href="_main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="481,5,532,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="a73c8252a9ce366d79578ca14d5bd57cf"></a>
@@ -695,9 +627,9 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="work_8c_source.html#l00033">33</a> of file <a class="el" href="work_8c_source.html">work.c</a>.</p>
 
-<p>References <a class="el" href="individual_8h_source.html#l00216">struct_individual::next</a>, and <a class="el" href="individual_8h_source.html#l00207">struct_individual::numfalse</a>.</p>
+<p>References <a class="el" href="individual_8h_source.html#l00219">struct_individual::next</a>, and <a class="el" href="individual_8h_source.html#l00210">struct_individual::numfalse</a>.</p>
 
-<p>Referenced by <a class="el" href="_main_8c_source.html#l00033">main()</a>.</p>
+<p>Referenced by <a class="el" href="_main_8c_source.html#l00082">main()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                                           {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">/* It will be our pointer to go through the list. */</span></div>
@@ -804,19 +736,10 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> sol;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
-<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
-<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00186">individual.h:186</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a4aff97be2efcfa465c27218e44f47f1f"><div class="ttname"><a href="structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f">struct_individual::next</a></div><div class="ttdeci">struct struct_individual * next</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00216">individual.h:216</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00210">individual.h:210</a></div></div>
+<div class="ttc" id="structstruct__individual_html"><div class="ttname"><a href="structstruct__individual.html">struct_individual</a></div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a4aff97be2efcfa465c27218e44f47f1f"><div class="ttname"><a href="structstruct__individual.html#a4aff97be2efcfa465c27218e44f47f1f">struct_individual::next</a></div><div class="ttdeci">struct struct_individual * next</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00219">individual.h:219</a></div></div>
 </div><!-- fragment -->
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_a73c8252a9ce366d79578ca14d5bd57cf_icgraph.png" border="0" usemap="#work_8h_a73c8252a9ce366d79578ca14d5bd57cf_icgraph" alt=""/></div>
-<map name="work_8h_a73c8252a9ce366d79578ca14d5bd57cf_icgraph" id="work_8h_a73c8252a9ce366d79578ca14d5bd57cf_icgraph">
-<area shape="rect" id="node2" href="_main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="136,5,187,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <a class="anchor" id="ace5945c37140bbf26febf0c15bdba66c"></a>
@@ -868,7 +791,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="work_8c_source.html#l00246">246</a> of file <a class="el" href="work_8c_source.html">work.c</a>.</p>
 
-<p>References <a class="el" href="individual_8h_source.html#l00163">allflip</a>, <a class="el" href="individual_8h_source.html#l00189">struct_individual::atom</a>, <a class="el" href="individual_8h_source.html#l00125">bestnumfalse</a>, <a class="el" href="individual_8h_source.html#l00070">BIG</a>, <a class="el" href="individual_8h_source.html#l00201">struct_individual::breakcount</a>, <a class="el" href="individual_8h_source.html#l00045">FALSE</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="individual_8h_source.html#l00169">FOUND</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="individual_8h_source.html#l00204">struct_individual::makecount</a>, <a class="el" href="individual_8h_source.html#l00139">numatom</a>, <a class="el" href="individual_8h_source.html#l00142">numclause</a>, <a class="el" href="individual_8h_source.html#l00207">struct_individual::numfalse</a>, <a class="el" href="individual_8h_source.html#l00024">random</a>, and <a class="el" href="individual_8h_source.html#l00048">SAT</a>.</p>
+<p>References <a class="el" href="individual_8h_source.html#l00166">allflip</a>, <a class="el" href="individual_8h_source.html#l00192">struct_individual::atom</a>, <a class="el" href="individual_8h_source.html#l00128">bestnumfalse</a>, <a class="el" href="individual_8h_source.html#l00073">BIG</a>, <a class="el" href="individual_8h_source.html#l00204">struct_individual::breakcount</a>, <a class="el" href="individual_8h_source.html#l00046">FALSE</a>, <a class="el" href="work_8c_source.html#l00429">flipatom()</a>, <a class="el" href="individual_8h_source.html#l00172">FOUND</a>, <a class="el" href="structure_8c_source.html#l00358">init()</a>, <a class="el" href="individual_8h_source.html#l00207">struct_individual::makecount</a>, <a class="el" href="individual_8h_source.html#l00142">numatom</a>, <a class="el" href="individual_8h_source.html#l00145">numclause</a>, <a class="el" href="individual_8h_source.html#l00210">struct_individual::numfalse</a>, <a class="el" href="individual_8h_source.html#l00025">random</a>, and <a class="el" href="individual_8h_source.html#l00049">SAT</a>.</p>
 
 <p>Referenced by <a class="el" href="work_8c_source.html#l00148">crossover_operator()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                                                        {</div>
@@ -1045,40 +968,22 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  <span class="keywordflow">return</span> ind;</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
-<div class="ttc" id="structstruct__individual_html_a8d955b954dc21a94aeeee6f9a400b615"><div class="ttname"><a href="structstruct__individual.html#a8d955b954dc21a94aeeee6f9a400b615">struct_individual::atom</a></div><div class="ttdeci">char * atom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00189">individual.h:189</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a8d955b954dc21a94aeeee6f9a400b615"><div class="ttname"><a href="structstruct__individual.html#a8d955b954dc21a94aeeee6f9a400b615">struct_individual::atom</a></div><div class="ttdeci">char * atom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00192">individual.h:192</a></div></div>
 <div class="ttc" id="work_8c_html_a0efe15e8f521500048cc3217781aa30a"><div class="ttname"><a href="work_8c.html#a0efe15e8f521500048cc3217781aa30a">flipatom</a></div><div class="ttdeci">void flipatom(Individual *ind, int toflip)</div><div class="ttdef"><b>Definition:</b> <a href="work_8c_source.html#l00429">work.c:429</a></div></div>
-<div class="ttc" id="individual_8h_html_a39e99fc584742378db7375c290cfa0ed"><div class="ttname"><a href="individual_8h.html#a39e99fc584742378db7375c290cfa0ed">SAT</a></div><div class="ttdeci">#define SAT</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00048">individual.h:48</a></div></div>
-<div class="ttc" id="individual_8h_html_adace6830f34c550829afbbca36cb323a"><div class="ttname"><a href="individual_8h.html#adace6830f34c550829afbbca36cb323a">allflip</a></div><div class="ttdeci">unsigned long long allflip</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00163">individual.h:163</a></div></div>
-<div class="ttc" id="individual_8h_html_aa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="individual_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00045">individual.h:45</a></div></div>
+<div class="ttc" id="individual_8h_html_a39e99fc584742378db7375c290cfa0ed"><div class="ttname"><a href="individual_8h.html#a39e99fc584742378db7375c290cfa0ed">SAT</a></div><div class="ttdeci">#define SAT</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00049">individual.h:49</a></div></div>
+<div class="ttc" id="individual_8h_html_adace6830f34c550829afbbca36cb323a"><div class="ttname"><a href="individual_8h.html#adace6830f34c550829afbbca36cb323a">allflip</a></div><div class="ttdeci">unsigned long long allflip</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00166">individual.h:166</a></div></div>
+<div class="ttc" id="individual_8h_html_aa93f0eb578d23995850d61f7d61c55c1"><div class="ttname"><a href="individual_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a></div><div class="ttdeci">#define FALSE</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00046">individual.h:46</a></div></div>
 <div class="ttc" id="structure_8c_html_a21234eae73c74e50b539fc7dc3d004e4"><div class="ttname"><a href="structure_8c.html#a21234eae73c74e50b539fc7dc3d004e4">init</a></div><div class="ttdeci">void init(Individual *ind, int first)</div><div class="ttdef"><b>Definition:</b> <a href="structure_8c_source.html#l00358">structure.c:358</a></div></div>
-<div class="ttc" id="individual_8h_html_a758339d74b0f7131abd9edccb894b854"><div class="ttname"><a href="individual_8h.html#a758339d74b0f7131abd9edccb894b854">FOUND</a></div><div class="ttdeci">int FOUND</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00169">individual.h:169</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a8ab46f3e81919e7f36bcc08e1284dbf0"><div class="ttname"><a href="structstruct__individual.html#a8ab46f3e81919e7f36bcc08e1284dbf0">struct_individual::makecount</a></div><div class="ttdeci">int * makecount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00204">individual.h:204</a></div></div>
-<div class="ttc" id="individual_8h_html_ab55ad46b76fa8ea1c1eb75b7e2672344"><div class="ttname"><a href="individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344">numatom</a></div><div class="ttdeci">int numatom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00139">individual.h:139</a></div></div>
-<div class="ttc" id="individual_8h_html_a3177c080cf52a827d2e7ff03dc67f470"><div class="ttname"><a href="individual_8h.html#a3177c080cf52a827d2e7ff03dc67f470">bestnumfalse</a></div><div class="ttdeci">int bestnumfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00125">individual.h:125</a></div></div>
-<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
-<div class="ttc" id="structstruct__individual_html_aada505b2198fe1e8cb0ef4edb5bacb3b"><div class="ttname"><a href="structstruct__individual.html#aada505b2198fe1e8cb0ef4edb5bacb3b">struct_individual::breakcount</a></div><div class="ttdeci">int * breakcount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00201">individual.h:201</a></div></div>
-<div class="ttc" id="individual_8h_html_a7d10d938ea6b87d71f218be5a4ea3953"><div class="ttname"><a href="individual_8h.html#a7d10d938ea6b87d71f218be5a4ea3953">numclause</a></div><div class="ttdeci">int numclause</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00142">individual.h:142</a></div></div>
-<div class="ttc" id="individual_8h_html_a38eb76aa0a9a1bb1dac30c75be4a05b6"><div class="ttname"><a href="individual_8h.html#a38eb76aa0a9a1bb1dac30c75be4a05b6">BIG</a></div><div class="ttdeci">#define BIG</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00070">individual.h:70</a></div></div>
-<div class="ttc" id="individual_8h_html_a0902d9138db58e31574316589f0d4bfc"><div class="ttname"><a href="individual_8h.html#a0902d9138db58e31574316589f0d4bfc">random</a></div><div class="ttdeci">#define random()</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00024">individual.h:24</a></div></div>
+<div class="ttc" id="individual_8h_html_a758339d74b0f7131abd9edccb894b854"><div class="ttname"><a href="individual_8h.html#a758339d74b0f7131abd9edccb894b854">FOUND</a></div><div class="ttdeci">int FOUND</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00172">individual.h:172</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a8ab46f3e81919e7f36bcc08e1284dbf0"><div class="ttname"><a href="structstruct__individual.html#a8ab46f3e81919e7f36bcc08e1284dbf0">struct_individual::makecount</a></div><div class="ttdeci">int * makecount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00207">individual.h:207</a></div></div>
+<div class="ttc" id="individual_8h_html_ab55ad46b76fa8ea1c1eb75b7e2672344"><div class="ttname"><a href="individual_8h.html#ab55ad46b76fa8ea1c1eb75b7e2672344">numatom</a></div><div class="ttdeci">int numatom</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00142">individual.h:142</a></div></div>
+<div class="ttc" id="individual_8h_html_a3177c080cf52a827d2e7ff03dc67f470"><div class="ttname"><a href="individual_8h.html#a3177c080cf52a827d2e7ff03dc67f470">bestnumfalse</a></div><div class="ttdeci">int bestnumfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00128">individual.h:128</a></div></div>
+<div class="ttc" id="structstruct__individual_html_a7e61a89329710746aa292907ea1d5f1b"><div class="ttname"><a href="structstruct__individual.html#a7e61a89329710746aa292907ea1d5f1b">struct_individual::numfalse</a></div><div class="ttdeci">int numfalse</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00210">individual.h:210</a></div></div>
+<div class="ttc" id="structstruct__individual_html_aada505b2198fe1e8cb0ef4edb5bacb3b"><div class="ttname"><a href="structstruct__individual.html#aada505b2198fe1e8cb0ef4edb5bacb3b">struct_individual::breakcount</a></div><div class="ttdeci">int * breakcount</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00204">individual.h:204</a></div></div>
+<div class="ttc" id="individual_8h_html_a7d10d938ea6b87d71f218be5a4ea3953"><div class="ttname"><a href="individual_8h.html#a7d10d938ea6b87d71f218be5a4ea3953">numclause</a></div><div class="ttdeci">int numclause</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00145">individual.h:145</a></div></div>
+<div class="ttc" id="individual_8h_html_a38eb76aa0a9a1bb1dac30c75be4a05b6"><div class="ttname"><a href="individual_8h.html#a38eb76aa0a9a1bb1dac30c75be4a05b6">BIG</a></div><div class="ttdeci">#define BIG</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00073">individual.h:73</a></div></div>
+<div class="ttc" id="individual_8h_html_a0902d9138db58e31574316589f0d4bfc"><div class="ttname"><a href="individual_8h.html#a0902d9138db58e31574316589f0d4bfc">random</a></div><div class="ttdeci">#define random()</div><div class="ttdef"><b>Definition:</b> <a href="individual_8h_source.html#l00025">individual.h:25</a></div></div>
 </div><!-- fragment -->
-<p><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_ace5945c37140bbf26febf0c15bdba66c_cgraph.png" border="0" usemap="#work_8h_ace5945c37140bbf26febf0c15bdba66c_cgraph" alt=""/></div>
-<map name="work_8h_ace5945c37140bbf26febf0c15bdba66c_cgraph" id="work_8h_ace5945c37140bbf26febf0c15bdba66c_cgraph">
-<area shape="rect" id="node2" href="work_8c.html#a0efe15e8f521500048cc3217781aa30a" title="flipatom" alt="" coords="101,5,171,32"/><area shape="rect" id="node3" href="structure_8c.html#a21234eae73c74e50b539fc7dc3d004e4" title="init" alt="" coords="117,56,155,83"/></map>
-</div>
-</p>
-
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="work_8h_ace5945c37140bbf26febf0c15bdba66c_icgraph.png" border="0" usemap="#work_8h_ace5945c37140bbf26febf0c15bdba66c_icgraph" alt=""/></div>
-<map name="work_8h_ace5945c37140bbf26febf0c15bdba66c_icgraph" id="work_8h_ace5945c37140bbf26febf0c15bdba66c_icgraph">
-<area shape="rect" id="node2" href="work_8h.html#ad156b720a8a43ccb0d6336dbd878d3f0" title="crossover_operator" alt="" coords="101,5,239,32"/><area shape="rect" id="node3" href="_main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="287,5,337,32"/></map>
-</div>
-</p>
-
 </div>
 </div>
 </div><!-- contents -->
@@ -1087,7 +992,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7ed49d86cc762c97c4620aef87984c5b.html">Satyr-dir</a></li><li class="navelem"><a class="el" href="work_8h.html">work.h</a></li>
-    <li class="footer">Generated on Thu Feb 5 2015 15:31:35 for SATyr by
+    <li class="footer">Generated on Tue Feb 10 2015 16:59:28 for SATyr by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>
