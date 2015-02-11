@@ -1,0 +1,3 @@
+zchaff a résolu 3000 instances en 15646 ms
+glucose a résolu 3000 instances en 14259 ms
+satyr a résolu 3000 instances en 29160 ms
