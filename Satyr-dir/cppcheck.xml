@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <results>
-    <error file="initialisation.c" line="89" id="variableScope" severity="style" msg="The scope of the variable &apos;nextc&apos; can be reduced."/>
-    <error file="initialisation.c" line="118" id="invalidscanf_libc" severity="style" msg="scanf without field width limits can crash with huge input data on some versions of libc."/>
-    <error file="initialisation.c" line="193" id="invalidscanf_libc" severity="style" msg="scanf without field width limits can crash with huge input data on some versions of libc."/>
+    <error file="initialisation.c" line="88" id="variableScope" severity="style" msg="The scope of the variable &apos;nextc&apos; can be reduced."/>
+    <error file="initialisation.c" line="117" id="invalidscanf_libc" severity="style" msg="scanf without field width limits can crash with huge input data on some versions of libc."/>
+    <error file="initialisation.c" line="192" id="invalidscanf_libc" severity="style" msg="scanf without field width limits can crash with huge input data on some versions of libc."/>
     <error file="structure.c" line="75" id="variableScope" severity="style" msg="The scope of the variable &apos;tmp2&apos; can be reduced."/>
     <error file="structure.c" line="174" id="variableScope" severity="style" msg="The scope of the variable &apos;x&apos; can be reduced."/>
-    <error file="structure.c" line="216" id="variableScope" severity="style" msg="The scope of the variable &apos;x&apos; can be reduced."/>
-    <error file="unsat.c" line="157" id="variableScope" severity="style" msg="The scope of the variable &apos;var&apos; can be reduced."/>
-    <error file="unsat.c" line="283" id="memleak" severity="error" msg="Memory leak: tmp"/>
+    <error file="structure.c" line="217" id="variableScope" severity="style" msg="The scope of the variable &apos;x&apos; can be reduced."/>
+    <error file="unsat.c" line="175" id="variableScope" severity="style" msg="The scope of the variable &apos;var&apos; can be reduced."/>
+    <error file="unsat.c" line="301" id="memleak" severity="error" msg="Memory leak: tmp"/>
     <error file="work.c" line="44" id="variableScope" severity="style" msg="The scope of the variable &apos;max&apos; can be reduced."/>
     <error file="work.c" line="46" id="variableScope" severity="style" msg="The scope of the variable &apos;num&apos; can be reduced."/>
-    <error file="work.c" line="253" id="variableScope" severity="style" msg="The scope of the variable &apos;max&apos; can be reduced."/>
-    <error file="work.c" line="253" id="variableScope" severity="style" msg="The scope of the variable &apos;bestatom&apos; can be reduced."/>
-    <error file="work.c" line="253" id="variableScope" severity="style" msg="The scope of the variable &apos;cnt&apos; can be reduced."/>
-    <error file="work.c" line="262" id="variableScope" severity="style" msg="The scope of the variable &apos;npossible&apos; can be reduced."/>
-    <error file="work.c" line="271" id="variableScope" severity="style" msg="The scope of the variable &apos;sol&apos; can be reduced."/>
-    <error file="work.c" line="310" id="unreadVariable" severity="style" msg="Variable &apos;cnt&apos; is assigned a value that is never used."/>
-    <error file="unsat.c" line="28" id="unusedFunction" severity="style" msg="The function &apos;displayResolution&apos; is never used."/>
-    <error file="structure.c" line="69" id="unusedFunction" severity="style" msg="The function &apos;freePopulation&apos; is never used."/>
-    <error file="unsat.c" line="311" id="unusedFunction" severity="style" msg="The function &apos;subsumes&apos; is never used."/>
+    <error file="work.c" line="252" id="variableScope" severity="style" msg="The scope of the variable &apos;max&apos; can be reduced."/>
+    <error file="work.c" line="252" id="variableScope" severity="style" msg="The scope of the variable &apos;bestatom&apos; can be reduced."/>
+    <error file="work.c" line="252" id="variableScope" severity="style" msg="The scope of the variable &apos;cnt&apos; can be reduced."/>
+    <error file="work.c" line="261" id="variableScope" severity="style" msg="The scope of the variable &apos;npossible&apos; can be reduced."/>
+    <error file="work.c" line="270" id="variableScope" severity="style" msg="The scope of the variable &apos;sol&apos; can be reduced."/>
+    <error file="work.c" line="309" id="unreadVariable" severity="style" msg="Variable &apos;cnt&apos; is assigned a value that is never used."/>
+    <error file="unsat.c" line="34" id="unusedFunction" severity="style" msg="The function &apos;displayResolution&apos; is never used."/>
     <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files (use --check-config for details)"/>
 </results>

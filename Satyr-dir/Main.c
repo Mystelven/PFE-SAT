@@ -200,5 +200,7 @@ int main(int argc,char *argv[]) {
 
 	free(barycentre);
 
+	freePopulation(population);
+
 	return 0;
 }
