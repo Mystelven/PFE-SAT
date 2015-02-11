@@ -84,7 +84,7 @@ inline char contains(int cl, int variable) {
  */
 inline void tryToProveUNSAT() {
 
-	if(random() % 100 < 1) restart();
+	if(random() % numclause < 1) restart();
 
 	/* If have gone to far, we restart everything, we will not find anything in this branch... */
 	if(numresolution >= (numclause*(COEF_FOR_NBRESOLUTION-1))) { 
@@ -99,9 +99,9 @@ inline void tryToProveUNSAT() {
 	int var = -1;
 
 	for(i = 0; i < numclause+numresolution; ++i) {
-		for(j = i+1; j < numclause+numresolution; ++j) {
+		for(j = 0; j < numclause+numresolution; ++j) {
 
-			if(min > resolutionTable[i][j]) {
+			if(min >= resolutionTable[i][j]) {
 				c1 = i;
 				c2 = j;
 				min = resolutionTable[i][j];
@@ -126,7 +126,7 @@ inline void tryToProveUNSAT() {
 
  	resolution(c1,c2,var,TRUE);
 
- 	// displayResolution(c1,c2,var);
+// 	displayResolution(c1,c2,var);
 
  	if(isTautology() == TRUE) {
  		numresolution--;
