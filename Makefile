@@ -38,3 +38,4 @@ clean:
 	rm gaSAT
 	rm cdls
 	rm queens
+	rm glucose-syrup
