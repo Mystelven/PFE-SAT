@@ -65,6 +65,7 @@ void* threadDisplay() {
 	/* We will search after a solution. */
 	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
 
+		/* To add some irregularity in the display. */
 		if(maxtry % ((random()%10)+1) == 0) displayStat();
 	}
 
