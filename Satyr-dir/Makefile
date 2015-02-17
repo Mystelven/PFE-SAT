@@ -68,6 +68,8 @@ compet: $(ALL_THE_OBJECT)
 	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) -D BENCHMARK -pthread Main.c 
 
 clean: 
+	rm debug
+	rm release
 	rm obj/*.o	
 
 ## We add the check possibility, to perform the cppcheck and to generate a cppcheck.xml file.
