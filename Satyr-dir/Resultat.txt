@@ -1,1 +1,0 @@
-./satyr a résolu 0 instances en 111 ms
