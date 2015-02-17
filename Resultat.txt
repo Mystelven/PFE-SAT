@@ -1,1 +1,0 @@
-satyr a résolu 1000 instances en 11118 ms
