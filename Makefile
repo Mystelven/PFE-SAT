@@ -28,7 +28,8 @@ all:
 	(cd Zchaff-dir/       	  ; make 					 ; 		 mv ./zchaff     		../	)
 	(cd GASAT-dir/        	  ; make 					 ; 		 mv ./gaSAT      		../ )
 	(cd Cdls-dir/ 		  	  ; make compet 			 ; 		 mv ./cdls       		../ )
-	(cd Reductions/ 	 	  ; gcc -o queens NQueens.c  ; mv ./queens ../)
+	(cd Reductions/ 	 	  ; gcc -o queens NQueens.c  ; 		 mv ./queens 			../ )
+	(cd benchmarks/ 		  ; make 					 ; 		 mv ./benchmark 		../ )
 
 clean:
 	rm satyr
@@ -39,3 +40,4 @@ clean:
 	rm cdls
 	rm queens
 	rm glucose-syrup
+	rm benchmark
