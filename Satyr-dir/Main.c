@@ -41,15 +41,12 @@ void* threadUNSAT() {
  		}
  	}
 
-	clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*COEF_FOR_NBRESOLUTION)));
-
-	initResolutionTable();
+	initResolutionTable(); 
 
 	/* We will search after a solution. */
 	while ( (FOUND != SAT) && (FOUND != UNSAT))  {
 
 		tryToProveUNSAT();
-
 	}
 
 	return NULL;
@@ -151,7 +148,10 @@ int main(int argc,char *argv[]) {
 	/* We perform an initial sort */
 	population = initial_sort (population); 
 
-	pthread_create(&thread,NULL,threadUNSAT,NULL);
+	#ifndef SATONLY
+		clausesResolutions = (int*)(malloc(sizeof(int)*(unsigned long)(numclause*COEF_FOR_NBRESOLUTION)));
+		pthread_create(&thread,NULL,threadUNSAT,NULL);
+	#endif
 
 	#ifndef BENCHMARK
 		pthread_create(&display,NULL,threadDisplay,NULL);

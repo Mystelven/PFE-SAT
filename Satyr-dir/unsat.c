@@ -123,10 +123,10 @@ inline void tryToProveUNSAT() {
  		}
 
  	}
- 	
+ 		
  	resolution(c1,c2,var,TRUE);
-
- 	//displayResolution(c1,c2,var);
+ 	
+	// 	displayResolution(c2,c1,var);	
 
  	if(isTautology() == TRUE) {
  		numresolution--;

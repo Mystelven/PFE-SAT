@@ -54,6 +54,7 @@ ALL_THE_OBJECT = $(STRUCTURE) $(INITIALISATION) $(WORK) $(UNSAT) $(DISPLAY)
 all: 
 	make debug;
 	make release;
+	make satyrSAT;
 
 debug: satyr
 	$(COMPILER) -o debug   $(FLAGS) $(ALL_THE_OBJECT) -pthread Main.c 
@@ -66,6 +67,9 @@ satyr: $(ALL_THE_OBJECT)
 
 compet: $(ALL_THE_OBJECT)
 	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) $(ALL_THE_OBJECT) -D BENCHMARK -pthread Main.c 
+
+satyrSAT: $(ALL_THE_OBJECT)
+	$(COMPILER) -o $(EXECUTABLE)SAT $(FLAGS) $(ALL_THE_OBJECT) -D SATONLY -pthread Main.c 	
 
 clean: 
 	rm debug
