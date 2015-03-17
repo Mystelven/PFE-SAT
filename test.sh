@@ -32,20 +32,19 @@ function test()
 	touch "$1_temps.txt"
 	touch "$1_results.txt"
 
-	testUf $1 "uf20/" 20 1000
-	testUf $1 "uf50/" 50 1000
-	testUf $1 "uf75/" 75 1000
-	testUf $1 "uf100/" 100 1000
-	testUf $1 "uf125/" 125 1000
-	testUf $1 "uf150/" 150 1000
-	testUf $1 "uf175/" 175 1000
-	testUf $1 "uf200/" 200 1000
-	testUf $1 "uf225/" 225 1000
+	#testUf $1 "uf20/" 20 1000
+	#testUf $1 "uf50/" 50 1000
+	#testUf $1 "uf75/" 75 1000
+	#testUf $1 "uf100/" 100 1000
+	#testUf $1 "uf125/" 125 1000
+	#testUf $1 "uf150/" 150 1000
+	#testUf $1 "uf175/" 175 1000
+	#testUf $1 "uf200/" 200 1000
+	#testUf $1 "uf225/" 225 1000
 	testUf $1 "uf250/" 250 1000
-
-	testUf $1 "uuf50/" 50 1000
-	testUf $1 "uuf100/" 100 1000
-	testUf $1 "uuf200/" 200 1000
+	#testUf $1 "uuf50/" 50 1000
+	#testUf $1 "uuf100/" 100 1000
+	#testUf $1 "uuf200/" 200 1000
 
 	echo ""
 	result $1 

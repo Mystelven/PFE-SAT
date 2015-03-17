@@ -1,6 +1,7 @@
+/*
 ##############################################################################
 # 
-# Makefile for SATyr - Valentin Montmirail - Polytech Tours, France
+# TimeTable - Valentin Montmirail - Polytech Tours, France
 # Copyright (c) 2015.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
@@ -18,31 +19,27 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
 # OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
-##############################################################################
+##############################################################################*/
 
-COMPILER   = gcc
+#ifndef CNF_UTILS_H
 
-EXECUTABLE = benchmark
+#include "planning.h"
 
-OPTI       = -O3
+/**
+ * readInputFile : This function will read the formalized input file
+ * and will create a Planning structure with everything inside.
+ * and ready to be transform into a CNF file.
+ * @param filename the name of the input file.
+ * @return a Planning structure. 
+ */
+Planning * readInputFile(const char* filename);
 
-# ----------------[ Flags for compilation of the executable ]------------------
+char* createCNF(Planning* planning);
 
-FLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal 
-FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
-FLAGS3   = -Wredundant-decls -Winit-self -Wswitch-default -lpthread -D_REENTRANT
-FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 $(OPTI)
-FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
+unsigned int* getSolutionSchedule(Planning* planning,const char* s);
 
-# -----------------------------------------------------------------------------
+void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solution);
 
-all: gnuplot_i.o
-	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) gnuplot_i.o benchmark.c
+inline unsigned int getNbVariables(Planning* planning);
 
-gnuplot_i.o:
-	$(COMPILER) -c $(FLAGS) gnuplot_i.c	
-
-clean:
-	rm *.o
-
-# -----------------------------------------------------------------------------
+#endif 

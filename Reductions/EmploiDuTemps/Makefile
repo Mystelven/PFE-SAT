@@ -1,6 +1,6 @@
 ##############################################################################
 # 
-# Makefile for SATyr - Valentin Montmirail - Polytech Tours, France
+# Makefile for EmploiDuTemps - Valentin Montmirail - Polytech Tours, France
 # Copyright (c) 2015.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
@@ -22,7 +22,7 @@
 
 COMPILER   = gcc
 
-EXECUTABLE = benchmark
+EXECUTABLE = timetable
 
 OPTI       = -O3
 
@@ -30,19 +30,31 @@ OPTI       = -O3
 
 FLAGS1	 = -pedantic -Wall -Wextra -Wfloat-equal 
 FLAGS2   = -Wwrite-strings -Wpointer-arith -Wcast-qual -Wcast-align -Wconversion 
-FLAGS3   = -Wredundant-decls -Winit-self -Wswitch-default -lpthread -D_REENTRANT
+FLAGS3   = -Wredundant-decls -Winit-self -Wswitch-default
 FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 $(OPTI)
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
-# -----------------------------------------------------------------------------
 
-all: gnuplot_i.o
-	$(COMPILER) -o $(EXECUTABLE) $(FLAGS) gnuplot_i.o benchmark.c
+all: cnfUtils.o generator
+	$(COMPILER) $(OPTI) $(FLAGS) -o $(EXECUTABLE) cnfUtils.o planning.o subject.o interval.o timetable.c
 
-gnuplot_i.o:
-	$(COMPILER) -c $(FLAGS) gnuplot_i.c	
+generator:
+	$(COMPILER) $(OPTI) $(FLAGS) -o generator generator.c	
+
+cnfUtils.o: planning.o
+	$(COMPILER) -c $(FLAGS) cnfUtils.c
+
+planning.o: subject.o
+	$(COMPILER) -c $(FLAGS) planning.c
+
+subject.o: interval.o
+	$(COMPILER) -c $(FLAGS) subject.c
+
+interval.o: 
+	$(COMPILER) -c $(FLAGS) interval.c
 
 clean:
 	rm *.o
+	rm generator
 
-# -----------------------------------------------------------------------------
+##############################################################################
