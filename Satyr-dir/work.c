@@ -201,7 +201,7 @@
       freeIndividual(p2);
 
   /* ----------------------------------------------------------------- */  
-  /* ---      LET'S CHECK IF THE CHILD IS WORSE TO BE INSERTED     --- */
+  /* ---      LET'S CHECK IF THE CHILD IS WORTH TO BE INSERTED     --- */
   /* ----------------------------------------------------------------- */      
       
       if (child->numfalse < worsetemporarynumfalse) { 
@@ -214,7 +214,7 @@
           bestnumfalse = child->numfalse;
         }
 
-        /* The child is worst to be inserted. */
+        /* The child is worth to be inserted. */
         insert_individual(child,r);
         
       } else {
