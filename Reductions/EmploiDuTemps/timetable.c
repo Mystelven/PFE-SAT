@@ -21,7 +21,10 @@
 #
 ##############################################################################*/
 
-#include "cnfUtils.h"
+
+#include "teacher.h"
+#include "htmlSolutionGenerator.h"
+#include <time.h>
 
 int main(int argc, char* argv[]) {
 
@@ -30,6 +33,8 @@ int main(int argc, char* argv[]) {
 	char* solver;
 
 	char cmd[255];
+
+	clock_t begin,end;
 
 	/* We will log a lot of informations in this file. */
 	FILE* log = stdout;//fopen("display.log","w+");
@@ -52,9 +57,15 @@ int main(int argc, char* argv[]) {
 		exit(0);
 	}
 
+	fprintf(log,"\n[INFO] - We will read the file %s to create our Planning problem.\n",filename);
+
+	begin = clock();
+
 	Planning * planning = readInputFile(filename);
 
-	displayPlanning(log,planning);
+	//displayPlanning(log,planning);
+
+	fprintf(log,"[INFO] - We will now create our CNF file.");
 	
 	filename = createCNF(planning);
 
@@ -67,14 +78,23 @@ int main(int argc, char* argv[]) {
 
 	fprintf(log,"[INFO] - commande : %s",cmd);
 
+
 	system(cmd);
+	end = clock();
 
 	unsigned int* solution = getSolutionSchedule(planning,"solution.out");
 
 	/* We display the solution on the log stream and also on the standard output stream. */
 	displaySolutionSchedule(stdout,planning,solution);
 
-	fprintf(log,"\n");	
+	double generationTime = ((end-begin)/(CLOCKS_PER_SEC/1000));
+	
+	char* html = createHTMLplan(planning, solution,generationTime);
+
+	fprintf(log,"[INFO] - The HTML plan is now inside the file : %s\n",html);
+
+	fprintf(log,"[INFO] - The program is now finished, you got the solution (or the proof that there is none).");
+	fprintf(log,"\n\n");	
 	
 	fclose(log);
 	

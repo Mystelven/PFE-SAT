@@ -22,6 +22,7 @@
 ##############################################################################*/
 
 #ifndef PLANNING_H
+#define PLANNING_H
 
 #include "subject.h"
 

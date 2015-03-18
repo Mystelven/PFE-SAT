@@ -23,6 +23,7 @@
 
 #include "cnfUtils.h"
 #include <assert.h>
+#include <stdlib.h>
 
 
 inline unsigned int getNbVariables(Planning* planning) {
@@ -48,7 +49,7 @@ Planning * readInputFile(const char* filename) {
 	Planning * planning = createPlanning();
 
 	FILE* file = fopen(filename,"r+");
-	char line[4096];
+	char line[32000];
 
 	char* name;
 
@@ -104,8 +105,8 @@ Planning * readInputFile(const char* filename) {
 						double start = 0;
 						double end = 0;
 						sscanf(pch,"[%lf-%lf]",&start,&end);
-						if(start > 0 && end > start)
-							addInterval(array_subjects[j+k],createInterval(start,end));
+
+						if(start > 0 && end > start) addInterval(array_subjects[j+k],createInterval(start,end));
 						
 					}
 				}
@@ -148,19 +149,59 @@ inline unsigned int getNbConstraint(Planning* planning) {
 	unsigned int b = 0;
 	unsigned int d = 0;
 
+
+	unsigned int i = 0;
+	unsigned int j = 0;
+	unsigned int k = 0;
+
+	for(i = 0; i < planning->nbSubjects; ++i) {
+		for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
+			for(k = j+1; k < planning->array_subjects[i]->nbSlots; ++k) {
+				
+				++result;
+			}
+		}
+	}
+
 	for(a = 0; a < planning->nbSubjects; ++a) {
 		for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
 			for(b = a+1; b < planning->nbSubjects; ++b) {
 				for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
+
 					 Interval* ac = planning->array_subjects[a]->slots[c];
 					 Interval* bd = planning->array_subjects[b]->slots[d];
-				 	 if(ac->end <= bd->start) continue;
-					 if(bd->end <= ac->start) continue;
+
+					 	int intpart = 0;
+						intpart = (int)ac->end;
+						double acEnd = ac->end - intpart;
+						acEnd *= 100000;
+
+						intpart = (int)ac->start;
+						double acStart = ac->start - intpart;	
+						acStart *= 100000;
+						
+						intpart = (int)bd->end;
+						double bdEnd = bd->end - intpart;	
+						bdEnd *= 100000;
+
+						intpart = (int)bd->start;
+						double bdStart = bd->start - intpart;
+						bdStart *= 100000;		
+
+						if(acEnd <= bdStart) {
+							continue ;
+						}
+
+						if(bdEnd <= acStart) {
+							continue ;
+						}
+
 					 ++result;
 				}
 			}
 		}
 	}
+
 	return result;
 }
 
@@ -212,6 +253,8 @@ char** str_split(char* a_str, const char a_delim) {
     return result;
 }
 
+
+
 void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solution) {
 
 	int i = 0;
@@ -241,7 +284,8 @@ void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solu
 						previousName = planning->array_subjects[j]->subjectName;
 					}
 
-					if(nb < subject->nbCopy) {
+					//if(nb < subject->nbCopy) 
+					{
 						fprintf(output,"%20s : ",subject->subjectName);
 						displayInterval(output,subject->slots[k]);
 						fprintf(output,"\n");
@@ -302,13 +346,57 @@ unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
 	return result;
 }	
 
-inline void writeOrNotConstraint(FILE* file, Interval* ac, Interval* bd) {
+void writeOrNotConstraint(FILE* file, Interval* ac, Interval* bd) {
 
-	if(ac->end <= bd->start || bd->end <= ac->start) return ;
+	int intpart = 0;
+
+	intpart = (int)ac->end;
+	double acEnd = ac->end - intpart;
+	acEnd *= 100000;
+
+	intpart = (int)ac->start;
+	double acStart = ac->start - intpart;	
+	acStart *= 100000;
+	
+	intpart = (int)bd->end;
+	double bdEnd = bd->end - intpart;	
+	bdEnd *= 100000;
+
+	intpart = (int)bd->start;
+	double bdStart = bd->start - intpart;
+	bdStart *= 100000;	
+
+	if(acEnd <= bdStart) {
+		return ;
+	}
+
+	if(bdEnd <= acStart) {
+		return ;
+	}
 
 	fprintf(file,"-%d -%d 0\n",ac->id,bd->id);
 
 } 
+
+inline void writeOneIntervalOnlyByClass(FILE* file, Planning* planning) {
+
+	unsigned int i = 0;
+	unsigned int j = 0;
+	unsigned int k = 0;
+
+	for(i = 0; i < planning->nbSubjects; ++i) {
+		for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
+			for(k = j+1; k < planning->array_subjects[i]->nbSlots; ++k) {
+
+				Interval* ij = planning->array_subjects[i]->slots[j];
+				Interval* ik = planning->array_subjects[i]->slots[k];
+				
+				fprintf(file,"-%d -%d 0\n",ij->id,ik->id);
+			}
+		}
+	}
+
+}
 
 inline void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
 
@@ -323,6 +411,7 @@ inline void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
 	for(a = 0; a < planning->nbSubjects; ++a) {
 		for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
 			for(b = a+1; b < planning->nbSubjects; ++b) {
+
 				for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
 
 					writeOrNotConstraint(file, planning->array_subjects[a]->slots[c],planning->array_subjects[b]->slots[d]);
@@ -340,11 +429,17 @@ char* createCNF(Planning* planning) {
 
 	FILE* file = fopen(filename,"w+");
 
-		fprintf(file,"p cnf %d %d\n",getNbVariables(planning),planning->nbSubjects + getNbConstraint(planning));
+	unsigned int nbVariables  = getNbVariables(planning);
+	unsigned int nbConstraint = planning->nbSubjects + getNbConstraint(planning);
 
-		writeOneIntervalForEachClassSatisfied(file,planning);
+	printf("\n[INFO] - We created a CNF file of this schedule problem with %d variables and %d clauses.",nbVariables,nbConstraint);
+	fprintf(file,"p cnf %d %d\n",nbVariables,nbConstraint);
 
-		writeOneIntervalDontOverlap(file,planning);
+	writeOneIntervalForEachClassSatisfied(file,planning);
+
+	writeOneIntervalOnlyByClass(file,planning);
+
+	writeOneIntervalDontOverlap(file,planning);
 
 	fclose(file);
 

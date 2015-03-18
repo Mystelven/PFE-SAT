@@ -22,6 +22,7 @@
 ##############################################################################*/
 
 #ifndef CNF_UTILS_H
+#define CNF_UTILS_H
 
 #include "planning.h"
 
