@@ -21,8 +21,8 @@
 #
 ##############################################################################*/
 
-#ifndef PLANNING_H
-#define PLANNING_H
+#ifndef TEACHER_H
+#define TEACHER_H
 
 #include "subject.h"
 
@@ -30,9 +30,9 @@
  * This structure represents the final object, that will be written in CNF file.
  * It contains an array of subject (where each of them has an array of intervals).
  */
-typedef struct struct_planning {
+typedef struct struct_teacher {
 
-	/** The structure needs an array of Subject. */
+	/** The structure needs an array of possible-taught Subject. */
 	Subject** array_subjects;
 
 	/* We need to know how many subjects are inside. */
@@ -41,35 +41,13 @@ typedef struct struct_planning {
 	/** We need also the maximum space inside the array (to make it bigger if needed) */
 	unsigned long sizeArray;
 
-} Planning;
+} Teacher;
 
 
 /**
  * This function is the constructor of our structure.
  * @return a pointer to our new structure.
  */
-Planning* createPlanning();
-
-/**
- * This function is the toString() of our structure
- * @param output the stream where we want to print the information.
- * @param planning the Planning that we want to display.
- */
-void displayPlanning(FILE* output, Planning* planning);
-
-/**
- * This function is to add an Subject inside the Subject's array.
- * @param planning the Planning who will have a new subject.
- * @param subject, the subject that we want to insert.
- */
-void addSubject(Planning* planning, Subject* subject);
-
-
-/**
- * This function is the destructor of our structure.
- * We need the pointer on our Planning to destroy it.
- * @param planning the Planning that we want to destroy.
- */
-void deletePlanning(Planning* planning);
+Teacher* createTeacher();
 
 #endif

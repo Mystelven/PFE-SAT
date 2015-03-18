@@ -35,8 +35,8 @@ FLAGS4   = -Wswitch-enum -Wundef -Winline -std=c99 $(OPTI)
 FLAGS 	 = $(FLAGS1) $(FLAGS2) $(FLAGS3) $(FLAGS4)
 
 
-all: cnfUtils.o generator
-	$(COMPILER) $(OPTI) $(FLAGS) -o $(EXECUTABLE) cnfUtils.o planning.o subject.o interval.o timetable.c
+all: htmlSolutionGenerator.o cnfUtils.o teacher.o generator
+	$(COMPILER) $(OPTI) $(FLAGS) -o $(EXECUTABLE) cnfUtils.o planning.o subject.o interval.o htmlSolutionGenerator.o timetable.c
 
 generator:
 	$(COMPILER) $(OPTI) $(FLAGS) -o generator generator.c	
@@ -53,8 +53,18 @@ subject.o: interval.o
 interval.o: 
 	$(COMPILER) -c $(FLAGS) interval.c
 
+teacher.o: subject.o
+	$(COMPILER) -c $(FLAGS) teacher.c	
+
+htmlSolutionGenerator.o:
+	$(COMPILER) -c $(FLAGS) htmlSolutionGenerator.c		
+
 clean:
 	rm *.o
+	rm *.html
+	rm *.out 
+	rm *.cnf
+	rm *.input
 	rm generator
 
 ##############################################################################
