@@ -61,6 +61,10 @@ htmlSolutionGenerator.o:
 
 clean:
 	rm *.o
+	rm *.html
+	rm *.out 
+	rm *.cnf
+	rm *.input
 	rm generator
 
 ##############################################################################

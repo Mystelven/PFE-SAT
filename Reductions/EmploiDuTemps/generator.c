@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 int main(int argc, char ** argv) {
 
@@ -27,16 +27,16 @@ int main(int argc, char ** argv) {
 		coursesByTeacher[i] = (int*)malloc(sizeof(int)*(nbCourses+1));	
 	}
 	
-	courses[0] = "Java ";
-	nbByCourse[0] = 6;
+	courses[0] = strdup("Java ");
+	nbByCourse[0] = 3;
 
-	courses[1] = "C++  ";
-	nbByCourse[1] = 6;
+	courses[1] = strdup("C++ ");
+	nbByCourse[1] = 4;
 
-	courses[2] = "C#   ";
+	courses[2] = strdup("C# ");
 	nbByCourse[2] = 4;
 
-	courses[3] = "PHP  ";
+	courses[3] = strdup("PHP ");
 	nbByCourse[3] = 4;	
 
 	for(int i = 0; i < (int)nbTeachersMax; i++) {

@@ -1,6 +1,8 @@
 #include "htmlSolutionGenerator.h"
 
-const char* headerHTML = "<style type=\"text/css\">.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc; margin:auto;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;} .tg .tg-59zk{font-weight:bold;font-family:\"Lucida Console\", Monaco, monospace !important;;background-color:#efefef;text-align:center} .tg .tg-xahr{font-family:\"Lucida Console\", Monaco, monospace !important;;background-color:#efefef;text-align:center} .tg .tg-slkj{font-family:\"Lucida Console\", Monaco, monospace !important;;text-align:center} .tg .tg-kkwu{font-weight:bold;font-family:\"Lucida Console\", Monaco, monospace !important;;text-align:center} </style> <table class=\"tg\"><tr> <th class=\"tg-kkwu\">-----------</th> <th class=\"tg-kkwu\">Monday</th> <th class=\"tg-kkwu\">Tuesday</th> <th class=\"tg-kkwu\">Wednesday</th> <th class=\"tg-kkwu\">Thursday</th> <th class=\"tg-kkwu\">Friday</th> </tr>";
+#include <string.h>
+
+const char* headerHTML = "<style type=\"text/css\">body { margin:5px; }.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc; margin:auto;} .tg td{ width: 140px; font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;} .tg .tg-59zk{font-weight:bold;font-family:\"Lucida Console\", Monaco, monospace !important;;background-color:#efefef;text-align:center} .tg .tg-xahr{font-family:\"Lucida Console\", Monaco, monospace !important;;background-color:#efefef;text-align:center} .tg .tg-slkj{font-family:\"Lucida Console\", Monaco, monospace !important;;text-align:center} .tg .tg-kkwu{font-weight:bold;font-family:\"Lucida Console\", Monaco, monospace !important;;text-align:center} </style> <table class=\"tg\"><tr> <th class=\"tg-kkwu\">-----------</th> <th class=\"tg-kkwu\">Monday</th> <th class=\"tg-kkwu\">Tuesday</th> <th class=\"tg-kkwu\">Wednesday</th> <th class=\"tg-kkwu\">Thursday</th> <th class=\"tg-kkwu\">Friday</th> </tr>";
 
 const char* footerHTML = "</table>";
 
@@ -45,23 +47,17 @@ char* getDisplaySubjectAndRoom(Planning* planning, unsigned int* solution, int l
 					
 
 					start  = (int)start;
-
-
-					
-					if((start - correspondances[colonne][ligne]) != 0) {
+			
+					if( ((int)(start - correspondances[colonne][ligne])) != 0) {
 						
 						continue;
 
 					} else {
+
 						sprintf(tmp,"Teacher : %5d <br /><br /><b>%10s</b> <br /><br />Room &nbsp;: %3.0f",intpart,subject->subjectName,salle);						
 						result = strcat(result,tmp);
-					
 					}
 
-
-					
-					
-					
 					result = strcat(result,"<br /><br />------------<br /><br />");
 				}
 			}
@@ -75,7 +71,7 @@ char* getDisplaySubjectAndRoom(Planning* planning, unsigned int* solution, int l
 
 char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime) {
 
-	char* filename = "output.html";
+	char* filename = (char*)strdup("output.html");
 	FILE* file 	   = fopen(filename,"w+");
 
 	fprintf(file,"%s",headerHTML);
@@ -83,7 +79,9 @@ char* createHTMLplan(Planning* planning, unsigned int* solution,double generatio
 	for(int i = 0; i < 5 ; i++) {
 
 		if(i == 2) {
-			fprintf(file,"%s","<tr><td class=\"tg-xahr\" colspan=\"6\">------------ MIAM -----------</td></tr>");
+			fprintf(file,"%s","<tr><td class=\"tg-xahr\" colspan=\"6\">");
+			fprintf(file,"%s","------------------------ MIAM ------------------------");
+			fprintf(file,"%s"," </td></tr>");
 			continue;
 		}
 
@@ -158,7 +156,7 @@ char* createHTMLplan(Planning* planning, unsigned int* solution,double generatio
   	}
 
   	fprintf(file,"<h1 style=\"text-align: center;\" > Generation of the Class Scheduling by Valentin Montmirail</h1>");
-  	fprintf(file,"<h2 style=\"text-align: center;\" > Creating file + Solving + Generation HTML time : %5.5f ms</h2>",generationTime);
+  	fprintf(file,"<h2 style=\"text-align: center;\" > Creating file + Solving + Generation HTML time : %8.0f ms</h2>",generationTime);
 	fprintf(file,"%s",footerHTML);
 
 	fclose(file);
