@@ -3,6 +3,6 @@
 
 #include "cnfUtils.h"
 
-char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime);
+char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime,char* input);
 
 #endif

@@ -69,7 +69,7 @@ char* getDisplaySubjectAndRoom(Planning* planning, unsigned int* solution, int l
 	return result;
 }
 
-char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime) {
+char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime, char* input) {
 
 	char* filename = (char*)strdup("output.html");
 	FILE* file 	   = fopen(filename,"w+");
@@ -155,7 +155,19 @@ char* createHTMLplan(Planning* planning, unsigned int* solution,double generatio
     	fprintf(file,"%s","</tr>");
   	}
 
-  	fprintf(file,"<h1 style=\"text-align: center;\" > Generation of the Class Scheduling by Valentin Montmirail</h1>");
+  	fprintf(file,"%s","<div style=\"float:left;\" ><ul>");
+
+  	char buf[1024];
+  	FILE* fileInput = fopen(input,"r+");
+  	while(fgets(buf,sizeof(buf),fileInput)) {
+  		if(buf[0] == 'c')
+  			fprintf(file,"<li>%s</li>",buf+1);
+  	}
+  	fclose(fileInput);
+
+  	fprintf(file,"%s","</ul></div>");
+
+  	fprintf(file,"<h1 style=\"text-align: center;\" > Generation of the Class Scheduling by <a href=\"mailto:valentin.montmirail@gmail.com\">Valentin Montmirail</a></h1>");
   	fprintf(file,"<h2 style=\"text-align: center;\" > Creating file + Solving + Generation HTML time : %8.0f ms</h2>",generationTime);
 	fprintf(file,"%s",footerHTML);
 

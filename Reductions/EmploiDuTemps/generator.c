@@ -30,13 +30,13 @@ int main(int argc, char ** argv) {
 	courses[0] = strdup("Java ");
 	nbByCourse[0] = 3;
 
-	courses[1] = strdup("C++ ");
+	courses[1] = strdup("C++  ");
 	nbByCourse[1] = 4;
 
-	courses[2] = strdup("C# ");
+	courses[2] = strdup("C#   ");
 	nbByCourse[2] = 4;
 
-	courses[3] = strdup("PHP ");
+	courses[3] = strdup("PHP  ");
 	nbByCourse[3] = 4;	
 
 	for(int i = 0; i < (int)nbTeachersMax; i++) {
@@ -53,8 +53,9 @@ int main(int argc, char ** argv) {
 	fprintf(output,"c We authorized %lu rooms.\n",nbSallesMax);
 	fprintf(output,"c We have %lu teachers.\n",nbTeachersMax);
 	fprintf(output,"c We have week of %lu days.\n",nbDaysAWeek);
+	
 	for(unsigned long i = 0; i < nbCourses; i++) {
-		fprintf(output,"c %s with %u * 2h\n",courses[i],nbByCourse[i]);
+		fprintf(output,"c %10s with %u * 2h\n",courses[i],nbByCourse[i]);
 		result += nbByCourse[i];
 	}
 

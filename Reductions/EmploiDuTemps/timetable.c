@@ -29,6 +29,7 @@
 int main(int argc, char* argv[]) {
 
 	char* filename;
+	char* output;
 	
 	char* solver;
 
@@ -66,18 +67,17 @@ int main(int argc, char* argv[]) {
 
 		fprintf(log,"[INFO] - We will now create our CNF file.");
 		
-		filename = createCNF(planning);
+		output = createCNF(planning);
 
-		fprintf(log,"[INFO] - The output file is now : %s\n",filename);
+		fprintf(log,"[INFO] - The output file is now : %s\n",output);
 		fprintf(log,"[INFO] - We will now try to solve the CNF file\n");
 
 			strcat(cmd,solver);
 			strcat(cmd," ");
-			strcat(cmd,filename);
+			strcat(cmd,output);
 			strcat(cmd," > solution.out");
 
 		fprintf(log,"[INFO] - commande : %s",cmd);
-
 
 		system(cmd);
 
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
 
 	double generationTime = ((end-begin)/(CLOCKS_PER_SEC/1000));
 	
-	char* html = createHTMLplan(planning, solution,generationTime);
+	char* html = createHTMLplan(planning, solution,generationTime,filename);
 
 	fprintf(log,"[INFO] - The HTML plan is now inside the file : %s\n",html);
 
