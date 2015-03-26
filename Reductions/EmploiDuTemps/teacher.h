@@ -33,10 +33,10 @@
 typedef struct struct_teacher {
 
 	/** The structure needs an array of possible-taught Subject. */
-	Subject** array_subjects;
+	Interval** array_intervalPossible;
 
 	/* We need to know how many subjects are inside. */
-	unsigned int nbSubjects;
+	unsigned int nbInterval;
 
 	/** We need also the maximum space inside the array (to make it bigger if needed) */
 	unsigned long sizeArray;
@@ -49,5 +49,7 @@ typedef struct struct_teacher {
  * @return a pointer to our new structure.
  */
 Teacher* createTeacher();
+
+void addIntervalToTeacher(Teacher* teacher, Interval* interval);
 
 #endif

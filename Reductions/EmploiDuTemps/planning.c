@@ -31,7 +31,7 @@ Planning* createPlanning() {
 
 	Planning* result = (Planning*)malloc(sizeof(Planning) * 1);
 
-	result->sizeArray = 20;
+	result->sizeArray = 50;
 
 	result->array_subjects =(Subject**)malloc(sizeof(Subject*)*result->sizeArray);
 
@@ -90,3 +90,50 @@ void deletePlanning(Planning* planning) {
 	free(planning);
 }
 
+void initializeAllTeachers(Planning * planning) {
+
+	unsigned int a = 0;
+	unsigned int c = 0;
+
+	printf("[INFO] - We will try to initialize %lu teachers\n", planning->nbTeachers);
+	printf("[INFO] - We have %d subjects \n", planning->nbSubjects);
+
+	for(unsigned int i = 0; i < planning->nbTeachers; i++) {
+
+		planning->array_teachers[i] = createTeacher();
+
+		printf("[INFO] - We initialize the teacher number %d\n",(i+1));
+
+		for(a = 0; a < planning->nbSubjects; ++a) {
+			for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
+				
+				unsigned int intpart = 0;
+				intpart = (unsigned int)planning->array_subjects[a]->slots[c]->start;
+
+
+				if(intpart == (i+1)) {
+					addIntervalToTeacher(planning->array_teachers[i],planning->array_subjects[a]->slots[c]);			
+				}
+			}
+		}
+		
+	}
+}
+
+
+void cleaningTeacherNumberOfIntervals(Planning* planning) {
+
+	unsigned int a = 0;
+	unsigned int c = 0;
+
+	for(a = 0; a < planning->nbSubjects; ++a) {
+		for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
+				
+			unsigned int intpart = 0;
+			intpart = (unsigned int)planning->array_subjects[a]->slots[c]->start;
+
+			planning->array_subjects[a]->slots[c]->start -= intpart;
+			planning->array_subjects[a]->slots[c]->end   -= intpart;			
+		}
+	}
+}

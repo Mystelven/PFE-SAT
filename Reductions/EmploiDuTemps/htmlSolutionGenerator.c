@@ -54,7 +54,7 @@ char* getDisplaySubjectAndRoom(Planning* planning, unsigned int* solution, int l
 
 					} else {
 
-						sprintf(tmp,"Teacher : %5d <br /><br /><b>%10s</b> <br /><br />Room &nbsp;: %3.0f",intpart,subject->subjectName,salle);						
+						sprintf(tmp,"Teacher : %5d <br /><br /><b>%10s</b> <br /><br />Room &nbsp;: %5d",intpart,subject->subjectName,intpart);						
 						result = strcat(result,tmp);
 					}
 
@@ -69,10 +69,12 @@ char* getDisplaySubjectAndRoom(Planning* planning, unsigned int* solution, int l
 	return result;
 }
 
-char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime) {
+char* createHTMLplan(Planning* planning, unsigned int* solution,double generationTime, char* input) {
 
 	char* filename = (char*)strdup("output.html");
 	FILE* file 	   = fopen(filename,"w+");
+
+	int result = isSolutionExisting(planning,solution);
 
 	fprintf(file,"%s",headerHTML);
 
@@ -155,8 +157,24 @@ char* createHTMLplan(Planning* planning, unsigned int* solution,double generatio
     	fprintf(file,"%s","</tr>");
   	}
 
-  	fprintf(file,"<h1 style=\"text-align: center;\" > Generation of the Class Scheduling by Valentin Montmirail</h1>");
+  	fprintf(file,"%s","<div style=\"float:left;\" ><ul>");
+
+  	char buf[1024];
+  	FILE* fileInput = fopen(input,"r+");
+  	while(fgets(buf,sizeof(buf),fileInput)) {
+  		if(buf[0] == 'c')
+  			fprintf(file,"<li>%s</li>",buf+1);
+  	}
+  	fclose(fileInput);
+
+  	fprintf(file,"%s","</ul></div>");
+
+
+  	fprintf(file,"<h1 style=\"text-align: center;\" > Generation of the Class Scheduling by <a href=\"mailto:valentin.montmirail@gmail.com\">Valentin Montmirail</a></h1>");
   	fprintf(file,"<h2 style=\"text-align: center;\" > Creating file + Solving + Generation HTML time : %8.0f ms</h2>",generationTime);
+
+	if(result == 0) fprintf(file,"<h3 style=\"text-align: center; color:red\"> This problem has been proved without any solution.</h3>");
+	
 	fprintf(file,"%s",footerHTML);
 
 	fclose(file);

@@ -21,24 +21,28 @@
 #
 ##############################################################################*/
 
-
-#include "teacher.h"
 #include "htmlSolutionGenerator.h"
 #include <time.h>
 
 int main(int argc, char* argv[]) {
 
 	char* filename;
-	
-	char* solver;
+	char*   output;
+	char*   solver;
+	char* 	  html;
 
 	char cmd[255];
+
+	Planning * planning;
+
+	double generationTime;
 
 	clock_t begin;
 	clock_t end;
 
-	/* We will log a lot of informations in this file. */
-	FILE* log = stdout; // fopen("display.log","w+");
+	/* We will log a lot of informations in this output. */
+	FILE* log = stdout; 
+		  //log = fopen("display.log","w+");
 
 	if(argc > 2) {
 		
@@ -62,22 +66,23 @@ int main(int argc, char* argv[]) {
 
 	begin = clock();
 
-		Planning * planning = readInputFile(filename);
+		planning = readInputFile(filename);
+
+		initializeAllTeachers(planning);
 
 		fprintf(log,"[INFO] - We will now create our CNF file.");
 		
-		filename = createCNF(planning);
+		output = createCNF(planning);
 
-		fprintf(log,"[INFO] - The output file is now : %s\n",filename);
+		fprintf(log,"[INFO] - The output file is now : %s\n",output);
 		fprintf(log,"[INFO] - We will now try to solve the CNF file\n");
 
 			strcat(cmd,solver);
 			strcat(cmd," ");
-			strcat(cmd,filename);
+			strcat(cmd,output);
 			strcat(cmd," > solution.out");
 
 		fprintf(log,"[INFO] - commande : %s",cmd);
-
 
 		system(cmd);
 
@@ -88,9 +93,9 @@ int main(int argc, char* argv[]) {
 	/* We display the solution on the standard output stream. */
 	displaySolutionSchedule(stdout,planning,solution);
 
-	double generationTime = ((end-begin)/(CLOCKS_PER_SEC/1000));
+	generationTime = ((end-begin)/(CLOCKS_PER_SEC/1000));
 	
-	char* html = createHTMLplan(planning, solution,generationTime);
+	html = createHTMLplan(planning, solution,generationTime,filename);
 
 	fprintf(log,"[INFO] - The HTML plan is now inside the file : %s\n",html);
 

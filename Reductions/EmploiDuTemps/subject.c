@@ -68,7 +68,7 @@ Subject* createSubject(const char* name,unsigned long copy) {
 	result->nbCopy = copy;
 
 	/* We have 4 slots a day during 5 days and in average, 3 rooms . */
-	result->slots = (Interval**) malloc(sizeof(Interval*) * (4 * 5 * 15));
+	result->slots = (Interval**) malloc(sizeof(Interval*) * (4 * 5 * 300));
 
 	/* for now, no intervals for this subject */
 	result->nbSlots = 0;
@@ -107,6 +107,7 @@ void deleteSubject(Subject* subject) {
  * @param interval, the interval that we want to copy.
  */
 void addInterval(Subject* subject, Interval* interval) {
+	
 
 	subject->slots[subject->nbSlots] = copyInterval(interval);
 

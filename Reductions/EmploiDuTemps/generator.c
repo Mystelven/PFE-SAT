@@ -20,7 +20,7 @@ int main(int argc, char ** argv) {
 	unsigned long nbBornesADay 	= 6; // 6 for all day, 3 for only morning ;)
 	unsigned long result 	   	= 0;
 
-	unsigned long nbTeachersMax = 3;
+	unsigned long nbTeachersMax = 2;
 	int** coursesByTeacher  = (int**)malloc(sizeof(int*)*100);
 
 	for(unsigned long i = 0; i < 100; i++) {
@@ -28,37 +28,77 @@ int main(int argc, char ** argv) {
 	}
 	
 	courses[0] = strdup("Java ");
-	nbByCourse[0] = 3;
+	nbByCourse[0] = 11;
 
-	courses[1] = strdup("C++ ");
-	nbByCourse[1] = 4;
+	courses[1] = strdup("C++  ");
+	nbByCourse[1] = 5;
 
-	courses[2] = strdup("C# ");
-	nbByCourse[2] = 4;
+	courses[2] = strdup("C#   ");
+	nbByCourse[2] = 8;
 
-	courses[3] = strdup("PHP ");
-	nbByCourse[3] = 4;	
+	courses[3] = strdup("PHP  ");
+	nbByCourse[3] = 8;	
 
 	for(int i = 0; i < (int)nbTeachersMax; i++) {
 
-		coursesByTeacher[i][0] =   0; 
-		coursesByTeacher[i][1] =   1; 
-		coursesByTeacher[i][2] =   2;
-		coursesByTeacher[i][3] =   3; 
-		coursesByTeacher[i][4] =   -1; 
+			coursesByTeacher[i][0] =    0;
+			coursesByTeacher[i][1] =    1; 
+			coursesByTeacher[i][2] =    2;
+			coursesByTeacher[i][3] =    3; 
+			coursesByTeacher[i][4] =   -1;
+
+		if(i != 1) { 
+			
+			
+			if(i != 2) {
+				coursesByTeacher[i][0] =    0;
+				coursesByTeacher[i][1] =    1; 
+				coursesByTeacher[i][2] =    2;
+				coursesByTeacher[i][3] =    3; 
+				coursesByTeacher[i][4] =   -1; 
+
+			} else {
+				coursesByTeacher[i][0] =    0; 
+				coursesByTeacher[i][1] =    2;
+				coursesByTeacher[i][2] =   -1; 
+			}
+
+		} else {
+			coursesByTeacher[i][0] =   0;
+			 
+			coursesByTeacher[i][2] =   -1; 
+		}
 	}
+
 
 
 	
 	fprintf(output,"c We authorized %lu rooms.\n",nbSallesMax);
 	fprintf(output,"c We have %lu teachers.\n",nbTeachersMax);
 	fprintf(output,"c We have week of %lu days.\n",nbDaysAWeek);
+	
 	for(unsigned long i = 0; i < nbCourses; i++) {
-		fprintf(output,"c %s with %u * 2h\n",courses[i],nbByCourse[i]);
+		fprintf(output,"c %10s with %u * 2h\n",courses[i],nbByCourse[i]);
 		result += nbByCourse[i];
 	}
 
-	fprintf(output,"p %4lu %4lu \n",result,nbSallesMax);
+	fprintf(output,"c \n");
+
+	for(int i = 0 ; i < (int)nbTeachersMax; i++) {
+
+		fprintf(output,"c Teacher n° %d can teach : [",(i+1));
+		
+		for(int j = 0; j < (int)nbCourses+1; j++) {
+
+			if(coursesByTeacher[i][j] == -1) break;
+
+			fprintf(output,"%s ",courses[coursesByTeacher[i][j]]);
+		}
+
+		fprintf(output,"]\n");
+	}
+
+	fprintf(output,"p %lu %lu %lu \n",result,nbSallesMax,nbTeachersMax);
 
 	int	correspondances[5][6] = {
 								{8,10,12,14,16,18} , 
@@ -92,8 +132,8 @@ for(unsigned long c = 0; c < nbCourses; c++) {
 					
 						/* On travaille pas entre 12 et 14h*/
 						if(j != 2) {
-							double x = (t+1)+(n/100000.0)+(correspondances[i][j  ]/1000.0);
-							double y = (t+1)+(n/100000.0)+(correspondances[i][j+1]/1000.0);
+							double x = (t+1)+(correspondances[i][j  ]/1000.0);
+							double y = (t+1)+(correspondances[i][j+1]/1000.0);
 							fprintf(output,"[%lf-%lf] ",x,y);
 						}
 					}

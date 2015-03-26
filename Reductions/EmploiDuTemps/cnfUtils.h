@@ -43,4 +43,6 @@ void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solu
 
 inline unsigned int getNbVariables(Planning* planning);
 
+int isSolutionExisting(Planning* planning, unsigned int* solution);
+
 #endif 
