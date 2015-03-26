@@ -24,7 +24,7 @@
 #ifndef PLANNING_H
 #define PLANNING_H
 
-#include "subject.h"
+#include "teacher.h"
 
 /**
  * This structure represents the final object, that will be written in CNF file.
@@ -40,6 +40,12 @@ typedef struct struct_planning {
 
 	/** We need also the maximum space inside the array (to make it bigger if needed) */
 	unsigned long sizeArray;
+
+	/** The structure needs an array of Teachers. */
+	Teacher** array_teachers;
+
+	/** We need to know how many teachers we have. */
+	unsigned long nbTeachers;
 
 } Planning;
 
@@ -71,5 +77,10 @@ void addSubject(Planning* planning, Subject* subject);
  * @param planning the Planning that we want to destroy.
  */
 void deletePlanning(Planning* planning);
+
+
+void initializeAllTeachers(Planning * planning);
+
+void cleaningTeacherNumberOfIntervals(Planning* planning);
 
 #endif
