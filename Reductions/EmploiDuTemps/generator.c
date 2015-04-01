@@ -26,51 +26,31 @@ int main(int argc, char ** argv) {
 	for(unsigned long i = 0; i < 100; i++) {
 		coursesByTeacher[i] = (int*)malloc(sizeof(int)*(nbCourses+1));	
 	}
+
+	/* -------------------------------------------------- */
 	
-	courses[0] = strdup("Java ");
-	nbByCourse[0] = 11;
+		courses[0] = strdup("Java_TD_");
+		nbByCourse[0] = 6;
 
-	courses[1] = strdup("C++  ");
-	nbByCourse[1] = 5;
+		courses[1] = strdup("C#_CM");
+		nbByCourse[1] = 8;
 
-	courses[2] = strdup("C#   ");
-	nbByCourse[2] = 8;
+		courses[2] = strdup("C++_TD_");
+		nbByCourse[2] = 6;	
 
-	courses[3] = strdup("PHP  ");
-	nbByCourse[3] = 8;	
+		courses[3] = strdup("PHP_CM");
+		nbByCourse[3] = 6;
+
+
+	/* -------------------------------------------------- */
 
 	for(int i = 0; i < (int)nbTeachersMax; i++) {
+		for(int j = 0; j < (int) nbCourses; j++) {
 
-			coursesByTeacher[i][0] =    0;
-			coursesByTeacher[i][1] =    1; 
-			coursesByTeacher[i][2] =    2;
-			coursesByTeacher[i][3] =    3; 
-			coursesByTeacher[i][4] =   -1;
-
-		if(i != 1) { 
-			
-			
-			if(i != 2) {
-				coursesByTeacher[i][0] =    0;
-				coursesByTeacher[i][1] =    1; 
-				coursesByTeacher[i][2] =    2;
-				coursesByTeacher[i][3] =    3; 
-				coursesByTeacher[i][4] =   -1; 
-
-			} else {
-				coursesByTeacher[i][0] =    0; 
-				coursesByTeacher[i][1] =    2;
-				coursesByTeacher[i][2] =   -1; 
-			}
-
-		} else {
-			coursesByTeacher[i][0] =   0;
-			 
-			coursesByTeacher[i][2] =   -1; 
+			coursesByTeacher[i][j] =    j;
 		}
+		coursesByTeacher[i][nbCourses] = -1;
 	}
-
-
 
 	
 	fprintf(output,"c We authorized %lu rooms.\n",nbSallesMax);
@@ -111,7 +91,7 @@ int main(int argc, char ** argv) {
 
 for(unsigned long c = 0; c < nbCourses; c++) {
 	
-	fprintf(output,"%s %4u ",courses[c],nbByCourse[c]);							
+	fprintf(output,"%s %u ",courses[c],nbByCourse[c]);							
 
 	for(unsigned long t = 0 ; t < nbTeachersMax; t++) {
 		

@@ -155,7 +155,7 @@ int main(int argc,char *argv[]) {
 	#endif
 
 	#ifndef BENCHMARK
-		pthread_create(&display,NULL,threadDisplay,NULL);
+	//	pthread_create(&display,NULL,threadDisplay,NULL);
 	#endif
 
 	/* a signal should stop the program and close everything already open. */
