@@ -45,4 +45,8 @@ inline unsigned int getNbVariables(Planning* planning);
 
 int isSolutionExisting(Planning* planning, unsigned int* solution);
 
+unsigned int getNbConstraint(Planning* planning);
+
+void writeOneIntervalDontOverlap(FILE* file, Planning* planning);
+
 #endif 

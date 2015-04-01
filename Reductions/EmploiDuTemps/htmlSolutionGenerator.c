@@ -1,6 +1,7 @@
 #include "htmlSolutionGenerator.h"
 
 #include <string.h>
+#include <stdlib.h>
 
 const char* headerHTML = "<style type=\"text/css\">body { margin:5px; }.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc; margin:auto;} .tg td{ width: 140px; font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;} .tg .tg-59zk{font-weight:bold;font-family:\"Lucida Console\", Monaco, monospace !important;;background-color:#efefef;text-align:center} .tg .tg-xahr{font-family:\"Lucida Console\", Monaco, monospace !important;;background-color:#efefef;text-align:center} .tg .tg-slkj{font-family:\"Lucida Console\", Monaco, monospace !important;;text-align:center} .tg .tg-kkwu{font-weight:bold;font-family:\"Lucida Console\", Monaco, monospace !important;;text-align:center} </style> <table class=\"tg\"><tr> <th class=\"tg-kkwu\">-----------</th> <th class=\"tg-kkwu\">Monday</th> <th class=\"tg-kkwu\">Tuesday</th> <th class=\"tg-kkwu\">Wednesday</th> <th class=\"tg-kkwu\">Thursday</th> <th class=\"tg-kkwu\">Friday</th> </tr>";
 
@@ -53,8 +54,24 @@ char* getDisplaySubjectAndRoom(Planning* planning, unsigned int* solution, int l
 						continue;
 
 					} else {
+						if(strstr(subject->subjectName,"_CM") == NULL) {
+							char src[2000];
+							char grp[256];
+							strcpy(src,subject->subjectName);
+							grp[0] = 'g';
+							grp[1] = 'r';
+							grp[2] = 'p';
+							grp[3] = ' ';
+							sprintf(&grp[4],"%d",intpart);
+							grp[5] = '\0';
+							strcat(src,grp);
+							sprintf(tmp,"Teacher : %5d <br /><br /><b>%10s</b> <br /><br />Room &nbsp;: %5d",intpart,src,intpart);						
 
-						sprintf(tmp,"Teacher : %5d <br /><br /><b>%10s</b> <br /><br />Room &nbsp;: %5d",intpart,subject->subjectName,intpart);						
+						} else {
+
+							sprintf(tmp,"Teacher : %5d <br /><br /><b>%10s</b> <br /><br />Room &nbsp;: %5d",intpart,subject->subjectName,intpart);						
+						}
+
 						result = strcat(result,tmp);
 					}
 

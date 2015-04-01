@@ -17,7 +17,7 @@ echo "[INFO] - ./generator lol2.input";
 echo "[INFO] - Then we solve it and create our HTML result"
 echo "[INFO] - time ./timetable lol2.input ../../satyrSAT";
 
-time ./timetable lol2.input ../../satyrSAT
+time ./timetable lol2.input ../../glucose
 
 echo " ";
 echo "[INFO] - We finally open the result in a browser"
