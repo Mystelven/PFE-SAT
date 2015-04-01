@@ -3,8 +3,8 @@
 /*-------------------------------------------------------------------------*/
 /**
   @file     gnuplot_i.c
-  @author   N. Devillard
-  @date Sep 1998
+  @author   N. Devillard && Valentin Montmirail
+  @date Sep 1998 || March 2015.
   @version  $Revision: 2.10 $
   @brief    C interface to gnuplot.
 
