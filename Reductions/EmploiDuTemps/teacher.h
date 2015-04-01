@@ -45,11 +45,18 @@ typedef struct struct_teacher {
 
 
 /**
- * This function is the constructor of our structure.
+ * createTeacher : This function is the constructor of our structure.
  * @return a pointer to our new structure.
  */
 Teacher* createTeacher();
 
+
+/**
+ * addIntervalToTeacher : this function allow to add the reference of an interval to a teacher.
+ * like this, it means that the teacher is able to teach during this interval. 
+ * @param teacher The teacher that is able to teach something at one time.
+ * @param interval the interval authorized for the teacher.
+ */
 void addIntervalToTeacher(Teacher* teacher, Interval* interval);
 
 #endif

@@ -25,21 +25,6 @@
 #include <assert.h>
 #include <stdlib.h>
 
-
-inline unsigned int getNbVariables(Planning* planning) {
-
-	unsigned long i = 0;
-	unsigned int result = 0;
-	for(i = 0; i < planning->nbSubjects ; i++) {
-		result += planning->array_subjects[i]->nbSlots;
-	}	
-
-	return result;
-}
-
-
-
-
 /**
  * readInputFile : This function will read the formalized input file
  * and will create a Planning structure with everything inside.
@@ -145,19 +130,108 @@ Planning * readInputFile(const char* filename) {
 	return planning;
 }
 
-inline void writeOneIntervalForEachClassSatisfied(FILE* file, Planning* planning) {
+/**
+ * createCNF : This function will create a CNF file according to a Planning.
+ * @param planning the planning that we want to solve. 
+ * @return the filename of the CNF file created.
+ */
+char* createCNF(Planning* planning) {
 
-	unsigned int i = 0;
-	unsigned int j = 0;
+	const char* filename = "planning.cnf";
 
-	for(i = 0; i < planning->nbSubjects; ++i) {
-		for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
-			fprintf(file,"%d ",planning->array_subjects[i]->slots[j]->id);
-		}
-		fprintf(file,"0\n");
-	}
+	FILE* file = fopen(filename,"w+");
+
+	unsigned int nbVariables  = getNbVariables(planning);
+	unsigned int nbConstraint = planning->nbSubjects + getNbConstraint(planning);
+
+	printf("\n[INFO] - We created a CNF file of this schedule problem with %d variables and %d clauses.\n",nbVariables,nbConstraint);
+	fprintf(file,"p cnf %d %d\n",nbVariables,nbConstraint);
+
+	writeOneIntervalForEachClassSatisfied(file,planning);
+
+	writeOneIntervalOnlyByClass(file,planning);
+
+	writeOneIntervalDontOverlap(file,planning);
+
+	writeForTeachers(file,planning);
+
+	fclose(file);
+
+	return (char*)filename;
 }
 
+/**
+ * This function allow to get in an integer array, the id of all the intervals solutions.
+ * @param s the filename of the solution.
+ * @param planning the planning who contains the all problem.
+ * @return an array of integer who contains the ID of intervals solutions.
+ */
+unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
+
+	FILE* file = fopen(solution,"r+");
+	char line[getNbVariables(planning)*256];
+
+	unsigned int* result = (unsigned int*)malloc(sizeof(unsigned int)*getNbConstraint(planning));
+
+	int satisfiable = 0;
+	int i = 0;
+	int value = 0;
+	int j = 0;
+
+	while( fgets(line,(int)sizeof(line),file) ) {
+		
+		if(line[0] == 'c') continue;
+
+		if(line[0] == 's') {
+			if(strstr(line,"UNSATISFIABLE") == NULL) {
+				satisfiable = 1;
+				continue;
+			} else {
+				printf("\n\nThis problem has been proved without any solutions\n\n");
+			}
+		}
+
+		if(satisfiable == 1) {
+
+			char** str_variables = str_split(line, ' ');
+
+			while(str_variables[i] != NULL) {
+
+				value = (int)atoi(str_variables[i]);
+				
+				if(value > 0) {
+					result[j++] = (unsigned int)value;
+				}
+				i++;
+			}
+		}
+	}
+	
+	result[j] = 0;
+
+	return result;
+}	
+
+
+/**
+ * getNbVariables : This function allows us to get the number of boolean variables.
+ * @return the number of boolean variables in the CNF file.
+ */
+inline unsigned int getNbVariables(Planning* planning) {
+
+	unsigned long i = 0;
+	unsigned int result = 0;
+	for(i = 0; i < planning->nbSubjects ; i++) {
+		result += planning->array_subjects[i]->nbSlots;
+	}	
+
+	return result;
+}
+
+/**
+ * getNbConstraint : This function allows us to get the number of clauses.
+ * @return the number of clauses in the CNF file.
+ */
 unsigned int getNbConstraint(Planning* planning) {
 
 	unsigned int result = 0;
@@ -272,6 +346,12 @@ unsigned int getNbConstraint(Planning* planning) {
 	return result;
 }
 
+/**
+ * str_split : this function is useful to be able to split an array of string according to a set of delimiters.
+ * @param a_str the array of string.
+ * @param a_delim the set of delimiters.
+ * @return the new array of string, split according to different delimiters.
+ */
 char** str_split(char* a_str, const char a_delim) {
 
     char** result    = 0;
@@ -390,52 +470,6 @@ void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solu
 	fprintf(output,"\n");
 }
 
-unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
-
-	FILE* file = fopen(solution,"r+");
-	char line[getNbVariables(planning)*256];
-
-	unsigned int* result = (unsigned int*)malloc(sizeof(unsigned int)*getNbConstraint(planning));
-
-	int satisfiable = 0;
-	int i = 0;
-	int value = 0;
-	int j = 0;
-
-	while( fgets(line,(int)sizeof(line),file) ) {
-		
-		if(line[0] == 'c') continue;
-
-		if(line[0] == 's') {
-			if(strstr(line,"UNSATISFIABLE") == NULL) {
-				satisfiable = 1;
-				continue;
-			} else {
-				printf("\n\nThis problem has been proved without any solutions\n\n");
-			}
-		}
-
-		if(satisfiable == 1) {
-
-			char** str_variables = str_split(line, ' ');
-
-			while(str_variables[i] != NULL) {
-
-				value = (int)atoi(str_variables[i]);
-				
-				if(value > 0) {
-					result[j++] = (unsigned int)value;
-				}
-				i++;
-			}
-		}
-	}
-	
-	result[j] = 0;
-
-	return result;
-}	
-
 void writeOrNotConstraint(FILE* file, Interval* ac, Interval* bd, char isCM) {
 	
 	if(isCM == 0) {
@@ -527,6 +561,18 @@ inline void writeForTeachers(FILE* file, Planning* planning) {
 	}
 }
 
+inline void writeOneIntervalForEachClassSatisfied(FILE* file, Planning* planning) {
+
+	unsigned int i = 0;
+	unsigned int j = 0;
+
+	for(i = 0; i < planning->nbSubjects; ++i) {
+		for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
+			fprintf(file,"%d ",planning->array_subjects[i]->slots[j]->id);
+		}
+		fprintf(file,"0\n");
+	}
+}
 
 void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
 
@@ -557,27 +603,3 @@ void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
 
 }
 
-char* createCNF(Planning* planning) {
-
-	const char* filename = "planning.cnf";
-
-	FILE* file = fopen(filename,"w+");
-
-	unsigned int nbVariables  = getNbVariables(planning);
-	unsigned int nbConstraint = planning->nbSubjects + getNbConstraint(planning);
-
-	printf("\n[INFO] - We created a CNF file of this schedule problem with %d variables and %d clauses.\n",nbVariables,nbConstraint);
-	fprintf(file,"p cnf %d %d\n",nbVariables,nbConstraint);
-
-	writeOneIntervalForEachClassSatisfied(file,planning);
-
-	writeOneIntervalOnlyByClass(file,planning);
-
-	writeOneIntervalDontOverlap(file,planning);
-
-	writeForTeachers(file,planning);
-
-	fclose(file);
-
-	return (char*)filename;
-}
