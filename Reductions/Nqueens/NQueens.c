@@ -1,25 +1,21 @@
 /*
-##############################################################################
-# 
-# NQueens - Valentin Montmirail - Polytech Tours, France
-# Copyright (c) 2015.
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-# associated documentation files (the "Software"), to deal in the Software without restriction,
-# including without limitation the rights to use, copy, modify, merge, publish, distribute,
-# sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all copies or
-# substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
-# NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
-# OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
-##############################################################################*/
+ *  NQueens - Valentin Montmirail - Polytech Tours, France
+ *  Copyright (c) 2015.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
+ * OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +35,7 @@ char* solver = NULL;
  * @param p a boolean, false if we just want to count the number of clauses, true if we want to write in file.
  * @param file the final CNF file that will be created. 
  */
-int generate(int p,FILE* file) {
+ int generate(int p,FILE* file) {
 
     int i,j,k;
     int c = 0;
@@ -98,7 +94,7 @@ int generate(int p,FILE* file) {
  * @param a_delim the set of delimiters.
  * @return the new array of string, split according to different delimiters.
  */
-char** str_split(char* a_str, const char a_delim) {
+ char** str_split(char* a_str, const char a_delim) {
 
     char** result    = 0;
     size_t count     = 0;
@@ -151,21 +147,21 @@ char** str_split(char* a_str, const char a_delim) {
  * @param filename : the file name of the final CNF file.
  * @param nbQueens : the number of queens in our N*N queens.
  */
-void createFile(const char* filename, unsigned int nbQueens) {
+ void createFile(const char* filename, unsigned int nbQueens) {
 
-	FILE* file = NULL;
+   FILE* file = NULL;
 
-    file = fopen(filename, "w+");
+   file = fopen(filename, "w+");
 
-    fprintf(file,"p cnf %i ", n*n);
+   fprintf(file,"p cnf %i ", n*n);
 
-    fprintf(file,"%i",generate(0,file));
+   fprintf(file,"%i",generate(0,file));
 
-    fprintf(file,"\n");
+   fprintf(file,"\n");
 
-   	generate(1,file);
+   generate(1,file);
 
-   	fclose(file);
+   fclose(file);
 }
 
 /**
@@ -173,7 +169,7 @@ void createFile(const char* filename, unsigned int nbQueens) {
  * @param resultFilename the result stored in a file, where there is v i, i+1, ... +j 0
  * @return 0 if everything is okay, something else otherwise.
  */
-int displayResult(const char* resultFilename) {
+ int displayResult(const char* resultFilename) {
 
     char * line = NULL;
     size_t len  = 0;
@@ -246,7 +242,7 @@ int displayResult(const char* resultFilename) {
  * selectSolver : this function will return the good value, 
  * according to the name of the solver.
  */
-int selectSolver() {
+ int selectSolver() {
 
     if(strcmp(solver,"./glucose") ==0) return 1;
 
@@ -263,7 +259,7 @@ int selectSolver() {
  * @param argc the number of arguments passed to the program.
  * @param argv the set of all the arguments.
  */
-int main(int argc,char** argv) {
+ int main(int argc,char** argv) {
 
     if (argc < 2) return(1);
 
@@ -286,7 +282,7 @@ int main(int argc,char** argv) {
     printf("  Created by Valentin Montmirail,\n");
     printf("  an engineering student in Polytech Tours\n\n");
 
-	createFile(filename,n);
+    createFile(filename,n);
     
     char* buffer = (char*)malloc(sizeof(char)*1024);
 
@@ -295,16 +291,16 @@ int main(int argc,char** argv) {
     switch(select) {
 
         case 1:
-            sprintf(buffer, "%s -model %s > %s", solver, filename, saveAs);
-            break;
+        sprintf(buffer, "%s -model %s > %s", solver, filename, saveAs);
+        break;
 
         case 2:
-            sprintf(buffer,"%s  > %s < %s 2>&1 > %s",solver,saveAs,filename,saveAs);
-            break;
+        sprintf(buffer,"%s  > %s < %s 2>&1 > %s",solver,saveAs,filename,saveAs);
+        break;
 
         default:
-            sprintf(buffer, "%s %s > %s", solver, filename, saveAs);
-            break;
+        sprintf(buffer, "%s %s > %s", solver, filename, saveAs);
+        break;
     }
 
     system(buffer);

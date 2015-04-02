@@ -15,7 +15,6 @@
  * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
  * OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
  */
 
 #include "cnfUtils.h"
@@ -29,7 +28,7 @@
  * @param filename the name of the input file.
  * @return a Planning structure. 
  */
-Planning * readInputFile(const char* filename) {
+ Planning * readInputFile(const char* filename) {
 
     Planning * planning = createPlanning();
 
@@ -60,7 +59,7 @@ Planning * readInputFile(const char* filename) {
             printf("[INFO] - reading value nbSubjects = %lu\n",nb);
 
             array_subjects = (Subject**)malloc(sizeof(Subject*)*nb);
-                
+            
             
             pch = strtok(NULL," ");
             pch = strtok(NULL," ");
@@ -82,7 +81,7 @@ Planning * readInputFile(const char* filename) {
                 if(atoi(pch) == 0 && nameGiven == 0) {
 
                     name = pch;
-            
+                    
 
                     pch = strtok(NULL," ");
                     
@@ -132,7 +131,7 @@ Planning * readInputFile(const char* filename) {
  * @param planning the planning that we want to solve. 
  * @return the filename of the CNF file created.
  */
-char* createCNF(Planning* planning) {
+ char* createCNF(Planning* planning) {
 
     const char* filename = "planning.cnf";
 
@@ -163,7 +162,7 @@ char* createCNF(Planning* planning) {
  * @param planning the planning who contains the all problem.
  * @return an array of integer who contains the ID of intervals solutions.
  */
-unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
+ unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
 
     FILE* file = fopen(solution,"r+");
     char line[getNbVariables(planning)*256];
@@ -214,7 +213,7 @@ unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
  * getNbVariables : This function allows us to get the number of boolean variables.
  * @return the number of boolean variables in the CNF file.
  */
-inline unsigned int getNbVariables(Planning* planning) {
+ inline unsigned int getNbVariables(Planning* planning) {
 
     unsigned long i = 0;
     unsigned int result = 0;
@@ -229,7 +228,7 @@ inline unsigned int getNbVariables(Planning* planning) {
  * getNbConstraint : This function allows us to get the number of clauses.
  * @return the number of clauses in the CNF file.
  */
-unsigned int getNbConstraint(Planning* planning) {
+ unsigned int getNbConstraint(Planning* planning) {
 
     unsigned int result = 0;
     unsigned int a = 0;
@@ -257,90 +256,90 @@ unsigned int getNbConstraint(Planning* planning) {
             for(b = 0; b < planning->nbSubjects; ++b) {
                 for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
 
-                     Interval* ac = planning->array_subjects[a]->slots[c];
-                     Interval* bd = planning->array_subjects[b]->slots[d];
+                   Interval* ac = planning->array_subjects[a]->slots[c];
+                   Interval* bd = planning->array_subjects[b]->slots[d];
 
-                     if(a == b) continue;
+                   if(a == b) continue;
 
-                    if(strstr(planning->array_subjects[b]->subjectName,"_CM") == NULL) {
+                   if(strstr(planning->array_subjects[b]->subjectName,"_CM") == NULL) {
 
-                        if(ac->end <= bd->start) {
-                            continue ;
-                        }
-
-                        if(bd->end <= ac->start) {
-                            continue ;
-                        }
-
-                        ++result;
-
-                    } else {        
-
-                        double acStart;
-                        double acEnd;
-
-                        double bdStart;
-                        double bdEnd;
-
-                        int tmp;
-
-                        tmp     = (int)ac->end;
-                        acEnd   = (int)((ac->end - tmp)* 1000);
-
-                        tmp     = (int)ac->start;
-                        acStart = (int)((ac->start - tmp)* 1000);
-
-                        tmp     = (int)bd->start;
-                        bdStart = (int)((bd->start - tmp)* 1000);
-
-                        tmp     = (int)bd->end;
-                        bdEnd   = (int)((bd->end - tmp)* 1000);
-
-                        if(acEnd <= bdStart) {
-                            continue ;
-                        }
-
-                        if(bdEnd <= acStart) {
-                            continue ;
-                        }
-
-                        ++result;
+                    if(ac->end <= bd->start) {
+                        continue ;
                     }
 
-                     
+                    if(bd->end <= ac->start) {
+                        continue ;
+                    }
+
+                    ++result;
+
+                } else {        
+
+                    double acStart;
+                    double acEnd;
+
+                    double bdStart;
+                    double bdEnd;
+
+                    int tmp;
+
+                    tmp     = (int)ac->end;
+                    acEnd   = (int)((ac->end - tmp)* 1000);
+
+                    tmp     = (int)ac->start;
+                    acStart = (int)((ac->start - tmp)* 1000);
+
+                    tmp     = (int)bd->start;
+                    bdStart = (int)((bd->start - tmp)* 1000);
+
+                    tmp     = (int)bd->end;
+                    bdEnd   = (int)((bd->end - tmp)* 1000);
+
+                    if(acEnd <= bdStart) {
+                        continue ;
+                    }
+
+                    if(bdEnd <= acStart) {
+                        continue ;
+                    }
+
+                    ++result;
                 }
-            }
-        }
-    }
 
-    for(i = 0; i < planning->nbTeachers; ++i) {
-
-        Teacher* t = planning->array_teachers[i];
-
-        for(j = 0; j < t->nbInterval; ++j) {
-            for(k = 0; k < t->nbInterval; ++k) {
-
-                if(j == k) continue;
-
-                Interval* ac = t->array_intervalPossible[j];
-                Interval* bd = t->array_intervalPossible[k];
                 
-                if(ac->end <= bd->start) {
-                    continue;
-                }
-
-                if(bd->end <= ac->start) {
-                    continue;
-                }
-
-                result++;
             }
         }
     }
+}
+
+for(i = 0; i < planning->nbTeachers; ++i) {
+
+    Teacher* t = planning->array_teachers[i];
+
+    for(j = 0; j < t->nbInterval; ++j) {
+        for(k = 0; k < t->nbInterval; ++k) {
+
+            if(j == k) continue;
+
+            Interval* ac = t->array_intervalPossible[j];
+            Interval* bd = t->array_intervalPossible[k];
+            
+            if(ac->end <= bd->start) {
+                continue;
+            }
+
+            if(bd->end <= ac->start) {
+                continue;
+            }
+
+            result++;
+        }
+    }
+}
 
 
 
-    return result;
+return result;
 }
 
 /**
@@ -349,7 +348,7 @@ unsigned int getNbConstraint(Planning* planning) {
  * @param a_delim the set of delimiters.
  * @return the new array of string, split according to different delimiters.
  */
-char** str_split(char* a_str, const char a_delim) {
+ char** str_split(char* a_str, const char a_delim) {
 
     char** result    = 0;
     size_t count     = 0;
@@ -412,7 +411,7 @@ int isSolutionExisting(Planning* planning, unsigned int* solution) {
             for(k = 0; k < subject->nbSlots; ++k) {
                 
                 if(subject->slots[k]->id == solution[i]) {  
-                
+                    
                     return 1;
                 }
             }
@@ -592,7 +591,7 @@ void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
                     } else {
                         writeOrNotConstraint(file, planning->array_subjects[a]->slots[c],planning->array_subjects[b]->slots[d],1);
                     }
-                
+                    
                 }
             }
         }
