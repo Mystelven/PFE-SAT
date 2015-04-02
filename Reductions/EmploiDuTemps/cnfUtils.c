@@ -30,101 +30,101 @@
  */
  Planning * readInputFile(const char* filename) {
 
-    Planning * planning = createPlanning();
+  Planning * planning = createPlanning();
 
-    FILE* file = fopen(filename,"r+");
-    char line[40000];
+  FILE* file = fopen(filename,"r+");
+  char line[40000];
 
-    char* name;
+  char* name;
 
-    Subject** array_subjects = NULL;
-    char* pch;
-    int i = 0;
-    unsigned long k = 0;
-    unsigned long j = 0;
-    unsigned long nb = 0;
+  Subject** array_subjects = NULL;
+  char* pch;
+  int i = 0;
+  unsigned long k = 0;
+  unsigned long j = 0;
+  unsigned long nb = 0;
 
-    int nameGiven = 0;
+  int nameGiven = 0;
+  
+  while( fgets(line,sizeof(line),file) ) {
+
+   if(line[0] == 'c') continue;
+   if(line[0] == 'p') {
+
+    pch = strtok(line," ");
+    pch = strtok(NULL," ");
+
+    nb = (unsigned long)atoi(pch);
     
-    while( fgets(line,sizeof(line),file) ) {
-        
-        if(line[0] == 'c') continue;
-        if(line[0] == 'p') {
+    printf("[INFO] - reading value nbSubjects = %lu\n",nb);
 
-            pch = strtok(line," ");
-            pch = strtok(NULL," ");
+    array_subjects = (Subject**)malloc(sizeof(Subject*)*nb);
 
-            nb = (unsigned long)atoi(pch);
-            
-            printf("[INFO] - reading value nbSubjects = %lu\n",nb);
+    
+    pch = strtok(NULL," ");
+    pch = strtok(NULL," ");
 
-            array_subjects = (Subject**)malloc(sizeof(Subject*)*nb);
-            
-            
-            pch = strtok(NULL," ");
-            pch = strtok(NULL," ");
+    nb = (unsigned long)atoi(pch);
+    planning->nbTeachers = nb;
 
-            nb = (unsigned long)atoi(pch);
-            planning->nbTeachers = nb;
+    printf("[INFO] - reading value nbTeachers = %lu\n",nb);
 
-            printf("[INFO] - reading value nbTeachers = %lu\n",nb);
+    planning->array_teachers = (Teacher**)malloc(sizeof(Teacher*)*nb);
 
-            planning->array_teachers = (Teacher**)malloc(sizeof(Teacher*)*nb);
+   } else {
 
-        } else {
+    pch = strtok(line," ");
+    nameGiven = 0;
+    
+    while(pch != NULL) {
 
-            pch = strtok(line," ");
-            nameGiven = 0;
-            
-            while(pch != NULL) {
-                
-                if(atoi(pch) == 0 && nameGiven == 0) {
+     if(atoi(pch) == 0 && nameGiven == 0) {
 
-                    name = pch;
-                    
+      name = pch;
 
-                    pch = strtok(NULL," ");
-                    
-                    nb = (unsigned long)atoi(pch);
 
-                    array_subjects[j] = createSubject(name,nb);
+      pch = strtok(NULL," ");
+      
+      nb = (unsigned long)atoi(pch);
 
-                    printf("[INFO] - creation of the subject  = %s\n",name);
+      array_subjects[j] = createSubject(name,nb);
 
-                    for( k = 0; k < nb ; k++) {
-                        array_subjects[j+k] = createSubject(name,nb);
-                    }
+      printf("[INFO] - creation of the subject  = %s\n",name);
 
-                    nameGiven = 1;
+      for( k = 0; k < nb ; k++) {
+       array_subjects[j+k] = createSubject(name,nb);
+      }
 
-                } else {
+      nameGiven = 1;
 
-                    for(k = 0; k < nb ; k++) {
+     } else {
 
-                        double start = 0;
-                        double end = 0;
-                        sscanf(pch,"[%lf-%lf]",&start,&end);
+      for(k = 0; k < nb ; k++) {
 
-                        if(start > 0 && end > start) addInterval(array_subjects[j+k],createInterval(start,end));
-                        
-                    }
-                }
-                
-                pch = strtok(NULL," ");
-            }
+       double start = 0;
+       double end = 0;
+       sscanf(pch,"[%lf-%lf]",&start,&end);
 
-            for(k = 0; k < nb ; k++) {
-                addSubject(planning,array_subjects[j+k]);
-            }
-
-            i++;
-        }
+       if(start > 0 && end > start) addInterval(array_subjects[j+k],createInterval(start,end));
+       
+      }
+     }
+     
+     pch = strtok(NULL," ");
     }
 
-    fclose(file);
+    for(k = 0; k < nb ; k++) {
+     addSubject(planning,array_subjects[j+k]);
+    }
 
-    return planning;
-}
+    i++;
+   }
+  }
+
+  fclose(file);
+
+  return planning;
+ }
 
 /**
  * createCNF : This function will create a CNF file according to a Planning.
@@ -133,28 +133,28 @@
  */
  char* createCNF(Planning* planning) {
 
-    const char* filename = "planning.cnf";
+  const char* filename = "planning.cnf";
 
-    FILE* file = fopen(filename,"w+");
+  FILE* file = fopen(filename,"w+");
 
-    unsigned int nbVariables  = getNbVariables(planning);
-    unsigned int nbConstraint = planning->nbSubjects + getNbConstraint(planning);
+  unsigned int nbVariables  = getNbVariables(planning);
+  unsigned int nbConstraint = planning->nbSubjects + getNbConstraint(planning);
 
-    printf("\n[INFO] - We created a CNF file of this schedule problem with %d variables and %d clauses.\n",nbVariables,nbConstraint);
-    fprintf(file,"p cnf %d %d\n",nbVariables,nbConstraint);
+  printf("\n[INFO] - We created a CNF file of this schedule problem with %d variables and %d clauses.\n",nbVariables,nbConstraint);
+  fprintf(file,"p cnf %d %d\n",nbVariables,nbConstraint);
 
-    writeOneIntervalForEachClassSatisfied(file,planning);
+  writeOneIntervalForEachClassSatisfied(file,planning);
 
-    writeOneIntervalOnlyByClass(file,planning);
+  writeOneIntervalOnlyByClass(file,planning);
 
-    writeOneIntervalDontOverlap(file,planning);
+  writeOneIntervalDontOverlap(file,planning);
 
-    writeForTeachers(file,planning);
+  writeForTeachers(file,planning);
 
-    fclose(file);
+  fclose(file);
 
-    return (char*)filename;
-}
+  return (char*)filename;
+ }
 
 /**
  * This function allow to get in an integer array, the id of all the intervals solutions.
@@ -164,49 +164,49 @@
  */
  unsigned int* getSolutionSchedule(Planning* planning,const char* solution) {
 
-    FILE* file = fopen(solution,"r+");
-    char line[getNbVariables(planning)*256];
+  FILE* file = fopen(solution,"r+");
+  char line[getNbVariables(planning)*256];
 
-    unsigned int* result = (unsigned int*)malloc(sizeof(unsigned int)*getNbConstraint(planning));
+  unsigned int* result = (unsigned int*)malloc(sizeof(unsigned int)*getNbConstraint(planning));
 
-    int satisfiable = 0;
-    int i = 0;
-    int value = 0;
-    int j = 0;
+  int satisfiable = 0;
+  int i = 0;
+  int value = 0;
+  int j = 0;
 
-    while( fgets(line,(int)sizeof(line),file) ) {
-        
-        if(line[0] == 'c') continue;
+  while( fgets(line,(int)sizeof(line),file) ) {
 
-        if(line[0] == 's') {
-            if(strstr(line,"UNSATISFIABLE") == NULL) {
-                satisfiable = 1;
-                continue;
-            } else {
-                printf("\n\nThis problem has been proved without any solutions\n\n");
-            }
-        }
+   if(line[0] == 'c') continue;
 
-        if(satisfiable == 1) {
-
-            char** str_variables = str_split(line, ' ');
-
-            while(str_variables[i] != NULL) {
-
-                value = (int)atoi(str_variables[i]);
-                
-                if(value > 0) {
-                    result[j++] = (unsigned int)value;
-                }
-                i++;
-            }
-        }
+   if(line[0] == 's') {
+    if(strstr(line,"UNSATISFIABLE") == NULL) {
+     satisfiable = 1;
+     continue;
+    } else {
+     printf("\n\nThis problem has been proved without any solutions\n\n");
     }
-    
-    result[j] = 0;
+   }
 
-    return result;
-}   
+   if(satisfiable == 1) {
+
+    char** str_variables = str_split(line, ' ');
+
+    while(str_variables[i] != NULL) {
+
+     value = (int)atoi(str_variables[i]);
+     
+     if(value > 0) {
+      result[j++] = (unsigned int)value;
+     }
+     i++;
+    }
+   }
+  }
+  
+  result[j] = 0;
+
+  return result;
+ }   
 
 
 /**
@@ -215,14 +215,14 @@
  */
  inline unsigned int getNbVariables(Planning* planning) {
 
-    unsigned long i = 0;
-    unsigned int result = 0;
-    for(i = 0; i < planning->nbSubjects ; i++) {
-        result += planning->array_subjects[i]->nbSlots;
-    }   
+  unsigned long i = 0;
+  unsigned int result = 0;
+  for(i = 0; i < planning->nbSubjects ; i++) {
+   result += planning->array_subjects[i]->nbSlots;
+  }   
 
-    return result;
-}
+  return result;
+ }
 
 /**
  * getNbConstraint : This function allows us to get the number of clauses.
@@ -230,117 +230,117 @@
  */
  unsigned int getNbConstraint(Planning* planning) {
 
-    unsigned int result = 0;
-    unsigned int a = 0;
-    unsigned int c = 0;
+  unsigned int result = 0;
+  unsigned int a = 0;
+  unsigned int c = 0;
 
-    unsigned int b = 0;
-    unsigned int d = 0;
+  unsigned int b = 0;
+  unsigned int d = 0;
 
 
-    unsigned int i = 0;
-    unsigned int j = 0;
-    unsigned int k = 0;
+  unsigned int i = 0;
+  unsigned int j = 0;
+  unsigned int k = 0;
 
-    for(i = 0; i < planning->nbSubjects; ++i) {
-        for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
-            for(k = j+1; k < planning->array_subjects[i]->nbSlots; ++k) {
-                
-                ++result;
-            }
-        }
+  for(i = 0; i < planning->nbSubjects; ++i) {
+   for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
+    for(k = j+1; k < planning->array_subjects[i]->nbSlots; ++k) {
+
+     ++result;
     }
+   }
+  }
 
-    for(a = 0; a < planning->nbSubjects; ++a) {
-        for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
-            for(b = 0; b < planning->nbSubjects; ++b) {
-                for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
+  for(a = 0; a < planning->nbSubjects; ++a) {
+   for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
+    for(b = 0; b < planning->nbSubjects; ++b) {
+     for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
 
-                   Interval* ac = planning->array_subjects[a]->slots[c];
-                   Interval* bd = planning->array_subjects[b]->slots[d];
+      Interval* ac = planning->array_subjects[a]->slots[c];
+      Interval* bd = planning->array_subjects[b]->slots[d];
 
-                   if(a == b) continue;
+      if(a == b) continue;
 
-                   if(strstr(planning->array_subjects[b]->subjectName,"_CM") == NULL) {
+      if(strstr(planning->array_subjects[b]->subjectName,"_CM") == NULL) {
 
-                    if(ac->end <= bd->start) {
-                        continue ;
-                    }
+       if(ac->end <= bd->start) {
+        continue ;
+       }
 
-                    if(bd->end <= ac->start) {
-                        continue ;
-                    }
+       if(bd->end <= ac->start) {
+        continue ;
+       }
 
-                    ++result;
+       ++result;
 
-                } else {        
+      } else {        
 
-                    double acStart;
-                    double acEnd;
+       double acStart;
+       double acEnd;
 
-                    double bdStart;
-                    double bdEnd;
+       double bdStart;
+       double bdEnd;
 
-                    int tmp;
+       int tmp;
 
-                    tmp     = (int)ac->end;
-                    acEnd   = (int)((ac->end - tmp)* 1000);
+       tmp     = (int)ac->end;
+       acEnd   = (int)((ac->end - tmp)* 1000);
 
-                    tmp     = (int)ac->start;
-                    acStart = (int)((ac->start - tmp)* 1000);
+       tmp     = (int)ac->start;
+       acStart = (int)((ac->start - tmp)* 1000);
 
-                    tmp     = (int)bd->start;
-                    bdStart = (int)((bd->start - tmp)* 1000);
+       tmp     = (int)bd->start;
+       bdStart = (int)((bd->start - tmp)* 1000);
 
-                    tmp     = (int)bd->end;
-                    bdEnd   = (int)((bd->end - tmp)* 1000);
+       tmp     = (int)bd->end;
+       bdEnd   = (int)((bd->end - tmp)* 1000);
 
-                    if(acEnd <= bdStart) {
-                        continue ;
-                    }
+       if(acEnd <= bdStart) {
+        continue ;
+       }
 
-                    if(bdEnd <= acStart) {
-                        continue ;
-                    }
+       if(bdEnd <= acStart) {
+        continue ;
+       }
 
-                    ++result;
-                }
+       ++result;
+      }
 
-                
-            }
-        }
+
+     }
     }
-}
+   }
+  }
 
-for(i = 0; i < planning->nbTeachers; ++i) {
+  for(i = 0; i < planning->nbTeachers; ++i) {
 
-    Teacher* t = planning->array_teachers[i];
+   Teacher* t = planning->array_teachers[i];
 
-    for(j = 0; j < t->nbInterval; ++j) {
-        for(k = 0; k < t->nbInterval; ++k) {
+   for(j = 0; j < t->nbInterval; ++j) {
+    for(k = 0; k < t->nbInterval; ++k) {
 
-            if(j == k) continue;
+     if(j == k) continue;
 
-            Interval* ac = t->array_intervalPossible[j];
-            Interval* bd = t->array_intervalPossible[k];
-            
-            if(ac->end <= bd->start) {
-                continue;
-            }
+     Interval* ac = t->array_intervalPossible[j];
+     Interval* bd = t->array_intervalPossible[k];
 
-            if(bd->end <= ac->start) {
-                continue;
-            }
+     if(ac->end <= bd->start) {
+      continue;
+     }
 
-            result++;
-        }
+     if(bd->end <= ac->start) {
+      continue;
+     }
+
+     result++;
     }
-}
+   }
+  }
 
 
 
-return result;
-}
+  return result;
+ }
 
 /**
  * str_split : this function is useful to be able to split an array of string according to a set of delimiters.
@@ -350,252 +350,252 @@ return result;
  */
  char** str_split(char* a_str, const char a_delim) {
 
-    char** result    = 0;
-    size_t count     = 0;
-    char* tmp        = a_str;
-    char* last_comma = 0;
-    char delim[2];
-    delim[0] = a_delim;
-    delim[1] = 0;
+  char** result    = 0;
+  size_t count     = 0;
+  char* tmp        = a_str;
+  char* last_comma = 0;
+  char delim[2];
+  delim[0] = a_delim;
+  delim[1] = 0;
 
     /* Count how many elements will be extracted. */
-    while (*tmp)
-    {
-        if (a_delim == *tmp)
-        {
-            count++;
-            last_comma = tmp;
-        }
-        tmp++;
-    }
+  while (*tmp)
+  {
+   if (a_delim == *tmp)
+   {
+    count++;
+    last_comma = tmp;
+   }
+   tmp++;
+  }
 
     /* Add space for trailing token. */
-    count += last_comma < (a_str + strlen(a_str) - 1);
+  count += last_comma < (a_str + strlen(a_str) - 1);
 
     /* Add space for terminating null string so caller
        knows where the list of returned strings ends. */
-    count++;
+  count++;
 
-    result = malloc(sizeof(char*) * count);
+  result = malloc(sizeof(char*) * count);
 
-    if (result)
-    {
-        size_t idx  = 0;
-        char* token = strtok(a_str, delim);
+  if (result)
+  {
+   size_t idx  = 0;
+   char* token = strtok(a_str, delim);
 
-        while (token)
-        {
-            assert(idx < count);
-            *(result + idx++) = strdup(token);
-            token = strtok(0, delim);
-        }
-        assert(idx == count - 1);
-        *(result + idx) = 0;
+   while (token)
+   {
+    assert(idx < count);
+    *(result + idx++) = strdup(token);
+    token = strtok(0, delim);
+   }
+   assert(idx == count - 1);
+   *(result + idx) = 0;
+  }
+
+  return result;
+ }
+
+ int isSolutionExisting(Planning* planning, unsigned int* solution) {
+
+  int i = 0;
+  unsigned long j = 0;
+  unsigned long k = 0;
+
+  while(solution[i] != 0) {
+
+   for(j = 0; j < planning->nbSubjects ; j++) {
+
+    Subject* subject = planning->array_subjects[j];             
+
+    for(k = 0; k < subject->nbSlots; ++k) {
+
+     if(subject->slots[k]->id == solution[i]) {  
+
+      return 1;
+     }
     }
+   }   
+  }
 
-    return result;
-}
+  return 0;
+ }
 
-int isSolutionExisting(Planning* planning, unsigned int* solution) {
+ void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solution) {
 
-    int i = 0;
-    unsigned long j = 0;
-    unsigned long k = 0;
+  int i = 0;
+  unsigned long j = 0;
+  unsigned long k = 0;
+  char* previousName = strdup("");
+  unsigned long nb = 0;
 
-    while(solution[i] != 0) {
+  fprintf(output,"\n\n");
 
-        for(j = 0; j < planning->nbSubjects ; j++) {
+  while(solution[i] != 0) {
 
-            Subject* subject = planning->array_subjects[j];             
+   for(j = 0; j < planning->nbSubjects ; j++) {
 
-            for(k = 0; k < subject->nbSlots; ++k) {
-                
-                if(subject->slots[k]->id == solution[i]) {  
-                    
-                    return 1;
-                }
-            }
-        }   
+    Subject* subject = planning->array_subjects[j];             
+
+    for(k = 0; k < subject->nbSlots; ++k) {
+
+     if(subject->slots[k]->id == solution[i]) {  
+
+      ++nb;
+
+      if(strcmp(previousName,subject->subjectName) != 0) {
+
+       nb = 0; 
+      } {
+       previousName = planning->array_subjects[j]->subjectName;
+      }
+
+      if(nb < subject->nbCopy) 
+      {
+       fprintf(output,"%20s : ",subject->subjectName);
+       displayInterval(output,subject->slots[k]);
+       fprintf(output,"\n");
+      }
+      
+     }
     }
+   }   
 
-    return 0;
-}
+   i++;
+  }
+  fprintf(output,"\n");
+ }
 
-void displaySolutionSchedule(FILE* output, Planning* planning,unsigned int* solution) {
+ void writeOrNotConstraint(FILE* file, Interval* ac, Interval* bd, char isCM) {
 
-    int i = 0;
-    unsigned long j = 0;
-    unsigned long k = 0;
-    char* previousName = strdup("");
-    unsigned long nb = 0;
+  if(isCM == 0) {
 
-    fprintf(output,"\n\n");
+   if(ac->end <= bd->start) {
+    return ;
+   }
 
-    while(solution[i] != 0) {
+   if(bd->end <= ac->start) {
+    return ;
+   }
 
-        for(j = 0; j < planning->nbSubjects ; j++) {
+   fprintf(file,"-%d -%d 0\n",ac->id,bd->id);
 
-            Subject* subject = planning->array_subjects[j];             
+  } else {
 
-            for(k = 0; k < subject->nbSlots; ++k) {
-                
-                if(subject->slots[k]->id == solution[i]) {  
-                    
-                    ++nb;
+   int acStart;
+   int acEnd;
 
-                    if(strcmp(previousName,subject->subjectName) != 0) {
+   int bdStart;
+   int bdEnd;
 
-                        nb = 0; 
-                    } {
-                        previousName = planning->array_subjects[j]->subjectName;
-                    }
+   int tmp;
 
-                    if(nb < subject->nbCopy) 
-                    {
-                        fprintf(output,"%20s : ",subject->subjectName);
-                        displayInterval(output,subject->slots[k]);
-                        fprintf(output,"\n");
-                    }
-                    
-                }
-            }
-        }   
+   tmp     = (int)ac->end;
+   acEnd   = (int)((ac->end - tmp)* 1000);
 
-        i++;
+   tmp     = (int)ac->start;
+   acStart = (int)((ac->start - tmp)* 1000);
+
+   tmp     = (int)bd->start;
+   bdStart = (int)((bd->start - tmp)* 1000);
+
+   tmp     = (int)bd->end;
+   bdEnd   = (int)((bd->end - tmp)* 1000);
+
+   if(acEnd <= bdStart) {
+    return ;
+   }
+
+   if(bdEnd <= acStart) {
+    return ;
+   }
+
+   fprintf(file,"-%d -%d 0\n",ac->id,bd->id);      
+  }
+
+ } 
+
+
+ inline void writeOneIntervalOnlyByClass(FILE* file, Planning* planning) {
+
+  unsigned int i = 0;
+  unsigned int j = 0;
+  unsigned int k = 0;
+
+  for(i = 0; i < planning->nbSubjects; ++i) {
+   for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
+    for(k = j+1; k < planning->array_subjects[i]->nbSlots; ++k) {
+
+     Interval* ij = planning->array_subjects[i]->slots[j];
+     Interval* ik = planning->array_subjects[i]->slots[k];
+     
+     fprintf(file,"-%d -%d 0\n",ij->id,ik->id);
     }
-    fprintf(output,"\n");
-}
+   }
+  }
+ }
 
-void writeOrNotConstraint(FILE* file, Interval* ac, Interval* bd, char isCM) {
-    
-    if(isCM == 0) {
+ inline void writeForTeachers(FILE* file, Planning* planning) {
 
-        if(ac->end <= bd->start) {
-            return ;
-        }
+  unsigned int i = 0;
+  unsigned int j = 0;
+  unsigned int k = 0;
 
-        if(bd->end <= ac->start) {
-            return ;
-        }
+  for(i = 0; i < planning->nbTeachers; ++i) {
 
-        fprintf(file,"-%d -%d 0\n",ac->id,bd->id);
+   printf("[INFO] - We will write constraint (or not) for the teacher %d\n",(i+1));
+   Teacher* t = planning->array_teachers[i];
 
-    } else {
-        
-        int acStart;
-        int acEnd;
+   for(j = 0; j < t->nbInterval; ++j) {
+    for(k = 0; k < t->nbInterval; ++k) {
 
-        int bdStart;
-        int bdEnd;
-
-        int tmp;
-
-        tmp     = (int)ac->end;
-        acEnd   = (int)((ac->end - tmp)* 1000);
-
-        tmp     = (int)ac->start;
-        acStart = (int)((ac->start - tmp)* 1000);
-
-        tmp     = (int)bd->start;
-        bdStart = (int)((bd->start - tmp)* 1000);
-
-        tmp     = (int)bd->end;
-        bdEnd   = (int)((bd->end - tmp)* 1000);
-
-        if(acEnd <= bdStart) {
-            return ;
-        }
-
-        if(bdEnd <= acStart) {
-            return ;
-        }
-
-        fprintf(file,"-%d -%d 0\n",ac->id,bd->id);      
+     if(j == k) continue;
+     
+     writeOrNotConstraint(file,t->array_intervalPossible[j],t->array_intervalPossible[k],0); 
     }
+   }
+  }
+ }
 
-} 
+ inline void writeOneIntervalForEachClassSatisfied(FILE* file, Planning* planning) {
 
+  unsigned int i = 0;
+  unsigned int j = 0;
 
-inline void writeOneIntervalOnlyByClass(FILE* file, Planning* planning) {
+  for(i = 0; i < planning->nbSubjects; ++i) {
+   for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
+    fprintf(file,"%d ",planning->array_subjects[i]->slots[j]->id);
+   }
+   fprintf(file,"0\n");
+  }
+ }
 
-    unsigned int i = 0;
-    unsigned int j = 0;
-    unsigned int k = 0;
+ void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
 
-    for(i = 0; i < planning->nbSubjects; ++i) {
-        for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
-            for(k = j+1; k < planning->array_subjects[i]->nbSlots; ++k) {
+  unsigned int a = 0;
+  unsigned int c = 0;
 
-                Interval* ij = planning->array_subjects[i]->slots[j];
-                Interval* ik = planning->array_subjects[i]->slots[k];
-                
-                fprintf(file,"-%d -%d 0\n",ij->id,ik->id);
-            }
-        }
+  unsigned int b = 0;
+  unsigned int d = 0;
+  
+  for(a = 0; a < planning->nbSubjects; ++a) {
+   for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
+    for(b = 0; b < planning->nbSubjects; ++b) {
+
+     for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
+
+      if(a == b) continue;
+
+      if(strstr(planning->array_subjects[b]->subjectName,"_CM") == NULL) {
+       writeOrNotConstraint(file, planning->array_subjects[a]->slots[c],planning->array_subjects[b]->slots[d],0);
+      } else {
+       writeOrNotConstraint(file, planning->array_subjects[a]->slots[c],planning->array_subjects[b]->slots[d],1);
+      }
+
+     }
     }
-}
+   }
+  }
 
-inline void writeForTeachers(FILE* file, Planning* planning) {
-    
-    unsigned int i = 0;
-    unsigned int j = 0;
-    unsigned int k = 0;
-
-    for(i = 0; i < planning->nbTeachers; ++i) {
-
-        printf("[INFO] - We will write constraint (or not) for the teacher %d\n",(i+1));
-        Teacher* t = planning->array_teachers[i];
-
-        for(j = 0; j < t->nbInterval; ++j) {
-            for(k = 0; k < t->nbInterval; ++k) {
-
-                if(j == k) continue;
-                
-                writeOrNotConstraint(file,t->array_intervalPossible[j],t->array_intervalPossible[k],0); 
-            }
-        }
-    }
-}
-
-inline void writeOneIntervalForEachClassSatisfied(FILE* file, Planning* planning) {
-
-    unsigned int i = 0;
-    unsigned int j = 0;
-
-    for(i = 0; i < planning->nbSubjects; ++i) {
-        for(j = 0 ; j < planning->array_subjects[i]->nbSlots; ++j) {
-            fprintf(file,"%d ",planning->array_subjects[i]->slots[j]->id);
-        }
-        fprintf(file,"0\n");
-    }
-}
-
-void writeOneIntervalDontOverlap(FILE* file, Planning* planning) {
-
-    unsigned int a = 0;
-    unsigned int c = 0;
-
-    unsigned int b = 0;
-    unsigned int d = 0;
-    
-    for(a = 0; a < planning->nbSubjects; ++a) {
-        for(c = 0 ; c < planning->array_subjects[a]->nbSlots; ++c) {
-            for(b = 0; b < planning->nbSubjects; ++b) {
-
-                for(d = 0 ; d < planning->array_subjects[b]->nbSlots; ++d) {
-
-                    if(a == b) continue;
-
-                    if(strstr(planning->array_subjects[b]->subjectName,"_CM") == NULL) {
-                        writeOrNotConstraint(file, planning->array_subjects[a]->slots[c],planning->array_subjects[b]->slots[d],0);
-                    } else {
-                        writeOrNotConstraint(file, planning->array_subjects[a]->slots[c],planning->array_subjects[b]->slots[d],1);
-                    }
-                    
-                }
-            }
-        }
-    }
-
-}
+ }
 
