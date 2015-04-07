@@ -26,10 +26,10 @@
  * @param output the stream where we want to print the information.
  * @param interval the interval that we want to display.
  */
-void displayInterval(FILE* output, Interval* interval) {
+ void displayInterval(FILE* output, Interval* interval) {
 
 	/* We display on the standard stream. */
-	fprintf(output,"%4d : [%5.5f - %5.5f]",interval->id,interval->start,interval->end);
+   fprintf(output,"%4d : [%5.5f - %5.5f]",interval->id,interval->start,interval->end);
 }
 
 /**
@@ -39,19 +39,19 @@ void displayInterval(FILE* output, Interval* interval) {
  * @param e the end date of our new interval.
  * @return a pointer to our new structure.
  */
-Interval* createInterval(double s, double e) {
+ Interval* createInterval(double s, double e) {
 
 	/* We allocate the good memory-space. */	
-	Interval* result = malloc(sizeof(Interval) * 1);
+   Interval* result = malloc(sizeof(Interval) * 1);
 
 	/* We put the good start date */
-	result->start = s;
+   result->start = s;
 
 	/* We put the good end date */
-	result->end   = e;	
+   result->end   = e;	
 
 	/* We return our pointer on this new interval. */
-	return result;
+   return result;
 }
 
 /**
@@ -59,10 +59,10 @@ Interval* createInterval(double s, double e) {
  * We need the pointer on our interval to destroy it.
  * @param interval the interval that we want to destroy.
  */
-void deleteInterval(Interval* interval) {
+ void deleteInterval(Interval* interval) {
 
 	/* We desallocate the memory used. */
-	free(interval);
+   free(interval);
 }
 
 /**
@@ -72,17 +72,17 @@ void deleteInterval(Interval* interval) {
  * @param interval the interval that we want to copy.
  * @return the copy of our interval (with an unique ID)
  */
-Interval* copyInterval(Interval* interval) {
-	
+ Interval* copyInterval(Interval* interval) {
+   
 	/* We have to know how many they are. */
-	static unsigned int nbIntervals = 1;
+   static unsigned int nbIntervals = 1;
 
 	/* We create an interval with the good dates. */
-	Interval* result = createInterval(interval->start,interval->end);
-	
+   Interval* result = createInterval(interval->start,interval->end);
+   
 	/* We incremente his ID. */
-	result->id = nbIntervals++;
+   result->id = nbIntervals++;
 
 	/* We return the pointer on this new interval. */
-	return result;
+   return result;
 }

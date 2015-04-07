@@ -24,18 +24,18 @@
  * This function is the constructor of our structure.
  * @return a pointer to our new structure.
  */
-Teacher* createTeacher() {
+ Teacher* createTeacher() {
 
-	Teacher* result = (Teacher*)malloc(sizeof(Teacher) * 1);
+ 	Teacher* result = (Teacher*)malloc(sizeof(Teacher) * 1);
 
-	result->sizeArray = 20;
+ 	result->sizeArray = 20;
 
-	result->array_intervalPossible =(Interval**)malloc(sizeof(Interval*)*result->sizeArray);
+ 	result->array_intervalPossible =(Interval**)malloc(sizeof(Interval*)*result->sizeArray);
 
-	result->nbInterval = 0;
+ 	result->nbInterval = 0;
 
-	return result;
-}
+ 	return result;
+ }
 
 /**
  * addIntervalToTeacher : this function allow to add the reference of an interval to a teacher.
@@ -43,15 +43,15 @@ Teacher* createTeacher() {
  * @param teacher The teacher that is able to teach something at one time.
  * @param interval the interval authorized for the teacher.
  */
-void addIntervalToTeacher(Teacher* teacher, Interval* interval) {
+ void addIntervalToTeacher(Teacher* teacher, Interval* interval) {
 
-	if(teacher->nbInterval == teacher->sizeArray) {
-		
-		teacher->array_intervalPossible = realloc(teacher->array_intervalPossible, teacher->sizeArray*2*sizeof(Interval*));
-		teacher->sizeArray *= 2;
-	}
+ 	if(teacher->nbInterval == teacher->sizeArray) {
+ 		
+ 		teacher->array_intervalPossible = realloc(teacher->array_intervalPossible, teacher->sizeArray*2*sizeof(Interval*));
+ 		teacher->sizeArray *= 2;
+ 	}
 
-	teacher->array_intervalPossible[teacher->nbInterval] = interval;
+ 	teacher->array_intervalPossible[teacher->nbInterval] = interval;
 
-	++teacher->nbInterval;
-}
+ 	++teacher->nbInterval;
+ }

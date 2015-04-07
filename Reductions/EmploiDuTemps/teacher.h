@@ -27,25 +27,25 @@
  * This structure represents the final object, that will be written in CNF file.
  * It contains an array of subject (where each of them has an array of intervals).
  */
-typedef struct struct_teacher {
+ typedef struct struct_teacher {
 
 	/** The structure needs an array of possible-taught Subject. */
-	Interval** array_intervalPossible;
+ 	Interval** array_intervalPossible;
 
 	/* We need to know how many subjects are inside. */
-	unsigned int nbInterval;
+ 	unsigned int nbInterval;
 
 	/** We need also the maximum space inside the array (to make it bigger if needed) */
-	unsigned long sizeArray;
+ 	unsigned long sizeArray;
 
-} Teacher;
+ } Teacher;
 
 
 /**
  * createTeacher : This function is the constructor of our structure.
  * @return a pointer to our new structure.
  */
-Teacher* createTeacher();
+ Teacher* createTeacher();
 
 
 /**
@@ -54,6 +54,6 @@ Teacher* createTeacher();
  * @param teacher The teacher that is able to teach something at one time.
  * @param interval the interval authorized for the teacher.
  */
-void addIntervalToTeacher(Teacher* teacher, Interval* interval);
+ void addIntervalToTeacher(Teacher* teacher, Interval* interval);
 
 #endif

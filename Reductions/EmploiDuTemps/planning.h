@@ -27,45 +27,45 @@
  * This structure represents the final object, that will be written in CNF file.
  * It contains an array of subject (where each of them has an array of intervals).
  */
-typedef struct struct_planning {
+ typedef struct struct_planning {
 
 	/** The structure needs an array of Subject. */
-	Subject** array_subjects;
+ 	Subject** array_subjects;
 
 	/* We need to know how many subjects are inside. */
-	unsigned int nbSubjects;
+ 	unsigned int nbSubjects;
 
 	/** We need also the maximum space inside the array (to make it bigger if needed) */
-	unsigned long sizeArray;
+ 	unsigned long sizeArray;
 
 	/** The structure needs an array of Teachers. */
-	Teacher** array_teachers;
+ 	Teacher** array_teachers;
 
 	/** We need to know how many teachers we have. */
-	unsigned long nbTeachers;
+ 	unsigned long nbTeachers;
 
-} Planning;
+ } Planning;
 
 
 /**
  * This function is the constructor of our structure.
  * @return a pointer to our new structure.
  */
-Planning* createPlanning();
+ Planning* createPlanning();
 
 /**
  * This function is the toString() of our structure
  * @param output the stream where we want to print the information.
  * @param planning the Planning that we want to display.
  */
-void displayPlanning(FILE* output, Planning* planning);
+ void displayPlanning(FILE* output, Planning* planning);
 
 /**
  * This function is to add an Subject inside the Subject's array.
  * @param planning the Planning who will have a new subject.
  * @param subject, the subject that we want to insert.
  */
-void addSubject(Planning* planning, Subject* subject);
+ void addSubject(Planning* planning, Subject* subject);
 
 
 /**
@@ -73,11 +73,11 @@ void addSubject(Planning* planning, Subject* subject);
  * We need the pointer on our Planning to destroy it.
  * @param planning the Planning that we want to destroy.
  */
-void deletePlanning(Planning* planning);
+ void deletePlanning(Planning* planning);
 
 
-void initializeAllTeachers(Planning * planning);
+ void initializeAllTeachers(Planning * planning);
 
-void cleaningTeacherNumberOfIntervals(Planning* planning);
+ void cleaningTeacherNumberOfIntervals(Planning* planning);
 
 #endif
