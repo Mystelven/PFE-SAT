@@ -21,7 +21,7 @@
 #include "htmlSolutionGenerator.h"
 #include <time.h>
 
-int main(int argc, char* argv[]) {
+ int main(int argc, char* argv[]) {
 
     char* filename;
     char*   output;
@@ -63,27 +63,27 @@ int main(int argc, char* argv[]) {
 
     begin = clock();
 
-        planning = readInputFile(filename);
+    planning = readInputFile(filename);
 
-        initializeAllTeachers(planning);
+    initializeAllTeachers(planning);
 
-        fprintf(log,"[INFO] - We will now create our CNF file.");
-        
-        output = createCNF(planning);
+    fprintf(log,"[INFO] - We will now create our CNF file.");
+    
+    output = createCNF(planning);
 
-        fprintf(log,"[INFO] - The output file is now : %s\n",output);
-        fprintf(log,"[INFO] - We will now try to solve the CNF file\n");
+    fprintf(log,"[INFO] - The output file is now : %s\n",output);
+    fprintf(log,"[INFO] - We will now try to solve the CNF file\n");
 
-            strcat(cmd,solver);
-            strcat(cmd," ");
-            strcat(cmd,output);
-            strcat(cmd," > solution.out");
+    strcat(cmd,solver);
+    strcat(cmd," ");
+    strcat(cmd,output);
+    strcat(cmd," > solution.out");
 
-        fprintf(log,"[INFO] - commande : %s",cmd);
+    fprintf(log,"[INFO] - commande : %s",cmd);
 
-        system(cmd);
+    system(cmd);
 
-        unsigned int* solution = getSolutionSchedule(planning,"solution.out");
+    unsigned int* solution = getSolutionSchedule(planning,"solution.out");
     
     end = clock();
 

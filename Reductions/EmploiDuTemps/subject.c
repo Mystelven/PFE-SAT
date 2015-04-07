@@ -26,25 +26,25 @@
  * @param output the stream where we want to print the information.
  * @param subject the subject that we want to display. 
  */
-void displaySubject(FILE * output, Subject* subject) {
+ void displaySubject(FILE * output, Subject* subject) {
 
-	fprintf(output,"\n");
-	fprintf(output,"%s:",subject->subjectName);
-	fprintf(output,"\n");
+ 	fprintf(output,"\n");
+ 	fprintf(output,"%s:",subject->subjectName);
+ 	fprintf(output,"\n");
 
-	unsigned int i = 0;
+ 	unsigned int i = 0;
 
 	/* For every intervals inside our Subject */
-	for(i = 0; i < subject->nbSlots; ++i) {
+ 	for(i = 0; i < subject->nbSlots; ++i) {
 
-		fprintf(output,"\n    ");
-		
+ 		fprintf(output,"\n    ");
+ 		
 		/* We call the toString() of this interval. */
-		displayInterval(output,subject->slots[i]);
-	}
+ 		displayInterval(output,subject->slots[i]);
+ 	}
 
-	fprintf(output,"\n");
-}
+ 	fprintf(output,"\n");
+ }
 
 /**
  * This function is the constructor of our structure.
@@ -53,26 +53,26 @@ void displaySubject(FILE * output, Subject* subject) {
  * @param copy the number of times we need this course to be true.
  * @return a pointer to our new structure.
  */
-Subject* createSubject(const char* name,unsigned long copy) {
+ Subject* createSubject(const char* name,unsigned long copy) {
 
 	/* We allocate the good size of memory. */
-	Subject* result = malloc(sizeof(Subject) * 1);
+ 	Subject* result = malloc(sizeof(Subject) * 1);
 
 	/* We allocate and copy the string of the name. */
-	result->subjectName = (char*)strdup(name);
+ 	result->subjectName = (char*)strdup(name);
 
 	/* We affect the number of copy that we will need to have true. */
-	result->nbCopy = copy;
+ 	result->nbCopy = copy;
 
 	/* We have 4 slots a day during 5 days and in average, 3 rooms . */
-	result->slots = (Interval**) malloc(sizeof(Interval*) * (4 * 5 * 300));
+ 	result->slots = (Interval**) malloc(sizeof(Interval*) * (4 * 5 * 300));
 
 	/* for now, no intervals for this subject */
-	result->nbSlots = 0;
+ 	result->nbSlots = 0;
 
 	/* and we return the pointer on our structure. */
-	return result;
-}
+ 	return result;
+ }
 
 
 /**
@@ -80,33 +80,33 @@ Subject* createSubject(const char* name,unsigned long copy) {
  * We need the pointer on our subject to destroy it.
  * @param subject the Subject that we want to destroy.
  */
-void deleteSubject(Subject* subject) {
+ void deleteSubject(Subject* subject) {
 
 	/* We desallocate the name of our subject. */
-	free(subject->subjectName);
+ 	free(subject->subjectName);
 
-	unsigned int i = 0;	
+ 	unsigned int i = 0;	
 
 	/* and for every interval inside, we delete it. */
-	for(i = 0; i < subject->nbSlots; ++i) {
+ 	for(i = 0; i < subject->nbSlots; ++i) {
 
 		/* we call the destructor of the i-th interval. */
-		deleteInterval(subject->slots[i]);
-	}
+ 		deleteInterval(subject->slots[i]);
+ 	}
 
 	/* and we delete the pointer itself. */
-	free(subject);
-}
+ 	free(subject);
+ }
 
 /**
  * This function is to add an interval inside the Interval's array.
  * @param subject the subject who will have a new interval.
  * @param interval, the interval that we want to copy.
  */
-void addInterval(Subject* subject, Interval* interval) {
-	
+ void addInterval(Subject* subject, Interval* interval) {
+ 	
 
-	subject->slots[subject->nbSlots] = copyInterval(interval);
+ 	subject->slots[subject->nbSlots] = copyInterval(interval);
 
-	++subject->nbSlots;
-}
+ 	++subject->nbSlots;
+ }

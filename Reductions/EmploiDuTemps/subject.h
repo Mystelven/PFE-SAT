@@ -29,22 +29,22 @@
  * This structure represents a Subject.
  * It has authorized intervals and a name.
  */ 
-typedef struct struct_subject {
+ typedef struct struct_subject {
 
 	/* The name of the subject */
-	char* subjectName;
+ 	char* subjectName;
 
 	/* The array of authorized intervals; */
-	Interval** slots;
+ 	Interval** slots;
 
 	/* The number of authorized intervals. */
-	unsigned int nbSlots;
+ 	unsigned int nbSlots;
 
 	/* How many intervals of this subject we need. 
 	 * (useful to clean the final result) */
-	unsigned long nbCopy;
+ 	unsigned long nbCopy;
 
-} Subject;
+ } Subject;
 
 
 /**
@@ -53,7 +53,7 @@ typedef struct struct_subject {
  * @param output the stream where we want to print the information.
  * @param subject the subject that we want to display. 
  */
-void displaySubject(FILE * output, Subject* subject);
+ void displaySubject(FILE * output, Subject* subject);
 
 
 /**
@@ -63,14 +63,14 @@ void displaySubject(FILE * output, Subject* subject);
  * @param copy the number of times we need this course to be true.
  * @return a pointer to our new structure.
  */
-Subject* createSubject(const char* name,unsigned long copy);
+ Subject* createSubject(const char* name,unsigned long copy);
 
 /**
  * This function is the destructor of our structure.
  * We need the pointer on our subject to destroy it.
  * @param subject the Subject that we want to destroy.
  */
-void deleteSubject(Subject* subject);
+ void deleteSubject(Subject* subject);
 
 
 /**
@@ -78,6 +78,6 @@ void deleteSubject(Subject* subject);
  * @param subject the subject who will have a new interval.
  * @param interval, the interval that we want to copy.
  */
-void addInterval(Subject* subject, Interval* interval);
+ void addInterval(Subject* subject, Interval* interval);
 
 #endif

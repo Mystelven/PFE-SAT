@@ -30,18 +30,18 @@
  * a course by a teacher in a room.
  * Basically, the atomic element of a timetable.
  */
-typedef struct struct_interval {
+ typedef struct struct_interval {
 
 	/** We need a start date. */
-	double start;
+ 	double start;
 
 	/** We need a end date. */
-	double end;
+ 	double end;
 
 	/** We need to have an unique ID for this interval. */
-	unsigned int id;
+ 	unsigned int id;
 
-} Interval;
+ } Interval;
 
 
 /**
@@ -50,7 +50,7 @@ typedef struct struct_interval {
  * @param output the stream where we want to print the information.
  * @param interval the interval that we want to display.
  */
-void displayInterval(FILE* output, Interval* interval);
+ void displayInterval(FILE* output, Interval* interval);
 
 
 /**
@@ -60,7 +60,7 @@ void displayInterval(FILE* output, Interval* interval);
  * @param e the end date of our new interval.
  * @return a pointer to our new structure.
  */
-Interval* createInterval(double s, double e);
+ Interval* createInterval(double s, double e);
 
 
 /**
@@ -68,7 +68,7 @@ Interval* createInterval(double s, double e);
  * We need the pointer on our interval to destroy it.
  * @param interval the interval that we want to destroy.
  */
-void deleteInterval(Interval* interval);
+ void deleteInterval(Interval* interval);
 
 
 /**
@@ -78,6 +78,6 @@ void deleteInterval(Interval* interval);
  * @param interval the interval that we want to copy.
  * @return the copy of our interval (with an unique ID)
  */
-Interval* copyInterval(Interval* interval);
+ Interval* copyInterval(Interval* interval);
 
 #endif
