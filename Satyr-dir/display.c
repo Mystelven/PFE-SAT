@@ -142,7 +142,7 @@ inline void displayFinalResult(Individual* population) {
 		printf("s   UNSATISFIABLE\n");
 
 		printf("c |-------------------------------------------------------------------------------------|\n");
-		printf("c | Time 	         :       %4.4f seconds",(double)(endtime-begintime)/CLOCK_TICK);
+		printf("c | Solving Time     :   %5.4f seconds",(double)(endtime-begintime)/CLOCK_TICK);
 		printf("           				|\n");
 		printf("c | After                : %10llu flips",allflip);
 		printf("           					|\n");

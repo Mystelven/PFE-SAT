@@ -140,7 +140,7 @@ return planning;
     unsigned int nbVariables  = getNbVariables(planning);
     unsigned int nbConstraint = planning->nbSubjects + getNbConstraint(planning);
 
-    printf("\n[INFO] - We created a CNF file of this schedule problem with %d variables and %d clauses.\n",nbVariables,nbConstraint);
+    printf("\n[INFO] - We created a CNF file of this schedule problem with %5d variables and %5d clauses.\n",nbVariables,nbConstraint);
     fprintf(file,"p cnf %d %d\n",nbVariables,nbConstraint);
 
     writeOneIntervalForEachClassSatisfied(file,planning);

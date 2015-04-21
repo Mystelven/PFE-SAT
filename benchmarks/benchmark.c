@@ -30,7 +30,7 @@
 
 #include "gnuplot_i.h"
 
-#define NB_INSTANCES 13000
+#define NB_INSTANCES 9000
 
 double* Y_array;
 int numInstance = 1;
@@ -116,18 +116,31 @@ void treatmentResultSolvingTime(char* solver, char* result) {
 
 	if(strcmp(solver,"Glucose") == 0) {
 
-		printf("%s --> %s",solver,result);
+		ret = strtod(result+25,&ptr);
+		printf("%d : %lf\n",numInstance,ret);
+
+		Y_array[numInstance] = Y_array[numInstance-1] + ret;
+		numInstance++;
 		
 	} 
 
 	else if(strcmp(solver,"Walksat") == 0) {
 
-		printf("%s --> %s",solver,result);
+    ret = strtod(result+24,&ptr);
+    ret *= 10;
+    printf("%d : %lf\n",numInstance,ret);
+
+    Y_array[numInstance] = Y_array[numInstance-1] + ret;
+    numInstance++;
 	} 
 
 	else if(strcmp(solver,"GASAT") == 0) {
 
-		printf("%s --> %s",solver,result);
+    ret = strtod(result+7,&ptr);
+    printf("%d : %lf\n",numInstance,ret);
+
+    Y_array[numInstance] = Y_array[numInstance-1] + ret;
+    numInstance++;
 	} 
 
 	else if(strcmp(solver,"Zchaff") == 0) {
@@ -158,16 +171,19 @@ void treatmentFile(char* directory, char* filename,char* solver) {
 	if(strcmp(solver,"Glucose") == 0) {
 
 		/* Here is the cmd that we need to execute to isolate the solving time at Glucose. */
+		sprintf(cmd,"cat %s/%s | grep 'CPU time'",directory,filename);
 	} 
 
 	else if(strcmp(solver,"Walksat") == 0) {
 
 		/* Here is the cmd that we need to execute to isolate the solving time at Walksat. */
+    sprintf(cmd,"cat %s/%s | grep 'total elapsed seconds'",directory,filename);
 	} 
 
 	else if(strcmp(solver,"GASAT") == 0) {
 
 		/* Here is the cmd that we need to execute to isolate the solving time at GaSAT. */
+    sprintf(cmd,"cat %s/%s | grep 'time'",directory,filename);
 	} 
 
 	else if(strcmp(solver,"Zchaff") == 0) {
@@ -252,7 +268,7 @@ void formatSolved(char* solver) {
 
  	char* output = (char*)"default.png";
 
- 	char* solver = (char*)"Zchaff";
+ 	char* solver = strdup(argv[1]);
 
  	char cmd[255];
 
@@ -283,6 +299,10 @@ void formatSolved(char* solver) {
 	double* y = getY_array();
 
  	formatSolved(solver);
+
+  printf("temps final : %lf\n",y[NB_INSTANCES-1]);
+
+  y[NB_INSTANCES-1] = 50000;
 
  	gnuplot_plot_xy(g, x, y,  NB_INSTANCES, solver) ;
 

@@ -6,6 +6,7 @@ Walksat-dir/*
 Zchaff-dir/*
 instances/*
 benchmarks/.DS_Store
+benchmarks/solved/*
 
 images/.DS_Store
 
