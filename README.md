@@ -36,4 +36,4 @@ Please, feel free to contact valentin.montmirail@gmail.com for more information.
 
 # Report and links 
 
-[Report in French who explain this project](http://valentin-montmirail.com/resources/pdf/bibliography/PFE_Rapport_Final.pdf)
+- [Report in French who explain this project](http://valentin-montmirail.com/resources/pdf/bibliography/PFE_Rapport_Final.pdf)
