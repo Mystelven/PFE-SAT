@@ -2,7 +2,7 @@
 
 This project has been developed for my Final Project during my last year of Engineering in [Ecole Polytechnique de l'Université de Tours](http://polytech.univ-tours.fr/).
 
-I ask my teachers one year ago to be able to work on this topic during my final project. 
+I ask my teachers one year before to be able to work on this topic during my final project. 
 
 We set up, with [Christophe Lenté](http://www.univ-tours.fr/m-lente-christophe-822.kjsp), the goals of this project.
 
